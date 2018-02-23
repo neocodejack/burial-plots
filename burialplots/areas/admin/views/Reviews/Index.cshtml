@@ -1,0 +1,108 @@
+﻿@model IEnumerable<BurialPlots.DAL.Review>
+
+@{
+    ViewBag.Title = "View Reviews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    <script src="~/Areas/Admin/JS/Reviews/ViewReviews.js"></script>
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.ServiceName Reviews</h2>
+    </div>
+</div>
+<br />
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadReviewsListing">
+    <thead>
+        <tr>
+            <th>
+                Posted by
+            </th>
+            <th>
+                Description
+            </th>
+            
+            <th>
+                Posted Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Member != null)
+            {
+                <tr>
+                    <td>
+                        @if (item.Member.Fname!=null && item.Member.Lname != null)
+                        {
+                            @item.Member.Fname
+                        }
+                        
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Date.Value.ToShortDateString()
+                    </td>
+                    <td>
+                        @if (item.Status == true)
+                    {
+                            <sapn style="color:red;">Approved</sapn>
+
+                        }
+
+                        else if (item.Status == false)
+                        {
+                            <sapn>Delete</sapn>
+
+                        }
+                        else
+                        {
+                            <span></span>
+                        }
+
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("ShowDetails", "Reviews", new { id = item.Id })"><i class="fa fa-eye"></i></a>
+                        @if (item.Status == true)
+                        {
+                            <button onclick="DeltedReview('@item.Id')" class="btn btn-primary" style="width:110px;">Delete</button>
+                        }
+                        else
+                        {
+                            <button onclick="Approved('@item.Id')" class="btn btn-danger" style="width:110px;">Approved</button>
+                        }
+                    </td>
+                </tr>
+            }
+
+
+
+        }
+    </tbody>
+</table>
+@*<div class="row">
+    <div class="col-md-8">
+        <p>
+            <a href="@Url.Action("Index","Users")" class="backClr">Back to List</a>
+        </p>
+
+    </div>
+</div>*@
+
+<input type="hidden" id="hidLoadReviewsListingUrl" value="@Url.Action("LoadReviewsListing", "Reviews")" />
+<input type="hidden" id="hidDeleteReview" value="@Url.Action("DeleteReview", "Reviews")" />
+<input type="hidden" id="hidApprovedReview" value="@Url.Action("ApprovedReview", "Reviews")" />
+<input type="hidden" id="hidDisApprovedService" value="@Url.Action("DisApprovedServiceListing", "ServiceListing")" />
+<input type="hidden" id="hIdServiceListlnk" value="@ViewBag.id" />

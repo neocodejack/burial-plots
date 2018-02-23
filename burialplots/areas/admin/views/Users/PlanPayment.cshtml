@@ -1,0 +1,377 @@
+﻿@using BurialPlots.DAL
+@{
+    ViewBag.Title = "Plan Payment";
+    Layout = "~/Areas/Admin/Views/Shared/_UsersLayout.cshtml";
+    var planId = ViewBag.PlanId;
+    var planList = new PartnerPlanRepository().GetById(planId);
+}
+<style>
+    .current{
+        border-bottom:2px solid green;
+    }
+</style>
+@section Scripts{
+<script src="https://cdn.worldpay.com/v1/worldpay.js"></script>
+    <script src="~/Areas/Admin/JS/Users/checkout.js"></script>
+    <script src="~/Areas/Admin/JS/Users/planPayment.js"></script>
+}
+<div id="divPro">
+    <div class="row smpl-step">
+        <div class="col-xs-12 col-sm-3 col-md-3 smpl-step-step current" id="checkoutBar">
+            <div class="smpl-step-num">
+                Step 1
+            </div>
+            <div class="smpl-step-info"><label><b>Checkout</b></label></div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 smpl-step-step" id="BillingBar">
+            <div class="smpl-step-num" id="billingInfo">
+                Step 2
+            </div>
+            <div class="smpl-step-info"><label><b>Billing Info</b></label></div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 smpl-step-step" id="PaymentBar">
+            <div class="smpl-step-num">
+                Step 3
+            </div>
+            <div class="smpl-step-info"><label><b>Payment</b></label></div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 smpl-step-step" id="ThankuBar">
+            <div class="smpl-step-num">
+                Step 4
+            </div>
+            <div class="smpl-step-info"><label><b>Thank you</b></label></div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:60px;">
+
+</div>
+<div id="divLoadCartItems">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Plan Name</th>
+                <th>Plan Price</th>
+                <th class="text-center">Plan Description</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody class="table-bordered">
+            <tr>
+
+                <td>
+                    <div class="col-md-3 text-center">
+                        <span>@planList.Title</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-3 text-center">
+                        <span>@planList.Price</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="text-center">
+                        @planList.Description
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-md-1">
+                        <span class="fa fa-trash-o" style="color:red; cursor:pointer" onclick="removeFromCart('@planList.Id')"></span>
+                    </div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-7 text-center">
+            <label>Grand Total:</label>
+        </div>
+        <div class="col-md-2 text-center">
+           <span id="cartCount">£@planList.Price</span> 
+        </div>
+    </div>
+</div>
+
+
+@*<div id="divSignup" class="row"></div>
+    <div id="divRegisteration" style="display:none; margin-top:40px;">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Account Information</h2>
+                <span id="spnLogin">Already have an account? <a href="#" onclick="showLogin('login')">Click here</a></span>
+                <span style="display:none" id="spnNew">New to BurialPlots? <a href="#" onclick="showLogin('new')">Create Account</a></span>
+            </div>
+        </div>
+        <br />
+        <div class="row" style="background-color:whitesmoke">
+            <div id="divLogin" style="display:none; padding:25px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="checkbox" style="display:none" id="chkLogin" />
+                        <label>Email</label>
+                        <input type="text" class="form-control login-valid" id="txtLoginEmail" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Password</label>
+                        <input type="password" class="form-control login-valid" id="txtLoginPassword" />
+                    </div>
+                </div>
+            </div>
+            <div id="divRegister" style="padding:25px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>First Name</label>
+                        <input type="text" class="form-control field-valid" id="txtRegFname" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control field-valid" id="txtRegLname" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Email</label>
+                        <input type="text" class="form-control field-valid" id="txtEmail" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Password</label>
+                        <input type="password" class="form-control field-valid" id="txtRegPassword" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Telephone Number</label>
+                        <input type="text" class="form-control" id="txtRegCellNo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row ">
+            <div class="col-md-12">
+                <input type="button" class="btn pull-right checkout-next" value="Next" onclick="nextPreviousBtns('registerNext')" />
+                <input type="button" class="btn pull-left checkout-next" value="Previous" onclick="nextPreviousBtns('registerPre')" />
+            </div>
+        </div>
+    </div>*@
+<div class="row" id="FirstNextButtton">
+    <input class="btn pull-right checkout-next" value="Next" onclick="nextPreviousBtns('checkoutNext')" type="button">
+</div>
+<div id="divTempBiling" class="row"></div>
+<div id="divBillingInfo" style="display:none; margin-top:40px">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>2-Billing Info</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row " style="background-color:whitesmoke">
+        <div style="padding:25px">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>First Name</label>
+                    @if (Session["cmemFirstName"] != null)
+                    {
+                        <input type="text" class="form-control" value="@Session["cmemFirstName"].ToString()" id="txtFname" />
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" id="txtFname" />
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label>Last Name</label>
+                    @if (Session["cmemLastName"] != null)
+                    {
+                        <input type="text" class="form-control" value="@Session["cmemLastName"].ToString()" id="txtLname" />
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" id="txtLname" />
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Address</label>
+                    <input type="text" class="form-control" id="txtAddress" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Country</label>
+                    <input type="text" class="form-control" id="txtCountry" />
+                </div>
+                <div class="col-md-6">
+                    <label>Telephone Number</label>
+                    <input type="text" class="form-control" id="txtCellNo" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <input type="button" class="btn pull-right checkout-next" value="Next" onclick="nextPreviousBtns('billingNext')" />
+            <input type="button" class="btn pull-left checkout-next" value="Previous" onclick="nextPreviousBtns('billingPre')" />
+        </div>
+    </div>
+</div>
+<div id="divPayment" style="display:none; margin-top:40px">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>3-Payment</h2>
+        </div>
+    </div>
+    <br />
+    <form id="paymentForm">
+        <div class="row " style="background-color:whitesmoke">
+            <div style="padding:25px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Card Holder Name</label>
+                        <input type="text" data-worldpay="name" name="name" id="txtCardHorderName" class="form-control card-fields" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Expiry(month)</label>
+                        <select data-worldpay="exp-month" id="drpExpMonth" class="form-control card-fields">
+                            <option value="" selected="selected">Select Month</option>
+                            @for (int i = 1; i <= 12; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Expiry(year)</label>
+                        <select data-worldpay="exp-year" id="drpExpYear" class="form-control card-fields">
+                            <option value="" selected="selected">Select Year</option>
+                            @for (int i = 2017; i <= 2035; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-9">
+                        <label>Card No.</label>
+                        <input type="text" data-worldpay="number" maxlength="20" id="txtCardNo" class="form-control card-fields" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>CVV</label>
+                        <input data-worldpay="cvc" maxlength="3" id="txtCvc" type="text" class="form-control card-fields" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" class="btn pull-right checkout-next" value="Finish" @*onclick="nextPreviousBtns('paymentNext')"*@ />
+                <input type="button" class="btn pull-left checkout-next" value="Previous" onclick="nextPreviousBtns('paymentPre')" />
+            </div>
+        </div>
+    </form>
+</div>
+<div id="divThank" style="display:none; margin-top:30px;">
+    <div class="row" style="background-color:whitesmoke">
+        <div style="padding:25px">
+            <div class="row">
+                <div class="col-md-12 text-center" id="divShowApierror">
+                    <h3>Thank you! Your order has been submitted.</h3>
+                    <h3> We will contact you within 24 hours.</h3>
+                    @*<h3><a href="@Url.Action("Index", "Market")">Click here </a> for booking another burial plot.</h3>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div id="divPayment">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Payment</h2>
+            </div>
+        </div>
+        <br />
+        <div class="row" style="background-color:whitesmoke">
+            <div style="padding:25px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Card Holder Name</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Expiry(month)</label>
+                        <select class="form-control">
+                            <option value="" selected="selected">Select Month</option>
+                            @for (int i = 1; i <= 12; i++)
+                    {
+                    <option value="@i">@i</option>
+                    }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Expiry(year)</label>
+                        <select class="form-control">
+                            <option value="" selected="selected">Select Year</option>
+                            @for (int i = 2017; i <= 2035; i++)
+                    {
+                    <option value="@i">@i</option>
+                    }
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-9">
+                        <label>Card No.</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>CVV</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="button" class="btn btn-primary pull-right" value="Submit" onclick="Submit('@planId')" />
+            </div>
+        </div>
+    </div>
+    <div class="row social-strip" style="margin-top:4px;">
+
+        <div class="col-md-12" style="margin-top:9px;">
+            <span>
+                <a href="http://www.mastercard.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_ECMC.gif" border="0" alt="MasterCard" style="height:25px;" /></a>
+            </span>&nbsp;&nbsp;
+            <span style="margin-left:-7px;">
+                <a href="http://www.jcbusa.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_JCB.gif" border="0" alt="JCB" style="height:25px;" /></a>
+            </span>&nbsp;&nbsp;
+            <span style="margin-left:-7px;">
+                <a href="http://www.maestrocard.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_MAESTRO.gif" border="0" alt="Maestro" style="height:25px;" /></a>
+            </span>&nbsp;&nbsp;
+            <span style="margin-left:-7px;">
+                <a href="http://www.visa.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_VISA_DELTA.gif" border="0" alt="Visa Debit" style="height:25px;" /></a>
+            </span>&nbsp;&nbsp;
+            <span style="margin-left:-7px;">
+                <a href="http://www.worldpay.com/support/index.php?CMP=BA22713" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/../pictures/poweredByWorldPay.gif" border="0" alt="Powered by WorldPay" style="height:25px;" /></a>
+            </span>&nbsp;&nbsp;
+        </div>
+    </div>*@
+

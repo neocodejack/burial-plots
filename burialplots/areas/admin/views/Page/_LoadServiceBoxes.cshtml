@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BurialPlots.DAL.ServiceBox>
+
+<table class="table table-bordered table-responsive table-hover table-striped" id="tblLoadServiceBoxes">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Service Url
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BoxName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BoxDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceUrl)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditServiceBox", "Page", new { id= item.Id})"><span class="fa fa-edit"></span></a>
+                    <span class="fa fa-trash-o" style="color:red; cursor:pointer" onclick="deleteServiceBox('@item.Id')"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

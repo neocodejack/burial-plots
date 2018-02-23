@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Cemetery";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+
+
+@section Scripts{
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="~/js/Home/home.js"></script>
+    }
+<div class="site-info padding-by-header">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="row margin-top-20">
+                    <h1>List Your Cemetery Plots</h1>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Company Name</label>
+                        <input type="text" id="compnayname" class="form-control" placeholder="Name" />
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>City/Town</label>
+                        <input type="text" id="city" class="form-control" placeholder="City" />
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Address Line 1</label>
+                        <input type="text" class="form-control" placeholder="Address.." id="aone" />
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Address Line 2</label>
+                        <input type="text" class="form-control" placeholder="Address.." id="atwo" />
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Country</label>
+                        <input type="text" class="form-control" id="country" placeholder="Country" />
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Post Code</label>
+                        <input type="text" class="form-control" id="postcode" placeholder="Post Code" />
+                    </div>
+                </div>
+                
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Contact Name</label>
+                        <input type="text" class="form-control" id="txtContactName" placeholder="Contact Name" />
+                    </div>
+                </div>
+                
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Telephone</label>
+                        <input type="text" class="form-control" id="telephne" placeholder="Telephone" />
+                    </div>
+                </div>
+                
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="Email" />
+                    </div>
+                </div>
+                
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <label>Website</label>
+                        <input type="text" class="form-control" id="website" placeholder="www.abc.com" />
+                    </div>
+                </div>
+                
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <div class="g-recaptcha" data-sitekey="6Ld5uxwUAAAAAClp87xMSXRKdW3ahN_lePnXFJxi"></div>
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <input type="button" onclick="cimtryplot()" class="btn-lg" value="Submit Now" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

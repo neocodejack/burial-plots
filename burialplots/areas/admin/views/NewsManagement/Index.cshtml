@@ -1,0 +1,311 @@
+﻿
+@{
+    ViewBag.Title = "News Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    
+<script src="~/Areas/Admin/JS/News/newsManagement.js"></script>
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>News Management</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#divEnglish">English</a></li>
+            <li><a data-toggle="tab" href="#divUrdu">Urdu</a></li>
+            <li><a data-toggle="tab" href="#divArabic">Arabic</a></li>
+            <li><a data-toggle="tab" href="#divChinese">Chinese</a></li>
+            <li><a data-toggle="tab" href="#divItalian">Italian</a></li>
+            <li><a data-toggle="tab" href="#divHindi">Hindi</a></li>
+            <li><a data-toggle="tab" href="#divTurkish">Turkish</a></li>
+            <li><a data-toggle="tab" href="#divBengali">Bengali</a></li>
+            <li><a data-toggle="tab" href="#divHebrew">Hebrew</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divUrdu" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtUrduTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtUrduDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divArabic" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtArabicTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtArabicDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divChinese" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtChineseTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtChineseDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divItalian" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtItalianTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtItalianDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divHindi" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtHindiTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtHindiDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divTurkish" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtTurkishTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtTurkishDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divBengali" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtBengaliTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtBengaliDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divHebrew" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>Title:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtHebrewTitle" class="form-control" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label><b>News:</b></label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea id="txtHebrewDesc" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label><b>Publish Date:</b></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="txtPubDate" value="@DateTime.Now.ToShortDateString()" class="form-control datepicker" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <input type="button" value="Save" class="btn btn-success" onclick="saveNews()" />
+                        <input type="button" value="Reset" class="btn btn-default" onclick="resetAllFields()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadNews">
+
+    </div>
+</div>
+
+<input type="hidden" id="hidId" />
+<input type="hidden" id="hidLoadNewsUrl" value="@Url.Action("LoadNews", "NewsManagement")" />
+<input type="hidden" id="hidDeleteNewsUrl" value="@Url.Action("DeleteNews", "NewsManagement")" />
+<input type="hidden" id="hidSaveNewsUrl" value="@Url.Action("SaveNews", "NewsManagement")" />

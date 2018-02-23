@@ -1,0 +1,70 @@
+﻿@model BurialPlots.DAL.AdminLogin
+@{
+    ViewBag.Title = "Edit System User";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Areas/Admin/JS/Admin/systemedit.js"></script>
+    }
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("ViewSystemUser", "Admin",new {type="SuperAdmin" })" class="btn btn-primary"><i class="fa fa-arrow-left"></i>Back </a>
+    </div>
+</div>
+<br />
+<h2>Edit System User</h2>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover table-hover">
+
+            <tr>
+                <td>
+                    User Name
+                </td>
+                <td>
+                    <input type="text" id="username"  value="@Model.Username" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" id="password" value="@Model.Password" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Select Role Type
+                </td>
+                <td>
+                    <select class="form-control" id="roleType">
+                        @if (Model.Role == "SuperAdmin")
+                        {
+                            <option value="SuperAdmin">SuperAdmin</option>
+                            <option value="Admin">Admin</option>
+                        }
+                        @if (Model.Role == "Admin")
+                        {
+                            <option value="Admin">Admin</option>
+                            <option value="SuperAdmin">SuperAdmin</option>
+                            
+                        }
+
+
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-10">
+
+    </div>
+    <div class="col-md-2">
+        <input type="button" value="Update" onclick="UpdateSystemUser()" class="form-control btn-primary pull-right" />
+    </div>
+</div>
+<input type="hidden" id="hIdSytemUser" value="@Model.Id" />

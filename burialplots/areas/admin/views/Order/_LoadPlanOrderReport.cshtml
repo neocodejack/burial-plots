@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BurialPlots.DAL.OrderPlan>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Plan Sales</h3>
+    </div>
+    <div class="col-md-6">
+        <a class="pull-right" href="@Url.Action("ExportExcelReport", "Order", new { dtFrom=ViewBag.DateFrom, dtTo=ViewBag.DateTo, status = ViewBag.Status, reportTitle= ViewBag.ReportTitle })" title="Export to Excel"><span class="fa fa-file-excel-o" style="font-size:25px"></span></a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-4">
+                <span>Total Sale: </span><span><b style="color:blue">@ViewBag.TotalSale</b></span>&nbsp;
+            </div>
+            <div class="col-md-4">
+                <span>Total Refunded: </span><span><b style="color:red">@ViewBag.TotalRefund</b></span>&nbsp;
+            </div>
+            <div class="col-md-4">
+                <span>Total Revenue: </span><span><b style="color:green">@ViewBag.Revenue</b></span>&nbsp;
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadOrdersReport">
+            <thead>
+                <tr>
+                    <th>
+                        Order ID
+                    </th>
+                    <th>
+                        Order by
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.CartId
+                        </td>
+                        <td>
+                            @item.Partner.Fname @item.Partner.Lname
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                        <td>
+                            @item.OrderDate.Value.ToString("dd-MMM-yyyy hh:mm tt")
+                        </td>
+                        <td style="text-align:right">
+                            @Math.Round(Convert.ToDecimal(item.OrderPlanItems.Sum(c => c.Price)), 2)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

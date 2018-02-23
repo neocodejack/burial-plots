@@ -1,0 +1,186 @@
+﻿@model BurialPlots.DAL.Order
+
+@{
+    ViewBag.Title = "Show Order Details";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#li-profile").removeClass("start active");
+            $("#li-user").addClass("start active");
+            $("#tblLoadOrders").DataTable({
+                "iDisplayLength": 100
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-md-12">
+        <a href="@Url.Action("MyOrders", "Orders")"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Orders</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Order Details</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Cart ID:</b></label>
+            </div>
+            <div class="col-md-10">
+                <span>@Model.CartId</span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>First Name:</b></label>
+            </div>
+            <div class="col-md-10">
+                <span>@Model.FirstName</span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Last Name:</b></label>
+            </div>
+            <div class="col-md-10">
+                <span>@Model.LastName</span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Address:</b></label>
+            </div>
+            <div class="col-md-10">
+                <span>@Model.Address</span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Country:</b></label>
+            </div>
+            <div class="col-md-10">
+                <span>@Model.Country</span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Contact No.:</b></label>
+            </div>
+            <div class="col-md-10">
+                <span>@Model.CellNo</span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Status:</b></label>
+            </div>
+            <div class="col-md-10">
+                @if (Model.Status == "pending")
+                {
+                    <span>Pending</span>
+                }
+                else if (Model.Status == "cancelled")
+                {
+                    <span>Cancelled</span>
+                }
+                else
+                {
+                    <span>Confirmed</span>
+                }
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Order Cemetries:</b></label>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <table class="table table-bordered table-hover table-responsive">
+                        <tr>
+                            <th>
+                                Cemetry Name
+                            </th>
+                            <th>
+                                Location
+                            </th>
+                            <th>
+                                Religion
+                            </th>
+                            <th>
+                                Layer
+                            </th>
+                            <th>Pre Need</th>
+                            <th>At Need</th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                        </tr>
+                        @foreach (var item in Model.OrderCemeteries)
+                        {
+                            <tr>
+                                <td>@item.Grave.PlotName</td>
+                                <td>
+                                    @if (item.Grave != null)
+                                    {
+                                        <span>@item.Grave.Location</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Grave != null && item.Grave.Relgion != null)
+                                    {
+                                        <span>@item.Grave.Relgion.RelgionName</span>
+                                    }
+                                </td>
+                                <td>@item.Grave.CemeteryLayers.FirstOrDefault(c => c.Id == item.Quantity).Name</td>
+                                <td>
+                                    @if (item.PreNeed == true)
+                                    {
+                                        <span>Yes</span>
+                                    }
+                                    else
+                                    {
+                                        <span>No</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.AtNeed == true)
+                                    {
+                                        <span>Yes</span>
+                                    }
+                                    else
+                                    {
+                                        <span>No</span>
+                                    }
+                                </td>
+                                <td>£@Math.Round(Convert.ToDecimal(item.Price), 2)</td>
+                                <td>£@Math.Round(Convert.ToDecimal(item.Price), 2)</td>
+                            </tr>
+                        }
+                    </table>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <label><b>Total: £@Math.Round(Convert.ToDecimal(Model.OrderCemeteries.Sum(c => c.Price)), 2)</b></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

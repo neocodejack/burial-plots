@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BurialPlots.DAL.Review>
+
+@{
+    ViewBag.Title = "Reviews";
+    Layout = "~/Areas/Admin/Views/Shared/_UsersLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Reviews</h2>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeviceListing.BusinessName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeviceListing.BusinessName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

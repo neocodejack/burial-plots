@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Sell Your Plot";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+@section Scripts{
+    <script src="~/js/Market/sell_your_plot.js"></script>
+}
+<div class="banner" style="background-image: url('/images/banner-about.jpg'); padding-top:203px;margin-top:50px">
+    <div class="caption-inner" style="margin-bottom:332px">
+        <div class="container">
+            <h2>Sell Your Burial plot</h2>
+        </div>
+    </div>
+</div><!-- banner -->
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main" role="main">
+            <div class="section sell-block text-left-align">
+                <div class="container">
+                    <div class="col-sm-12 col-md-8">
+                        <h2 class="underline text-left-align">Burial Plots Team</h2>
+                        <p>BurialPlots.co.uk is a new and innovative way to source a burial plot in the UK. One of our many services includes giving clients the ability to sell there burial plot at current market value on our website.</p>
+                        <p>Selling your plot with burialplots.co.uk couldn’t be simpler with our 3 step process.</p>
+                        <p>Plots will be marketed for 12 months for an initial admin fee and a commission paid on sale of the plot.
+                        <p>We are able to sell all types of burial space from traditional lawn graves to mausoleums and crypts.</p>
+                        <a href="#" data-toggle="modal" data-target="#enquiry-form" class="enquiry-btn">Enquiry</a>
+                        <br /><br />
+                        <h3>Multiple Burial Plot Owners</h3>
+                        <p>If you are an owner of multiple burial plots within a cemetery or a number of cemeteries we can help you sell your plots.</p>
+                        <p>With national advertising campaigns running constantly through the UK, we are able to market your plots 24 hrs a day on our website burialplots.co.uk.</p>
+                        <p>We will agree a price with you to list your plots, market them on your behalf and pay the sale proceeds across to you with 7 days of receipt less our commission.</p>
+                        <a href="#" data-toggle="modal" data-target="#enquiry-form" class="enquiry-btn">Enquiry</a>
+                        <br /><br />
+                        <h3>Individual Burial Plot Owners</h3>
+                        <p>Many people either inherit or purchase burial space and for one reason or another feel they will not make use of the space for a variety of reasons, moving out of the area, moving abroad or other change of circumstance can mean they are left with a burial plot they have no ability of selling.</p>
+                        <p>Burialplots.co.uk now gives you the chance to list your plots for a small annual fee to achieve maximum current market value.</p>
+                        <p>Our simple process makes selling your plot hassle and stress free, all you have to do is enquire, agree a price and we will do the rest for you.</p>
+                        <br />
+                        <a href="#" data-toggle="modal" data-target="#enquiry-form" class="enquiry-btn">Enquiry</a>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="sell-contact-form">
+                            <h3>ENQUIRY FORM</h3>
+                            <form onsubmit="return false">
+                                <ul class="contact-form">
+                                    <li>
+                                        <label>Name <span style="color:red">*</span>:</label>
+                                        <input name="" id="txtFname" placeholder="" type="text" required class="aside-text">
+                                        <input name="" id="txtLname" placeholder="" type="text" required class="aside-text txt-enquire-field">
+                                    </li>
+                                    <li>
+                                        <label>Email <span style="color:red">*</span>:</label>
+                                        <input name="" id="txtEmail" placeholder="" type="email" required>
+                                    </li>
+                                    <li>
+                                        <label>Mobile <span style="color:red">*</span>:</label>
+                                        <input name="" id="txtMobile" placeholder="" type="text" required>
+                                    </li>
+                                    <li>
+                                        <label>Message <span style="color:red">*</span>:</label>
+                                        <textarea name="" id="txtMessage" required></textarea>
+                                    </li>
+                                    <li>
+                                        <input value="Submit" onclick="submitEnquiry()" type="submit">
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section text-center-align purple-bg">
+                <div class="container">
+                    <h2>How it Works</h2>
+                    <div class="row how-it-works">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="image-how-it-works">
+                                <span class="count-icon">1</span>
+                                <a href="#"><img src="/images/enquiry-pic.jpg" alt="" width="169"></a>
+                            </div>
+                            <h3>Enquire</h3>
+                            <p>Fill in our quick contact form and we will get back to you within 24 hrs</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="image-how-it-works">
+                                <span class="count-icon">2</span>
+                                <a href="#"><img src="~/images/agree-price.jpg" alt="" width="169"></a>
+                            </div>
+                            <h3>Agree Price</h3>
+                            <p>One of our customer service team will get back to you with current market value on the plot/s you own.</p>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="image-how-it-works">
+                                <span class="count-icon">3</span>
+                                <a href="#"><img src="~/images/sell-pic.jpg" alt="" width="169"></a>
+                            </div>
+                            <h3>Sell</h3>
+                            <p>List your plot on burialplots.co.uk and benefit from our national advertising campaigns focussed on selling your plot.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section text-center-align">
+                <div class="container">
+                    <h2 class="underline">Sales</h2>
+                    <p>BurialPlots.co.uk are dedicated to making the process of selling a burial plot as easy as possible to people who will never have dealt with this kind of sale before. Our expert team will talk you through the whole process, put you in touch with the right solicitors and complete transactions in a timely fashion.</p>
+                    <p>Whether it be selling a grandiose family size mausoleum,  a natural burial plot or crypt, we will help guide you through the process with minimum of fuss and help you sell your plot in the quickest time possible.</p>
+                    <p><strong>If you need anymore information on the sale of you burial plots please get in touch on 0800 193 1003 or fill in one of our enquiry forms</strong></p>
+                    <br />
+                    <a href="#" data-toggle="modal" data-target="#enquiry-form" class="enquiry-btn">Enquiry</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!--enquiry Modal -->
+
+
+
+<div class="modal fade" id="enquiry-form" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 class="text-center-align">Enquiry Form</h3>
+                <a href="#" class="js-modal-close close" id="btnClose" data-dismiss="modal" style="margin-top:-40px;">×</a>
+
+                <ul class="enquiry-form">
+                    <li class="col-sm-12 col-md-6">
+                        <label>Name <span class="red">*</span>: </label>
+                        <input type="text" name="" id="fName" placeholder="" class="radio1 txt-required" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Email <span class="red">*</span>: </label>
+                        <input type="text" name="" id="txtEmail" class="radio1 txt-required" placeholder="" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Cemetery Name <span class="red">*</span>: </label>
+                        <input type="text" name="" id="txtCemeteryName" class="radio1 txt-required" placeholder="" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Number of Plots <span class="red">*</span>: </label>
+                        <input type="text" name="" id="txtNoofPlots" class="radio1 txt-required" placeholder="" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Purchase Price <span class="red">*</span>: </label>
+                        <input type="text" name="" placeholder="" class="radio1 txt-required" required="" id="txtPurchasePrice">
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Cemetery Address <span class="red">*</span>: </label>
+                        <input type="text" name="" placeholder="" class="radio1 txt-required" required="" id="txtAddress">
+                    </li>
+                    <li class="col-md-12">
+                        <button class="add-to-cart-btn" style="width: 100% ; margin-left: 0; border-width: 0;" onclick="FormEnquiry();">Submit</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

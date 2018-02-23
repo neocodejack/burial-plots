@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Blog List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+
+    <script src="~/Areas/Admin/JS/Blog/LoadBlogListing.js"></script>
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Blog List</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadBlogListing">
+
+    </div>
+</div>
+
+<input type="hidden" id="hidLoadBlogListingUrl" value="@Url.Action("LoadBlogListing", "Blog")" />
+<input type="hidden" id="hidBlogListingDeleteLnk" value="@Url.Action("DeleteBlog", "Blog")" />
+<input type="hidden" id="hidPublishBloglnk" value="@Url.Action("PublishBlogApproval", "Blog")" />
+<input type="hidden" id="hidUnPublishBloglnk" value="@Url.Action("UnPublishBlogApproval", "Blog")" />

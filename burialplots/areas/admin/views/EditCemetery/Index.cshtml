@@ -1,0 +1,273 @@
+﻿@model BurialPlots.DAL.Cemetery
+
+@{
+    ViewBag.Title = "Edit Cemetery";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .img-close-ico {
+        color: white;
+        margin-top: 6px;
+        position: absolute;
+        padding-left: 6px;
+        cursor: pointer;
+    }
+
+    #map {
+        height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    #infowindow-content .title {
+        font-weight: bold;
+    }
+
+    #infowindow-content {
+        display: none;
+    }
+
+    #map #infowindow-content {
+        display: inline;
+    }
+
+    .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+    }
+
+    #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+    }
+
+    .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+    }
+
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+    #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+    }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+    #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+    }
+
+    #target {
+        width: 345px;
+    }
+</style>
+<link href="https://cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+<link href="~/Scripts/dropzone/dropzone.min.css" rel="stylesheet" />
+@section Scripts{
+    <script src="~/submodulesMap/squares/js/squares-renderer.js"></script>
+    <script src="~/submodulesMap/squares/js/squares.js"></script>
+    <script src="~/submodulesMap/squares/js/squares-elements-jquery.js"></script>
+    <script src="~/submodulesMap/squares/js/squares-controls.js"></script>
+    <script src="~/submodulesMap/wcp-editor/js/wcp-editor.js"></script>
+    <script src="~/submodulesMap/wcp-editor/js/wcp-editor-controls.js"></script>
+    <script src="~/submodulesMap/wcp-tour/js/wcp-tour.js"></script>
+    <script src="~/submodulesMap/wcp-compress/js/wcp-compress.js"></script>
+    <script src="~/submodulesMap/wcp-icons/js/wcp-icons.js"></script>
+    <!-- Image Map Pro Editor -->
+    <script src="~/jsMap/image-map-pro-defaults.js"></script>
+    <script src="~/jsMap/image-map-pro-editor.js"></script>
+    <script src="~/jsMap/image-map-pro-editor-content.js"></script>
+    <script src="~/jsMap/image-map-pro-editor-local-storage.js"></script>
+    <script src="~/jsMap/image-map-pro-editor-init-jquery.js"></script>
+    <!-- Image Map Pro Plugin -->
+    <script src="~/jsMap/image-map-pro.js"></script>
+    <script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
+    <script src="~/Scripts/dropzone/dropzone.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZHjnUsunhjjA4aRg-AAndGf8dTyJwYJ4&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="~/Areas/Admin/JS/EditCemetery/editCemetery.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Edit Cemetery</h3>
+        <label>(@Model.Name)</label>
+    </div>
+</div>
+<br />
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#divMapping">Mapping</a></li>
+    <li><a data-toggle="tab" href="#divImages">Images</a></li>
+    <li><a data-toggle="tab" href="#divDescription">Description</a></li>
+    <li><a data-toggle="tab" href="#divKeyInfo">Key Information</a></li>
+    <li><a data-toggle="tab" href="#divLocation">Location</a></li>
+    <li><a data-toggle="tab" href="#divWhyChoose">Why Choose</a></li>
+    <li><a data-toggle="tab" href="#divSave">Save</a></li>
+</ul>
+<div class="tab-content">
+    <div id="divMapping" class="tab-pane fade in active">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" id="txtName" value="@Model.Name" class="form-control" placeholder="Cemetery Name" />
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" id="drpRegion">
+                    <option value="">--Select Region--</option>
+                    @foreach (var item in ViewBag.Origins)
+            {
+                if (Model.Origin.Id == item.Id)
+                {
+                            <option selected="selected" value="@item.Id">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <div class="checkbox" style="margin-top:6px;">
+                    @if (Model.IsFeatured == true)
+            {
+                        <label class="control-label"><input type="checkbox" value="" id="IsFeatured" checked>Make this Featured</label>
+                    }
+                    else
+                    {
+                        <label class="control-label"><input type="checkbox" value="" id="IsFeatured">Make this Featured</label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12" id="wcp-editor" style="height:700px">
+
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="divImages" class="tab-pane fade">
+        <h3>Images</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <form action="~/Cemeteries/CemeteryAlbumUpload" method="post" class="dropzone" id="dropzoneJsForm"></form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="divCemeteryImages">
+                @foreach (var item in Model.CemeteryImages)
+                {
+                    <span onclick="removeUploadedImage('@item.Id')" class="ico fa fa-times-circle img-close-ico"></span><img id="postImg_@item.Id" src="~/Images/CemeteryPlots/CemeteryImages/@item.Image" style='width:80px;height:80px;margin:5px' />
+                }
+            </div>
+        </div>
+    </div>
+    <div id="divDescription" class="tab-pane fade">
+        <h3>Description</h3>
+        <div class="row">
+            <div class="col-md-12" id="editorDescription" style="height:400px;">
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+    </div>
+    <div id="divKeyInfo" class="tab-pane fade">
+        <h3>Key Information</h3>
+        <div class="row">
+            <div class="col-md-12" id="editorKeyInfo" style="height:400px;">
+                @Html.Raw(Model.KeyInformation)
+            </div>
+        </div>
+    </div>
+    <div id="divLocation" class="tab-pane fade">
+        <h3>Location</h3>
+        <div class="row">
+            <div class="col-md-12">
+                @if (!string.IsNullOrEmpty(Model.MapLocation))
+                {
+                    <input id="pac-input" class="controls" value="@Model.MapLocation" type="text" placeholder="Search Box">
+                }
+                else
+                {
+                    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                }
+                <div id="map" style="height:400px">
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                @if (!string.IsNullOrEmpty(Model.LocationDescription))
+                {
+                    <textarea class="form-control" placeholder="Description..." id="txtLocationDescription">
+                        @Model.LocationDescription
+                    </textarea>
+                }
+                else
+                {
+                    <textarea class="form-control" placeholder="Description..." id="txtLocationDescription">
+                    </textarea>
+                }
+            </div>
+        </div>
+    </div>
+    <div id="divWhyChoose" class="tab-pane fade">
+        <h3>Why Choose this Cemetery</h3>
+        <div class="row">
+            <div class="col-md-12" id="editorWhyChoose" style="height:400px;">
+                @Html.Raw(Model.WhyChoose)
+            </div>
+        </div>
+    </div>
+    <div id="divSave" class="tab-pane fade">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <input type="button" style="width:100%" class="btn btn-success btn-round" onclick="saveCemetery()" value="Update Cemetery" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" value="@Model.Id" id="hidCemeteryId" />
+<input type="hidden" value="@Url.Action("LoadCemeteryDetails", "EditCemetery")" id="hidLoadCemeteryDetailsUrl" />
+<input type="hidden" value="@Url.Action("ViewCemeteries", "Cemeteries")" id="hidReturnUrl" />
+<input type="hidden" value="@Url.Action("EditCemeteryReturn", "EditCemetery")" id="hidSaveCemetery" />

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<BurialPlots.DAL.County>
+<div class="row">
+    @foreach (var item in Model)
+            {
+        <div class="col-md-3">
+            <a href="@Url.Action("ServiceListing", "Home",new {CountyName=item.Name, id = ViewBag.FuneralId  })">@item.Name </a>
+        </div>
+    }
+</div>
+

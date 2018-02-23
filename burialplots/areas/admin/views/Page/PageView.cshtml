@@ -1,0 +1,1372 @@
+﻿@using BurialPlots.DAL
+@{
+    string TITLEPAGE;
+}
+@if (ViewBag.tittle.ToLower() == "index")
+{
+    TITLEPAGE = "Burial Plots";
+}
+else
+{
+    TITLEPAGE = ViewBag.tittle;
+}
+@{
+    ViewBag.Title = TITLEPAGE;
+    Layout = "~/Views/Shared/_Header.cshtml";
+    var Language = ViewBag.Language;
+}
+@if (ViewBag.tittle.ToLower() == "index")
+{
+    var date = DateTime.Now.Date;
+    var newsList1 = new NewsManagementRepository().GetAll().ToList();
+    var religious = new RelgionRepostiory().GetAll();
+    var slides = new AddSlidesRepository().GetAll();
+}
+
+@section Scripts{
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/Areas/Admin/JS/Page/SearchForServices.js"></script>
+    <script src="~/Areas/Admin/JS/Page/LoadBlogSection.js"></script>
+    <script src="~/js/Home/PreNeed.js"></script>
+    <script src="~/js/Home/index.js"></script>
+    @if (ViewBag.tittle.ToLower() == "faqs")
+    {
+        <script src="~/js/jquery-ui.js"></script>
+        <script>
+        jQuery(function ($) {
+            $("#accordion").accordion({
+                collapsible: true
+            });
+        });
+        </script>
+    }
+}
+@if (Language == "ur")
+{
+    <style>
+        .owl-carousel.owl-theme.latest-news.owl-loaded.owl-drag {
+            direction: ltr !important;
+        }
+    </style>
+
+}
+
+<style>
+    .shortTexts {
+        width: 450px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+@if (ViewBag.tittle.ToLower() == "team")
+{
+    <style>
+        .customStyle li p {
+            font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            font-size: 23px;
+            line-height: 24px;
+            color: #585858;
+        }
+
+        .customStyle li p {
+            font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            line-height: 24px;
+            color: #585858;
+        }
+
+        .text-center-align {
+            text-align: left;
+        }
+
+        .customMargin {
+            margin: 0 0 10px;
+        }
+    </style>
+}
+@if (ViewBag.tittle.ToLower() == "index")
+{
+    <style>
+        /*.owl-carousel .owl-stage {
+            transform: translate3d(-1800px, 0px, 0px)!important;
+            transition: 0.25s!important;
+            width: 6300px!important;
+            /*transform: translate3d(0px, 0px, 0px)!important;*/
+        }
+
+        */ .banner1 {
+            top: 40%;
+        }
+
+        body {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+
+        .banner1 h2 {
+            font-size: 40px;
+            line-height: 42px;
+            color: #fff;
+            background-color: #6e7787;
+            display: inline-block;
+            padding: 5px 26px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .capInner h2 {
+            font-size: 40px;
+            line-height: 42px;
+            color: #fff;
+            background-color: #6e7787;
+            display: inline-block;
+            padding: 5px 26px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .capInner {
+            position: relative;
+            left: 50%;
+            /*top: 50%;*/
+            width: 100%;
+            text-align: center;
+        }
+
+        .SliderTop {
+            top: 40%;
+        }
+
+        .carousel-caption {
+            right: 10%;
+            left: 10%;
+        }
+
+        .banner2 {
+            top: 55%;
+        }
+    </style>
+}
+@{
+    var HomeValue = "";
+}
+@if (ViewBag.tittle.ToLower() == "index")
+{
+    HomeValue = "";
+}
+else
+{
+    HomeValue = "home";
+}
+@{
+    var sliderId1 = new AddSliderRepository().FirstOrDefault();
+    var slides1 = new AddSlidesRepository().GetAll();
+    //bool IsImageSlide = Convert.ToBoolean(sliderId1.SlideImages);
+    var fisrtImage = sliderId1.SlideImages;
+}
+@if (ViewBag.tittle.ToLower() == "index")
+{
+    <body id="top" class="home">
+        <div id="page" class="site">
+            <div class="site-inner">
+                <header id="masthead" class="site-header" role="banner">
+                    <div class="site-header-main">
+                        <div class="banner SetcustomBanner" style="background-image: url('/images/Slider/@fisrtImage');">
+
+                            <div id="myCarousel" class="carousel slide SliderTop">
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    @{
+                                        var i = 1;
+                                    }
+                                    @foreach (var item in slides1)
+                                    {
+                                        if (i == 1)
+                                        {
+                                            <div class="item active capInner">
+                                                @if (Language == "ur")
+                                                {
+                                                    <div class="container">
+                                                        @{
+                                                            var des1 = item.CaptionUrdu;
+                                                            string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                        }
+                                                        @foreach (var line in lines1)
+                                                        {
+                                                            <h2>
+                                                                @line
+                                                            </h2>
+                                                            <br />
+                                                        }
+                                                    </div>
+                                                            }
+                                                            else if (Language == "ar")
+                                                            {
+                                                                <div class="container">
+                                                                    @{
+                                                                        var des1 = item.CaptionArabic;
+                                                                        string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                    }
+                                                                    @foreach (var line in lines1)
+                                                                    {
+                                                                        <h2>
+                                                                            @line
+                                                                        </h2>
+                                                                        <br />
+                                                                    }
+                                                                </div>
+                                                                        }
+                                                                        else if (Language == "hi")
+                                                                        {
+                                                                            <div class="container">
+                                                                                @{
+                                                                                    var des1 = item.CaptionHindi;
+                                                                                    string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                }
+                                                                                @foreach (var line in lines1)
+                                                                                {
+                                                                                    <h2>
+                                                                                        @line
+                                                                                    </h2>
+                                                                                    <br />
+                                                                                }
+                                                                            </div>
+                                                                                    }
+                                                                                    else if (Language == "zh")
+                                                                                    {
+                                                                                        <div class="container">
+                                                                                            @{
+                                                                                                var des1 = item.CaptionChinese;
+                                                                                                string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                            }
+                                                                                            @foreach (var line in lines1)
+                                                                                            {
+                                                                                                <h2>
+                                                                                                    @line
+                                                                                                </h2>
+                                                                                                <br />
+                                                                                            }
+                                                                                        </div>
+                                                                                                }
+                                                                                                else if (Language == "it")
+                                                                                                {
+                                                                                                    <div class="container">
+                                                                                                        @{
+                                                                                                            var des1 = item.CaptionItalian;
+                                                                                                            string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                        }
+                                                                                                        @foreach (var line in lines1)
+                                                                                                        {
+                                                                                                            <h2>
+                                                                                                                @line
+                                                                                                            </h2>
+                                                                                                            <br />
+                                                                                                        }
+                                                                                                    </div>
+                                                                                                            }
+                                                                                                            else if (Language == "tr")
+                                                                                                            {
+                                                                                                                <div class="container">
+                                                                                                                    @{
+                                                                                                                        var des1 = item.CaptionTurkish;
+                                                                                                                        string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                    }
+                                                                                                                    @foreach (var line in lines1)
+                                                                                                                    {
+                                                                                                                        <h2>
+                                                                                                                            @line
+                                                                                                                        </h2>
+                                                                                                                        <br />
+                                                                                                                    }
+                                                                                                                </div>
+                                                                                                                        }
+                                                                                                                        else if (Language == "bn")
+                                                                                                                        {
+                                                                                                                            <div class="container">
+                                                                                                                                @{
+                                                                                                                                    var des1 = item.CaptionBengali;
+                                                                                                                                    string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                }
+                                                                                                                                @foreach (var line in lines1)
+                                                                                                                                {
+                                                                                                                                    <h2>
+                                                                                                                                        @line
+                                                                                                                                    </h2>
+                                                                                                                                    <br />
+                                                                                                                                }
+                                                                                                                            </div>
+                                                                                                                                    }
+                                                                                                                                    else if (Language == "he")
+                                                                                                                                    {
+                                                                                                                                        <div class="container">
+                                                                                                                                            @{
+                                                                                                                                                var des1 = item.CaptionHebrew;
+                                                                                                                                                string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                            }
+                                                                                                                                            @foreach (var line in lines1)
+                                                                                                                                            {
+                                                                                                                                                <h2>
+                                                                                                                                                    @line
+                                                                                                                                                </h2>
+                                                                                                                                                <br />
+                                                                                                                                            }
+                                                                                                                                        </div>
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    <div class="container">
+                                                                                                                                                        @{
+                                                                                                                                                            var des1 = item.Caption;
+                                                                                                                                                            string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                        }
+                                                                                                                                                        @foreach (var line in lines1)
+                                                                                                                                                        {
+                                                                                                                                                            <h2>
+                                                                                                                                                                @line
+                                                                                                                                                            </h2>
+                                                                                                                                                            <br />
+                                                                                                                                                        }
+                                                                                                                                                    </div>
+                                                                                                                                                            }
+
+                                            </div>
+                                                                                                                                                                i = 2;
+                                                                                                                                                            }
+                                                                                                                                                            else
+                                                                                                                                                            {
+
+                                                                                                                                                                <div class="item capInner">
+                                                                                                                                                                    @if (Language == "ur")
+                                                                                                                                                                    {
+                                                                                                                                                                        <div class="container">
+                                                                                                                                                                            @{
+                                                                                                                                                                                var des1 = item.CaptionUrdu;
+                                                                                                                                                                                string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                            }
+                                                                                                                                                                            @foreach (var line in lines1)
+                                                                                                                                                                            {
+                                                                                                                                                                                <h2>
+                                                                                                                                                                                    @line
+                                                                                                                                                                                </h2>
+                                                                                                                                                                                <br />
+                                                                                                                                                                            }
+                                                                                                                                                                        </div>
+                                                                                                                                                                                }
+                                                                                                                                                                                else if (Language == "ar")
+                                                                                                                                                                                {
+                                                                                                                                                                                    <div class="container">
+                                                                                                                                                                                        @{
+                                                                                                                                                                                            var des1 = item.CaptionArabic;
+                                                                                                                                                                                            string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                        }
+                                                                                                                                                                                        @foreach (var line in lines1)
+                                                                                                                                                                                        {
+                                                                                                                                                                                            <h2>
+                                                                                                                                                                                                @line
+                                                                                                                                                                                            </h2>
+                                                                                                                                                                                            <br />
+                                                                                                                                                                                        }
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                            }
+                                                                                                                                                                                            else if (Language == "hi")
+                                                                                                                                                                                            {
+                                                                                                                                                                                                <div class="container">
+                                                                                                                                                                                                    @{
+                                                                                                                                                                                                        var des1 = item.CaptionHindi;
+                                                                                                                                                                                                        string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                    @foreach (var line in lines1)
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                        <h2>
+                                                                                                                                                                                                            @line
+                                                                                                                                                                                                        </h2>
+                                                                                                                                                                                                        <br />
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                        else if (Language == "zh")
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                            <div class="container">
+                                                                                                                                                                                                                @{
+                                                                                                                                                                                                                    var des1 = item.CaptionChinese;
+                                                                                                                                                                                                                    string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                                @foreach (var line in lines1)
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                    <h2>
+                                                                                                                                                                                                                        @line
+                                                                                                                                                                                                                    </h2>
+                                                                                                                                                                                                                    <br />
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    else if (Language == "it")
+                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                        <div class="container">
+                                                                                                                                                                                                                            @{
+                                                                                                                                                                                                                                var des1 = item.CaptionItalian;
+                                                                                                                                                                                                                                string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                            @foreach (var line in lines1)
+                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                                <h2>
+                                                                                                                                                                                                                                    @line
+                                                                                                                                                                                                                                </h2>
+                                                                                                                                                                                                                                <br />
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                else if (Language == "tr")
+                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                    <div class="container">
+                                                                                                                                                                                                                                        @{
+                                                                                                                                                                                                                                            var des1 = item.CaptionTurkish;
+                                                                                                                                                                                                                                            string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        @foreach (var line in lines1)
+                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                            <h2>
+                                                                                                                                                                                                                                                @line
+                                                                                                                                                                                                                                            </h2>
+                                                                                                                                                                                                                                            <br />
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                            else if (Language == "bn")
+                                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                                                <div class="container">
+                                                                                                                                                                                                                                                    @{
+                                                                                                                                                                                                                                                        var des1 = item.CaptionBengali;
+                                                                                                                                                                                                                                                        string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                    @foreach (var line in lines1)
+                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                        <h2>
+                                                                                                                                                                                                                                                            @line
+                                                                                                                                                                                                                                                        </h2>
+                                                                                                                                                                                                                                                        <br />
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                        else if (Language == "he")
+                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                            <div class="container">
+                                                                                                                                                                                                                                                                @{
+                                                                                                                                                                                                                                                                    var des1 = item.CaptionHebrew;
+                                                                                                                                                                                                                                                                    string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                @foreach (var line in lines1)
+                                                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                                                    <h2>
+                                                                                                                                                                                                                                                                        @line
+                                                                                                                                                                                                                                                                    </h2>
+                                                                                                                                                                                                                                                                    <br />
+                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                    else
+                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                        <div class="container">
+                                                                                                                                                                                                                                                                            @{
+                                                                                                                                                                                                                                                                                var des1 = item.Caption;
+                                                                                                                                                                                                                                                                                string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                            @foreach (var line in lines1)
+                                                                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                                                                                <h2>
+                                                                                                                                                                                                                                                                                    @line
+                                                                                                                                                                                                                                                                                </h2>
+                                                                                                                                                                                                                                                                                <br />
+                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                </div>
+
+                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                }
+                                    <!-- Left and right controls -->
+                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                        @*<span class="glyphicon glyphicon-chevron-left"></span>*@
+                                        <i class="glyphicon glyphicon-chevron-left fa fa-arrow-left" aria-hidden="true"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" data-slide="next" style="border: none !important;">
+                                        @*<span class="glyphicon glyphicon-chevron-right"></span>*@
+                                        <i class="glyphicon glyphicon-chevron-right fa fa-arrow-right" aria-hidden="true"></i>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+
+                                </div>
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+
+                                <div class="carousel-caption banner2">
+                                    @*<div class="container" id="customSearch">
+                                            <div class="row">
+                                                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 col-md-offset-2" style="padding-bottom:10px;">
+                                                    <input type="text" style="background:white;height:41px" placeholder="Post Code" class="form-control" id="txtPostCode" />
+                                                </div>
+                                                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="padding-bottom:10px;">
+                                                    <select style="height:41px" class="form-control" id="drpReligion">
+                                                        <option value="">-- Religion --</option>
+                                                        @{
+                                                            var date = DateTime.Now.Date;
+
+                                                            var religious = new RelgionRepostiory().GetAll();
+                                                        }
+                                                        @foreach (var items in religious)
+                                                        {
+                                                            <option value="@items.Id">@items.RelgionName</option>
+                                                        }
+                                                        <option value="">All</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12" style="padding-bottom:40px;">
+                                                    <button class="btn" onclick="searchByPostCodeApi()"><span class="fa fa-search"></span> Search</button>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </header>
+            </div>
+        </div>
+    </body>
+
+                                                                                                                                                                                                                                                                                }
+
+
+
+
+<body id="top" class="@HomeValue">
+
+
+
+    @*@if (ViewBag.tittle.ToLower() == "future burial plot purchase" || ViewBag.tittle.ToLower() == "purchase a burial plot now")
+        {
+            var date = DateTime.Now.Date;
+            var newsList = new NewsManagementRepository().GetAll(c => c.PubDate <= date && c.ExpiryDate >= date).ToList();
+            var religious = new RelgionRepostiory().GetAll();
+            <div class="banner search-banner" style="background-image: url('/Areas/Admin/Image/@ViewBag.image');">
+                <div class="caption-inner">
+                    <div class="container">
+                        <div class="search-form">
+                            <h2>@BurialPlots.Resources.HomeTexts.Searchforaplot...</h2>
+                            <form onsubmit="return false">
+                                <div class="big-block">
+                                    <ul>
+                                        <li class="full-width">
+                                            <input type="text" placeholder="Enter postcode" class="full-length" id="txtPostCode">
+                                        </li>
+                                        <li>
+                                            @if (ViewBag.tittle.ToLower() == "future burial plot purchase")
+                                            {
+                                                <label class="radio-inline"><input type="radio" name="need" checked>Pre need</label>
+                                                <label class="radio-inline"><input type="radio" name="need">At need</label>
+                                            }
+                                            else
+                                            {
+                                                <label class="radio-inline"><input type="radio" name="need">Pre need</label>
+                                                <label class="radio-inline"><input type="radio" name="need" checked>At need</label>
+                                            }
+
+
+                                        </li>
+                                        <li>
+                                            <select name="">
+                                                <option value="">Within 5 miles</option>
+                                                <option value="">Within 10 miles</option>
+                                                <option value="">Within 15 miles</option>
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <select id="drpReligion">
+                                                <option value="">-- Religion --</option>
+                                                @foreach (var item in religious)
+                                                {
+                                                    <option value="@item.Id">@item.RelgionName</option>
+                                                }
+                                            </select>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="small-block">
+                                    <input type="submit" value="Search" onclick="searchByPostCodeApi()" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }*@
+    @if (ViewBag.tittle.ToLower() != "index")
+    {
+        <div class="banner" style="background-image: url('/Areas/Admin/Image/@ViewBag.image')">
+            <div class="caption-inner">
+                <div class="container">
+                    @if (ViewBag.tittle == "Search for Services")
+                    {
+                        <h2 style="margin-bottom:39px;">
+                            @ViewBag.tittle
+                        </h2>
+                    }
+                    else
+                    {
+                        <h2>
+                            @ViewBag.tittle
+                        </h2>
+                    }
+                </div>
+                @if (ViewBag.tittle == "Search for Services")
+                {
+                    using (Html.BeginForm("SearchService", "Search", new { area = "", serviceId = "" }))
+                    {
+                        <div class="container" id="customSearch">
+                            @using (Html.BeginForm("SearchService", "Search", new { serviceId = "", Area="" }))
+                            {
+                                <div class="row">
+                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 col-md-offset-2" style="padding-bottom:10px;">
+                                        <input type="text" style="background:white;height:41px" placeholder="Services" class="form-control" id="txtServiceName" name="txtServiceName" />
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="padding-bottom:10px;">
+                                        <input type="text" style="background:white;height:41px" placeholder="Country, County, Town or Postcode" class="form-control" id="txtPostCodeTown" name="txtPostCodeTown" />
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                                        <button class="btn" style="width:100%" type="submit"><span class="fa fa-search"></span> Search</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    }
+    @if (ViewBag.tittle.ToLower() == "index")
+    {
+        if (((IEnumerable<Cemetery>)ViewBag.FeaturedCemetries).Count() > 0)
+        {
+            <h2 style="padding-top:45px;">
+                @if (Language == "ur")
+                {
+                    <span>نمایاں قبرستان</span>
+                }
+                else if (Language == "ar")
+                {
+                    <span>مقبرة مميزة</span>
+                }
+                else if (Language == "zh")
+                {
+                    <span>特色公墓</span>
+                }
+                else if (Language == "it")
+                {
+                    <span>Cimitero in primo piano</span>
+                }
+                else if (Language == "tr")
+                {
+                    <span>Öne Çıkan Mezarlık</span>
+                }
+                else if (Language == "hi")
+                {
+                    <span>विशेष रुप से प्रदर्शित कब्रिस्तान</span>
+                }
+                else
+                {
+                    <span>Featured Cemeteries</span>
+                }
+            </h2>
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in ViewBag.FeaturedCemetries as IEnumerable<Cemetery>)
+                    {
+                        <div class="col-md-3 margin-top-20">
+                            <div class="thumbnail" style="padding-bottom:16px;">
+                                <div class="row" style="height:255px">
+                                    <div class="col-md-12">
+                                        <a style="color:rgb(110,122,146);font-weight:bold" href="@Url.Action("CemeteryDetails", "Market" , new { id=item.Id, Area="" })">
+                                            <img src="~/images/CemeteryPlots/@item.Image" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a style="color:rgb(110,122,146);font-weight:bold" href="@Url.Action("CemeteryDetails", "Market" , new { id=item.Id, Area="" })">
+                                            @item.Name
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <div class="container" style="text-align:center">
+            @Html.Raw(ViewBag.Body)
+        </div>
+
+        <div class="section text-center-align purple-bg" style="margin-top:-32px;">
+            <div class="container">
+                <h2 class="underline">@BurialPlots.Resources.HomeTexts.LATESTNEWS</h2>
+                <div class="owl-carousel owl-theme latest-news">
+                    @{
+                        var newsList = new NewsManagementRepository().GetAll().ToList();
+                    }
+                    @foreach (var item in newsList)
+                    {
+                        <div class="item">
+                            @if (Language == "ur")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionUrdu) && !string.IsNullOrEmpty(item.TitleUrdu))
+                                {
+                                    <h3>@item.TitleUrdu</h3>
+                                    <p>@item.DescriptionUrdu</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else if (Language == "hi")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionHindi) && !string.IsNullOrEmpty(item.TitleHindi))
+                                {
+                                    <h3>@item.TitleHindi</h3>
+                                    <p>@item.DescriptionHindi</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else if (Language == "he")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionHebrew) && !string.IsNullOrEmpty(item.TitleHebrew))
+                                {
+                                    <h3>@item.TitleHebrew</h3>
+                                    <p>@item.DescriptionHebrew</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else if (Language == "it")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionItalian) && !string.IsNullOrEmpty(item.TitleItalian))
+                                {
+                                    <h3>@item.TitleItalian</h3>
+                                    <p>@item.DescriptionItalian</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else if (Language == "zh")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionChinese) && !string.IsNullOrEmpty(item.TitleChinese))
+                                {
+                                    <h3>@item.TitleChinese</h3>
+                                    <p>@item.DescriptionChinese</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else if (Language == "bn")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionBengali) && !string.IsNullOrEmpty(item.TitleBengali))
+                                {
+                                    <h3>@item.TitleBengali</h3>
+                                    <p>@item.DescriptionBengali</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else if (Language == "ar")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionArabic) && !string.IsNullOrEmpty(item.TitleArabic))
+                                {
+                                    <h3>@item.TitleArabic</h3>
+                                    <p>@item.DescriptionArabic</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else if (Language == "tr")
+                            {
+                                if (!string.IsNullOrEmpty(item.DescriptionTurkish) && !string.IsNullOrEmpty(item.TitleTurkish))
+                                {
+                                    <h3>@item.TitleTurkish</h3>
+                                    <p>@item.DescriptionTurkish</p>
+                                }
+                                else
+                                {
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                }
+                            }
+                            else
+                            {
+                                <h3>@item.Title</h3>
+                                <p>@item.Description</p>
+                            }
+                            <a href="@Url.Action("NewsDetails", "NewsManagement" ,new {id=@item.Id })">[Read More]</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="enquiry-block" style="margin-top:45px;">
+            <div class="block" style="background-image: url('/images/block-pic1.jpg');">
+                <a href="@Url.Action("PageView","Page",new {id=("Future-Burial-Plot-Purchase").ToLower() })">
+                    <div class="title-text">@BurialPlots.Resources.HomeTexts.Preneed</div>
+                </a>
+            </div>
+            <div class="block" style="background-image: url('/images/block-pic2.jpg');">
+                <a href="@Url.Action("PageView","Page",new {id=("Purchase-a-Burial-Plot-Now").ToLower() })">
+                    <div class="title-text">@BurialPlots.Resources.HomeTexts.Atneed</div>
+                </a>
+            </div>
+            <div class="block" style="background-image: url('/images/block-pic3.jpg');">
+                <a href="@Url.Action("PageView","Page",new {id=("Cremation-and-Cremated-Remains").ToLower() })">
+                    <div class="title-text">@BurialPlots.Resources.HomeTexts.Cremationandcrematedremains</div>
+                </a>
+            </div>
+            <div class="block" style="background-image: url('/images/block-pic4.jpg');">
+                <a href="@Url.Action("PageView","Page",new {id=("A-Checklist").ToLower() })">
+                    <div class="title-text">@BurialPlots.Resources.HomeTexts.Endofifechecklist</div>
+                </a>
+            </div>
+            <div class="block" style="background-image: url('/images/block-pic5.jpg');">
+                <a href="@Url.Action("PageView","Page",new {id=("Planning-a-Head").ToLower() })">
+                    <div class="title-text">@BurialPlots.Resources.HomeTexts.Planningahead</div>
+                </a>
+            </div>
+            <div class="block" style="background-image: url('/images/block-pic6.jpg');">
+                <a href="@Url.Action("PageView","Page",new { id= ("HELPFUL-ADVICE").ToLower() ,Area="Admin" })">
+                    <div class="title-text">@BurialPlots.Resources.HomeTexts.HELPFULADVICE</div>
+                </a>
+            </div>
+        </div>
+                        }
+
+
+
+    @if (ViewBag.tittle.ToLower() != "index")
+            {
+        <div id="content" class="site-content">
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main" role="main">
+                    <div class="section text-center-align">
+                        <div class="container">
+
+                            <!-- Services Page banners  -->
+                            @if (ViewBag.tittle.ToLower() == "funeral directors")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Funeral Directors".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/burial-banner-funeral-director.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+
+                            @if (ViewBag.tittle.ToLower() == "coffins")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Coffins".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/casketcoffin.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "florists")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Florists".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/florist.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "cars")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Funeral Cars".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/funeralcars.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "funeral plans")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Funeral Plans".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/burial-banner-funeral-plan.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "memorials")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Memorials".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/burial-banner1.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "stonemasons")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "StoneMasons".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/stonemason.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "life insurance")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Insurance".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/lifeinsurance.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "will writers")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Will Writers".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/willWriters.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "wills")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Will Writers".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/willWriters.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "probate")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Probate".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/burial-banners- probatechange.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @if (ViewBag.tittle.ToLower() == "headstones")
+                            {
+
+                                var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Headstones".ToLower()).Id;
+
+                                <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                        <img src="~/images/Banners/burial-banner-Headstones.jpg" />
+                                    </a>
+                                </p>
+                                <br />
+
+                            }
+                            @*@if (ViewBag.tittle.ToLower() == "solicitors")
+                                {
+
+                                    var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Solicitors".ToLower()).Id;
+
+                                    <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
+                                        <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                            <img src="~/images/Banners/solicitors.jpg" />
+                                        </a>
+                                    </p>
+                                    <br />
+
+                                }*@
+
+                            @if (ViewBag.tittle.ToLower() == "newsfeed")
+                            {
+                                <div class="container content">
+                                    @foreach (var item in ViewBag.NewsFeeds as List<NewsManagement>)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-offset-1" style="background:#EFEFEF; border-radius:20px">
+                                                <div style="padding:20px">
+                                                    @if (Language == "it")
+                                                    {
+                                                        <h3>@item.TitleItalian</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionItalian</p>
+                                                    }
+                                                    else if (Language == "tr")
+                                                    {
+                                                        <h3>@item.TitleTurkish</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionTurkish</p>
+                                                    }
+                                                    else if (Language == "ur")
+                                                    {
+                                                        <h3>@item.TitleUrdu</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionUrdu</p>
+                                                    }
+                                                    else if (Language == "he")
+                                                    {
+                                                        <h3>@item.TitleHebrew</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionHebrew</p>
+                                                    }
+                                                    else if (Language == "zh")
+                                                    {
+                                                        <h3>@item.TitleChinese</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionChinese</p>
+                                                    }
+                                                    else if (Language == "hi")
+                                                    {
+                                                        <h3>@item.TitleHindi</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionHindi</p>
+                                                    }
+                                                    else if (Language == "bn")
+                                                    {
+                                                        <h3>@item.TitleBengali</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionBengali</p>
+                                                    }
+                                                    else if (Language == "ar")
+                                                    {
+                                                        <h3>@item.TitleArabic</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.DescriptionArabic</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h3>@item.Title</h3>
+                                                        <span style="font-size:11px">Publish Date: @item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                                                        <p>@item.Description</p>
+                                                    }
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div>@Html.Raw(ViewBag.Body)</div>
+                                if (ViewBag.tittle.ToLower() == "team")
+                                {
+                                    <div class="section grey-bg" style="margin-top: 68px;width:1257px;margin-left:-41px;">
+                                        <div class="container">
+                                            <div class="row">
+                                                <ul class="team-member customStyle">
+                                                    @foreach (var item in ViewBag.Teams)
+                                                    {
+                                                        <li class="col-xs-12 col-sm-4 col-md-4">
+                                                            <div class="team-member-pic">
+                                                                <img src="/images/Users/@item.Image" alt="">
+                                                                <div class="desgination">@item.Post</div>
+                                                            </div>
+                                                            <h4>@item.Name</h4>
+                                                            <p>@item.Description</p>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                if (ViewBag.tittle.ToLower() == "faqs")
+                                {
+                                    <div class="container" style="text-align:left">
+                                        <div id="accordion">
+                                            @foreach (var item in ViewBag.FAQs as List<FAQ>)
+                                            {
+                                                <h3>@item.Question</h3>
+                                                <div>
+                                                    <p>@item.Answer</p>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <!-- End Services Page banners-->
+
+                            @if (ViewBag.ServiceBoxesCount > 0)
+                            {
+                                <ul class="burial-blocks">
+                                    @if (ViewBag.box != null)
+                                    {
+                                        foreach (var item in ViewBag.box)
+                                        {
+                                            if (item.ServiceBox.BoxStatus == true)
+                                            {
+                                                <li style="background-image: url('/Areas/Admin/Image/@item.ServiceBox.BoxPic');">
+                                                    @if (item.ServiceBox.ServiceUrl == "BURIALPLOTS ")
+                                                    {  <a href="@Url.Action("PageView","Page",new {id="Burial-Plots" ,Area="Admin" })">
+                                                        <div class="overlay"></div>
+                                                        <div class="work-block-grid-content">
+                                                            @if (Language == "ur")
+                                                            {
+                                                                <h4 class="work-block-grid-name"> @item.ServiceBox.BoxNameInUrdu</h4>
+                                                            }
+                                                            else if (Language == "it")
+                                                            {
+                                                                <h4 class="work-block-grid-name"> @item.ServiceBox.BoxNameInItalian</h4>
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <h4 class="work-block-grid-name">@item.ServiceBox.BoxName</h4>
+                                                            }
+
+                                                            <h4 class="work-block-grid-description">
+                                                                <br /> <br />
+                                                                [Click for more]
+                                                            </h4>
+                                                        </div>
+                                                    </a>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@item.ServiceBox.ServiceUrl">
+                                                            <div class="overlay"></div>
+                                                            <div class="work-block-grid-content">
+                                                                @if (Language == "ur")
+                                                                {
+                                                                    <h4 class="work-block-grid-name"> @item.ServiceBox.BoxNameInUrdu</h4>
+                                                                }
+                                                                else if (Language == "it")
+                                                                {
+                                                                    <h4 class="work-block-grid-name"> @item.ServiceBox.BoxNameInItalian</h4>
+                                                                }
+
+                                                                else
+                                                                {
+                                                                    <h4 class="work-block-grid-name">@item.ServiceBox.BoxName</h4>
+                                                                }
+
+                                                                <h4 class="work-block-grid-description">
+                                                                    <br /> <br />
+                                                                    [Click for more]
+                                                                </h4>
+                                                            </div>
+                                                        </a>
+                                                    }
+
+                                                </li>
+                                            }
+
+                                        }
+                                    }
+
+                                </ul>
+                            }
+                        </div>
+                    </div><!-- section -->
+                    @if (ViewBag.tittle.ToLower() != "team")
+                    {
+                        if (ViewBag.tittle.ToLower() != "testimonials")
+                        {
+                            if (ViewBag.tittle.ToLower() != "index")
+                            {
+
+                                if (ViewBag.tittle.ToLower() != "future burial plot purchase")
+                                {
+                                    if (ViewBag.tittle.ToLower() != "purchase a burial plot now")
+                                    {
+                                        if (ViewBag.tittle.ToLower() != "burial plots")
+                                        {
+                                            if (ViewBag.tittle.ToLower() != "after funeral")
+                                            {
+                                                if (ViewBag.ServiceBoxesCount > 0)
+                                                {
+                                                    <div class="section text-center-align purple-bg" style="margin-bottom: 48px;">
+                                                        <div class="container">
+                                                            <ul class="serivce-blocks">
+                                                                @if (ViewBag.box != null)
+                                                                {
+                                                                    foreach (var item in ViewBag.box)
+                                                                    {
+                                                                        if (item.ServiceBox.BoxStatus == false)
+                                                                        {
+                                                                            <li style="background-image: url('/Areas/Admin/Image/@item.ServiceBox.BoxPic');">
+
+                                                                                <a href="@item.ServiceBox.ServiceUrl">
+                                                                                    <div class="overlay"></div>
+                                                                                    <div class="work-block-grid-content">
+                                                                                        @if (Language == "ur")
+                                                                                        {
+                                                                                            <h4 class="work-block-grid-name"> @item.ServiceBox.BoxNameInUrdu</h4>
+                                                                                        }
+                                                                                        else if (Language == "it")
+                                                                                        {
+                                                                                            <h4 class="work-block-grid-name"> @item.ServiceBox.BoxNameInItalian</h4>
+                                                                                        }
+
+                                                                                        else
+                                                                                        {
+                                                                                            <h4 class="work-block-grid-name">@item.ServiceBox.BoxName</h4>
+                                                                                        }
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+
+                                                                    }
+                                                                }
+
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                        <!-- section -->
+                                <div class="text-center-align">
+                                    <h2 class="underline">LATEST BLOGS</h2>
+                                </div>
+                        <!--  Blogs-->
+                                <div id="loadBlogSection">
+
+                                </div>
+                        <!-- enquiry-block -->
+                        <!-- enquiry-block -->
+                            }
+                        }
+
+
+                    }
+
+
+                </main>
+                <!-- .site-main -->
+            </div>
+            <!-- .content-area -->
+        </div>
+    }
+
+
+
+
+    <div id="mask"></div>
+    <script src="~/js/owl.carousel.js"></script>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.owl-carousel.latest-news').owlCarousel({
+                loop: true,
+                margin: 10,
+                dots: true,
+                items: 1,
+            })
+        })
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('#menu-nav').hover(function () {
+                $(this).toggleClass('highlighted');
+            });
+
+            $('#menu-nav').hover(
+                 function () { $('#mask').addClass('active') },
+                 function () { $('#mask').removeClass('active') }
+          )
+        });
+    </script>
+
+
+
+    <input type="hidden" id="hIdLoadBlogSection" value="@Url.Action("LoadBlogSection","Page")" />
+</body>

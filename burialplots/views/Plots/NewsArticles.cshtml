@@ -1,0 +1,703 @@
+﻿
+@{
+    ViewBag.Title = "NewsArticles";
+}
+
+<h2>NewsArticles</h2>
+
+<!DOCTYPE html>
+<html class="js" lang="en-US">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>Burial Plots</title>
+
+    <link href="~/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script src="~/js/jquery.js"></script>
+
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+
+    <!-- fixed header -->
+    <script>
+jQuery(window).scroll(function() {
+    if (jQuery(this).scrollTop() > 1){
+        jQuery('.header-menu').addClass("sticky");
+    }
+    else{
+        jQuery('.header-menu').removeClass("sticky");
+    }
+
+});
+    </script>
+    <!-- accordion -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+  jQuery( function($) {
+    $( "#accordion" ).accordion({
+      collapsible: true
+    });
+  } );
+    </script>
+
+    <!-- menu -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+</head>
+
+<body id="top" class="home">
+    <div id="page" class="site">
+        <div class="site-inner">
+            <header id="masthead" class="site-header" role="banner">
+                <div class="site-header-main">
+                    <div class="header-menu">
+                        <div class="container">
+                            <div class="site-branding">
+                                <a href="#"><img src="~/images/logo.png" alt="Burial Plots"></a>
+                            </div>
+
+                            <div id="site-header-menu" class="menu-container site-header-menu">
+                                <div class="menu">
+                                    <ul id="menu-nav" class="primary-menu">
+                                        <li>
+                                            <a href="javascript:void(0)">BURIAL PLOTS</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">Locations</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Burial Plots</a></li>
+                                                        <li><a href="javascript:void(0)">Burial Plots</a></li>
+                                                        <li><a href="javascript:void(0)">Burial Plots</a></li>
+                                                        <li><a href="javascript:void(0)">Burial Plots</a></li>
+                                                    </ul>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">BEREAVEMENT</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">Where to Start</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">After Funerals</a></li>
+                                                        <li><a href="javascript:void(0)">Memorials</a></li>
+                                                        <li><a href="javascript:void(0)">Stonemasons</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Funerals</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Arranging</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Funerals Directors</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Services</a></li>
+                                                        <li><a href="javascript:void(0)">Coffins</a></li>
+                                                        <li><a href="javascript:void(0)">Florists</a></li>
+                                                        <li><a href="javascript:void(0)">Cars</a></li>
+                                                        <li><a href="javascript:void(0)">Funeral Plans</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">HELPFUL ADVICE</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">Today</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Lidership</a></li>
+                                                        <li><a href="javascript:void(0)">History</a></li>
+                                                        <li><a href="javascript:void(0)">Locations</a></li>
+                                                        <li><a href="javascript:void(0)">Careers</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Calendar</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Undergraduate</a></li>
+                                                        <li><a href="javascript:void(0)">Masters</a></li>
+                                                        <li><a href="javascript:void(0)">International</a></li>
+                                                        <li><a href="javascript:void(0)">Online</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Sport</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Undergraduate research</a></li>
+                                                        <li><a href="javascript:void(0)">Masters research</a></li>
+                                                        <li><a href="javascript:void(0)">Funding</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Something</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">LEGAL</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">School</a>
+                                                    <ul>
+                                                        <li><a href="#">Lidership</a></li>
+                                                        <li><a href="#">History</a></li>
+                                                        <li><a href="#">Locations</a></li>
+                                                        <li><a href="#">Careers</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">PRESS & NEWS</a>
+                                                    <ul>
+                                                        <li><a href="#">Undergraduate</a></li>
+                                                        <li><a href="#">Masters</a></li>
+                                                        <li><a href="#">International</a></li>
+                                                        <li><a href="#">Online</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Study</a>
+                                                    <ul>
+                                                        <li><a href="#">Undergraduate</a></li>
+                                                        <li><a href="#">Masters</a></li>
+                                                        <li><a href="#">International</a></li>
+                                                        <li><a href="#">Online</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Empty sub</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="javascript:void(0)">PRESS & NEWS</a></li>
+                                        <li><a href="javascript:void(0)">CONTACT</a></li>
+                                    </ul>
+                                </div>
+                            </div><!-- .main-navigation-->
+                        </div><!-- container -->
+                    </div><!-- header-menu -->
+                    <div class="banner" style="background-image: url('/images/banner-1.jpg');">
+                        <div class="caption-inner">
+                            <div class="container">
+                                <h2>Press and News</h2>
+                            </div>
+                        </div>
+                    </div><!-- banner -->
+                    <!-- .site-header-menu -->
+                </div>
+                <!-- .site-header-main -->
+            </header>
+            <!-- .site-header -->
+            <div id="content" class="site-content">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <div class="section">
+                            <div class="container">
+                                <h2 class="underline">Burial Plots Press and News</h2>
+                                <div class="padding-left">
+                                    <p>Below you’ll find just a few of the examples of the impact which Burialplots.co.uk has been making in the media. We look upon ending the taboo surrounding death and funerals, and starting the conversation about bereavement, as being part of our remit: </p>
+                                </div>
+                                <br />
+                                <ul id="myList">
+                                    <li>
+                                        <div class="blocks">
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-1.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-2.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-3.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-4.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-1.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-2.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-5.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-6.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-7.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-8.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-3.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-9.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-10.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+                                    </li>
+                                    <li>
+                                        <div class="blocks">
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-1.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-2.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-3.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-4.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-1.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-2.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-5.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-6.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-7.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-8.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-3.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-9.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-10.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+                                    </li>
+                                    <li>
+                                        <div class="blocks">
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-1.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-2.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-3.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-4.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-1.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-2.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-5.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-6.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-7.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-8.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+
+                                        <div class="blocks">
+                                            <div class="block-article column-50">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)">
+                                                        <p class="blog-title">Blog Title Here</p>
+                                                        <img src="~/images/article-50-3.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="round-block"></div>
+                                                <p class="author-name">Joe Bloggs</p>
+                                                <p>“Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.” <a href="#">...read more</a></p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-9.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                            <div class="block-article">
+                                                <div class="image-block">
+                                                    <a href="javascript:void(0)"><img src="~/images/article-10.jpg" alt=""></a>
+                                                </div>
+                                                <h4>Blog title goes here. Page 1 </h4>
+                                                <p class="sub-title">Joe Bloggs</p>
+                                            </div><!-- block -->
+                                        </div><!-- blocks -->
+                                    </li>
+
+
+
+                                </ul>
+                                <div id="loadMore" class="load-btn">Load more</div>
+                                <div id="showLess" class="load-less-btn">Show less</div>
+
+                            </div>
+                        </div><!-- section -->
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .content-area -->
+            </div>
+            <!-- .site-content -->
+            <footer id="colophon" class="site-footer" role="contentinfo">
+                <div class="site-info">
+                    <div class="section overlay-purple" style="background-image:url('/images/footer-form-bg.jpg');">
+                        <div class="container">
+                            <h2 class="underline text-left-align">We’d love to hear from you.</h2>
+                            <div class="contact-info">
+                                <div class="contact-details">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum. </p>
+                                    <p>
+                                        Address here <br />
+                                        Telephone number here <br />
+                                        Email address here
+                                    </p>
+                                </div>
+                                <form>
+                                    <ul class="contact-form">
+                                        <li>
+                                            <label>Full Name</label>
+                                            <input type="text" name="" placeholder="">
+                                        </li>
+                                        <li>
+                                            <label>Email</label>
+                                            <input type="email" name="" placeholder="">
+                                        </li>
+                                        <li class="wide">
+                                            <label>Message</label>
+                                            <textarea name=""></textarea>
+                                        </li>
+                                        <li class="wide">
+                                            <input type="submit" value="Send">
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section light-purple-bg">
+                        <div class="container">
+                            <div class="footer-menu">
+                                <div class="footer-block">
+                                    <a href="#"><img src="~/images/footer-logo.png" alt=""></a>
+                                    <p>Keep up to date with BurialPlots.co.uk</p>
+                                    <ul class="social-icons">
+                                        <li><a href="#">Facebook</a></li>
+                                        <li><a href="#">Yelp</a></li>
+                                        <li><a href="#">Twitter</a></li>
+                                        <li><a href="#">Youtube</a></li>
+                                        <li><a href="#">Instagram</a></li>
+                                        <li><a href="#">Vimeo</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                                <div class="footer-block">
+                                    <h3>Helpful Advice</h3>
+                                    <ul>
+                                        <li><a href="#">Healing Process</a></li>
+                                        <li><a href="#">Parental Grief</a></li>
+                                        <li><a href="#">Suicide</a></li>
+                                        <li><a href="#">Helpful Orgs</a></li>
+                                        <li><a href="#">Dealing with Children</a></li>
+                                        <li><a href="#">Shock of Sudden Death</a></li>
+                                        <li><a href="#">Writing Eulagles</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                                <div class="footer-block">
+                                    <h3>Main Menu</h3>
+                                    <ul>
+                                        <li><a href="#">Burial Plots</a></li>
+                                        <li><a href="#">Bereavement</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">Helpful Advice</a></li>
+                                        <li><a href="#">Legal</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .site-info -->
+            </footer>
+            <!-- .site-footer -->
+        </div>
+        <!-- .site-inner -->
+    </div>
+    <!-- .site -->
+    <div id="mask"></div>
+
+    <script>
+jQuery(document).ready(function ($) {
+    size_li = $("#myList li").size();
+    x=1;
+    $('#myList li:lt('+x+')').show();
+    $('#loadMore').click(function () {
+        x= (x+1 <= size_li) ? x+1 : size_li;
+        $('#myList li:lt('+x+')').slideDown();
+         $('#showLess').show();
+        if(x == size_li){
+            $('#loadMore').hide();
+        }
+    });
+    $('#showLess').click(function () {
+        x=(x-1<0) ? 1 : x-1;
+        $('#myList li').not(':lt('+x+')').slideUp();
+        $('#loadMore').show();
+         $('#showLess').show();
+        if(x == 1){
+            $('#showLess').hide();
+        }
+    });
+});
+    </script>
+    <script type="text/javascript">
+  jQuery(document).ready(function($){
+  $('#menu-nav').hover(function(){
+     $(this).toggleClass('highlighted');
+  });
+
+  $('#menu-nav').hover(
+       function(){ $('#mask').addClass('active') },
+       function(){ $('#mask').removeClass('active') }
+)
+  });
+    </script>
+    
+    <script src="~/js/megamenu.js"></script>
+
+</body>
+</html>

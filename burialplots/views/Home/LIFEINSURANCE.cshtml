@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "Life Insurance";
+    Layout = "~/Views/Shared/_Header.cshtml";
+    Decimal Fid = Convert.ToDecimal(ViewBag.Id);
+}
+@section Scripts{
+    <script src="~/js/Home/BlogArticles.js"></script>
+}
+<body id="top" class="home">
+    <div class="banner" style="background-image: url('/images/banner-about.jpg');">
+        <div class="caption-inner">
+            <div class="container">
+                <h2> Insurance</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main" role="main">
+                <div class="section text-center-align">
+                    <div class="container">
+                        <p class="col-md-10 col-md-offset-1" style="margin-top:-43px;">
+                            <a href="@Url.Action("Index", "Search" ,new {id=Fid})">
+                                <img src="~/images/Banners/lifeinsurance.jpg" />
+                            </a>
+                        </p>
+                        <h2 class="underline">@BurialPlots.Resources.HomeTexts.BurialPlotsLifeInsurance</h2>
+                        <div class="column-block">
+                            <div class="column">
+                                <p>@BurialPlots.Resources.HomeTexts.When</p>
+                                <p>@BurialPlots.Resources.HomeTexts.Planningof</p>
+                            </div>
+                            <div class="column">
+                                <img src="~/images/video.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="padding-left">
+                            <p>@BurialPlots.Resources.HomeTexts.Any worries</p>
+                        </div>
+                        <br />
+
+                        <h2 class="underline">@BurialPlots.Resources.HomeTexts.Calculating</h2>
+                        <div class="padding-left">
+                            <p>@BurialPlots.Resources.HomeTexts.Choo</p>
+                        </div>
+                        <br />
+                        <p class="col-md-10 col-md-offset-1" style="margin-bottom:30px;">
+                            <a href="@Url.Action("Index", "Search" ,new {id=Fid})">
+                                <img src="~/images/Banners/lifeinsurance.jpg" />
+                            </a>
+                        </p>
+                        <h2 class="underline">@BurialPlots.Resources.HomeTexts.Different</h2>
+                        <div class="padding-left">
+                            <p><strong>@BurialPlots.Resources.HomeTexts.Whole</strong> –@BurialPlots.Resources.HomeTexts.thistype </p>
+                            <p><strong>@BurialPlots.Resources.HomeTexts.Term</strong> – @BurialPlots.Resources.HomeTexts.thist</p>
+                            <p>@BurialPlots.Resources.HomeTexts.Itshould </p>
+                            <p>@BurialPlots.Resources.HomeTexts.As</p>
+                            <p>@BurialPlots.Resources.HomeTexts.Ifyouve</p>
+                        </div>
+
+                        <ul class="burial-blocks">
+
+                            <li style="background-image: url('/images/burial-block-pic1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="BURIAL PLOTS NOW" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Burial Plots</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="HELPFUL ADVICE" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Helpful Advice</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="LEGAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Legal</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="section text-center-align purple-bg" style="margin-bottom: 48px;">
+                    <div class="container">
+                        <ul class="serivce-blocks">
+
+                            <li style="background-image: url('/images/service-block1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="WHERE TO START" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Where to start</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="Aboutus" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Checklist</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERALS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funerals</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block4.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERAL DIRECTORS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funeral Directors</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block5.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="AFTER FUNERAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">After funeral</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block6.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="MEMORIAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Memorial</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block7.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="STONEMASONS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Stonemasons</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block8.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="SERVICES" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Services</h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- section -->
+                <div class="text-center-align">
+                    <h2 class="underline">LATEST BLOGS</h2>
+                </div>
+                <!--  Blogs-->
+                <div id="loadBlogSection">
+
+                </div>
+            </main>
+        </div>>
+    </div>
+    <input type="hidden" id="hIdLoadBlogSection" value="@Url.Action("LoadBlogSection","NewsArticals")" />
+</body>

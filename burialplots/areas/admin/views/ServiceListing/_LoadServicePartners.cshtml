@@ -1,0 +1,91 @@
+﻿@model IEnumerable<BurialPlots.DAL.Partner>
+@using BurialPlots.Models
+<table id="tblMember" class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th style="display:none;"></th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>Telephone Number</th>
+            <th>Services Posted</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="display:none;">@item.Id</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @{
+                        var email = "";
+                        if (item.Email != null)
+                        {
+                            email = new DataEncryptor().Decrypt(item.Email);
+                        }
+
+                    }
+                    <span>@email</span>
+                </td>
+                <td>
+                    @{
+                        var cell = "";
+                        if (item.CellNo != null)
+                        {
+                            cell = new DataEncryptor().Decrypt(item.CellNo);
+                        }
+
+                    }
+                    <span>@cell</span>
+                </td>
+                <td>
+                    <a href="@Url.Action("Mylisting", "ServiceListing", new { partnerId=item.Id })">View (@item.SeviceListings.Count())</a>
+                </td>
+                <td>
+
+                    @if (item.Active == true)
+                    {
+                        <label>Active</label>
+                    }
+                    else
+                    {
+                        <label>Suspend</label>
+                    }
+                </td>
+                <td>
+                    @*<a><i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="tooltip modal" title="Click here To Edit" onclick="EditMember('@item.Id','@item.Fname','@item.Lname','@item.Email','@item.Password','@item.CellNo','@item.Username','@item.Role')"></i></a>*@
+
+                    <a><i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" title="Click here to delete " id="Delete" onclick="Delete(@item.Id)"></i></a>
+                    @if (item.Active == true)
+                    {
+
+                        <a>  <i class="fa fa-check" style="color:green" data-toggle="tooltip" title="Click here to suspend " aria-hidden="true" id="suspend" onclick="suspend(@item.Id)"></i></a>
+
+                    }
+                    else
+                    {
+                        <a> <i class="fa fa-ban " style="color:red" data-toggle="tooltip" title="Click here to activate " aria-hidden="true" id="suspend" onclick="suspend(@item.Id)"></i></a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

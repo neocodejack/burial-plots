@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Partners";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+<script src="~/Areas/Admin/JS/ServiceListing/serviceListing.js"></script>
+
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Partners</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-success" onclick="TogglepatnerRegister()">Add Partner</a>
+    </div>
+</div>
+<br />
+<div id="openpatnerrigster" style="display:none">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Add Partner</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <label>First Name</label>
+            <input type="text" class="form-control" id="firstname" />
+        </div>
+        <div class="col-md-4">
+            <label>Last Name</label>
+            <input type="text" class="form-control" id="lastname" />
+        </div>
+        <div class="col-md-4">
+            <label>Email</label>
+            <input type="text" class="form-control" id="email" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <label>Password</label>
+            <input type="password" class="form-control" id="password" />
+        </div>
+        <div class="col-md-4">
+            <label>Telephone Number</label>
+            <input type="text" class="form-control" id="phone" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <input type="button" class="btn btn-primary" style="width:100%" value="Add" onclick="Addpatner()" />
+        </div>
+    </div>
+    <br />
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadServiceListing">
+
+    </div>
+</div>
+
+<input type="hidden" id="hidLoadServiceListingUrl" value="@Url.Action("LoadServicePartners", "ServiceListing")" />
+<input type="hidden" id="hidDeleteService" value="@Url.Action("DeleteServiceListing", "ServiceListing")" />
+<input type="hidden" id="hidApprovedService" value="@Url.Action("ApprovedServiceListing", "ServiceListing")" />
+<input type="hidden" id="hidDisApprovedService" value="@Url.Action("DisApprovedServiceListing", "ServiceListing")" />

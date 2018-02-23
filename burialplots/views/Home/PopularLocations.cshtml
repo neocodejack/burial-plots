@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BurialPlots.DAL.FuneralService>
+
+@{
+    ViewBag.Title = "Popular Locations";
+    Layout = "~/Views/Shared/_Header.cshtml";
+    var services = Model.ToList();
+}
+@section Scripts{
+    <script src="~/js/Home/PopularLocations.js"></script>
+}
+<body id="top">
+    <div class="banner" style="background-image: url('/images/PopularLocations/service-listing-banner.jpg'); padding-top:203px;">
+        <div class="caption-inner">
+            <div class="container">
+                <div class="search-form" style="margin-top:110px;">
+                    <h2>Search for Services...</h2>
+                    @using (Html.BeginForm("SearchService", "Search", new { serviceId = "" }))
+                    {
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <input placeholder="Services" class="full-length" id="txtServiceName" name="txtServiceName" type="text" style="color:black;">
+                            </div>
+                            <div class="col-xs-12 col-sm-1 col-md-1">
+                                <span class="align-middle">in</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-5 col-md-6">
+                                <input placeholder="Country, County, Town or Postcode" id="txtPostCodeTown" name="txtPostCodeTown" class="full-length" type="text" style="color:black;">
+                            </div>
+                            <div class="col-xs-12 col-sm-2 col-md-2 txt-enquire-field">
+                                <input value="Search" type="submit">
+                            </div>
+                        </div>
+                    }
+                </div><!-- search-form -->
+            </div>
+        </div>
+    </div><!-- banner -->
+    <div class="site-info">
+        <div class="container"  style="margin-top:40px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Search our recommended services in @ViewBag.Name</h3>
+                </div>
+            </div><!-- row -->
+
+            <div class="service-list-row">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="col-xs-6 col-sm-6 col-md-3" style="min-height: 400px;">
+                            <a href="@Url.Action("ServiceListing", "Home", new { id = item.Id, TownName = ViewBag.Name })"><img src="/images/PopularLocations/@item.Picture" alt="" class="service-images"></a>
+                            <br />
+                            <h3 style="padding-top:10px;">@item.Name <i class="fa fa-angle-right"></i></h3>
+                        </div>
+                    }
+                }
+            </div><!-- row -->
+
+        </div>
+    </div>
+</body>

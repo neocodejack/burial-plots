@@ -1,0 +1,210 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IEnumerable<BurialPlots.DAL.Grave>
+@using BurialPlots.Controllers
+@using System.Web.Script.Serialization
+@{
+    List<tempCartItem> cartList = new List<tempCartItem>();
+    if (Session["cartItems"] != null)
+    {
+        cartList = new JavaScriptSerializer().Deserialize<List<tempCartItem>>(Session["cartItems"].ToString());
+    }
+}
+@if (Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="col-md-4 margin-top-20">
+            <div class="thumbnail-image">
+
+                @if (item.Relgion != null && !string.IsNullOrEmpty(item.Relgion.Picture))
+                {
+                    <div class="icon-caste"><img src="~/images/Pins/@item.Relgion.Picture" style="width:150px;height:155px" class="cememtry-pic"></div>
+                }
+                else
+                {
+                    <div class="icon-caste"><img src="~/images/Cemetery/CemeteryPictures/muslim.png" class="cememtry-pic"></div>
+                }
+                <div class="religion-block" style="margin-top:-137px;">
+                    @if (item.Relgion != null)
+                    {
+                        <strong>Religion:</strong><span>@item.Relgion.RelgionName</span> <br />
+                    }
+                    else
+                    {
+                        <span><strong>Religion:</strong>NA</span> <br />
+                    }
+                    <strong>Size:</strong> @item.Size m<sup>2</sup>  <br />
+                    <strong>Tier Type:</strong> @if (item.TierId != null)
+                    { <span>@item.Tier.Name</span> }  <br />
+                    <a href="javascript:void(0)" onclick="getGraveDetails('@item.Id')">More Details <i class="fa fa-angle-double-right"></i></a>
+                </div>
+            </div>
+            <br />
+            <div class="cememtry-description">
+                <h3>@item.PlotNo</h3>
+                <p class="short-description">
+                    @if (item.ShortDescription.Length > 50)
+                    {
+                        <strong>Description: </strong> <br />
+                        @item.ShortDescription.Substring(0, 50)
+                    }
+                    else
+                    {
+                        <strong>Description: </strong> <br />
+                        @item.ShortDescription
+                    }
+                </p>
+                <select id="drpLayerr_@item.Id" class="form-control">
+                    <option value="">-- Select Number of Burials --</option>
+                    @foreach (var lay in item.CemeteryLayers)
+                    {
+                        if (lay.IsBooking != true && cartList.FirstOrDefault(c => c.LayerId == lay.Id.ToString()) == null)
+                        {
+                            <option value="@lay.Id">@lay.Name  |  £ @Math.Round(Convert.ToDecimal(lay.Price), 2)</option>
+                        }
+                    }
+                </select>
+                <div class="btn-group">
+                    <a href="javascript:void(0)" class="enquiry-btn" data-toggle="modal" data-target="#enquiry-form" >Enquire Now</a>
+                    <a href="javascript:void(0)" onclick="addToCartFiltration('@item.Id')" class="add-to-cart-btn">Purchase Today</a>
+                </div>
+            </div>
+
+        </div>
+
+    }
+
+   
+
+    <div class="paginations" style="margin-top:55px;">
+        @{
+
+            List<int> pages = new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 });
+        }
+        <ul class="pagination">
+            <li>
+                <a onclick="PreviousPage()" aria-label="Previous" style="cursor:pointer">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @{
+                var tolatlRecords = ViewBag.CountList;
+                tolatlRecords = Convert.ToInt32(tolatlRecords);
+                var count = 0;
+                if (tolatlRecords % 6 != 0)
+                {
+                    count = tolatlRecords / 6;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = tolatlRecords / 6;
+                }
+
+            }
+            @for (int i = 0; i < count; i++)
+            {
+                <li><a onclick="filteration('@pages[i]')" style="cursor:pointer">@pages[i]</a></li>
+                <li><input type="hidden" id="hIdPageNumber" value="@pages[i]" /></li>
+            }
+
+
+            @*<li><a onclick="filtration('@pageSize')">1</a></li>
+                @{
+                    pageSize = pageSize + 1;
+                }
+
+                <li><a onclick="filtration('@pageSize')">2</a></li>
+                @{
+                    pageSize = pageSize + 2;
+                }
+
+                <li><a onclick="filtration('@pageSize')">3</a></li>
+                @{
+                    pageSize = pageSize + 3;
+                }
+
+                <li><a onclick="filtration('@pageSize')">4</a></li>
+                @{
+                    pageSize = pageSize + 4;
+                }
+
+                <li><a onclick="filtration('@pageSize')">5</a></li>*@
+            <li>
+                <a onclick="NextPage()" aria-label="Next" style="cursor:pointer">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+        <input type="hidden" id="hIdPageSize" value="@count" />
+    </div>
+
+                }
+                else
+                {
+                    <div class="col-md-12 text-center">
+                        <span>No match found</span>
+                    </div>
+                    <div class="paginations" style="margin-top:20px;">
+                        @{
+
+                            List<int> pages = new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 });
+                        }
+                        <ul class="pagination">
+                            <li>
+                                <a onclick="PreviousPage()" aria-label="Previous" style="cursor:pointer">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            @{
+                                var tolatlRecords = ViewBag.CountList;
+                                tolatlRecords = Convert.ToInt32(tolatlRecords);
+                                var count = 0;
+                                if (tolatlRecords % 6 != 0)
+                                {
+                                    count = tolatlRecords / 6;
+                                    count = count + 1;
+                                }
+                                else
+                                {
+                                    count = tolatlRecords / 6;
+                                }
+
+                            }
+                            @for (int i = 0; i < count; i++)
+                            {
+                                <li><a onclick="filteration('@pages[i]')" style="cursor:pointer">@pages[i]</a></li>
+                            }
+
+
+                            @*<li><a onclick="filtration('@pageSize')">1</a></li>
+                                @{
+                                    pageSize = pageSize + 1;
+                                }
+
+                                <li><a onclick="filtration('@pageSize')">2</a></li>
+                                @{
+                                    pageSize = pageSize + 2;
+                                }
+
+                                <li><a onclick="filtration('@pageSize')">3</a></li>
+                                @{
+                                    pageSize = pageSize + 3;
+                                }
+
+                                <li><a onclick="filtration('@pageSize')">4</a></li>
+                                @{
+                                    pageSize = pageSize + 4;
+                                }
+
+                                <li><a onclick="filtration('@pageSize')">5</a></li>*@
+                            <li>
+                                <a onclick="NextPage()" aria-label="Next" style="cursor:pointer">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <input type="hidden" id="hIdPageSize" value="@count" />
+                    </div>
+                                }
