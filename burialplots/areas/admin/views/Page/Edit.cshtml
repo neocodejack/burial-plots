@@ -1,0 +1,279 @@
+﻿@model BurialPlots.DAL.Page
+@{
+    ViewBag.Title = "Edit Page";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+@section Scripts{
+    <script src="~/Areas/Admin/JS/EditDeletePage.js"></script>
+    <script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Edit Page</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <label>Page URL</label>
+        @if (ViewBag.pageurl != null)
+        {
+            <input type="text" readonly="readonly" id="pageurl" value="@ViewBag.pageurl" class="form-control" />
+        }
+        else
+        {
+            <input type="text" readonly="readonly" id="pageurl" class="form-control" />
+        }
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <label>Change HTML Code <input id="chk" onclick="showsource()" type="checkbox" /></label>
+    </div>
+</div>
+<div class="row" id="souruce" style="display:none">
+    <div class="col-md-12">
+        <textarea placeholder="Source Code here..." class="form-control" id="show"></textarea>
+        <br />
+        <input type="button" class="btn btn-primary" value="Add this change to page" onclick="appendCodeonTextEditor()" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#divEnglish">English</a></li>
+            <li><a data-toggle="tab" href="#divUrdu">Urdu</a></li>
+            <li><a data-toggle="tab" href="#divArabic">Arabic</a></li>
+            <li><a data-toggle="tab" href="#divChinese">Chinese</a></li>
+            <li><a data-toggle="tab" href="#divItalian">Italian</a></li>
+            <li><a data-toggle="tab" href="#divHindi">Hindi</a></li>
+            <li><a data-toggle="tab" href="#divTurkish">Turkish</a></li>
+            <li><a data-toggle="tab" href="#divBengali">Bengali</a></li>
+            <li><a data-toggle="tab" href="#divHebrew">Hebrew</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (ViewBag.title != null)
+                        {
+                            <input type="text" id="txttittle" value="@ViewBag.tittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txttittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editornew" style="height:400px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+            <div id="divUrdu" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleUrdu != null)
+                        {
+                            <input type="text" id="txtUrdutittle" value="@Model.TitleUrdu" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtUrdutittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorUrdu" style="height:400px;">
+                    @Html.Raw(Model.BodyUrdu)
+                </div>
+            </div>
+            <div id="divArabic" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleArabic != null)
+                        {
+                            <input type="text" id="txtArabictittle" value="@Model.TitleArabic" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtArabictittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorArabic" style="height:400px;">
+                    @Html.Raw(Model.BodyArabic)
+                </div>
+            </div>
+            <div id="divChinese" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleChinese != null)
+                        {
+                            <input type="text" id="txtChinesetittle" value="@Model.TitleChinese" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtChinesetittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorChinese" style="height:400px;">
+                    @Html.Raw(Model.BodyChinese)
+                </div>
+            </div>
+            <div id="divItalian" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleItalian != null)
+                        {
+                            <input type="text" id="txtItaliantittle" value="@Model.TitleItalian" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtItaliantittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorItalian" style="height:400px;">
+                    @Html.Raw(Model.BodyItalian)
+                </div>
+            </div>
+            <div id="divHindi" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleHindi != null)
+                        {
+                            <input type="text" id="txtHinditittle" value="@Model.TitleHindi" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtHinditittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorHindi" style="height:400px;">
+                    @Html.Raw(Model.BodyHindi)
+                </div>
+            </div>
+            <div id="divTurkish" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleTurkish != null)
+                        {
+                            <input type="text" id="txtTurkishtittle" value="@Model.TitleTurkish" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtTurkishtittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorTurkish" style="height:400px;">
+                    @Html.Raw(Model.BodyTurkish)
+                </div>
+            </div>
+            <div id="divBengali" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleBengali != null)
+                        {
+                            <input type="text" id="txtBengalitittle" value="@Model.TitleBengali" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtBengalitittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorBengali" style="height:400px;">
+                    @Html.Raw(Model.BodyBengali)
+                </div>
+            </div>
+            <div id="divHebrew" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Page Title</label>
+                        @if (Model.TitleHebrew != null)
+                        {
+                            <input type="text" id="txtHebrewtittle" value="@Model.TitleHebrew" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="txtHebrewtittle" placeholder="Enter Tittle Of Page" class="form-control" />
+                        }
+                    </div>
+                </div>
+                <br />
+                <div id="editorHebrew" style="height:400px;">
+                    @Html.Raw(Model.BodyHebrew)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <label>Featured Image</label>
+        <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" style="margin-top:20px;" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <label>Select Service Box (Ctrl + Click)</label>
+        <select id="multivalue" class="form-control" multiple>
+            <option value="">--None--</option>
+            @foreach (var item in ViewBag.box)
+            {
+                if (Model.PageBoxes.FirstOrDefault(c => c.Box == item.Id) != null)
+                {
+                    <option selected="selected" value="@item.Id">@item.BoxName</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.BoxName</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            Preview Image
+        </label>
+        <img id="thumbnil" class="img-thumbnail" style="width:220px; height:220px; margin-top:10px;" src="~/Areas/Admin/Image/@ViewBag.image" />
+        <pre style="width:220px;">220 X 220 Pixels</pre>
+        <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" style="margin-top:20px;" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 text-center">
+        <input type="button" class="btn btn-default" value="Submit" onclick="GetDataRich('@ViewBag.Id')" />
+    </div>
+</div>
+<input type="hidden" id="Imghiden" value="@Url.Action(" Upload","Page")" />
+

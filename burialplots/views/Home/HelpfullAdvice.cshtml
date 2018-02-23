@@ -1,0 +1,197 @@
+﻿@using BurialPlots.DAL
+@{
+    ViewBag.Title = "Helpful Advice";
+    Layout = "~/Views/Shared/_Header.cshtml";
+    var date = DateTime.Now.Date;
+    var newsList = new NewsManagementRepository().GetAll(c => c.PubDate <= date && c.ExpiryDate >= date).ToList();
+}
+
+@section scripts{
+<script src="~/js/Home/PreNeed.js"></script>
+    }
+<style>
+    .shortTexts {
+        width: 450px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+<body id="top" class="home">
+    <div class="banner" style="background-image: url('/images/banner-about.jpg');">
+        <div class="caption-inner">
+            <div class="container">
+                <h2>Helpful Advice</h2>
+            </div>
+        </div>
+
+    </div>
+    <!-- .site-header -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main" role="main">
+                <div class="section text-center-align">
+                    <div class="container">
+                        <h2 class="underline">Burial Plots Helpful Advice</h2>
+                        <div class="padding-left">
+                            <p>Dealing with the death of someone close to you is perhaps the most difficult challenge that life can throw at you. Even if the person in question is older, and has been ill for a while, the finality of them actually leaving is bound to have a huge impact. We created Burialplots.co.uk in an effort to make coping with that impact just a little bit easier. </p>
+                            <p>There are two ways in which the death of a loved one can hit home. The first of these is the emotional effect, and the fact that grief can feel completely overwhelming. There is no ‘right’ or ‘wrong’ way of dealing with bereavement, and the precise mix of sadness, anger and shock will differ from person to person. The second major impact is perhaps more mundane but no less disruptive, at least in the short term. This is the sheer degree of practical, legal and bureaucratic effort which is involved in dealing with the death of someone close to you.</p>
+                        </div>
+                        <br />
+                        <h2 class="underline">Forward Planning</h2>
+                        <div class="padding-left">
+                            <p>Across this site we offer help and advice on dealing with every aspect of this process. The more a person chooses to pre-plan their funeral, the less their loved ones will have to do when they die, and Burialplots.co.uk simplifies that planning process to a huge degree. From finding and buying a plot to arranging flowers and cars, we’ve brought all aspects of funeral planning together in one place, a service which is equally applicable to pre-planning and immediate need. </p>
+                            <p>We’ve also included a wealth of advice on how to begin coping with the emotional impact of a death. Each case is different, and it could be that the death of someone close to you has left you needing to explain what’s happened to young children, or dealing with the extra shock of an unexpected death. As well as offering generalised tips on the grieving process and coming to terms with loss, we offer help to those facing the additional challenge of dealing with sudden death, suicide and the loss of a child. </p>
+                        </div>
+                        <br />
+                        <h2 class="underline">Other Help</h2>
+                        <div class="padding-left">
+                            <p>The good news is that nobody has to feel entirely alone when dealing with the loss of someone close to them. In the immediate aftermath of a death, it is likely that you’ll find friends and family rallying round to comfort you. Even if this is not the case, or if you find that people need to get on with their own lives in the long weeks and months following the funeral, help is out there. Organisations across the UK deal with bereavement in general and with specific types of loss in particular. Most of these organisations are run by people who have been through what you’re experiencing, or have the training needed to deal with a bereaved person. In either case, they will offer the chance to share feelings and emotions which you may feel uncomfortable airing in the company of people you know. </p>
+                            <p>If you have any questions about the grieving process or about the various aspects involved in planning a funeral, then please contact us by email at (Email) or by calling 0100 000 0000.</p>
+                        </div>
+                        <ul class="burial-blocks">
+
+                            <li style="background-image: url('/images/burial-block-pic1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="BURIAL PLOTS NOW" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Burial Plots</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="HELPFUL ADVICE" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Helpful Advice</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="LEGAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Legal</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- section -->
+                
+                <div class="section text-center-align purple-bg" style="margin-bottom: 48px;">
+                    <div class="container">
+                        <ul class="serivce-blocks">
+
+                            <li style="background-image: url('/images/service-block1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="WHERE TO START" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Where to start</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="Aboutus" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Checklist</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERALS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funerals</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block4.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERAL DIRECTORS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funeral Directors</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block5.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="AFTER FUNERAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">After funeral</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block6.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="MEMORIAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Memorial</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block7.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="STONEMASONS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Stonemasons</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block8.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="SERVICES" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Services</h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- section -->
+                <br />
+                <br />
+                @*<div class="section text-center-align purple-bg">
+                    <div class="container">
+                        <h2 class="underline">@BurialPlots.Resources.HomeTexts.LATESTNEWS</h2>
+                        <div class="owl-carousel owl-theme latest-news">
+                            @foreach (var item in newsList)
+                            {
+                                <div class="item">
+                                    <h3>@item.Title</h3>
+                                    <p>@item.Description</p>
+                                    <a href="@Url.Action("Index", "NewsArticals")">[Read More]</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>*@
+                <!--  Blogs-->
+                <div class="text-center-align">
+                    <h2 class="underline">LATEST BLOGS</h2>
+                </div>
+                <div id="loadBlogSection">
+
+                </div>
+                <!-- enquiry-block -->
+
+            </main>
+        </div>
+     </div>
+    <input type="hidden" id="hIdLoadBlogSection" value="@Url.Action("LoadBlogSection","NewsArticals")" />
+ </body>

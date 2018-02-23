@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "BillingInfo";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+@section Scripts{
+<script src="~/js/Market/billingInfo.js"></script>
+    }
+<div class="padding-by-header margin-top-20">
+    <br />
+    <div class="container" style="background-color:aqua">
+        <div style="padding:25px">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>Billing Information</h3>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" id="txtFname" />
+                </div>
+                <div class="col-md-6">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" id="txtLname" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Address</label>
+                    <input type="text" class="form-control" id="txtAddress" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Country</label>
+                    <input type="text" class="form-control" id="txtCountry" />
+                </div>
+                <div class="col-md-6">
+                    <label>Telephone Number</label>
+                    <input type="text" class="form-control" id="txtCellNo" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="button" class="btn aligncenter" onclick="orderNow()" value="Order Now" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

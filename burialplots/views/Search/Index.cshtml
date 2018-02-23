@@ -1,0 +1,198 @@
+﻿@using BurialPlots.DAL
+@{
+    ViewBag.Title = "Search Services";
+    Layout = "~/Views/Shared/_Header.cshtml";
+
+    var towns = new TownsRepositoy().GetAll();
+    var postCodes = new PostCodeRepository().GetAll();
+    var countries = new CountryRepository().GetAll();
+    var counties = new CountyRepository().GetAll();
+    var serviceBusinessName = ViewBag.BusinessName;
+}
+@section Scripts{
+    
+<script src="~/js/Search/SearchServices.js"></script>
+    }
+<br />
+<div class="site-info" style="padding-top:150px; padding-bottom:200px;">
+    <div class="row" style="background:#6e7888;">
+        <div class="row" style="padding: 20px">
+            @using (Html.BeginForm("SearchService","Search",new { serviceId=""}))
+            {
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <input type="text" placeholder="Florists, Hurst, suits" id="txtServiceName" name="txtServiceName" style="color:black; background-color:white;"/>
+                    </div>
+                    <div class="col-md-1 text-center">
+                        <span style="color: white">in</span>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" placeholder="Country, County, Town or Postcode" id="txtPostCodeTown" name="txtPostCodeTown" style="color:black; background-color:white;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Search" class="btn btn-primary" style="background-color:black;" />
+                
+            </div>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        @*<div class="row">
+            <div class="col-md-12">
+                <a href="/Home/Index"><h4>Back to Popular Searches</h4></a>
+            </div>
+        </div>*@
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Find @ViewBag.BusinessName </h3>
+                <h4>To find local businesses, browse popular searches using the A to Z or select from our most popular searches.</h4>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <h3 style="margin-top:17px">Towns</h3>
+            </div>
+           @*<input type="hidden" id="hidId" value="@ViewBag.Id" />*@
+            <div class="col-md-10">
+                <p id="rcorners1" style="width: 868px;padding:17px;">
+                    <label>Most Popular:</label>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick='searchByAlphabatic("A")' style="font-size:17px; color:#0092cd;">A</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick='searchByAlphabatic("B")' style="font-size:17px; color:#0092cd;">B</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('C')" style="font-size:17px; color:#0092cd;">C</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('D')" style="font-size:17px; color:#0092cd;">D</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('E')" style="font-size:17px; color:#0092cd;">E</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('F')" style="font-size:17px; color:#0092cd;">F</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('G')" style="font-size:17px; color:#0092cd;">G</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('H')" style="font-size:17px; color:#0092cd;">H</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('I')" style="font-size:17px; color:#0092cd;">I</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('J')" style="font-size:17px; color:#0092cd;">J</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('K')" style="font-size:17px; color:#0092cd;">K</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('L')" style="font-size:17px; color:#0092cd;">L</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('M')" style="font-size:17px; color:#0092cd;">M</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('N')" style="font-size:17px; color:#0092cd;">N</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('O')" style="font-size:17px; color:#0092cd;">O</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('P')" style="font-size:17px; color:#0092cd;">P</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('Q')" style="font-size:17px; color:#0092cd;">Q</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('R')" style="font-size:17px; color:#0092cd;">R</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('S')" style="font-size:17px; color:#0092cd;">S</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('T')" style="font-size:17px; color:#0092cd;">T</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('U')" style="font-size:17px; color:#0092cd;">U</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('V')" style="font-size:17px; color:#0092cd;">V</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('W')" style="font-size:17px; color:#0092cd;">W</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('X')" style="font-size:17px; color:#0092cd;">X</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('Y')" style="font-size:17px; color:#0092cd;">Y</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="searchByAlphabatic('Z')" style="font-size:17px; color:#0092cd;">Z</a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </div>
+        <br />
+            <div id="ShowSearchingTowns">
+
+            </div>
+        <br />
+        <div class="row" style="margin-bottom:24px;">
+            <div class="col-md-2">
+                <h3 style="margin-top:17px">PostCodes</h3>
+            </div>
+            <div class="col-md-10">
+                <p id="rcorners1" style="width: 868px;padding:17px;">
+                    <label>Most Popular:</label>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick='searchByPostCode("A")' style="font-size:17px; color:#0092cd;">A</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick='searchByPostCode("B")' style="font-size:17px; color:#0092cd;">B</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('C')" style="font-size:17px; color:#0092cd;">C</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('D')" style="font-size:17px; color:#0092cd;">D</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('E')" style="font-size:17px; color:#0092cd;">E</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('F')" style="font-size:17px; color:#0092cd;">F</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('G')" style="font-size:17px; color:#0092cd;">G</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('H')" style="font-size:17px; color:#0092cd;">H</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('I')" style="font-size:17px; color:#0092cd;">I</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('J')" style="font-size:17px; color:#0092cd;">J</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('K')" style="font-size:17px; color:#0092cd;">K</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('L')"  style="font-size:17px; color:#0092cd;">L</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('M')" style="font-size:17px; color:#0092cd;">M</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('N')" style="font-size:17px; color:#0092cd;">N</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('O')" style="font-size:17px; color:#0092cd;">O</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('P')" style="font-size:17px; color:#0092cd;">P</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('Q')" style="font-size:17px; color:#0092cd;">Q</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('R')" style="font-size:17px; color:#0092cd;">R</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('S')" style="font-size:17px; color:#0092cd;">S</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('T')" style="font-size:17px; color:#0092cd;">T</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('U')" style="font-size:17px; color:#0092cd;">U</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('V')" style="font-size:17px; color:#0092cd;">V</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('W')" style="font-size:17px; color:#0092cd;">W</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('X')" style="font-size:17px; color:#0092cd;">X</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('Y')" style="font-size:17px; color:#0092cd;">Y</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByPostCode('Z')" style="font-size:17px; color:#0092cd;">Z</a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </div>
+        <div id="ShowSearchingPostCode">
+         
+        </div>
+        <br />
+        <div class="row" style="margin-bottom:24px;">
+            <div class="col-md-2">
+                <h3 style="margin-top:17px">Counties</h3>
+            </div>
+            <div class="col-md-10">
+                <p id="rcorners1" style="width: 868px;padding:17px;">
+                    <label>Most Popular:</label>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick='searchByCounties("A")' style="font-size:17px; color:#0092cd;">A</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick='searchByCounties("B")' style="font-size:17px; color:#0092cd;">B</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('C')" style="font-size:17px; color:#0092cd;">C</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('D')" style="font-size:17px; color:#0092cd;">D</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('E')" style="font-size:17px; color:#0092cd;">E</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('F')" style="font-size:17px; color:#0092cd;">F</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('G')" style="font-size:17px; color:#0092cd;">G</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('H')" style="font-size:17px; color:#0092cd;">H</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('I')" style="font-size:17px; color:#0092cd;">I</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('J')" style="font-size:17px; color:#0092cd;">J</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('K')" style="font-size:17px; color:#0092cd;">K</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('L')" style="font-size:17px; color:#0092cd;">L</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('M')" style="font-size:17px; color:#0092cd;">M</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('N')" style="font-size:17px; color:#0092cd;">N</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('O')" style="font-size:17px; color:#0092cd;">O</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('P')" style="font-size:17px; color:#0092cd;">P</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('Q')" style="font-size:17px; color:#0092cd;">Q</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('R')" style="font-size:17px; color:#0092cd;">R</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('S')" style="font-size:17px; color:#0092cd;">S</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('T')" style="font-size:17px; color:#0092cd;">T</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('U')" style="font-size:17px; color:#0092cd;">U</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('V')" style="font-size:17px; color:#0092cd;">V</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('W')" style="font-size:17px; color:#0092cd;">W</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('X')" style="font-size:17px; color:#0092cd;">X</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('Y')" style="font-size:17px; color:#0092cd;">Y</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="searchByCounties('Z')" style="font-size:17px; color:#0092cd;">Z</a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </div>
+      <div id="ShowSearchingCounties">
+
+      </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <h3 style="margin-top:17px">Countries</h3>
+            </div>
+            <div class="col-md-10">
+
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in countries)
+            {
+                <div class="col-md-3">
+                    <a href="@Url.Action("ServiceListing", "Home",new { id = ViewBag.serviceId, CountryName=item.Name})">@item.Name</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="hidFuneralId" value="@ViewBag.serviceId" />

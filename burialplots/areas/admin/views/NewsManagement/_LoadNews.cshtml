@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BurialPlots.DAL.NewsManagement>
+
+
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadNews">
+    <thead>
+        <tr>
+            <th class="hide"></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Publish Date
+            </th>
+            @*<th>
+                Expiry Date
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="hide">
+                    @item.Id
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @{ 
+                        var pdate = "";
+                        var edate = "";
+                    }
+                    @if (item.PubDate != null)
+                    {
+                        pdate = @item.PubDate.Value.ToShortDateString();
+                        <span>@item.PubDate.Value.ToString("dd-MMM-yyyy")</span>
+                    }
+                </td>
+                @*<td>
+                    
+                   @if (item.ExpiryDate != null)
+                   {
+                       edate = @item.ExpiryDate.Value.ToShortDateString();
+                    <span>@item.ExpiryDate.Value.ToString("dd-MMM-yyyy")</span>
+                   }
+                </td>*@
+                <td>
+                    <span class="fa fa-edit" style="color: green; cursor:pointer" onclick="editNews('@item.Id')"></span>&nbsp;
+                    <span class="fa fa-trash-o" style="color: red; cursor:pointer" onclick="deleteNewsManagement('@item.Id')"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

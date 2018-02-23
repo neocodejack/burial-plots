@@ -1,0 +1,174 @@
+﻿@model IEnumerable<BurialPlots.DAL.Cemetery>
+
+@{
+    ViewBag.Title = "View Plots";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        /*z-index: 1;*/ /* Sit on top */
+        padding-top: 10px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+@section Scripts{
+    <script src="~/jsMap/image-map-pro.min.js"></script>
+
+<script src="~/Areas/Admin/JS/Plot/section.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>View Plots</h3>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-2">
+        <label>Select Cemetery:</label>
+    </div>
+    <div class="col-md-4">
+        <select id="drpCemetery" class="form-control" onchange="filterLoadGraves()">
+            <option value="">--Select Cemetery--</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <input type="button" class="btn btn-primary" value="Add Plot Details" onclick="loadCemetery()" />
+    </div>
+</div>
+<br />
+<div class="row" id="divCancelCemeteryBtn" style="display:none">
+    <div class="col-md-12">
+        <a href="#" onclick="cancelCemetery()">Cancel</a>
+    </div>
+</div>
+<br />
+<div class="row" id="divCemetery">
+    <div class="col-md-12" id="image-map-pro-container">
+
+    </div>
+</div>
+<br />
+<div id="divSection" style="display:none">
+    <div class="row">
+        <div class="col-md-12">
+            <span onclick="hideSection()" style="cursor:pointer"><i class="fa fa-arrow-left"></i> Back</span>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <h4 id="hdSection"></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container" id="divLoadSection">
+
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <button class="btn btn-danger" onclick="deleteSelected()"><span class="fa fa-trash-o"></span> Delete Selected</button>
+    </div>
+    <div class="col-md-6">
+        <a href="@Url.Action("ExportExcel_Report", "Plots")" title="Export to Excel" class="pull-right"><i class="fa fa-file-excel-o" style="font-size:25px"></i></a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadGraves">
+        <table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadGraves"></table>
+    </div>
+</div>
+<div id="modalGraveDetails" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+                <span class="close pull-right" style="color:red;">Close</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="divLoadGraveDetails">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/template" id="tmplLayers">
+    <div class="row divLayers" id="divLayers_<%= Id %>">
+        <div class="col-md-5">
+            <input type="hidden" class="txtLayerId" />
+            <input type="text" placeholder="Name" class="form-control txtLayer require-field" />
+        </div>
+        <div class="col-md-5" style="display:flex">
+            <span style="font-weight:bold">£</span>&nbsp;
+            <input type="text" placeholder="Price" onkeypress="return IsNumeric(event)" class="form-control txtPrice require-field" />
+        </div>
+        <div class="col-md-2">
+            <span class="fa fa-trash-o" style="cursor:pointer; color:red" onclick="removeLayerRow('<%= Id %>')"></span>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="tmplLoadGraves">
+    <td class="text-center">{%= CheckBoxes %}</td>
+    <td class="text-center">{%= PlotNo %}</td>
+    <td class="text-center">{%= PlotName %}</td>
+    <td class="text-center">{%= SectionName %}</td>
+    <td class="text-center">{%= Size %}</td>
+    <td class="text-center">{%= Address %}</td>
+    <td class="text-center">{%= Location %}</td>
+    <td class="text-center">{%= Internements %}</td>
+    <td class="text-center">{%= Tiers %}</td>
+    <td class="text-center">{%= Status %}</td>
+    <td class="text-center">{%= Action %}</td>
+</script>
+<input type="hidden" id="hidLoadCemeteryUrl" value="@Url.Action("LoadCemetery", "Cemeteries")" />
+<input type="hidden" id="hidGetSectionUrl" value="@Url.Action("GetSection", "Cemeteries")" />
+<input type="hidden" id="hidLoadGraveDetailsUrl" value="@Url.Action("LoadGraveDetails", "Cemeteries")" />
+<input type="hidden" id="hidSaveGraveDetailUrl" value="@Url.Action("SaveGraveDetails", "Cemeteries")" />
+<input type="hidden" id="hidLoadGraveUrl" value="@Url.Action("LoadGravesPartial", "Cemeteries")" />
+<input type="hidden" id="hidDeleteGraveUrl" value="@Url.Action("DeleteGrave", "Cemeteries")" />
+<input type="hidden" id="hidLoadSectUrl" value="@Url.Action("LoadSect", "Cemeteries")" />
+<input type="hidden" id="hidRequestUrl" value="@ViewBag.RequestUrl" />

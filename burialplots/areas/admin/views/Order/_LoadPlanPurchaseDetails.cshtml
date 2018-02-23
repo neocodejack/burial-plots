@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BurialPlots.DAL.ServiceListingPlan>
+
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-primary" onclick="loadPurchasePlan()"><span class="fa fa-arrow-left"></span> Back</button>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadPlans">
+            <thead>
+                <tr>
+                    <th>
+                        Plan Name
+                    </th>
+                    <th>
+                        Position
+                    </th>
+                    <th>
+                        Business Name
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.PartnerPlan.Title
+                        </td>
+                        <td>
+                            @if (item.PartnerPlan.Position == 1)
+                            {
+                                <span>One</span>
+                            }
+                            else if (item.PartnerPlan.Position == 2)
+                            {
+                                <span>Two</span>
+                            }
+                            else if (item.PartnerPlan.Position == 3)
+                            {
+                                <span>Three</span>
+                            }
+                            else
+                            {
+                                <span>General</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.SeviceListing != null)
+                            {
+                                <span>@item.SeviceListing.BusinessName</span>
+                            }
+                        </td>
+                        <td>
+                           @item.PartnerPlan.Price
+                        </td>
+                        <td>
+                            @item.SeviceListing.OrderPlans.FirstOrDefault().OrderDate.Value.ToString("dd-MMM-yyyy hh:mm:tt")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

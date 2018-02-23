@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BurialPlots.DAL.Order>
+@using BurialPlots.Models
+@{ 
+    var enc = new DataEncryptor();
+}
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadOrders">
+    <thead>
+        <tr>
+            <th>
+                Cart ID
+            </th>
+            <th>
+                Name
+            </th>
+           
+            <th>
+                Total Price
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.CartId
+                </td>
+                <td>
+                    @item.FirstName  @item.LastName
+                </td>
+                <td>
+                    @item.OrderCemeteries.Sum(c=>c.Price)
+                </td>
+                <td>
+                    @item.OrderDate.Value.ToString("dd-MMM-yyyy hh:mm tt")
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    <span class="fa fa-edit" style="color:green; cursor:pointer" onclick="editOrder('@item.Id')" title="Edit the order"></span>
+                    <span class="fa fa-trash-o" style="color:red; cursor:pointer" title="Delete the order" onclick="deleteOrder('@item.Id')"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

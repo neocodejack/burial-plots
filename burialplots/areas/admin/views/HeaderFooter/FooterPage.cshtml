@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Footer Settings";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+<script src="~/Areas/Admin/JS/HeaderFooter/footerPage.js"></script>
+    }
+<div class="row">
+    <div class="col-md-12">
+        <h2>Footer Settings</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <label><b>Copyright Text (in HTML):</b></label>
+            </div>
+            <div class="col-md-9">
+                <textarea type="text" id="txtCopyRight" class="form-control"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <label><b>Branding (in HTML):</b></label>
+            </div>
+            <div class="col-md-9">
+                <textarea id="txtBranding" class="form-control"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <input type="button" value="Save" class="btn btn-success" onclick="saveFooterSetting()" />
+                <input type="button" value="Reset" class="btn btn-default" onclick="resetAllFields()" />
+            </div>
+        </div>
+    </div>
+</div>
+@*<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadFooter">
+
+    </div>
+</div>*@
+
+<input type="hidden" id="hidSaveFooterUrl" value="@Url.Action("SaveFooterSetting", "HeaderFooter")" />
+<input type="hidden" id="hidLoadFooterUrl" value="@Url.Action("LoadFooterSetting", "HeaderFooter")" />

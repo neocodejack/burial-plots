@@ -1,0 +1,268 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>Burial Plots</title>
+    @*<link href="~/style.css" rel="stylesheet" type="text/css" media="all" />*@
+
+
+    <script src="~/js/megamenu.js"></script>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/Order/orderf.js"></script>
+    @*<link rel="stylesheet" href="style.css" type="text/css" media="all">*@
+    @*<script type="text/javascript" src="js/jquery.js"></script>*@
+    <script src="~/js/jquery.js"></script>
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+
+    <!-- fixed header -->
+    <script>
+        jQuery(window).scroll(function () {
+            if (jQuery(this).scrollTop() > 1) {
+                jQuery('.header-menu').addClass("sticky");
+            }
+            else {
+                jQuery('.header-menu').removeClass("sticky");
+            }
+
+        });
+    </script>
+    <!-- Owl Carousel Assets -->
+    <link href="~/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="~/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+
+
+
+</head>
+<div class="site-info" style="padding-top:200px; padding-bottom:200px;">
+    <h2 class="well">CheckOut</h2>
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <div id="bioinfo" style="display:none";>
+                <table id="bioinformation" class="table table-hover table-responsive">
+                    <tr>
+                        <th colspan="2">
+                            <h2 style="background-color:#838DA2;color:white">1. Shipping</h2>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Your First Name</td>
+                        <td>
+                            <input type="text" class="form-control" style="border:solid black 1px;color:black" id="shipName" placeholder="Your First Name" />
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Your Last Name</td>
+                        <td>
+                            <input type="text" class="form-control" id="shipLastName" style="border:solid black 1px;color:black" placeholder="Your Last Name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address Line 1</td>
+                        <td>
+                            <input type="text" class="form-control" id="shipAddresone" style="border:solid black 1px;color:black" placeholder="Your Address" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address Line 2</td>
+                        <td>
+                            <input type="text" class="form-control" id="shipAddrestwo" style="border:solid black 1px;color:black" placeholder="Your Address" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>
+                            <input type="text" class="form-control" id="shipCity" style="border:solid black 1px;color:black" placeholder="Your City" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>
+                            <input type="text" class="form-control" id="shipstate" style="border:solid black 1px;color:black" placeholder="Your State" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zip</td>
+                        <td>
+                            <input type="text" class="form-control" id="shipzip" style="border:solid black 1px;color:black" placeholder="Your Zip" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" class="btn pull-right" onclick="nextdiv()" value="Next" />
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="billlnginformaion" style="display:none">
+                <table id="BillingInformatino" class="table table-hover table-responsive">
+                    <tr>
+                        <th colspan="2">
+                            <h2 style="background-color:#838DA2;color:white"> 2.  Billing</h2>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Your First Name</td>
+                        <td>
+                            <input type="text" class="form-control" id="billName" style="border:solid black 1px;color:black" placeholder="Your First Name" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Your Last Name</td>
+                        <td>
+                            <input type="text" class="form-control" id="billLastname" style="border:solid black 1px;color:black" placeholder="Your Last Name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address Line 1</td>
+                        <td>
+                            <input type="text" class="form-control" id="billAddressone" style="border:solid black 1px;color:black" placeholder="Your Address" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address Line 2</td>
+                        <td>
+                            <input type="text" class="form-control" id="billAddresstwo" style="border:solid black 1px;color:black" placeholder="Your Address" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>
+                            <input type="text" class="form-control" id="billCity" style="border:solid black 1px;color:black" placeholder="Your City" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>
+                            <input type="text" class="form-control" id="billState" style="border:solid black 1px;color:black" placeholder="Your State" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zip</td>
+                        <td>
+                            <input type="text" class="form-control" id="billZip" style="border:solid black 1px;color:black" placeholder="Your Zip" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="btn pull-left" onclick="previous()" value="Previous" />
+                        </td>
+                        <td>
+                            <input type="button" class="btn pull-right" onclick="nextnext()" value="Next" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="shippingid" style="display:none">
+                <table class="table table-hover table-responsive">
+                    <tr>
+                        <th colspan="2">
+                            <h2 style="background-color:#838DA2;color:white"> 3.  Shipping</h2>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="radio" id="rdprorty" /> USPS Priority- $9.99
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="radio" id="rdfclas" /> USPS First Class- $4.99
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="btn pull-left" onclick="previouslast()" value="Previous" />
+                        </td>
+                        <td>
+                            <input type="button" class="btn pull-right" onclick="nextnextlast()" value="Next" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="payment" style="display:none">
+                <table class="table table-hover table-responsive">
+                    <tr>
+                        <th colspan="2">
+                            <h2 style="background-color:#838DA2;color:white"> 4.   Payment</h2>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Credit Card Number
+                        </td>
+                        <td>
+                            <input type="text" id="cardNumber" style="border:solid black 1px;color:black" placeholder="Card Number" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name on Card
+                        </td>
+                        <td>
+                            <input type="text" id="cardName" style="border:solid black 1px;color:black" placeholder="Card Name" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Exp. Month
+                        </td>
+                        <td>
+                            <input type="text" id="cardmonth" style="border:solid black 1px;color:black" placeholder="Card Exp Month" class="form-control" />
+                        </td>
+                    </tr>
+                 
+                    <tr>
+                        <td>
+                            Exp. Year
+                        </td>
+                        <td>
+                            <input type="text" id="cardyear" style="border:solid black 1px;color:black" placeholder="Card Exp Year" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            CVC
+                        </td>
+                        <td>
+                            <input type="text" id="cardCvc" style="border:solid black 1px;color:black" placeholder="Card  CVC Number" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="btn pull-left" onclick="previouslastof()" value="Previous" />
+                        </td>
+                        <td>
+                            <input type="button" class="btn pull-right" onclick="order()" value="Complete My Order" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+  
+
+
+</div>
+<input type="hidden" id="placeorder" value="@Url.Action("OrderPlace","Orders")" />

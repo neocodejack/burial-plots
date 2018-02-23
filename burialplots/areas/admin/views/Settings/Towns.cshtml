@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Towns";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+<script src="~/Areas/Admin/JS/Setting/towns.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Towns</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Town Name:</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="txtName" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Description:</label>
+            </div>
+            <div class="col-md-8">
+                <textarea type="text" id="txtDescription" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-md-4">
+            <label>County:</label>
+        </div>
+        <div class="col-md-8">
+            @Html.DropDownList("drpCountry", new SelectList(ViewBag.Counties, "Id", "Name"), "--Select County--", new { @class="form-control" })
+        </div>
+    </div>
+</div>
+<br />
+<div class="row text-center">
+    <input type="button" value="Save" onclick="saveTown()" class="btn btn-success" />
+    <input type="button" value="Reset" onclick="resetAllFields()" class="btn btn-default" />
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadTowns"></div>
+</div>
+
+<input type="hidden" id="hidId" />
+<input type="hidden" id="hidLoadTownsUrl" value="@Url.Action("LoadTowns", "Settings")" />
+<input type="hidden" id="hidSaveTownUrl" value="@Url.Action("SaveTown", "Settings")" />
+<input type="hidden" id="hidDeleteTownUrl" value="@Url.Action("DeleteTown", "Settings")" />

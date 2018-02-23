@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "PageSelect";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    
+<script src="~/Areas/Admin/JS/EditDeletePage.js"></script>
+    }
+<h2>PageSelect</h2>
+
+
+  
+    @foreach (var occasion in ViewBag.pages)
+    {
+        <li>
+            <a href="@Url.Action("PageView", "Page",new {id =occasion.Id})" class="elements">
+                <span>@occasion.PageTittle</span>
+            </a>
+                <a><i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" title="Click here to Delete User" id="Delete" onclick="Delete(id=@occasion.Id)" ></i></a>
+                <a><i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="tooltip modal" title="Click here To Edit" id="edit" onclick="edit('@occasion.Id')"></i></a>
+                @*<input type="hidden" id="HiddenDelete" value="@Url.Action("DeletePage","Page")"/>*@
+                <input type="hidden" id="hidenedit" value="@Url.Action("EditPage","Page")" />
+           
+        </li>
+ }
+   

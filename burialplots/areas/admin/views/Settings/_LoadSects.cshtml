@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BurialPlots.DAL.SubRelgion>
+
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadSects">
+    <thead>
+        <tr>
+            <th>
+                Sect Name
+            </th>
+            <th>
+                Religion
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubRelgionName)
+                </td>
+                <td>
+                    @item.Relgion.RelgionName
+                </td>
+                <td>
+                    <span class="fa fa-edit" onclick="editSect('@item.Id', '@item.SubRelgionName', '@item.RelgioId')"  style="cursor:pointer"></span>
+                    <span class="fa fa-trash-o" onclick="deleteSect('@item.Id')" style="cursor:pointer;color:red"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

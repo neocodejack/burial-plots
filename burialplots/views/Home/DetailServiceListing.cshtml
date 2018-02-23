@@ -1,0 +1,373 @@
+﻿@using BurialPlots.DAL
+@model BurialPlots.DAL.SeviceListing
+@{
+    ViewBag.Title = "Detail Service Listing";
+    Layout = "~/Views/Shared/_Header.cshtml";
+    var IsMemberIdExistInReview = ViewBag.IsMemberIdExistInReview;
+    var MemberId = ViewBag.MemberId;
+    var serviceId = ViewBag.ServiceId;
+    var paymentGw = ViewBag.paymentGw;
+    var servicesAndProducts = ViewBag.svAndPro;
+    Decimal sId = Convert.ToDecimal(serviceId);
+    var CountSocialLinks = new ServiceListingRepository().GetById(sId);
+
+    var fbCount = CountSocialLinks.FacebookLink;
+    var twitterCount = CountSocialLinks.TwitterLink;
+    var gPlusCount = CountSocialLinks.GooglePlusLink;
+    var linkedin = CountSocialLinks.LinkedIn;
+}
+<link href="~/css/DetailServiceListing.css" rel="stylesheet" />
+<style>
+    #map {
+        height: 300px;
+    }
+</style>
+@section Scripts{
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDXNqQl7QofEYjGGJHknVJG8ZN9NZM9b-c"></script>
+    <script src="~/js/Home/DetailServiceListing.js"></script>
+}
+
+<div class="site-info padding-by-header">
+    <div class="container marTop">
+        <div class="row">
+            <div class="col-lg-4">
+                @if (Model.PaymentGateways != null && Model.PaymentGateways != "")
+                {
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h3>Payment Methods</h3></div>
+                                <div class="panel-body">
+
+                                    @foreach (var item in paymentGw)
+                                    {
+                                        if (item == "Visa")
+                                        {
+                                            <img src="/images/PaymentGateways/VISA.jpg" />
+                                        }
+                                        if (item == "Maestro")
+                                        {
+                                            <img src="/images/PaymentGateways/maestrobettingsites.png" />
+                                        }
+                                        if (item == "Solo")
+                                        {
+                                            <img src="/images/PaymentGateways/SOLO.jpg" />
+                                        }
+                                        if (item == "Electron")
+                                        {
+                                            <img src="/images/PaymentGateways/VISA Electon.jpg" />
+                                        }
+                                        if (item == "Master")
+                                        {
+                                            <img src="/images/PaymentGateways/Master Card.jpg" />
+
+                                        }
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                }
+                @if (fbCount != null || twitterCount != null || gPlusCount != null)
+                {
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h3>You can also find on us</h3></div>
+                                <div class="panel-body">
+                                    @if (!string.IsNullOrEmpty(fbCount))
+                                    {
+                                        <a href="http://@Model.FacebookLink" target="_blank"><img src="~/images/facebook_circle_color-256.png" class="img-circle" height="50" width="50" /></a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(twitterCount))
+                                    {
+                                        <a href="http://@Model.TwitterLink" target="_blank"><img src="~/images/images.png" class="img-circle" height="50" width="50" /></a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(gPlusCount))
+                                    {
+                                        <a href="http://@Model.GooglePlusLink" target="_blank"><img src="~/images/google.jpg" class="img-circle" height="50" width="50" /></a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(linkedin))
+                                    {
+                                        <a href="http://@Model.LinkedIn" target="_blank"><img src="~/images/linkedin.png" class="img-circle" height="50" width="50" /></a>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h3>Business Overview</h3></div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+
+                                        @if (!string.IsNullOrEmpty(Model.Picture))
+                                        {
+                                            <img src="~/images/Users/@Model.Picture" class="img-thumbnail img-responsive" style="width:270px; height:120px;" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/images/Users/no-img.png" alt="Service Picture" class="img-thumbnail img-responsive" style="height:120px; width:270px;">
+                                        }
+                                    </div>
+                                    @{
+                                        string[] address = Model.Address.Split(',');
+                                    }
+
+                                    <div class="col-md-8 divMargin">
+                                        <span class="customBusinessStyle">@Model.BusinessName</span>
+                                        <div><span class="customColor"> Tel:&nbsp;</span><span class="customPhoneStyle">@Model.PhoneNo</span></div>
+                                        <div>
+                                            <span class="customColor">Address:&nbsp;</span><span class="customPhoneStyle">
+                                                @foreach (var item in address)
+                                                {
+                                                    @item
+                                                }
+                                            </span>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(Model.Website))
+                                        {
+                                            <div class="VisitWebsiteMargin"><a href="http://@Model.Website" target="_blank" style="width: 130px;" class="btn btn-primary btn-sm  backClr buttonStyle"><span style="color:white; font-size: 14px; font-weight: 600;"> Visit Website</span></a></div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <br />
+                                @if (Model.BusinessDescription != null)
+                                {
+                                    var des1 = Model.BusinessDescription;
+                                    string[] lines1 = des1.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+                                    foreach (var line in lines1)
+                                    {
+                                        <p>
+                                            @line
+                                        </p>
+                                    }
+                                }
+
+                                @*@if (Model.BusinessDescription != null)
+                                    {
+                                        <p>@Model.BusinessDescription</p>
+                                    }*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"> <h3>Services and Products</h3>  </div>
+                            <div class="panel-body">
+                                <ul class="hClr">
+                                    @if (Model.ServicesAndProducts != null && Model.ServicesAndProducts != "")
+                                    {
+                                        var des = Model.ServicesAndProducts;
+                                        string[] lines = des.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+                                        foreach (var line in lines)
+                                        {
+                                            <li>
+                                                @line
+                                            </li>
+                                        }
+
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"> <h3>Reviews</h3></div>
+                            <div class="panel-body">
+
+                                @if (Model.Reviews != null)
+                                {
+                                    var reviews = Model.Reviews.Where(x => x.ServiceListingId == Model.Id && x.Status == true).ToList();
+                                    foreach (var item1 in reviews)
+                                    {
+                                        <div><span class="customColor"> Post by:&nbsp;</span><span class="customPhoneStyle">@item1.Member.Fname</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="customColor">Date:&nbsp;</span><span class="customPhoneStyle">@item1.Date.Value.ToShortDateString()</span></div>
+                                        <div> <p>@item1.Description</p></div>
+                                        <br />
+                                        <hr />
+                                        <br />
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p class="fSize">There are no reviews for this business, be the first to write a review!</p><br />
+                                }
+
+                                <!-- Trigger the modal with a button -->
+
+
+                                @if (IsMemberIdExistInReview == null)
+                                {
+                                    <button type="button" class="btn btn-primary btn-sm backClr buttonStyle" data-toggle="modal" data-target="#myModal" style="width: 147px;"><span style="color:white; font-size: 14px; font-weight: 600;"> Write a Review</span></button>
+                                 <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="row">
+                                                        <div class="col-md-10">
+                                                            <h4 class="modal-title clr">Write Your Review</h4>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                @using (Html.BeginForm())
+                                                {   <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" rows="10" placeholder="Write a Review" id="ReviewDescription"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                }
+                                                @if (MemberId != 0)
+                                                {
+                                                    <div class="modal-footer">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <input type="submit" value="Submit Review" class="btn btn-default btn-sm backClr" onclick="Review('@Model.Id','@ViewBag.MemberId')" />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+                                                    <div class="modal-footer">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <a href="@Url.Action("LoginSignup", "Home")" class="btn btn-default btn-sm subclr" style="float:left;color:white;">Submit Review</a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                }
+                                else if (MemberId == 0)
+                                {   <button type="button" class="btn btn-primary btn-sm backClr" data-toggle="modal" data-target="#myModal">Write a Review</button>
+                                 <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="row">
+                                                        <div class="col-md-10">
+                                                            <h4 class="modal-title clr">Write Your Review</h4>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                @using (Html.BeginForm())
+                                                {   <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" rows="10" placeholder="Write a Review" id="ReviewDescription"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                }
+                                                <div class="modal-footer">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <a href="@Url.Action("LoginSignup", "Home")" class="btn btn-primary btn-sm form-control subclr">Submit Review</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-primary btn-sm backClr" data-toggle="modal" data-target="#myModal">Write a Review</button>
+                                 <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="row">
+                                                        <div class="col-md-10">
+                                                            <h4 class="modal-title clr">You have already posted a review.</h4>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hIdLatitudeLnk" value="@ViewBag.Latitude" />
+<input type="hidden" id="hIdLongitudeLnk" value="@ViewBag.Longitude" />
+<input type="hidden" id="hIdMemberLnk" value="@ViewBag.MemberId" />
+

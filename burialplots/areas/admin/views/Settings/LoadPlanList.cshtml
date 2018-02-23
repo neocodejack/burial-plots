@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BurialPlots.DAL.PartnerPlan>
+
+<table class="table table-responsive table-bordered table-hover table-striped" id="tblPlanList">
+    <thead>
+        <tr>
+            <td class="hide">
+            </td>
+            <th>
+                Position
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Plan Periods
+            </th>
+            <th>
+                Free Listing Periods
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="hide">
+                    @if (item.Position != null)
+                    {
+                        <span>@item.Position</span>
+                    }
+                    else
+                    {
+                        <span>100</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Position == 1)
+                    {
+                        <span>One</span>
+                    }
+                    else if (item.Position == 2)
+                    {
+                        <span>Two</span>
+                    }
+                    else if (item.Position == 3)
+                    {
+                        <span>Three</span>
+                    }
+                    else
+                    {
+                        <span>General</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Title != null)
+                    {
+                        @item.Title
+                    }
+
+                </td>
+                <td>
+                    @if (item.Price != null)
+                    {
+                        @item.Price
+                    }
+
+
+                </td>
+                <td>
+                    @if (item.Description != null)
+                    {
+                        @item.Description
+                    }
+                    @{
+                        var res = item.Description.Replace("\n", String.Empty);
+
+                    }
+
+                </td>
+                <td>
+                    @item.PlanPeriods
+                </td>
+                <td>
+                    @item.FreeListingPeriod
+                </td>
+                <td>
+                    <a href="#" onclick="editPlan('@item.Id')"><span class="fa fa-edit"></span></a>
+                    <span class="fa fa-trash" style="color: red; cursor: pointer" onclick="deletePlan('@item.Id')"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "Create Page";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="https://cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+    @section Scripts{
+    <script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
+    <script src="~/Areas/Admin/JS/Pagejs.js"></script>
+    }
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Create  Page</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <label>Page URL</label>
+            <input type="text" class="form-control" readonly="readonly" id="value" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <label>View Source Code  <input id="chk" onclick="showsource()" type="checkbox" /></label>
+            <div id="souruce" style="display:none">
+                <textarea placeholder="Source Code here..." class="form-control" id="show"></textarea>
+                <br />
+                <input type="button" onclick="appendHtml()" class="btn btn-warning" value="Append" />
+            </div>
+            <br />
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#divEnglish">English</a></li>
+                <li><a data-toggle="tab" href="#divUrdu">Urdu</a></li>
+                <li><a data-toggle="tab" href="#divArabic">Arabic</a></li>
+                <li><a data-toggle="tab" href="#divChinese">Chinese</a></li>
+                <li><a data-toggle="tab" href="#divItalian">Italian</a></li>
+                <li><a data-toggle="tab" href="#divHindi">Hindi</a></li>
+                <li><a data-toggle="tab" href="#divTurkish">Turkish</a></li>
+                <li><a data-toggle="tab" href="#divBengali">Bengali</a></li>
+                <li><a data-toggle="tab" href="#divHebrew">Hebrew</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="divEnglish" class="tab-pane fade in active">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txttittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editornew" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divUrdu" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtUrdutittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorUrdu" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divArabic" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtArabictittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorArabic" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divChinese" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtChinesetittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorChinese" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divItalian" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtItaliantittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorItalian" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divHindi" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtHinditittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorHindi" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divTurkish" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtTurkishtittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorTurkish" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divBengali" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtBengalitittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorBengali" style="height:400px;">
+                    </div>
+                </div>
+                <div id="divHebrew" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Page Title</label>
+                            <input type="text" id="txtHebrewtittle" placeholder="Enter Title of the Page" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div id="editorHebrew" style="height:400px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <label>Featured Image</label>
+            <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" style="margin-top:20px;" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <label>Select Service Box (Ctrl + Click)</label>
+            <select id="multivalue" class="form-control" multiple>
+                <option value="">--None--</option>
+                @foreach (var item in ViewBag.box)
+                {
+                    <option value="@item.Id">@item.BoxName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <label>
+                Preview Image
+            </label>
+            <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="" alt="Dimesnsions (220 X 220) pixels" />
+            <pre style="width:220px;">220 X 220 Pixels</pre>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <input type="button" class="btn btn-success" value="Add Page" onclick="GetDataRich()" />
+        </div>
+    </div>
+    <input type="hidden" id="Imghiden" value="@Url.Action("Upload","Page")" />
+</body>
+</html>

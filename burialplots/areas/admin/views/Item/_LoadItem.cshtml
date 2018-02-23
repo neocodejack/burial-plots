@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BurialPlots.DAL.Item>
+
+<table id="tblLoadItem" class="table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+           Item #
+            </th>
+            <th>
+Item Name
+            </th>
+            <th>
+          Item Qty
+            </th>
+            <th>
+               Cost Price
+            </th>
+            <th>
+Retail Price
+            </th>
+            @*<th>
+        Item Status
+            </th>
+            <th>
+                Item Featured
+            </th>*@
+            <th>
+              Item Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Code)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemCprice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemRprice)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.ItemActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemFeature)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Code)
+                </td>
+                <td>
+                    <a><i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" title="Click here to Delete User" id="Delete" onclick="Delete(@item.Id)"></i></a>
+                    <a><i class="fa fa-pencil-square-o" aria-hidden="true" title="Click here To Edit" id="edit" onclick="edit('@item.Id','@item.ItemNo','@item.ItemName','@item.ItemQty','@item.ItemCprice','@item.ItemRprice','@item.ItemImage')"></i></a>
+                    <input type="hidden" id="delurl"value="@Url.Action("DeleteItem","Item")" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

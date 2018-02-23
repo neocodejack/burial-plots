@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BurialPlots.DAL.SeviceListing>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>@item.BusinessName</h3>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Post Code:</label>
+                </div>
+                <div class="col-md-8">
+                    <span>@item.PostCode</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Address:</label>
+                </div>
+                <div class="col-md-8">
+                    <span>@item.Address</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Phone No.:</label>
+                </div>
+                <div class="col-md-8">
+                    <span>@item.PhoneNo</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Website:</label>
+                </div>
+                <div class="col-md-8">
+                    <span>@item.Website</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Business Classification:</label>
+                </div>
+                <div class="col-md-8">
+                    <span>@item.BusinessClassification</span>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+</div>

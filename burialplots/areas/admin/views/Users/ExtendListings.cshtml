@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Extend Listings";
+    Layout = "~/Areas/Admin/Views/Shared/_UsersLayout.cshtml";
+}
+
+@section Scripts{
+    <script src="~/Areas/Admin/JS/Users/ViewListing.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Extend Plan Listings</h3>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("AddService", "Users")" class="btn btn-primary"><i class="fa fa-plus"></i> Add Listing </a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadServiceListing">
+    </div>
+</div>
+<input type="hidden" id="hidLoadServiceListingUrl" value="@Url.Action("LoadServiceListing", "Users")" />
+<input type="hidden" id="hidDeleteServiceListingUrl" value="@Url.Action("DeleteServiceListing", "Users")" />

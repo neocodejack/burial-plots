@@ -1,0 +1,226 @@
+﻿
+@{
+    ViewBag.Title = "Will Writing";
+    Layout = "~/Views/Shared/_Header.cshtml";
+    Decimal Fid = Convert.ToDecimal(ViewBag.Id);
+}
+@section Scripts{
+    <script src="~/js/Home/BlogArticles.js"></script>
+}
+<body id="top" class="home">
+    <div class="banner" style="background-image: url('/images/banner-about.jpg');">
+        <div class="caption-inner">
+            <div class="container">
+                <h2>@BurialPlots.Resources.HomeTexts.WILLWRITING</h2>
+            </div>
+        </div>
+    </div>
+    <!-- .site-header -->
+    
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main" role="main">
+                <div class="section text-center-align">
+                    <div class="container">
+                        <p class="col-md-10 col-md-offset-1" style="margin-top:-43px;">
+                            <a href="@Url.Action("Index", "Search" ,new {id=Fid})">
+                                <img src="~/images/Banners/willWriters.jpg" />
+                            </a>
+                        </p>
+                        <h2 class="underline">@BurialPlots.Resources.HomeTexts.BurialPlotsWillWriting</h2>
+                        <div class="column-block">
+                            <div class="column">
+                                <p>@BurialPlots.Resources.HomeTexts.Writingawill</p>
+                                <p>@BurialPlots.Resources.HomeTexts.Thisisonly</p>
+
+
+                            </div>
+                            <div class="column">
+                                <img src="~/images/video.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="padding-left">
+                            <p>@BurialPlots.Resources.HomeTexts.Theuse</p>
+                            <ul>
+                                <li>@BurialPlots.Resources.HomeTexts.Yourestate</li>
+                                <li>@BurialPlots.Resources.HomeTexts.Youhave</li>
+                                <li>@BurialPlots.Resources.HomeTexts.Youhaveoverseas</li>
+                                <li>@BurialPlots.Resources.HomeTexts.Youown</li>
+                            </ul>
+                        </div>
+
+                        <h2 class="underline">@BurialPlots.Resources.HomeTexts.UsingaSolicitor</h2>
+                        <div class="padding-left">
+                            <p>@BurialPlots.Resources.HomeTexts.Ifyouuse </p>
+                        </div>
+                        <br />
+                        <h2 class="underline">@BurialPlots.Resources.HomeTexts.Usingawillwritingservice</h2>
+                        <div class="padding-left">
+                            <p>@BurialPlots.Resources.HomeTexts.Youshould </p>
+                            <ul>
+                                <li> @BurialPlots.Resources.HomeTexts.TheSocietyofWillWriters</li>
+                                <li> @BurialPlots.Resources.HomeTexts.TheInstitute</li>
+                            </ul>
+                            <p>@BurialPlots.Resources.HomeTexts.Membership </p>
+                            <p>@BurialPlots.Resources.HomeTexts.If </p>
+                        </div>
+                        <br />
+                        <p class="col-md-10 col-md-offset-1" style="margin-bottom:30px;">
+                            <a href="@Url.Action("Index", "Search" ,new {id=Fid})">
+                                <img src="~/images/Banners/willWriters.jpg" />
+                            </a>
+                        </p>
+                        <h2 class="underline">What you need to make a will</h2>
+                        <div class="padding-left">
+                            <p>In order to write a will effectively you first need to value your estate. This means siting down and working out how much your total assets are worth, including items such as:</p>
+                            <ul>
+                                <li>Any properties you own</li>
+                                <li>Investments, such as stocks and shares</li>
+                                <li>Money saved in bank and building society accounts</li>
+                                <li>Insurance policies</li>
+                                <li>Motor vehicles</li>
+                                <li>Pension funds which pay out a lump sum at death</li>
+                                <li>Personal possessions, such as jewellery, antiques artworks etc</li>
+                            </ul>
+                            <p>It is important to get these assets valued regularly as the worth of some, such as stocks and property, could fluctuate. In certain parts of the UK your house may have risen dramatically in value over the years, for example, and this might affect the provisions of your will.</p>
+                        </div>
+                        <br />
+                     
+                        <h2 class="underline">What you should include</h2>
+                        <div class="padding-left">
+                            <p>You should set out exactly where you want the various parts of your estate to go. Many people, for example, bequest certain items to individual people whilst leaving the bulk of their estate to a spouse. Others might leave their main home and half of their estate to a spouse or civil partner, and share the rest between any children they have. Your will should also include details of what you would like to happen if any of the beneficiaries die before you do.</p>
+                        </div>
+                        <br />
+                        <h2 class="underline">Validity</h2>
+                        <div class="padding-left">
+                            <p>In order to be valid, a will must be in writing and it must be signed by you and two witnesses. You must have the mental capacity at the time of writing the will to understand what it means. If there is any doubt about this – if you’ve been given a diagnosis of dementia, for example – then you need to have what is called 'testamentary capacity', which may require a statement signed by a medical practitioner. The will should state that it takes the place of all other wills, and any previous wills should be destroyed. </p>
+                            <p>The two witnesses must be adults who sign the will in your presence. It should be noted that the witnesses and their spouses or civil partners will not be allowed to benefit from the will. The rest of the will is still valid if anything is left to a witness, but they will not be entitled to take what you intended them to have. The executor chosen for your estate is allowed to witness the will, but cannot be a beneficiary.</p>
+                            <p>Once the will has been completed minor changes can be made. These are called codicils, and must be added to the will and signed and witnessed as the original will was, although the two witnesses don’t have to be the same. No changes should be made by altering the actual will, only by adding codicils, and any major changes will require a new will being written.</p>
+                            <p>Your will should be stored in a safe place, perhaps with a solicitor or bank or with the Probate Service. If you have any questions about wills or the other legal processes surrounding bereavement then please contact us at (Email) or phone Burialplots.co.uk on 0100 000 0000.</p>
+                        </div>
+                        <ul class="burial-blocks">
+
+                            <li style="background-image: url('/images/burial-block-pic1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="BURIAL PLOTS NOW" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Burial Plots</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="HELPFUL ADVICE" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Helpful Advice</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="LEGAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Legal</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="section text-center-align purple-bg" style="margin-bottom: 48px;">
+                    <div class="container">
+                        <ul class="serivce-blocks">
+
+                            <li style="background-image: url('/images/service-block1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="WHERE TO START" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Where to start</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="Aboutus" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Checklist</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERALS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funerals</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block4.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERAL DIRECTORS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funeral Directors</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block5.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="AFTER FUNERAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">After funeral</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block6.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="MEMORIAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Memorial</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block7.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="STONEMASONS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Stonemasons</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block8.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="SERVICES" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Services</h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- section -->
+                <div class="text-center-align">
+                    <h2 class="underline">LATEST BLOGS</h2>
+                </div>
+                <!--  Blogs-->
+                <div id="loadBlogSection">
+
+                </div>
+            </main>
+        </div>>
+    </div>
+    <input type="hidden" id="hIdLoadBlogSection" value="@Url.Action("LoadBlogSection","NewsArticals")" />
+</body>

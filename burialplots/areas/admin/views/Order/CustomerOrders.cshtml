@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BurialPlots.DAL.Order>
+@using BurialPlots.Models
+@{
+    ViewBag.Title = "Customer Orders";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Areas/Admin/JS/Order/customerOrders.js"></script>
+}
+
+@{
+    var enc = new DataEncryptor();
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Customer Orders</h2>
+    </div>
+</div>
+<br />
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadOrders">
+    <thead>
+        <tr>
+            <th>
+                Order ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @{
+                        if (item.Member != null)
+                        {
+                            var email = enc.Decrypt(item.Member.Email);
+                            <span>@email</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @item.OrderDate.Value.ToString("dd-MMM-yyyy hh:mm tt")
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    <span class="fa fa-edit" style="color:green; cursor:pointer" onclick="editOrder('@item.Id')" title="Edit the order"></span>
+                    <span class="fa fa-trash-o" style="color:red; cursor:pointer" title="Delete the order" onclick="deleteOrder('@item.Id')"></span>
+                </td>
+            </tr>
+                        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "PaymentTest";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+@section Scripts{
+    <script type="text/javascript" src="https://gwapi.demo.securenet.com/v1/PayOS.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function tokenize() {
+        alert();
+        var publicKey = setPublicKey('ad7ed933-b2e3-4942-a1d6-d95e988827ec');
+        var response = tokenizeCard(
+
+            {
+                "publicKey": publicKey,
+                "card":
+                {
+                    "number": document.getElementById('cc_number').value,
+                    "cvv": document.getElementById('cc_cvv').value,
+                    "expirationDate": document.getElementById('cc_expiration').value,
+                    "ksn": document.getElementById('ksn').value,
+                    "pinblock": document.getElementById('pin_block').value,
+                    "firstName": document.getElementById('first_name').value,
+                    "lastName": document.getElementById('last_name').value,
+                    "address":
+                    {
+                        "zip": document.getElementById('zip').value
+                    }
+                },
+                "addToVault": true,
+                "developerApplication":
+                {
+                    "developerId": 8010045,
+                    "version": '1.2'
+                }
+            }
+        ).done(function (result) {
+
+            var responseObj = $.parseJSON(JSON.stringify(result));
+
+            if (responseObj.success) {
+                alert(responseObj.token);
+                // do something with responseObj.token
+            } else {
+                alert("token was not created");
+                // do something with responseObj.message
+
+            }
+
+        }).fail(function () {
+            alert("error");
+            // an error occurred
+        });
+    }
+</script>
+    }
+<div class="padding-by-header">
+    @*<form action="https://secure-test.worldpay.com/wcc/purchase" method=POST>
+        <!-- This next line contains the testMode parameter - it specifies that the submission is a test submission -->
+        <input type="hidden" name="testMode" value="100">
+        <!-- This next line contains a mandatory parameter. Put your Installation ID inside the quotes after value= -->
+        <!-- You will need to get the installation ID from your Worldpay account. Login to your account, click setting and under installations
+        you should have an option called select junior and a number, put the number between “" e.g. “123456"-->
+        <input type="hidden" name="instId" value="1212518">
+        <!-- Another mandatory parameter. Put your own reference identifier for the item purchased inside the quotes after value= -->
+        <input type="hidden" name="cartId" value="1">
+        <!-- Another mandatory parameter. Put the total cost of the item inside the quotes -->
+        <input type="hidden" name="amount" value="10.99">
+        <!-- Another mandatory parameter. Put the code for the purchase currency inside the quotes after value= -->
+        <input type="hidden" name="currency" value="GBP">
+        <!-- This creates the button. When it is selected in the browser, the form submits the purchase details to us. -->
+        <input type="submit" value="Buy This">
+    </form>*@
+
+    <table>
+        <tr>
+            <td>First Name: </td>
+            <td><input id="first_name" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Last Name: </td>
+            <td><input id="last_name" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Credit Card Number: </td>
+            <td><input id="cc_number" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Expiration Date: </td>
+            <td><input id="cc_expiration" type="text" /></td>
+        </tr>
+        <tr>
+            <td>CVV: </td>
+            <td><input id="cc_cvv" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Zipcode: </td>
+            <td><input id="zip" type="text" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="Submit" value="Submit" onclick="tokenize()" /></td>
+        </tr>
+    </table>
+</div>

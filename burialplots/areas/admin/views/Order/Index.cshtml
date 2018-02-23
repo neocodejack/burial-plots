@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Cemetery Orders";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    var memberId = ViewBag.mId;
+}
+@section Scripts{
+<script src="~/Areas/Admin/JS/Order/order.js"></script>
+}
+<div class="row">
+    <div class="col-md-12">
+        @if (!string.IsNullOrEmpty(memberId))
+        {
+            <h2>Customer Orders</h2>
+        }
+        else
+        {
+            <h2>Cemetery Orders</h2>
+        }
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadOrders"></div>
+</div>
+@if (memberId != null)
+{
+    <input type="hidden" id="hIdMember" value="@memberId" />
+}
+else
+{
+    <input type="hidden" id="hIdMember" value="" />
+}
+<input type="hidden" id="hidLoadOrdersUrl" value="@Url.Action("LoadOrders", "Order")" />
+<input type="hidden" id="hidDeleteOrderUrl" value="@Url.Action("DeleteOrder", "Order")" />
+<input type="hidden" id="hidEditOrderUrl" value="@Url.Action("EditOrder", "Order")" />

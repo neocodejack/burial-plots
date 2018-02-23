@@ -1,0 +1,88 @@
+﻿@model IEnumerable<BurialPlots.DAL.Order>
+
+@{
+    ViewBag.Title = "My Orders";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("#li-profile").removeClass("start active");
+            $("#li-user").addClass("start active");
+            $("#tblLoadOrders").DataTable({
+                "iDisplayLength": 100,
+                "order": [[0, "desc"]]
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <h2>My Orders</h2>
+         
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadOrders">
+                            <thead>
+                                <tr>
+                                    <th class="hide"></th>
+                                    <th>
+                                        Cart ID
+                                    </th>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Order Date
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach (var items in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td class="hide">@items.Id</td>
+                                        <td>@items.CartId</td>
+                                        <td>@items.FirstName</td>
+                                        <td>@items.LastName</td>
+                                        <td>@items.OrderDate</td>
+                                        <td>
+                                            @if (items.Status == "pending")
+                                            {
+                                                <span>Pending</span>
+                                            }
+                                            else if (items.Status == "cancelled")
+                                            {
+                                                <span>Cancelled</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Delivered</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("ShowOrderDetails", "Orders", new { id=items.Id })"><i class="fa fa-edit" title="Details"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
