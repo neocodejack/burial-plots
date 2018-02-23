@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Add Slider";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var SliderName = ViewBag.SliderName;
+    var SliderId = ViewBag.SliderId;
+    var IsSlideImage = ViewBag.IsSlideImage;
+
+}
+@section Scripts{
+
+    <script src="~/Areas/Admin/JS/Setting/AddSlides.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("Slider", "Settings")" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back </a>
+    </div>
+</div>
+<br />
+@if (SliderId > 0)
+{
+    <input type="hidden" id="hidSliderId" name="hIdSliderId" value="@SliderId" />
+}
+else
+{
+    <input type="hidden" id="hidSliderId" name="hIdSliderId" value="" />
+}
+<br />
+<h2>Add Slide</h2>
+
+<form id="SlideForm">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Name:</label>
+            <div class="col-md-3">
+                <input type="text" name="Name" id="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Caption:</label>
+            <div class="col-md-3">
+                <textarea name="Caption" id="Caption" class="form-control" rows="5"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Browse Image:</label>
+            <div class="col-md-3">
+                <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" />
+            </div>
+        </div>
+        <div class="form-group" id="previewImage">
+            <label class="control-label col-md-2">Preview Image:</label>
+            <div class="col-md-8">
+                <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="" alt="Dimesnsions (220 X 220) pixels" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+</form>
+<br />
+<hr />
+<div class="row">
+    <div class="col-md-12" id="divLoadSlidesList"></div>
+</div>
+
+<input type="hidden" id="hidId" />
+@if (SliderId > 0)
+{
+    <input type="hidden" id="hidSliderId" name="hIdSliderId" value="@SliderId" />
+}
+else
+{
+    <input type="hidden" id="hidSliderId" name="hIdSliderId" value="" />
+}
+
+
+<input type="hidden" id="hidLoadSlidesUrl" value="@Url.Action("LoadSlidesList", "Settings")" />
+<input type="hidden" id="hidSaveTownUrl" value="@Url.Action("SaveTown", "Settings")" />
+<input type="hidden" id="hidDeleteSlideUrl" value="@Url.Action("DeleteSlide", "Settings")" />
+
+<input type="hidden" id="Imghiden" value="@Url.Action("Upload","Blog")" />

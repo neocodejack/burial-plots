@@ -1,0 +1,70 @@
+﻿@model BurialPlots.DAL.Member1
+@using BurialPlots.Models
+@{
+    ViewBag.Title = "Burial Plots | My Profile";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Scripts{
+
+<script src="~/Areas/Customer/JS/Profille/Profile.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("Index", "Profile",new {Area="Customer" })" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back </a>
+    </div>
+</div>
+<br />
+
+<h2>My Profile</h2>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <br />
+    <label>First Name</label>
+        <input type="text" id="fname" value="@Model.Fname" class="form-control" />
+    </div>
+
+    <div class="col-md-12">
+        <br />
+        <label>Last Name</label>
+        <input type="text" id="lname" value="@Model.Lname" class="form-control" />
+    </div>
+    <div class="col-md-12">
+        <br />
+        <label>Email</label>
+        @{
+            var email = "";
+            if (Model.Email != null)
+            {
+                email = new DataEncryptor().Decrypt(Model.Email);
+            }
+        }
+        <input type="text" id="email" value="@email" class="form-control" />
+    </div>
+    <div class="col-md-12">
+        <br />
+        <label>Password</label>
+        <input type="text" id="password" value="@Model.Password" class="form-control" />
+    </div>
+    <div class="col-md-12">
+        <br />
+        <label>Telephone Number</label>
+        @{
+            var number = "";
+            if (Model.CellNo != null)
+            {
+                number = new DataEncryptor().Decrypt(Model.CellNo);
+            }
+        }
+        <input type="text" id="cellno" value="@number" class="form-control" />
+    </div>
+    <div class="col-md-12">
+        <br />
+        <input type="button" onclick="update()" value="Submit" class="btn btn-success pull-right" />
+     </div>
+</div>
+
+<input type="hidden" value="@Url.Action("UpdateProfile","Profile")" id="hProfileId" />

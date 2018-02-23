@@ -1,0 +1,92 @@
+﻿@model IEnumerable<BurialPlots.DAL.Blog>
+<style>
+    p {
+     width: 250px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("CreateBlog", "Blog")" class="btn btn-primary"><i class="fa fa-plus"></i> Create New Blog </a>
+    </div>
+</div>
+<br />
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadBlogListing">
+    <thead>
+        <tr>
+            <th class="hide"></th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Featured Image
+            </th>
+            <th>
+                Category
+            </th>
+            <th>Actions</th>
+            <th>Blog Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="hide">
+                    @item.Id
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                   <p>@Html.Raw(item.Description)</p> 
+                </td>
+                <td>
+                    @if (item.FeaturedImage!= null)
+                {
+                        <img style="width:120px; height:70px; margin-top:10px;" src="~/images/Blog/@item.FeaturedImage" alt="Dimesnsions (220 X 220) pixels" />
+
+                    }
+                    
+                </td>
+                <td>
+                   
+                    @if (item.BlogCategory!= null)
+                    {
+                        @item.BlogCategory.Name
+                    }
+                   
+                </td>
+                <td class="text-center"><a href="@Url.Action("BlogDetail", "Blog", new { id = item.Id })"><i class="fa fa-eye"></i></a>&nbsp;
+<span class="fa fa-trash-o" style="color:red; cursor: pointer" onclick="deleteBlogListing('@item.Id')"></span>
+                    <a href="@Url.Action("EditBlog", "Blog", new { id=item.Id })"><i class="fa fa-edit"></i></a>
+                @if (item.IsApproved == true)
+                {
+                    <span style="cursor: pointer; width:120px; margin-top:5px;" class="btn btn-default" onclick="blogUnPublish('@item.Id')">Un-Publish</span>
+                }
+                else
+                {
+                    <span style="cursor: pointer; width:120px;" class="btn btn-default" onclick="blogPublish('@item.Id')">Publish</span>
+                }
+                    
+                 </td>
+                <td>
+                    @if (item.IsApproved == true)
+                    {
+                        <h5>Published</h5>
+                    }
+                    else
+                    {
+                        <h5>UnPublished</h5>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@model BurialPlots.DAL.NewsManagement
+
+@{
+    ViewBag.Title = "News Details";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+
+<link href="~/css/NewsArticles.css" rel="stylesheet" />
+<div id="content" class="site-content topMargin bottomMar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="@Url.Action("Index", "NewsArticals",new { Area=""})" class="colBack"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back </a>
+            </div>
+            <div class="col-md-6">
+                <a href="@Url.Action("PageView", "Page", new { Area="Admin", id="newsfeed" })" class="btn pull-right">View full news feed <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 border1">
+                @if (Model != null)
+                {
+                    <div class="row">
+                        <div class="col-md-6 customMarginTop">
+                            <h3>@Model.Title</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            @if (Model.PubDate != null)
+                            {
+                                DateTime Date = (DateTime)(Model.PubDate);
+                                DateTime publishedDate = Date.Date;
+                                <span style="font-size:12px">Published Date: @publishedDate.ToShortDateString()</span>
+                            }
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p class="alignment">@Model.Description </p>
+                        </div>
+                    </div>
+                    <br />
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

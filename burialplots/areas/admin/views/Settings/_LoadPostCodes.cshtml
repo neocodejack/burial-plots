@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BurialPlots.DAL.PostCode>
+
+<table class="table table-responsive table-hover table-bordered table-striped" id="tblLoadPostCodes">
+    <thead>
+        <tr>
+            <th class="hide"></th>
+            <th>
+                Post Code
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="hide">@item.Id</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <span class="fa fa-edit" style="color: green; cursor: pointer" onclick="editPostCode('@item.Id', '@item.Code', '@item.Description')"></span>&nbsp;
+                    <span class="fa fa-trash-o" style="color: red; cursor: pointer" onclick="deletePostCode('@item.Id')"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

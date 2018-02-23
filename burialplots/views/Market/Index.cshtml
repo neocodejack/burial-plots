@@ -1,0 +1,347 @@
+﻿@model BurialPlots.DAL.Cemetery
+@using BurialPlots.DAL
+@{
+    ViewBag.Title = "Cemetery Plots";
+    Layout = "~/Views/Shared/_Header.cshtml";
+    var Filters = new MainSectionRepository().GetAll().AsQueryable();
+    var sections = new MainSectionRepository().GetAll(c=>c.CemeteryId == Model.Id);
+    var religions = new RelgionRepostiory().GetAll();
+
+}
+<link href="~/cssMap/image-map-pro.min.css" rel="stylesheet" />
+<style>
+    .text-muted {
+        padding-bottom: 20px !important;
+    }
+</style>
+@section Scripts{
+    <script src="~/jsMap/image-map-pro.min.js"></script>
+    <script src="~/Scripts/jquery.zoomooz.min.js"></script>
+    <script src="~/Scripts/jquery.loading.block.js"></script>
+    <script src="~/js/Market/index.js"></script>
+    <script src="~/js/Market/filters.js"></script>
+
+}
+<div class="site-info padding-by-header" style="overflow:hidden">
+    <div class="container margin-top-20">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 id="hdSection" style="margin-top: 40px;">@Model.Name</h3>
+            </div>
+        </div>
+        <div class="row" id="divCemetery" style="font-size:10px;overflow:hidden">
+            <div class="col-md-12" id="image-map-pro-container"></div>
+        </div>
+        <div id="divSection" style="display:none">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2" id="divLoadSection">
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container margin-top-20">
+            <div class="filter-block">
+                <div class="col-md-2">
+                    <label>Filter by:</label>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="drpSection" onchange="filteration()">
+                        <option value="">--Select Section--</option>
+                        @foreach (var item in sections)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="drpReligion" onchange="filteration(); loadSect()">
+                        <option value="">--Select Religion--</option>
+                        @foreach (var item in religions)
+                        {
+                            <option value="@item.Id">@item.RelgionName</option>
+                        }
+
+
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="drpSubReligion" onchange="filteration();">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-20" id="divLoadCemeteries">
+
+        </div>
+    </div>
+    <br />
+</div>
+
+
+  <!--enquiry Modal -->
+<div  class="modal">
+    <div class="modal-dialog customEnquiryModal">
+        <div class="modal-content">
+            @*<div class="modal-body">
+                <h3 class="text-center-align">Enquiry Form</h3>
+                <a href="#" class="js-modal-close close" data-dismiss="modal" style="margin-top:-40px;">×</a>
+
+                <ul class="enquiry-form">
+                    <li class="col-sm-12 col-md-4">
+                        <label>First Name <span class="red">*</span>: </label>
+                        <input type="text" name="" id="fName" placeholder="" class="radio1" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-4">
+                        <label>Last Name <span class="red">*</span>: </label>
+                        <input type="text" name="" id="lName" class="radio1" placeholder="" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-4">
+                        <label>Date of Birth <span class="red">*</span>: </label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='date' class="form-control radio1" id="DOB"/>
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="checkbox-block">
+                            <span class="labels">Religion :</span>
+                            <label>
+                                <input type="checkbox" class="radio" value="Muslim"  name="" id="Muslim" />Muslim
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Christian" name="" id="Christian" />Christian
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Catholic" name="" id="Catholic" />Catholic
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Jewish"   name="" id="Jewish" />Jewish
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Buddhism" name="" id="Buddhism" />Buddhism
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Hinduism" name="" id="Hinduism" />Hinduism
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Gnosticism" name="" id="Gnosticism" />Gnosticism
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Other" name="" id="Other" />Other
+                            </label>
+                        </div>
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Email <span class="red">*</span>: </label>
+                        <input type="email" name="" placeholder="" class="radio1" required="" id="Email">
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Telephone <span class="red">*</span>: </label>
+                        <input type="tel" name="" placeholder="" class="radio1" required="" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="Telephone">
+                    </li>
+                    <li class="col-md-12">
+                        <label>Address : </label>
+                        <textarea name="" id="Address" class="radio1"></textarea>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="checkbox-block">
+                            <span class="labels">Current Funeral Plan Provider :</span>
+                            <label>
+                                <input type="checkbox" class="radio" name="" value="Avalon" id="Avalon" />Avalon
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" name="" value="Dignity" id="Dignity" />Dignity
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio"  name="" value="Golden Charter" id="Golden" />Golden Charter
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="from 50" name="" id="from" />from 50
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Golden Leaves" name="" id="gLeaves" />Golden Leaves
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" name="" value="Co-operative" id="CoOperative" />Co-operative
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="None" name="" id="None" />None
+                            </label>
+                        </div>
+                    </li>
+                    <li class="col-md-12">
+                        <label>Cemetery interested : </label>
+                        <textarea name="" id="cemeteryInterested" class="radio1"></textarea>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="checkbox-block">
+                            <span class="labels">Number of plots :</span>
+                            <label>
+                                <input type="checkbox" class="radio" value="1-2"  name="" id="plot2" />1-2
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="2-4"  name="" id="plot4" />2-4
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="4-6" name="" id="plot6" />4-6
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="6+" name="" id="plotMore" />6+
+                            </label>
+                        </div>
+                    </li>
+                    <li class="col-md-12">
+                        <button  class="add-to-cart-btn" style="width: 100% ; margin-left: 0; border-width: 0;"  onclick="FormEnquiry();" >Submit</button>
+                        
+                    </li>
+                </ul>
+
+            </div>*@
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="enquiry-form" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 class="text-center-align">Enquiry Form</h3>
+                <a href="#" class="js-modal-close close" data-dismiss="modal" style="margin-top:-40px;">×</a>
+
+                <ul class="enquiry-form">
+                    <li class="col-sm-12 col-md-4">
+                        <label>First Name <span class="red">*</span>: </label>
+                        <input type="text" name="" id="fName" placeholder="" class="radio1" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-4">
+                        <label>Last Name <span class="red">*</span>: </label>
+                        <input type="text" name="" id="lName" class="radio1" placeholder="" required="">
+                    </li>
+                    <li class="col-sm-12 col-md-4">
+                        <label>Date of Birth <span class="red">*</span>: </label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='date' class="form-control radio1" id="DOB" />
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="checkbox-block">
+                            <span class="labels">Religion :</span>
+                            <label>
+                                <input type="checkbox" class="radio" value="Muslim" name="" id="Muslim" />Muslim
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Christian" name="" id="Christian" />Christian
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Catholic" name="" id="Catholic" />Catholic
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Jewish" name="" id="Jewish" />Jewish
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Buddhism" name="" id="Buddhism" />Buddhism
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Hinduism" name="" id="Hinduism" />Hinduism
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Gnosticism" name="" id="Gnosticism" />Gnosticism
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Other" name="" id="Other" />Other
+                            </label>
+                        </div>
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Email <span class="red">*</span>: </label>
+                        <input type="email" name="" placeholder="" class="radio1" required="" id="Email">
+                    </li>
+                    <li class="col-sm-12 col-md-6">
+                        <label>Telephone <span class="red">*</span>: </label>
+                        <input type="tel" name="" placeholder="" class="radio1" required="" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="Telephone">
+                    </li>
+                    <li class="col-md-12">
+                        <label>Address : </label>
+                        <textarea name="" id="Address" class="radio1"></textarea>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="checkbox-block">
+                            <span class="labels">Current Funeral Plan Provider :</span>
+                            <label>
+                                <input type="checkbox" class="radio" name="" value="Avalon" id="Avalon" />Avalon
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" name="" value="Dignity" id="Dignity" />Dignity
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" name="" value="Golden Charter" id="Golden" />Golden Charter
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="from 50" name="" id="from" />from 50
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="Golden Leaves" name="" id="gLeaves" />Golden Leaves
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" name="" value="Co-operative" id="CoOperative" />Co-operative
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="None" name="" id="None" />None
+                            </label>
+                        </div>
+                    </li>
+                    <li class="col-md-12">
+                        <label>Cemetery interested : </label>
+                        <textarea name="" id="cemeteryInterested" class="radio1"></textarea>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="checkbox-block">
+                            <span class="labels">Number of plots :</span>
+                            <label>
+                                <input type="checkbox" class="radio" value="1-2" name="" id="plot2" />1-2
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="2-4" name="" id="plot4" />2-4
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="4-6" name="" id="plot6" />4-6
+                            </label>
+                            <label>
+                                <input type="checkbox" class="radio" value="6+" name="" id="plotMore" />6+
+                            </label>
+                        </div>
+                    </li>
+                    <li class="col-md-12">
+                        <button class="add-to-cart-btn" style="width: 100% ; margin-left: 0; border-width: 0;" onclick="FormEnquiry();">Submit</button>
+                        @*<input type="button" value="Submit" class="add-to-cart-btn" style="width: 100% ; margin-left: 0; border-width: 0;" onchange="SubmitEnquiry()">*@
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="graveDetailModal" role="dialog">
+    <div class="modal-dialog modal-plot" style="width: 900px">
+        <div id="divLoadGravesDetails"></div>
+        <!-- Modal content-->
+        @*<div class="modal-content">
+            <div class="modal-body">
+                <div id="divLoadGravesDetails"></div>
+            </div>
+        </div>*@
+
+    </div>
+</div>
+<input type="hidden" id="hidId" value="@Model.Id" />

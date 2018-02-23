@@ -1,0 +1,143 @@
+﻿@model BurialPlots.DAL.Blog
+@using BurialPlots.DAL
+@{
+    ViewBag.Title = "Create Blog";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var categories = new BlogCategoryRepository().GetAll();
+}
+<link href="https://cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+@section Scripts{
+<script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
+<script src="~/Areas/Admin/JS/Blog/BlogListing.js"></script>
+}
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("Index", "Blog")" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back </a>
+    </div>
+</div>
+<br />
+<h2>Edit Blog</h2>
+
+@using (Html.BeginForm(new {id="createFormId"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <input type="hidden" id="hidId" name="Id" value="@Model.Id" />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="Title" value="@Model.Title" />
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <label class="control-label col-md-2">Blog Category</label>
+      <div class="col-md-10">
+          <select class="form-control" id="Category">
+              <option value="">--Select Category--</option>
+              @foreach (var item in categories)
+              {
+                  if (item.Id == Model.CategoryId)
+                  {
+                      <option selected="selected" value="@item.Id">@item.Name</option>
+                  }
+                  else
+                  {
+                    <option value="@item.Id">@item.Name</option>
+                  }
+              }
+          </select>
+      </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Published Date</label>
+            <div class="col-md-3">
+                @if (Model.PublishedDate != null)
+                {
+                    <input type="text" class="form-control datepicker" name="Date" value="@Model.PublishedDate.Value.ToShortDateString()" id="Date" />
+                }
+                else
+                {
+                    <input type="text" class="form-control datepicker" name="Date" id="Date" />
+                }
+            </div>
+            <div class="col-md-3">
+                <div class="checkbox">
+                    @if (Model.IsFeatured == true)
+                    {
+                        <label><input checked="checked" type="checkbox" id="IsFeatured">Featured</label>
+                    }
+                    else
+                    {
+                        <label><input type="checkbox" id="IsFeatured">Featured</label>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Select Image</label>
+            <div class="col-md-10">
+                <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Preview Image</label>
+            <div class="col-md-8">
+      @if (!string.IsNullOrEmpty(Model.FeaturedImage))
+                {
+        <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="~/images/Blog/@Model.FeaturedImage" alt="Dimesnsions (220 X 220) pixels" />
+<pre style="width:220px;">220 X 220 Pixels</pre>
+      }
+      else
+      {
+        <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="" alt="Dimesnsions (220 X 220) pixels" />
+<pre style="width:220px;">220 X 220 Pixels</pre>
+      }
+            
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <div id="editornew" style="height:400px;">
+                    @Html.Raw(Model.Description)
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div id="souruce" style="display:none">
+                <textarea class="form-control" id="show"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <select class="form-control" id="drpPublish" name="IsApproved">
+                    @if (Model.IsApproved == true)
+                    {
+                        <option selected="selected" value="true">Publish</option>
+                        <option value="false">Draft</option>
+                    }
+                    else
+                    {
+                        <option value="true">Publish</option>
+                         <option selected="selected" value="false">Draft</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<input type="hidden" id="Imghiden" value="@Url.Action("Upload","Blog")" />
+

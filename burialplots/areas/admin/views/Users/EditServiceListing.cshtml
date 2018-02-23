@@ -1,0 +1,418 @@
+﻿@model BurialPlots.DAL.SeviceListing
+@using BurialPlots.DAL
+@using System.Collections.Generic
+@{
+    ViewBag.Title = "Edit Service";
+    Layout = "~/Areas/Admin/Views/Shared/_UsersLayout.cshtml";
+    var funeralServices = new FuneralServicesRepository().GetAll();
+    var counties = new CountyRepository().GetAll().OrderBy(x => x.Name.Trim()).ToList();
+    var towns = new TownsRepositoy().GetAll().Take(20);
+}
+<link href="~/css/AddService.css" rel="stylesheet" />
+<link href="~/Areas/Admin/JS/MultiSelectDropdown/jquery.multiselect.css" rel="stylesheet" />
+@section Scripts{
+    <script src="~/Areas/Admin/JS/MultiSelectDropdown/jquery.multiselect.js"></script>
+    <script src="~/Areas/Admin/JS/Users/AddServiceList.js"></script>
+}
+<input type="hidden" value="@Model.Id" id="hidId" />
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="@Url.Action("MyListings", "Users")" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back </a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Edit Service</h2>
+        </div>
+    </div>
+    <br>
+    <form>
+        <div class="row">
+            <div class="col-md-5">
+                <label>Business Name:</label>
+                @if (!string.IsNullOrEmpty(Model.BusinessName))
+                {
+                    <input type="text" value="@Model.BusinessName" style="font-size:small" class="form-control mytext-field" id="txtBusinessName" />
+                }
+                else
+                {
+                    <input type="text" style="font-size:small" class="form-control mytext-field" id="txtBusinessName" />
+                }
+            </div>
+            <div class="col-md-5">
+                <label>Post Code:</label>
+                @if (!string.IsNullOrEmpty(Model.PostCode))
+                {
+                    <input type="text" style="font-size:small" value="@Model.PostCode" class="form-control mytext-field" id="txtPostCode" />
+                }
+                else
+                {
+                    <input type="text" style="font-size:small" class="form-control mytext-field" id="txtPostCode" />
+                }
+            </div>
+            <div class="col-md-2">
+                <div></div>
+                <p>
+                    <a style="margin-top:2px" href="#" onclick="ContinueFromBusinessDetail()" class="glyphicon glyphicon-search btn btn-default customcontinue"></a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="control-label">Select an Address</label>
+                    <select id="drpAddress" class="form-control">
+                        <option value="">-Select Address-</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label></label>
+                <div class="form-group">
+                    <input type="button" style="margin-top:2px" class="btn btn-default form-control customcontinue" onclick="showLocation()" id="ManualButton" value="Enter Manually" />
+                </div>
+            </div>
+        </div>
+        <div id="hlocationId">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Address Line 1</label>
+                    @if (!string.IsNullOrEmpty(Model.Address1))
+                    {
+                        <input type="text" style="font-size:small" value="@Model.Address1" class="form-control mytext-field" id="txtAddress1" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" class="form-control mytext-field" id="txtAddress1" />
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label>Address Line 2</label>
+                    @if (!string.IsNullOrEmpty(Model.Address2))
+                    {
+                        <input type="text" style="font-size:small" value="@Model.Address2" class="form-control" title="Optional" id="txtAddress2" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" class="form-control" title="Optional" id="txtAddress2" />
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="form-group row ">
+                <div class="col-md-3">
+                    <label>Town/City</label>
+                    @if (!string.IsNullOrEmpty(Model.Town))
+                    {
+                        <input type="text" style="font-size:small" value="@Model.Town" class="form-control mytext-field" id="txtTown" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" class="form-control mytext-field" id="txtTown" />
+                    }
+                </div>
+                <div class="col-md-3">
+                    <label>County</label>
+                    @if (!string.IsNullOrEmpty(Model.County))
+                    {
+                        <input type="text" style="font-size:small" value="@Model.County" class="form-control mytext-field" id="txtCounty" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" class="form-control mytext-field" id="txtCounty" />
+                    }
+                </div>
+                <div class="col-md-3">
+                    <label>Country</label>
+                    @if (!string.IsNullOrEmpty(Model.Country))
+                    {
+                        <input type="text" style="font-size:small" value="@Model.Country" class="form-control mytext-field" id="txtCountry" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" value="UK" class="form-control mytext-field" id="txtCountry" />
+                    }
+                </div>
+                <div class="col-md-3">
+                    <label>Postcode</label>
+                    @if (!string.IsNullOrEmpty(Model.PostCode))
+                    {
+                        <input type="text" style="font-size:small" class="form-control" value="@Model.PostCode" id="txtPostCode1" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" class="form-control" id="txtPostCode1" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="divContactSection">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Phone Number</label>
+                    @if (!string.IsNullOrEmpty(Model.PhoneNo))
+                    {
+                        <input type="text" style="font-size:small" value="@Model.PhoneNo" class="form-control mytext-field" id="txtPhoneNumber" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" class="form-control mytext-field" id="txtPhoneNumber" />
+                    }
+                </div>
+                <div class="col-md-4">
+                    <label>Website</label>&nbsp;<span>Optional</span>
+                    @if (!string.IsNullOrEmpty(Model.Website))
+                    {
+                        <input type="text" style="font-size:small" value="@Model.Website" class="form-control" id="txtWebsite" />
+                    }
+                    else
+                    {
+                        <input type="text" style="font-size:small" class="form-control" id="txtWebsite" />
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <label>Facebook Social Link</label>
+                @if (!string.IsNullOrEmpty(Model.FacebookLink))
+                {
+                    <input type="text" class="form-control" value="@Model.FacebookLink" id="facebookLink" />
+                }
+                else
+                {
+                    <input type="text" class="form-control" id="facebookLink" />
+                }
+            </div>
+            <div class="col-md-4">
+                <label>Twitter Social Link</label>
+                @if (!string.IsNullOrEmpty(Model.TwitterLink))
+                {
+                    <input type="text" class="form-control" value="@Model.TwitterLink" id="twitterLink" />
+                }
+                else
+                {
+                    <input type="text" class="form-control" id="twitterLink" />
+                }
+            </div>
+            <div class="col-md-4">
+                <label>Google + Social Link</label>
+                @if (!string.IsNullOrEmpty(Model.GooglePlusLink))
+                {
+                    <input type="text" class="form-control" value="@Model.GooglePlusLink" id="googleLink" />
+                }
+                else
+                {
+                    <input type="text" class="form-control" id="googleLink" />
+                }
+            </div>
+            <div class="col-md-4">
+                <label>LinkedIn</label>
+                @if (!string.IsNullOrEmpty(Model.LinkedIn))
+                {
+                    <input type="text" class="form-control" value="@Model.LinkedIn" id="txtLinkedIn" />
+                }
+                else
+                {
+                    <input type="text" class="form-control" id="txtLinkedIn" />
+                }
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label>Payment Methods </label>
+                <select class="activePaymentMethods form-control" multiple="multiple" id="paymentGateways">
+                    @if (!string.IsNullOrEmpty(Model.PaymentGateways) && Model.PaymentGateways.Contains("Visa"))
+                    {
+                        <option selected="selected" value="Visa">Visa</option>
+                    }
+                    else
+                    {
+                        <option value="Visa">Visa</option>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PaymentGateways) && Model.PaymentGateways.Contains("Maestro"))
+                    {
+                        <option selected="selected" value="Maestro">Maestro</option>
+                    }
+                    else
+                    {
+                        <option value="Maestro">Maestro</option>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PaymentGateways) && Model.PaymentGateways.Contains("Master"))
+                    {
+                        <option selected="selected" value="Master">Master</option>
+                    }
+                    else
+                    {
+                        <option value="Master">Master</option>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PaymentGateways) && Model.PaymentGateways.Contains("Solo"))
+                    {
+                        <option selected="selected" value="Solo">Solo</option>
+                    }
+                    else
+                    {
+                        <option value="Solo">Solo</option>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PaymentGateways) && Model.PaymentGateways.Contains("Electron"))
+                    {
+                        <option selected="selected" value="Visa Electron">Visa Electron</option>
+                    }
+                    else
+                    {
+                        <option value="Electron">Visa Electron</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Product And Services</label>
+                    @if (!string.IsNullOrEmpty(Model.ServicesAndProducts))
+                    {
+                        <textarea id="productsAndServices" placeholder="Add break after each service" rows="4" class="form-control textAreaMultiligne">@Model.ServicesAndProducts</textarea>
+                    }
+                    else
+                    {
+                        <textarea id="productsAndServices" placeholder="Add break after each service" rows="4" class="form-control textAreaMultiligne"></textarea>
+                    }
+                </div>
+
+                <div class="col-md-6">
+                    <label>Business Description</label>
+                    @if (!string.IsNullOrEmpty(Model.BusinessDescription))
+                    {
+                        <textarea id="BusinessDescription" placeholder="Write Business Description" rows="4" class="form-control">@Model.BusinessDescription</textarea>
+                    }
+                    else
+                    {
+                        <textarea id="BusinessDescription" placeholder="Write Business Description" rows="4" class="form-control"></textarea>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <label>Select Image</label>
+                <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @if (!string.IsNullOrEmpty(Model.Picture))
+                {
+                    <input type="hidden" id="hidImage" value="@Model.Picture" />
+                    <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="~/images/Users/@Model.Picture" alt="Image Preview" />
+                }
+                else
+                {
+                    <input type="hidden" id="hidImage" value="" />
+                    <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="" alt="Image Preview" />
+                }
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label>Where do you want to Advertise?</label>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @foreach (var item in Model.ServiceListingPlans)
+            {
+                <div class="row">
+                    <div class="col-md-3">
+                        @item.County.Name
+                    </div>
+                    <div class="col-md-3">
+                        @item.FuneralService.Name
+                    </div>
+                    <div class="col-md-4">
+                        @item.PartnerPlan.Title
+                    </div>
+                </div>
+            }
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+               <a href="javascript:void(0)" onclick="addBusinessPlanRow()" class="btn btn-primary">
+                   <span class="fa fa-plus-square"></span> Add More
+               </a>
+            </div>
+        </div>
+        <br />
+        <div id="hideCounty">
+            <div class="form-group" id="divBusinessPlans">
+                
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-10">
+                    <b class="pull-right"><span id="spnTotal"></span></b>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="divYourBusinessSection">
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    <input type="button" onclick="saveServiceListing()" value="Next" class="btn btn-default right form-control customcontinue" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/template" id="tmplBusinessClassification">
+    <div class="row divPlanRow" id="divPlanRow_<%= Id %>">
+        <div class="col-md-3">
+            <label class="control-label">Select County </label>
+            <select class="form-control drpCounties" id="drpCounties_<%= Id %>" onchange="checkConflictPlan()">
+                @foreach (var item in counties)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Business Classification</label>
+            <select class="form-control mytext-field txtBusinessClass" onchange="checkConflictPlan()" id="txtBusinessClass_<%= Id %>">
+                <option value="">--Select Business--</option>
+                @foreach (var item in funeralServices)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label>Plans</label>
+            <select class="form-control mytext-field txtPlans" onchange="checkConflictPlan()" id="txtPlans_<%= Id %>">
+                <option value="">--Select Plan--</option>
+                @foreach (var item in ViewBag.Plans as List<PartnerPlan>)
+                {
+                    <option value="@item.Id|@item.Position">@item.Title</option>
+                }
+            </select>
+            <span style="color:red" class="spnPlanError"></span>
+        </div>
+        <div class="col-md-2">
+            <br /><br />
+            <span class="fa fa-trash-o" onclick="removeBusinessPlanRow('<%= Id %>')" style="cursor:pointer;font-size:20px;color:red"></span>
+        </div>
+    </div>
+
+</script>
+<input type="hidden" id="hidGetPostCodeServicesUrl" value="@Url.Action("GetAddress", "Home",new { Area=""})" />
+<input type="hidden" id="hIdLatitudeVal" value="" />
+<input type="hidden" id="hIdLongitudeVAl" value="" />
+<input type="hidden" id="Imghiden" value="@Url.Action("Upload","Users")" />
+<input type="hidden" id="hidSaveServiceLnk" value="@Url.Action("SaveService", "Users")" />

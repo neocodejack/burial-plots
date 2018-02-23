@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Regions";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+<script src="~/Areas/Admin/JS/Setting/origins.js"></script>
+    }
+<div class="row" id="divScroll">
+    <div class="col-md-12">
+        <h2>Regions</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Region Name:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="txtName" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Description:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="txtDescription" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <input type="button" class="btn btn-success" onclick="saveOrigin()" value="Save" />
+                <input type="button" class="btn btn-default" onclick="resetAllFields()" value="Reset" />
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadOrigins"></div>
+</div>
+<input type="hidden" id="hidId" />
+<input type="hidden" id="hidLoadOriginsUrl" value="@Url.Action("LoadOrigins", "Settings")" />
+<input type="hidden" id="hidSaveOriginUrl" value="@Url.Action("SaveOrigin", "Settings")" />
+<input type="hidden" id="hidDeleteOriginUrl" value="@Url.Action("DeleteOrigin", "Settings")" />

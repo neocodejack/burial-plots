@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BurialPlots.Controllers.TempGrave>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Grave Name</th>
+            <th>Cemetery Name</th>
+            <th>Religion</th>
+            <th>Layer</th>
+            <th>Price</th>
+            <th>Total Price</th>
+            <th width="5%"></th>
+        </tr>
+    </thead>
+    <tbody class="table-bordered" style="border: 1px solid #ddd;">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.GraveName
+                </td>
+                <td>
+                    @item.CemeteryName
+                </td>
+                <td>
+                    @item.Religion
+                </td>
+                <td>
+                    @item.Layer
+                </td>
+                <td>
+                    &pound; @Math.Round(Convert.ToDecimal(item.Price), 2)
+                </td>
+                <td>
+                    &pound;@Math.Round(Convert.ToDecimal(item.Price), 2)
+                </td>
+                <td>
+                    <span class="fa fa-trash-o" style="color:red; cursor:pointer" onclick="removeFromCart('@item.LayerId')"></span>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5"></td>
+            <td colspan="2">Grand Total: <span class="total-price">&pound;@Math.Round(Convert.ToDecimal(Model.Sum(c => Convert.ToDecimal(c.Price))), 2)</span></td>
+        </tr>
+    </tfoot>
+</table>
+
+@*<div class="row">
+        <div class="col-md-2 col-md-offset-7 text-center">
+            <label>Grand Total:</label>
+        </div>
+        <div class="col-md-2 text-center">
+
+        </div>
+    </div>*@

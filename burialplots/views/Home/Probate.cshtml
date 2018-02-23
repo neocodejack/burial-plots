@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "Probate";
+    Layout = "~/Views/Shared/_Header.cshtml";
+    Decimal Fid = Convert.ToDecimal(ViewBag.Id);
+}
+@section Scripts{
+    <script src="~/js/Home/BlogArticles.js"></script>
+}
+<style>
+    .shortTexts {
+        width: 450px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<body id="top" class="home" style="margin-bottom:150px" >
+  
+        <div class="banner" style="background-image: url('/images/banner-about.jpg');">
+            <div class="caption-inner">
+                <div class="container">
+                    <h2>Probate</h2>
+                </div>
+            </div>
+        </div><!-- banner -->
+        <!-- .site-header-menu -->
+    
+    <!-- .site-header-main -->
+    <!-- .site-header -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main" role="main">
+                <div class="section text-center-align">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3" style="margin-top:-43px;">
+                                <a href="@Url.Action("Index", "Search" ,new {id=Fid})" class="btn btn-primary">Search for Probate</a>
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                        <h2 class="underline">Burial Plots Probate</h2>
+                        <div class="padding-left">
+                            <p>Dealing with the legal issues which arise when somebody dies can be a hugely complex matter. On the one hand, it can include relatively straightforward matters such as registering the death and informing relevant bodies like HMRC, the passport office and the local council. On the other, however, the death of a person means that those who are left behind have to manage the estate of the deceased.</p>
+                            <p>If the person in question left a will then it will be clear exactly how they wish the assets they left behind to be shared out amongst their beneficiaries, but even in cases such as this the process of probate must be followed. In simple terms, the term ‘probate’ involves giving someone legal permission to bring together all of the assets of the deceased, value those assets and then pass the estate on.</p>
+                        </div>
+                        <br />
+                        <h2 class="underline">Dealing With Probate</h2>
+                        <div class="padding-left">
+                            <p>In order to access and then distribute the assets of the deceased you may first need to be issued with a grant of representation, a legal document which banks and other financial institutions will want to see before allowing access to the funds in question. There are exceptions to this rule. You may not need a grant of representation if the estate in question is valued at less than £5,000 and doesn’t include any shares, property or land ownership. You will also not need a grant if the estate was held in joint names with a surviving spouse or civil partner and passes directly to them.</p>
+                            <p>If a will is involved, then the person dealing with probate will have been named in the will as executor. If not, then an executor will be appointed and will generally be the closest living relative of the deceased. </p>
+                        </div>
+                        <br />
+                        <h2 class="underline">Valuing the Estate</h2>
+                        <div class="padding-left">
+                            <p>In order to value the estate, the executor of the will has to bring together information on all of the assets of the deceased. This will include bank and building society accounts, properties, investments, personal belongings such as jewellery and works of art, motor vehicles, pensions and life insurance policies. The value of each asset at the time the person dies will have to be established. This will mean contacting the providers of any financial products and having properties valued by an estate agent or independent valuer.  You will also need to discover and calculate any debts owing, such as credit cards, loans, mortgages and personal debts, and the cost of a funeral can also be deducted from the value of the estate. The figure left when you deduct debts from assets will represent the value of the estate, and will determine whether inheritance tax needs to be paid.</p>
+                        </div>
+                        <br />
+                        <h2 class="underline">Inheritance Tax</h2>
+                        <div class="padding-left">
+                            <p>Certain estates don’t have to pay inheritance tax. These include estates which are worth less than the current threshold of £325,000, and those which are exempt because they have been left to a spouse or civil partner or to a qualifying charity.</p>
+                            <p>New laws introduced in April 2010 mean that the estate in question will also fall outside Inheritance Tax if it is worth less than £650,000 and 100% of the unused Inheritance Tax allowance from a late spouse or civil partner can be transferred to the deceased.</p>
+                            <p>Even if Inheritance Tax isn’t owed, you will still need to fill in a Return of Estate Information form for HMRC, and if it is owed, or the estate is not exempt, then the much longer IHT400 form needs to be filled in, detailing all of the assets and debts of the deceased.</p>
+                        </div>
+                        <br />
+                        <h2 class="underline">Obtaining Probate</h2>
+                        <div class="padding-left">
+                            <p>Once the forms have been filled in they have to be sent to HMRC and the Probate Registry and any Inheritance Tax which is due has to be paid. Following this, the executor needs to attend a Probate venue or the office of a commissioner of oaths – generally a solicitor – to swear an oath in person. The grant of representation will then be provided, allowing the executor to access the assets of the deceased, pay any debts and distribute the estate to the beneficiaries. </p>
+                            <p>As can be gathered from this fairly brief description, probate can be a complex and lengthy process, often taking up to a year if not longer to complete. You may, as executioner, opt to place probate entirely in the hands of a legal professional, or undertake the majority of the work yourself and then ask a solicitor to check the forms and details before submitting them. </p>
+                            <p>If you have any questions about probate or the other legal processes surrounding bereavement then please contact us at (Email) or phone Burialplots.co.uk on 0100 000 0000.</p>
+                        </div>
+
+
+                        <ul class="burial-blocks">
+
+                            <li style="background-image: url('/images/burial-block-pic1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="BURIAL PLOTS NOW" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Burial Plots</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="HELPFUL ADVICE" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Helpful Advice</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/burial-block-pic3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="LEGAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Legal</h4>
+                                        <h4 class="work-block-grid-description">
+                                            <br /> <br />
+                                            [Click for more]
+                                        </h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="section text-center-align purple-bg" style="margin-bottom: 48px;">
+                    <div class="container">
+                        <ul class="serivce-blocks">
+
+                            <li style="background-image: url('/images/service-block1.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="WHERE TO START" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Where to start</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block2.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="Aboutus" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Checklist</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block3.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERALS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funerals</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block4.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="FUNERAL DIRECTORS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Funeral Directors</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block5.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="AFTER FUNERAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">After funeral</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block6.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="MEMORIAL" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Memorial</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block7.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="STONEMASONS" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Stonemasons</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="background-image: url('/images/service-block8.jpg');">
+                                <a href="@Url.Action("PageView","Admin/Page",new {id="SERVICES" })">
+                                    <div class="overlay"></div>
+                                    <div class="work-block-grid-content">
+                                        <h4 class="work-block-grid-name">Services</h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- section -->
+                <div class="text-center-align">
+                    <h2 class="underline">LATEST BLOGS</h2>
+                </div><!--  Blogs-->
+                <div id="loadBlogSection">
+
+                </div>
+            </main>
+        </div>>
+    </div>
+    <input type="hidden" id="hIdLoadBlogSection" value="@Url.Action("LoadBlogSection","NewsArticals")" />
+</body>
+

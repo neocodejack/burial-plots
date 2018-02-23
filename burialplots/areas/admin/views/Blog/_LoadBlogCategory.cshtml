@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BurialPlots.DAL.BlogCategory>
+
+<table class="table table-responsive table-bordered table-hover table-striped" id="tblLoadBlogCategory">
+    <thead>
+        <tr>
+            <th>
+                Category Name
+            </th>
+          
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Name != null)
+                    {
+                        @item.Name
+                    }
+                   
+                </td>
+             
+                <td>
+                    <span class="fa fa-edit" style="color: green; cursor: pointer" onclick="editBlogCategory('@item.Id','@item.Name')"></span>
+                    <span class="fa fa-trash" style="color: red; cursor: pointer" onclick="deleteBlogCategory('@item.Id')"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

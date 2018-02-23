@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BurialPlots.DAL.Town>
+
+<table class="table table-responsive table-hover table-bordered table-striped" id="tblLoadTowns">
+    <thead>
+        <tr>
+            <th class="hide"></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                County
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.AddedDate)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="hide">@item.Id</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @if (item.County != null)
+                    {
+                        <span>@item.County.Name</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.AddedDate)
+                </td>*@
+                <td>
+             
+                    <span class="fa fa-edit" style="color: green; cursor: pointer" onclick="editTown('@item.Id', '@item.Name', '@item.Description', '@item.CountyId')"></span>&nbsp;
+                    <span class="fa fa-trash-o" style="color: red; cursor: pointer" onclick="deleteTown('@item.Id')"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

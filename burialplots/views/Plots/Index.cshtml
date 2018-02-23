@@ -1,0 +1,330 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+
+<!DOCTYPE html>
+<html class="js" lang="en-US">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>Burial Plots</title>
+    <link href="~/style.css" rel="stylesheet"  type="text/css" media="all" />
+
+    <script src="~/js/jquery.js"></script>
+    @*<link rel="stylesheet" href="style.css" type="text/css" media="all">*@
+    @*<script type="text/javascript" src="js/jquery.js"></script>*@
+    <script src="~/js/jquery.js"></script>
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+
+    <!-- fixed header -->
+    <script>
+jQuery(window).scroll(function() {
+    if (jQuery(this).scrollTop() > 1){
+        jQuery('.header-menu').addClass("sticky");
+    }
+    else{
+        jQuery('.header-menu').removeClass("sticky");
+    }
+
+});
+    </script>
+    <!-- Owl Carousel Assets -->
+    <link href="~/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="~/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+
+   
+
+</head>
+
+<body id="top" class="home">
+    <div class="banner" style="background-image: url(/images/banner-1.jpg);">
+        <div class="caption-inner">
+            <div class="container">
+                <h2>BURIAL SPACE IN THE UK COULD </h2>
+                <h2>RUN OUT WITHIN THE NEXT 20 YEARS</h2>
+            </div>
+        </div>
+
+    </div><!-- banner -->
+
+    @*<div id="page" class="site">
+        <div class="site-inner">*@
+            @*<header id="masthead" class="site-header" role="banner">
+                <div class="site-header-main">
+                    <div class="header-menu">
+                        <div class="container">
+                            <div class="site-branding">
+                                <a href="#"><img src="~/images/logo.png" alt="Burial Plots"></a>
+                            </div>
+                            <div id="site-header-menu" class="menu-container site-header-menu">
+                                <div class="menu">
+                                    <ul id="menu-nav" class="primary-menu">
+                                        <li>
+                                            <a href="burial-plots.html">BURIAL PLOTS</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">Locations</a>
+                                                    <ul>
+                                                        <li><a href="~/Plots/BurialPlots">Burial Plots</a></li>
+                                                        <li><a href="~/Plots/BurialPlots">Burial Plots</a></li>
+                                                        <li><a href="~/Plots/BurialPlots">Burial Plots</a></li>
+                                                        <li><a href="~/Plots/BurialPlots">Burial Plots</a></li>
+                                                    </ul>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="Bereavement.html">BEREAVEMENT</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="where-to-start.html">Where to Start</a>
+                                                    <ul>
+                                                        <li><a href="~/Plots/AfterFuneral">After Funerals</a></li>
+                                                        <li><a href="~/Plots/Memorials">Memorials</a></li>
+                                                        <li><a href="~/Plots/Stonemasons">Stonemasons</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="~/Plots/Funerals">Funerals</a>
+                                                    <ul>
+                                                        <li><a href="~/Plots/Arranging">Arranging</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="~/Plots/FuneralDirectors">Funerals Directors</a>
+                                                    <ul>
+                                                        <li><a href="~/Plots/Services">Services</a></li>
+                                                        <li><a href="~/Plots/Coffins">Coffins</a></li>
+                                                        <li><a href="~/Plots/Florists">Florists</a></li>
+                                                        <li><a href="~/Plots/Cars">Cars</a></li>
+                                                        <li><a href="~/Plots/FuneralPlans">Funeral Plans</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="Helpful-Advice.html">HELPFUL ADVICE</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:void(0)">Today</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Lidership</a></li>
+                                                        <li><a href="javascript:void(0)">History</a></li>
+                                                        <li><a href="javascript:void(0)">Locations</a></li>
+                                                        <li><a href="javascript:void(0)">Careers</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Calendar</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Undergraduate</a></li>
+                                                        <li><a href="javascript:void(0)">Masters</a></li>
+                                                        <li><a href="javascript:void(0)">International</a></li>
+                                                        <li><a href="javascript:void(0)">Online</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Sport</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Undergraduate research</a></li>
+                                                        <li><a href="javascript:void(0)">Masters research</a></li>
+                                                        <li><a href="javascript:void(0)">Funding</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">Something</a>
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                        <li><a href="javascript:void(0)">Sub something</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="legal.html">LEGAL</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">School</a>
+                                                    <ul>
+                                                        <li><a href="#">Lidership</a></li>
+                                                        <li><a href="#">History</a></li>
+                                                        <li><a href="#">Locations</a></li>
+                                                        <li><a href="#">Careers</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="news-articles.html">PRESS & NEWS</a>
+                                                    <ul>
+                                                        <li><a href="#">Undergraduate</a></li>
+                                                        <li><a href="#">Masters</a></li>
+                                                        <li><a href="#">International</a></li>
+                                                        <li><a href="#">Online</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Study</a>
+                                                    <ul>
+                                                        <li><a href="#">Undergraduate</a></li>
+                                                        <li><a href="#">Masters</a></li>
+                                                        <li><a href="#">International</a></li>
+                                                        <li><a href="#">Online</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Empty sub</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="news-articles.html">PRESS & NEWS</a></li>
+                                        <li><a href="javascript:void(0)">CONTACT</a></li>
+                                        
+                                     </ul>
+                                </div>
+                            </div>
+                        </div><!-- container -->
+                    </div><!-- header-menu -->
+                    <div class="banner" style="background-image: url(/images/banner-1.jpg);">
+                        <div class="caption-inner">
+                            <div class="container">
+                                <h2>BURIAL SPACE IN THE UK COULD </h2>
+                                <h2>RUN OUT WITHIN THE NEXT 20 YEARS</h2>
+                            </div>
+                        </div>
+
+                    </div><!-- banner -->
+                    <!-- .site-header-menu -->
+                </div>
+                <!-- .site-header-main -->
+            </header>*@
+            <!-- .site-header -->
+            <div id="content" class="site-content">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <div class="section text-center-align purple-bg">
+                            <div class="container">
+                                <h2 class="underline">Latest News</h2>
+                                <div class="owl-carousel owl-theme latest-news">
+                                    <div class="item">
+                                        <h3>Article one</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum. Aliquam quis purus ut lectus vehicula blandit. Nunc blandit hendrerit leo sed accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae pharetra lectus. Sed ut tempor nibh. </p>
+                                        <a href="#">[Read More]</a>
+                                    </div>
+                                    <div class="item">
+                                        <h3>Article one</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum. Aliquam quis purus ut lectus vehicula blandit. Nunc blandit hendrerit leo sed accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae pharetra lectus. Sed ut tempor nibh. </p>
+                                        <a href="#">[Read More]</a>
+                                    </div>
+                                    <div class="item">
+                                        <h3>Article one</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum. Aliquam quis purus ut lectus vehicula blandit. Nunc blandit hendrerit leo sed accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae pharetra lectus. Sed ut tempor nibh. </p>
+                                        <a href="#">[Read More]</a>
+                                    </div>
+                                    <div class="item">
+                                        <h3>Article one</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum. Aliquam quis purus ut lectus vehicula blandit. Nunc blandit hendrerit leo sed accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae pharetra lectus. Sed ut tempor nibh. </p>
+                                        <a href="#">[Read More]</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- section -->
+                        <div class="section text-center-align">
+                            <div class="container">
+                                <!-- <h2>Burial Plots</h2> -->
+                                <p>Dealing with the loss of someone close to you is always bound to be a traumatic and difficult experience. On top of the emotional impact of the loss itself, the death of a loved one or close friend also means having to negotiate a complex and daunting set of processes. At the very moment when you feel least equipped to focus on practical, legal or financial issues, you find yourself having to do precisely that.</p>
+                                <p>Here at Burialplots.co.uk we set out to minimise the stress which all of this involves by doing two things. The first of these is to offer access to affordable burial plots across the UK, bringing choice, flexibility and convenience to a market place which is currently failing to meet demand. The second is to provide a source of information and help to anyone who finds themselves having to arrange a funeral, or wishes to remove uncertainty by making plans for the future.</p>
+                                <br /> <br />
+                                <h2>Burial Plots </h2>
+                                <p>Although cremation is an option, many people, for cultural religious or personal reasons, prefer burial, and this is leading to a situation in which demand outstrips supply and prices rise at more than the rate of inflation every year. As land across the UK is taken up by the need for more housing and infrastructure, local authorities are finding it harder and harder to offer access to burial plots. In some parts of the country provision has all but stopped, whilst many authorities are predicting that access to burial plots will become increasingly scarce in the years to come. Against this backdrop, Burialplots.co.uk is able to offer the reassurance of certainty. Rather than having to wait and hope that a plot will be available when the time comes, our clients can plan ahead with clarity and assurance. Many people take comfort in knowing they have a plot or plots pre-purchased, particularly if they desire a final resting place which is close to members of their family or people with the same religious beliefs. By offering provision above and beyond the traditional funeral director model, we enable our clients to make arrangements such as these, and maximise availability by offering a choice between advance payment and payment plan options.</p>
+                                <br /> <br />
+                                <div class="column text-left-align">
+                                    <h2>Services</h2>
+                                    <p>Of course, there’s more to the process of bereavement than simply purchasing a burial plot, and our site offers access to all of the information an individual in this situation might need. Whether dealing with a sudden loss or planning for the future, visitors can access information on topics like making a will, handling probate, choosing a coffin, writing a eulogy and dealing with the details of a funeral such as flowers, cars and stonemasons.  By bringing all of this information together in one place we can minimise the stress of dealing with loss and help individuals to cope with the immediate aftermath or enjoy the security of planning for the future.</p>
+                                    <p>If you have any questions about purchasing a burial plot or anything else which dealing with a bereavement entails, please don’t hesitate to contact us via email at (Email), or by calling 0100 000 000. Our experts are ready and waiting to provide the advice and information you’re looking for.</p> <br /><br />
+                                    <a href="#" class="btn border-btn">More</a>
+                                </div>
+                                <div class="column">
+                                    <img src="~/images/video.jpg" alt="">
+                                </div>
+                            </div>
+                        </div><!-- section -->
+                        <div class="enquiry-block">
+                            <div class="block" style="background-image: url('/images/block-pic1.jpg');">
+                                <a href="pre-need.html">
+                                    <div class="title-text">Pre need burial plot purchase</div>
+                                </a>
+                            </div>
+                            <div class="block" style="background-image: url('/images/block-pic2.jpg');">
+                                <a href="at-need.html">
+                                    <div class="title-text">At need burial plot purchase</div>
+                                </a>
+                            </div>
+                            <div class="block" style="background-image: url('/images/block-pic3.jpg');">
+                                <a href="javascript:void(0)">
+                                    <div class="title-text">Cremation and cremated remains</div>
+                                </a>
+                            </div>
+                            <div class="block" style="background-image: url('/images/block-pic4.jpg');">
+                                <a href="javascript:void(0)">
+                                    <div class="title-text">End of life - A checklist</div>
+                                </a>
+                            </div>
+                            <div class="block" style="background-image: url('/images/block-pic5.jpg');">
+                                <a href="javascript:void(0)">
+                                    <div class="title-text">Planning ahead</div>
+                                </a>
+                            </div>
+                            <div class="block" style="background-image: url('/images/block-pic6.jpg');">
+                                <a href="Helpful-Advice.html">
+                                    <div class="title-text">Helpful advice</div>
+                                </a>
+                            </div>
+                        </div><!-- enquiry-block -->
+
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .content-area -->
+            </div>
+            <!-- .site-content -->
+        
+    <!-- .site -->
+    <div id="mask"></div>
+    @*<script src="js/owl.carousel.js"></script>*@
+    <script src="~/js/owl.carousel.js"></script>
+    <script>
+jQuery(document).ready(function($) {
+  $('.owl-carousel.latest-news').owlCarousel({
+    loop: true,
+    margin: 10,
+    dots: true,
+    items: 1,
+  })
+})
+    </script>
+    <script type="text/javascript">
+  jQuery(document).ready(function($){
+  $('#menu-nav').hover(function(){
+     $(this).toggleClass('highlighted');
+  });
+
+  $('#menu-nav').hover(
+       function(){ $('#mask').addClass('active') },
+       function(){ $('#mask').removeClass('active') }
+)
+  });
+    </script>
+    <script src="~/js/megamenu.js"></script>
+    @*<script src="js/megamenu.js"></script>*@
+
+
+</body>
+</html>
+

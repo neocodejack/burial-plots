@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html class="js" lang="en-US">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>Burial Plots</title>
+    <link href="~/style.css" rel="stylesheet" type="text/css" media="all" />
+
+ 
+    <script src="~/js/jquery.js"></script>
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+
+    <!-- fixed header -->
+    <script>
+jQuery(window).scroll(function() {
+    if (jQuery(this).scrollTop() > 1){
+        jQuery('.header-menu').addClass("sticky");
+    }
+    else{
+        jQuery('.header-menu').removeClass("sticky");
+    }
+
+});
+    </script>
+    <!-- Owl Carousel Assets -->
+    <link href="~/Content/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/css/owl.theme.default.min.css" rel="stylesheet" />
+
+    <!-- menu -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+
+    <link href="~/Content/css/ionicons.min.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body id="top" class="home">
+
+    <div id="page" class="site">
+        <div class="site-inner">
+            <header id="masthead" class="site-header" role="banner">
+                <div class="site-header-main">
+                    <div class="header-menu">
+                        <div class="container">
+                            <div id="site-header-menu" class="menu-container site-header-menu">
+                                <div class="menu" id="divLoadCategoriesLayout">
+                                </div>
+                            </div>
+                            <div class="site-branding">
+                                <a href="#"><img src="~/Content/images/logo.png" alt="Burial Plots"></a>
+                            </div>
+                        </div><!-- container -->
+                    </div><!-- header-menu -->
+                    <div class="banner" style="background-image: url('/Content/images/banner-1.jpg');">
+                        <div class="caption-inner">
+                            <div class="container">
+                                <h2>BURIAL SPACE IN THE UK COULD </h2>
+                                <h2>RUN OUT WITHIN THE NEXT 20 YEARS</h2>
+                            </div>
+                        </div>
+
+                    </div><!-- banner -->
+                    <!-- .site-header-menu -->
+                </div>
+                <!-- .site-header-main -->
+            </header>
+            <div id="content" class="site-content">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <!-- .site-header -->
+                        @RenderBody()
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .content-area -->
+            </div>
+            <!-- .site-content -->
+            <footer id="colophon" class="site-footer" role="contentinfo">
+                <div class="site-info">
+                    <div class="section overlay-purple" style="background-image:url('/Content/images/footer-form-bg.jpg');">
+                        <div class="container">
+                            <h2 class="underline text-left-align">We’d love to hear from you.</h2>
+                            <div class="contact-info">
+                                <div class="contact-details">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum. </p>
+                                    <p>
+                                        Address here <br />
+                                        Telephone number here <br />
+                                        Email address here
+                                    </p>
+                                </div>
+                                <form>
+                                    <ul class="contact-form">
+                                        <li>
+                                            <label>Full Name</label>
+                                            <input type="text" name="" placeholder="">
+                                        </li>
+                                        <li>
+                                            <label>Email</label>
+                                            <input type="email" name="" placeholder="">
+                                        </li>
+                                        <li class="wide">
+                                            <label>Message</label>
+                                            <textarea name=""></textarea>
+                                        </li>
+                                        <li class="wide">
+                                            <input type="submit" value="Send">
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section light-purple-bg">
+                        <div class="container">
+                            <div class="footer-menu">
+                                <div class="footer-block">
+                                    <a href="#"><img src="~/Content/images/footer-logo.png" alt=""></a>
+                                    <p>Keep up to date with BurialPlots.co.uk</p>
+                                    <ul class="social-icons">
+                                        <li><a href="#">Facebook</a></li>
+                                        <li><a href="#">Yelp</a></li>
+                                        <li><a href="#">Twitter</a></li>
+                                        <li><a href="#">Youtube</a></li>
+                                        <li><a href="#">Instagram</a></li>
+                                        <li><a href="#">Vimeo</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                                <div class="footer-block">
+                                    <h3>Helpful Advice</h3>
+                                    <ul>
+                                        <li><a href="#">Healing Process</a></li>
+                                        <li><a href="#">Parental Grief</a></li>
+                                        <li><a href="#">Suicide</a></li>
+                                        <li><a href="#">Helpful Orgs</a></li>
+                                        <li><a href="#">Dealing with Children</a></li>
+                                        <li><a href="#">Shock of Sudden Death</a></li>
+                                        <li><a href="#">Writing Eulagles</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                                <div class="footer-block">
+                                    <h3>Main Menu</h3>
+                                    <ul>
+                                        <li><a href="#">Burial Plots</a></li>
+                                        <li><a href="#">Bereavement</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">Helpful Advice</a></li>
+                                        <li><a href="#">Legal</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .site-info -->
+            </footer>
+            <!-- .site-footer -->
+        </div>
+        <!-- .site-inner -->
+    </div>
+    <!-- .site -->
+    <div id="mask"></div>
+    <script src="~/Content/js/owl.carousel.js"></script>
+
+    <script>
+jQuery(document).ready(function($) {
+  $('.owl-carousel.latest-news').owlCarousel({
+    loop: true,
+    margin: 10,
+    dots: true,
+    items: 1,
+  })
+})
+    </script>
+    <script type="text/javascript">
+  jQuery(document).ready(function($){
+  $('#menu-nav').hover(function(){
+     $(this).toggleClass('highlighted');
+  });
+
+  $('#menu-nav').hover(
+       function(){ $('#mask').addClass('active') },
+       function(){ $('#mask').removeClass('active') }
+)
+  });
+    </script>
+    <script src="~/Content/js/megamenu.js"></script>
+
+
+
+</body>
+</html>

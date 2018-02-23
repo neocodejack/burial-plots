@@ -1,0 +1,52 @@
+﻿@model BurialPlots.DAL.AdministrativeEmail
+@{
+    ViewBag.Title = "Edit Email";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Areas/Admin/JS/Setting/Email.js"></script>
+}
+<style>
+    .customMargin {
+        margin-bottom: 10px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("Emails", "Settings")" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back </a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Edit Email</h2>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <label class="control-label col-md-3"></label>
+    <div class="col-lg-4">
+
+            @if (Model != null)
+            {
+                <div id="TextBoxDiv1" class="customMargin">
+                    <input type="text" placeholder="Update Email" id='textbox' value="@Model.Email" class="form-control" />
+                </div>
+
+            }
+    </div>
+</div>
+<br />
+<div class="row text-center">
+    <input type="button" value="Update" id='updateEmail' class="btn btn-success" />
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadEmail"></div>
+</div>
+
+<input type="hidden" id="hidId" value="@Model.Id" />
+<input type="hidden" id="hidLoadEmailUrl" value="@Url.Action("LoadEmails", "Settings")" />
+<input type="hidden" id="hidEditEmailUrl" value="@Url.Action("EditEmail", "Settings")" />
+<input type="hidden" id="hidDeleteEmailUrl" value="@Url.Action("DeleteEmail", "Settings")" />
