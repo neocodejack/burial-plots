@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eabbe0966724470b96ca4a5229f1ff61" Name="Diagram1" ZoomLevel="88">
+      <Diagram DiagramId="eabbe0966724470b96ca4a5229f1ff61" Name="Diagram1" ZoomLevel="81">
         <EntityTypeShape EntityType="BurialPlotsModel.AdministrativeEmail" Width="1.5" PointX="7.75" PointY="18.125" />
         <EntityTypeShape EntityType="BurialPlotsModel.AdminLogin" Width="1.5" PointX="19.75" PointY="16.125" />
         <EntityTypeShape EntityType="BurialPlotsModel.BillingShipping" Width="1.5" PointX="17" PointY="18.25" />

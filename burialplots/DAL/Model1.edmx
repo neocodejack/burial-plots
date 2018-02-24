@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BurialPlotsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AdministrativeEmail">
+        <EntityType Name="AdministrativeEmails">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -13,7 +13,7 @@
           <Property Name="Email" Type="varchar(max)" />
           <Property Name="AddBy" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="AdminLogin">
+        <EntityType Name="AdminLogins">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -22,7 +22,7 @@
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="Role" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="BillingShipping">
+        <EntityType Name="BillingShippings">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -39,7 +39,14 @@
           <Property Name="UserId" Type="int" />
           <Property Name="Information" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Blog">
+        <EntityType Name="BlogCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Blogs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -52,14 +59,7 @@
           <Property Name="IsFeatured" Type="bit" />
           <Property Name="PublishedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="BlogCategory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar(max)" />
-        </EntityType>
-        <EntityType Name="Cart">
+        <EntityType Name="Carts">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -71,7 +71,7 @@
           <Property Name="ItemPrice" Type="varchar(max)" />
           <Property Name="UserId" Type="int" />
         </EntityType>
-        <EntityType Name="Category">
+        <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -81,7 +81,7 @@
           <Property Name="CatPic" Type="varchar(max)" />
           <Property Name="Active" Type="bit" />
         </EntityType>
-        <EntityType Name="Cemetery">
+        <EntityType Name="Cemeteries">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -89,7 +89,7 @@
           <Property Name="Name" Type="varchar(max)" />
           <Property Name="Code" Type="varchar(max)" />
           <Property Name="OriginalCode" Type="varchar(max)" />
-          <Property Name="AddedDate" Type="date" />
+          <Property Name="AddedDate" Type="datetime" />
           <Property Name="Image" Type="varchar(max)" />
           <Property Name="RegionId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IsFeatured" Type="bit" />
@@ -118,7 +118,7 @@
           <Property Name="Name" Type="varchar(max)" />
           <Property Name="CemeteryId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IsBooking" Type="bit" />
-          <Property Name="Price" Type="money" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="Counties">
           <Key>
@@ -127,7 +127,7 @@
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="AddedDate" Type="date" />
+          <Property Name="AddedDate" Type="datetime" />
           <Property Name="CountryId" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Countries">
@@ -137,7 +137,7 @@
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="AddedDate" Type="date" />
+          <Property Name="AddedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="FAQs">
           <Key>
@@ -146,18 +146,18 @@
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Question" Type="varchar(max)" />
           <Property Name="Answer" Type="varchar(max)" />
-          <Property Name="AddedDate" Type="date" />
+          <Property Name="AddedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Footer">
+        <EntityType Name="Footers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CopyRight" Type="varchar(max)" />
           <Property Name="Branding" Type="varchar(max)" />
-          <Property Name="PubDate" Type="date" />
+          <Property Name="PubDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="FuneralProduct">
+        <EntityType Name="FuneralProducts">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -175,7 +175,7 @@
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="Date" Type="date" />
+          <Property Name="Date" Type="datetime" />
           <Property Name="Picture" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Graves">
@@ -204,7 +204,7 @@
           <Property Name="SectId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IsEnabled" Type="bit" />
         </EntityType>
-        <EntityType Name="ItalianPage">
+        <EntityType Name="ItalianPages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -215,7 +215,7 @@
           <Property Name="FeatureImage" Type="varchar(max)" />
           <Property Name="ServiceTitle" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="Item">
+        <EntityType Name="Items">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -223,8 +223,8 @@
           <Property Name="ItemNo" Type="varchar(max)" />
           <Property Name="ItemName" Type="varchar(max)" />
           <Property Name="ItemQty" Type="int" />
-          <Property Name="ItemCprice" Type="money" />
-          <Property Name="ItemRprice" Type="money" />
+          <Property Name="ItemCprice" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ItemRprice" Type="decimal" Precision="19" Scale="4" />
           <Property Name="ItemActive" Type="bit" />
           <Property Name="ItemFeature" Type="bit" />
           <Property Name="ItemImage" Type="varchar(max)" />
@@ -243,7 +243,7 @@
           <Property Name="SpotId" Type="varchar(max)" />
           <Property Name="Image" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="Member">
+        <EntityType Name="Members">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -255,7 +255,7 @@
           <Property Name="Suspend" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="bit" />
         </EntityType>
-        <EntityType Name="Members">
+        <EntityType Name="Members1">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -270,7 +270,7 @@
           <Property Name="Picture" Type="varchar(max)" />
           <Property Name="Role" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="Menu">
+        <EntityType Name="Menus">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -278,15 +278,15 @@
           <Property Name="Pageurl" Type="varchar(max)" />
           <Property Name="Category" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="NewsManagement">
+        <EntityType Name="NewsManagements">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="PubDate" Type="date" />
-          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="PubDate" Type="datetime" />
+          <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="TitleUrdu" Type="nvarchar(max)" />
           <Property Name="TitleArabic" Type="nvarchar(max)" />
           <Property Name="TitleChinese" Type="nvarchar(max)" />
@@ -304,7 +304,7 @@
           <Property Name="TitleTurkish" Type="nvarchar(max)" />
           <Property Name="DescriptionTurkish" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="OrderCemetery">
+        <EntityType Name="OrderCemeteries">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -312,11 +312,22 @@
           <Property Name="CemeteryId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="OrderId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="Price" Type="money" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
           <Property Name="PreNeed" Type="bit" />
           <Property Name="AtNeed" Type="bit" />
         </EntityType>
-        <EntityType Name="OrderPlan">
+        <EntityType Name="OrderPlanItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderPlanId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Title" Type="varchar(max)" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ServiceListingPlanId" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="OrderPlans">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -331,17 +342,6 @@
           <Property Name="AmountStatus" Type="bit" />
           <Property Name="ServiceListingId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CartId" Type="varchar(max)" />
-        </EntityType>
-        <EntityType Name="OrderPlanItem">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderPlanId" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Title" Type="varchar(max)" />
-          <Property Name="Price" Type="money" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="ServiceListingPlanId" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -366,9 +366,18 @@
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="AddedDate" Type="date" />
+          <Property Name="AddedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Page">
+        <EntityType Name="PageBoxes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Page" Type="int" />
+          <Property Name="Box" Type="int" />
+          <Property Name="UrduPage" Type="int" />
+        </EntityType>
+        <EntityType Name="Pages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -394,16 +403,7 @@
           <Property Name="TitleBengali" Type="nvarchar(max)" />
           <Property Name="TitleHebrew" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="PageBox">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Page" Type="int" />
-          <Property Name="Box" Type="int" />
-          <Property Name="UrduPage" Type="int" />
-        </EntityType>
-        <EntityType Name="PartnerPlan">
+        <EntityType Name="PartnerPlans">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -431,15 +431,15 @@
           <Property Name="Picture" Type="varchar(max)" />
           <Property Name="PartnerPlanId" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="PaymentCard">
+        <EntityType Name="PaymentCards">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CardNo" Type="varchar(max)" />
           <Property Name="CardName" Type="varchar(max)" />
-          <Property Name="ExpMonth" Type="date" />
-          <Property Name="ExpYear" Type="date" />
+          <Property Name="ExpMonth" Type="datetime" />
+          <Property Name="ExpYear" Type="datetime" />
           <Property Name="CvcNo" Type="int" />
           <Property Name="UserId" Type="int" />
           <Property Name="BillId" Type="int" />
@@ -460,17 +460,17 @@
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="AddedDate" Type="date" />
+          <Property Name="AddedDate" Type="datetime" />
           <Property Name="CountyId" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="PurchaseBoxImage">
+        <EntityType Name="PurchaseBoxImages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Image" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="Relgion">
+        <EntityType Name="Relgions">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -489,7 +489,7 @@
           <Property Name="Date" Type="datetime" />
           <Property Name="Status" Type="bit" />
         </EntityType>
-        <EntityType Name="ServiceBox">
+        <EntityType Name="ServiceBoxes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -513,16 +513,16 @@
           <Property Name="BusinessId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="PlanId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="ServiceListId" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="ExpiryDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="ServicesListingApproval">
+        <EntityType Name="ServicesListingApprovals">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Status" Type="bit" />
         </EntityType>
-        <EntityType Name="SeviceListing">
+        <EntityType Name="SeviceListings">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -557,7 +557,7 @@
           <Property Name="NationWide" Type="bit" />
           <Property Name="LinkedIn" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="Slider">
+        <EntityType Name="Sliders">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -583,7 +583,7 @@
           <Property Name="CaptionBengali" Type="nvarchar(max)" />
           <Property Name="CaptionHebrew" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="SubCate">
+        <EntityType Name="SubCates">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -591,7 +591,7 @@
           <Property Name="MainCate" Type="decimal" Precision="18" Scale="0" />
           <Property Name="SubName" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="SubChlidMenu">
+        <EntityType Name="SubChlidMenus">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -600,7 +600,7 @@
           <Property Name="PageUrl" Type="varchar(max)" />
           <Property Name="PageTitle" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="submenu">
+        <EntityType Name="submenus">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -609,7 +609,7 @@
           <Property Name="pageurl" Type="varchar(max)" />
           <Property Name="pagetitle" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="SubRelgion">
+        <EntityType Name="SubRelgions">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -645,7 +645,7 @@
           <Property Name="AddedDate" Type="varchar(max)" />
           <Property Name="CountyId" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="UrduPage">
+        <EntityType Name="UrduPages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -657,61 +657,61 @@
           <Property Name="ServiceTitle" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_BillingShipping_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="BillingShipping" Type="Self.BillingShipping" Multiplicity="*" />
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="BillingShippings" Type="Self.BillingShippings" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Item">
+            <Principal Role="Items">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BillingShipping">
+            <Dependent Role="BillingShippings">
               <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BillingShipping_Member">
-          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
-          <End Role="BillingShipping" Type="Self.BillingShipping" Multiplicity="*" />
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="BillingShippings" Type="Self.BillingShippings" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Member">
+            <Principal Role="Members">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BillingShipping">
+            <Dependent Role="BillingShippings">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Blog_BlogCategory1">
-          <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="0..1" />
-          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <End Role="BlogCategories" Type="Self.BlogCategories" Multiplicity="0..1" />
+          <End Role="Blogs" Type="Self.Blogs" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BlogCategory">
+            <Principal Role="BlogCategories">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Blog">
+            <Dependent Role="Blogs">
               <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Item">
+            <Principal Role="Items">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Cart">
+            <Dependent Role="Carts">
               <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_Member">
-          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Member">
+            <Principal Role="Members">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Cart">
+            <Dependent Role="Carts">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -720,23 +720,23 @@
           <End Role="Origins" Type="Self.Origins" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Cemetery" Type="Self.Cemetery" Multiplicity="*" />
+          <End Role="Cemeteries" Type="Self.Cemeteries" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Origins">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Cemetery">
+            <Dependent Role="Cemeteries">
               <PropertyRef Name="RegionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CemeteryImages_Cemetery">
-          <End Role="Cemetery" Type="Self.Cemetery" Multiplicity="0..1">
+          <End Role="Cemeteries" Type="Self.Cemeteries" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="CemeteryImages" Type="Self.CemeteryImages" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cemetery">
+            <Principal Role="Cemeteries">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CemeteryImages">
@@ -772,12 +772,12 @@
         </Association>
         <Association Name="FK_FuneralProduct_FuneralServices">
           <End Role="FuneralServices" Type="Self.FuneralServices" Multiplicity="0..1" />
-          <End Role="FuneralProduct" Type="Self.FuneralProduct" Multiplicity="*" />
+          <End Role="FuneralProducts" Type="Self.FuneralProducts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FuneralServices">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="FuneralProduct">
+            <Dependent Role="FuneralProducts">
               <PropertyRef Name="FuneralServiceId" />
             </Dependent>
           </ReferentialConstraint>
@@ -821,10 +821,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Graves_Relgion">
-          <End Role="Relgion" Type="Self.Relgion" Multiplicity="0..1" />
+          <End Role="Relgions" Type="Self.Relgions" Multiplicity="0..1" />
           <End Role="Graves" Type="Self.Graves" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Relgion">
+            <Principal Role="Relgions">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Graves">
@@ -833,10 +833,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Graves_SubRelgion">
-          <End Role="SubRelgion" Type="Self.SubRelgion" Multiplicity="0..1" />
+          <End Role="SubRelgions" Type="Self.SubRelgions" Multiplicity="0..1" />
           <End Role="Graves" Type="Self.Graves" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SubRelgion">
+            <Principal Role="SubRelgions">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Graves">
@@ -859,24 +859,24 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Item_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
+            <Principal Role="Categories">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Item">
+            <Dependent Role="Items">
               <PropertyRef Name="CateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MainSections_Cemetery">
-          <End Role="Cemetery" Type="Self.Cemetery" Multiplicity="0..1">
+          <End Role="Cemeteries" Type="Self.Cemeteries" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="MainSections" Type="Self.MainSections" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cemetery">
+            <Principal Role="Cemeteries">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MainSections">
@@ -888,12 +888,12 @@
           <End Role="Graves" Type="Self.Graves" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="OrderCemetery" Type="Self.OrderCemetery" Multiplicity="*" />
+          <End Role="OrderCemeteries" Type="Self.OrderCemeteries" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Graves">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="OrderCemetery">
+            <Dependent Role="OrderCemeteries">
               <PropertyRef Name="CemeteryId" />
             </Dependent>
           </ReferentialConstraint>
@@ -902,12 +902,12 @@
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="OrderCemetery" Type="Self.OrderCemetery" Multiplicity="*" />
+          <End Role="OrderCemeteries" Type="Self.OrderCemeteries" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Orders">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="OrderCemetery">
+            <Dependent Role="OrderCemeteries">
               <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
@@ -916,63 +916,63 @@
           <End Role="Partners" Type="Self.Partners" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="OrderPlan" Type="Self.OrderPlan" Multiplicity="*" />
+          <End Role="OrderPlans" Type="Self.OrderPlans" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Partners">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="OrderPlan">
+            <Dependent Role="OrderPlans">
               <PropertyRef Name="PartnerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderPlan_SeviceListing">
-          <End Role="SeviceListing" Type="Self.SeviceListing" Multiplicity="0..1">
+          <End Role="SeviceListings" Type="Self.SeviceListings" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="OrderPlan" Type="Self.OrderPlan" Multiplicity="*" />
+          <End Role="OrderPlans" Type="Self.OrderPlans" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SeviceListing">
+            <Principal Role="SeviceListings">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="OrderPlan">
+            <Dependent Role="OrderPlans">
               <PropertyRef Name="ServiceListingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderPlanItem_OrderPlan">
-          <End Role="OrderPlan" Type="Self.OrderPlan" Multiplicity="0..1">
+          <End Role="OrderPlans" Type="Self.OrderPlans" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="OrderPlanItem" Type="Self.OrderPlanItem" Multiplicity="*" />
+          <End Role="OrderPlanItems" Type="Self.OrderPlanItems" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="OrderPlan">
+            <Principal Role="OrderPlans">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="OrderPlanItem">
+            <Dependent Role="OrderPlanItems">
               <PropertyRef Name="OrderPlanId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderPlanItem_ServiceListingPlans">
           <End Role="ServiceListingPlans" Type="Self.ServiceListingPlans" Multiplicity="0..1" />
-          <End Role="OrderPlanItem" Type="Self.OrderPlanItem" Multiplicity="*" />
+          <End Role="OrderPlanItems" Type="Self.OrderPlanItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ServiceListingPlans">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="OrderPlanItem">
+            <Dependent Role="OrderPlanItems">
               <PropertyRef Name="ServiceListingPlanId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Members">
-          <End Role="Members" Type="Self.Members" Multiplicity="0..1">
+          <End Role="Members1" Type="Self.Members1" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Members">
+            <Principal Role="Members1">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
@@ -981,46 +981,46 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PageBox_Page">
-          <End Role="Page" Type="Self.Page" Multiplicity="0..1" />
-          <End Role="PageBox" Type="Self.PageBox" Multiplicity="*" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="0..1" />
+          <End Role="PageBoxes" Type="Self.PageBoxes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Page">
+            <Principal Role="Pages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PageBox">
+            <Dependent Role="PageBoxes">
               <PropertyRef Name="Page" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PageBox_ServiceBox">
-          <End Role="ServiceBox" Type="Self.ServiceBox" Multiplicity="0..1" />
-          <End Role="PageBox" Type="Self.PageBox" Multiplicity="*" />
+          <End Role="ServiceBoxes" Type="Self.ServiceBoxes" Multiplicity="0..1" />
+          <End Role="PageBoxes" Type="Self.PageBoxes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ServiceBox">
+            <Principal Role="ServiceBoxes">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PageBox">
+            <Dependent Role="PageBoxes">
               <PropertyRef Name="Box" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PageBox_UrduPage">
-          <End Role="UrduPage" Type="Self.UrduPage" Multiplicity="0..1" />
-          <End Role="PageBox" Type="Self.PageBox" Multiplicity="*" />
+          <End Role="UrduPages" Type="Self.UrduPages" Multiplicity="0..1" />
+          <End Role="PageBoxes" Type="Self.PageBoxes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UrduPage">
+            <Principal Role="UrduPages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PageBox">
+            <Dependent Role="PageBoxes">
               <PropertyRef Name="UrduPage" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Partners_PartnerPlan">
-          <End Role="PartnerPlan" Type="Self.PartnerPlan" Multiplicity="0..1" />
+          <End Role="PartnerPlans" Type="Self.PartnerPlans" Multiplicity="0..1" />
           <End Role="Partners" Type="Self.Partners" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PartnerPlan">
+            <Principal Role="PartnerPlans">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Partners">
@@ -1029,25 +1029,25 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PaymentCard_BillingShipping">
-          <End Role="BillingShipping" Type="Self.BillingShipping" Multiplicity="0..1" />
-          <End Role="PaymentCard" Type="Self.PaymentCard" Multiplicity="*" />
+          <End Role="BillingShippings" Type="Self.BillingShippings" Multiplicity="0..1" />
+          <End Role="PaymentCards" Type="Self.PaymentCards" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BillingShipping">
+            <Principal Role="BillingShippings">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PaymentCard">
+            <Dependent Role="PaymentCards">
               <PropertyRef Name="BillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PaymentCard_Member">
-          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
-          <End Role="PaymentCard" Type="Self.PaymentCard" Multiplicity="*" />
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="PaymentCards" Type="Self.PaymentCards" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Member">
+            <Principal Role="Members">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PaymentCard">
+            <Dependent Role="PaymentCards">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1067,10 +1067,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reviews_Members">
-          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="Members1" Type="Self.Members1" Multiplicity="0..1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Members">
+            <Principal Role="Members1">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Reviews">
@@ -1079,10 +1079,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reviews_SeviceListing1">
-          <End Role="SeviceListing" Type="Self.SeviceListing" Multiplicity="0..1" />
+          <End Role="SeviceListings" Type="Self.SeviceListings" Multiplicity="0..1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SeviceListing">
+            <Principal Role="SeviceListings">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Reviews">
@@ -1091,13 +1091,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ServiceBox_Page">
-          <End Role="Page" Type="Self.Page" Multiplicity="0..1" />
-          <End Role="ServiceBox" Type="Self.ServiceBox" Multiplicity="*" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="0..1" />
+          <End Role="ServiceBoxes" Type="Self.ServiceBoxes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Page">
+            <Principal Role="Pages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ServiceBox">
+            <Dependent Role="ServiceBoxes">
               <PropertyRef Name="BoxUrl" />
             </Dependent>
           </ReferentialConstraint>
@@ -1131,12 +1131,12 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ServiceListingPlans_PartnerPlan">
-          <End Role="PartnerPlan" Type="Self.PartnerPlan" Multiplicity="0..1">
+          <End Role="PartnerPlans" Type="Self.PartnerPlans" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="ServiceListingPlans" Type="Self.ServiceListingPlans" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PartnerPlan">
+            <Principal Role="PartnerPlans">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ServiceListingPlans">
@@ -1145,12 +1145,12 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ServiceListingPlans_SeviceListing">
-          <End Role="SeviceListing" Type="Self.SeviceListing" Multiplicity="0..1">
+          <End Role="SeviceListings" Type="Self.SeviceListings" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="ServiceListingPlans" Type="Self.ServiceListingPlans" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SeviceListing">
+            <Principal Role="SeviceListings">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ServiceListingPlans">
@@ -1160,33 +1160,33 @@
         </Association>
         <Association Name="FK_SeviceListing_FuneralServices1">
           <End Role="FuneralServices" Type="Self.FuneralServices" Multiplicity="0..1" />
-          <End Role="SeviceListing" Type="Self.SeviceListing" Multiplicity="*" />
+          <End Role="SeviceListings" Type="Self.SeviceListings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FuneralServices">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SeviceListing">
+            <Dependent Role="SeviceListings">
               <PropertyRef Name="FuneralServiceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SeviceListing_Partners">
           <End Role="Partners" Type="Self.Partners" Multiplicity="0..1" />
-          <End Role="SeviceListing" Type="Self.SeviceListing" Multiplicity="*" />
+          <End Role="SeviceListings" Type="Self.SeviceListings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Partners">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SeviceListing">
+            <Dependent Role="SeviceListings">
               <PropertyRef Name="PartnerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Slides_Slider">
-          <End Role="Slider" Type="Self.Slider" Multiplicity="0..1" />
+          <End Role="Sliders" Type="Self.Sliders" Multiplicity="0..1" />
           <End Role="Slides" Type="Self.Slides" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Slider">
+            <Principal Role="Sliders">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Slides">
@@ -1195,51 +1195,51 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubCate_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="SubCate" Type="Self.SubCate" Multiplicity="*" />
+          <End Role="SubCates" Type="Self.SubCates" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
+            <Principal Role="Categories">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SubCate">
+            <Dependent Role="SubCates">
               <PropertyRef Name="MainCate" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubChlidMenu_submenu">
-          <End Role="submenu" Type="Self.submenu" Multiplicity="0..1" />
-          <End Role="SubChlidMenu" Type="Self.SubChlidMenu" Multiplicity="*" />
+          <End Role="submenus" Type="Self.submenus" Multiplicity="0..1" />
+          <End Role="SubChlidMenus" Type="Self.SubChlidMenus" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="submenu">
+            <Principal Role="submenus">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SubChlidMenu">
+            <Dependent Role="SubChlidMenus">
               <PropertyRef Name="MenuId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_submenu_submenu">
-          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
-          <End Role="submenu" Type="Self.submenu" Multiplicity="*" />
+          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="submenus" Type="Self.submenus" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Menu">
+            <Principal Role="Menus">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="submenu">
+            <Dependent Role="submenus">
               <PropertyRef Name="menuId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubRelgion_Relgion">
-          <End Role="Relgion" Type="Self.Relgion" Multiplicity="0..1" />
-          <End Role="SubRelgion" Type="Self.SubRelgion" Multiplicity="*" />
+          <End Role="Relgions" Type="Self.Relgions" Multiplicity="0..1" />
+          <End Role="SubRelgions" Type="Self.SubRelgions" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Relgion">
+            <Principal Role="Relgions">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SubRelgion">
+            <Dependent Role="SubRelgions">
               <PropertyRef Name="RelgioId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1257,97 +1257,97 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UrduPage_UrduPage">
-          <End Role="UrduPage" Type="Self.UrduPage" Multiplicity="1" />
-          <End Role="UrduPage1" Type="Self.UrduPage" Multiplicity="0..1" />
+          <End Role="UrduPages" Type="Self.UrduPages" Multiplicity="1" />
+          <End Role="UrduPages1" Type="Self.UrduPages" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="UrduPage">
+            <Principal Role="UrduPages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UrduPage1">
+            <Dependent Role="UrduPages1">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BurialPlotsModelStoreContainer">
-          <EntitySet Name="AdministrativeEmail" EntityType="Self.AdministrativeEmail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BillingShipping" EntityType="Self.BillingShipping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BlogCategory" EntityType="Self.BlogCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cemetery" EntityType="Self.Cemetery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministrativeEmails" EntityType="Self.AdministrativeEmails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminLogins" EntityType="Self.AdminLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillingShippings" EntityType="Self.BillingShippings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogCategories" EntityType="Self.BlogCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blogs" EntityType="Self.Blogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carts" EntityType="Self.Carts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cemeteries" EntityType="Self.Cemeteries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CemeteryImages" EntityType="Self.CemeteryImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CemeteryLayers" EntityType="Self.CemeteryLayers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Counties" EntityType="Self.Counties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQs" EntityType="Self.FAQs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FuneralProduct" EntityType="Self.FuneralProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Footers" EntityType="Self.Footers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuneralProducts" EntityType="Self.FuneralProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FuneralServices" EntityType="Self.FuneralServices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Graves" EntityType="Self.Graves" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ItalianPage" EntityType="Self.ItalianPage" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItalianPages" EntityType="Self.ItalianPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainSections" EntityType="Self.MainSections" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NewsManagement" EntityType="Self.NewsManagement" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderCemetery" EntityType="Self.OrderCemetery" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderPlan" EntityType="Self.OrderPlan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderPlanItem" EntityType="Self.OrderPlanItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members1" EntityType="Self.Members1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsManagements" EntityType="Self.NewsManagements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderCemeteries" EntityType="Self.OrderCemeteries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderPlanItems" EntityType="Self.OrderPlanItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderPlans" EntityType="Self.OrderPlans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Origins" EntityType="Self.Origins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PageBox" EntityType="Self.PageBox" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PartnerPlan" EntityType="Self.PartnerPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageBoxes" EntityType="Self.PageBoxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerPlans" EntityType="Self.PartnerPlans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Partners" EntityType="Self.Partners" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PaymentCard" EntityType="Self.PaymentCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentCards" EntityType="Self.PaymentCards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostCodes" EntityType="Self.PostCodes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PurchaseBoxImage" EntityType="Self.PurchaseBoxImage" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Relgion" EntityType="Self.Relgion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseBoxImages" EntityType="Self.PurchaseBoxImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relgions" EntityType="Self.Relgions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ServiceBox" EntityType="Self.ServiceBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceBoxes" EntityType="Self.ServiceBoxes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceListingPlans" EntityType="Self.ServiceListingPlans" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ServicesListingApproval" EntityType="Self.ServicesListingApproval" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SeviceListing" EntityType="Self.SeviceListing" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesListingApprovals" EntityType="Self.ServicesListingApprovals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeviceListings" EntityType="Self.SeviceListings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sliders" EntityType="Self.Sliders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slides" EntityType="Self.Slides" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SubCate" EntityType="Self.SubCate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SubChlidMenu" EntityType="Self.SubChlidMenu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="submenu" EntityType="Self.submenu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SubRelgion" EntityType="Self.SubRelgion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCates" EntityType="Self.SubCates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubChlidMenus" EntityType="Self.SubChlidMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="submenus" EntityType="Self.submenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubRelgions" EntityType="Self.SubRelgions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tiers" EntityType="Self.Tiers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Towns" EntityType="Self.Towns" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UrduPage" EntityType="Self.UrduPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrduPages" EntityType="Self.UrduPages" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BillingShipping_Item" Association="Self.FK_BillingShipping_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="BillingShipping" EntitySet="BillingShipping" />
+            <End Role="Items" EntitySet="Items" />
+            <End Role="BillingShippings" EntitySet="BillingShippings" />
           </AssociationSet>
           <AssociationSet Name="FK_BillingShipping_Member" Association="Self.FK_BillingShipping_Member">
-            <End Role="Member" EntitySet="Member" />
-            <End Role="BillingShipping" EntitySet="BillingShipping" />
+            <End Role="Members" EntitySet="Members" />
+            <End Role="BillingShippings" EntitySet="BillingShippings" />
           </AssociationSet>
           <AssociationSet Name="FK_Blog_BlogCategory1" Association="Self.FK_Blog_BlogCategory1">
-            <End Role="BlogCategory" EntitySet="BlogCategory" />
-            <End Role="Blog" EntitySet="Blog" />
+            <End Role="BlogCategories" EntitySet="BlogCategories" />
+            <End Role="Blogs" EntitySet="Blogs" />
           </AssociationSet>
           <AssociationSet Name="FK_Cart_Item" Association="Self.FK_Cart_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Carts" EntitySet="Carts" />
           </AssociationSet>
           <AssociationSet Name="FK_Cart_Member" Association="Self.FK_Cart_Member">
-            <End Role="Member" EntitySet="Member" />
-            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Carts" EntitySet="Carts" />
           </AssociationSet>
           <AssociationSet Name="FK_Cemetery_Origins" Association="Self.FK_Cemetery_Origins">
             <End Role="Origins" EntitySet="Origins" />
-            <End Role="Cemetery" EntitySet="Cemetery" />
+            <End Role="Cemeteries" EntitySet="Cemeteries" />
           </AssociationSet>
           <AssociationSet Name="FK_CemeteryImages_Cemetery" Association="Self.FK_CemeteryImages_Cemetery">
-            <End Role="Cemetery" EntitySet="Cemetery" />
+            <End Role="Cemeteries" EntitySet="Cemeteries" />
             <End Role="CemeteryImages" EntitySet="CemeteryImages" />
           </AssociationSet>
           <AssociationSet Name="FK_CemeteryLayers_Graves" Association="Self.FK_CemeteryLayers_Graves">
@@ -1360,7 +1360,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_FuneralProduct_FuneralServices" Association="Self.FK_FuneralProduct_FuneralServices">
             <End Role="FuneralServices" EntitySet="FuneralServices" />
-            <End Role="FuneralProduct" EntitySet="FuneralProduct" />
+            <End Role="FuneralProducts" EntitySet="FuneralProducts" />
           </AssociationSet>
           <AssociationSet Name="FK_Graves_Cemetery" Association="Self.FK_Graves_Cemetery">
             <End Role="MainSections" EntitySet="MainSections" />
@@ -1375,11 +1375,11 @@
             <End Role="Graves1" EntitySet="Graves" />
           </AssociationSet>
           <AssociationSet Name="FK_Graves_Relgion" Association="Self.FK_Graves_Relgion">
-            <End Role="Relgion" EntitySet="Relgion" />
+            <End Role="Relgions" EntitySet="Relgions" />
             <End Role="Graves" EntitySet="Graves" />
           </AssociationSet>
           <AssociationSet Name="FK_Graves_SubRelgion" Association="Self.FK_Graves_SubRelgion">
-            <End Role="SubRelgion" EntitySet="SubRelgion" />
+            <End Role="SubRelgions" EntitySet="SubRelgions" />
             <End Role="Graves" EntitySet="Graves" />
           </AssociationSet>
           <AssociationSet Name="FK_Graves_Tiers" Association="Self.FK_Graves_Tiers">
@@ -1387,80 +1387,80 @@
             <End Role="Graves" EntitySet="Graves" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_Category" Association="Self.FK_Item_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Item" EntitySet="Item" />
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Items" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_MainSections_Cemetery" Association="Self.FK_MainSections_Cemetery">
-            <End Role="Cemetery" EntitySet="Cemetery" />
+            <End Role="Cemeteries" EntitySet="Cemeteries" />
             <End Role="MainSections" EntitySet="MainSections" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderCemetery_Graves" Association="Self.FK_OrderCemetery_Graves">
             <End Role="Graves" EntitySet="Graves" />
-            <End Role="OrderCemetery" EntitySet="OrderCemetery" />
+            <End Role="OrderCemeteries" EntitySet="OrderCemeteries" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderCemetery_Orders" Association="Self.FK_OrderCemetery_Orders">
             <End Role="Orders" EntitySet="Orders" />
-            <End Role="OrderCemetery" EntitySet="OrderCemetery" />
+            <End Role="OrderCemeteries" EntitySet="OrderCemeteries" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderPlan_Partners" Association="Self.FK_OrderPlan_Partners">
             <End Role="Partners" EntitySet="Partners" />
-            <End Role="OrderPlan" EntitySet="OrderPlan" />
+            <End Role="OrderPlans" EntitySet="OrderPlans" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderPlan_SeviceListing" Association="Self.FK_OrderPlan_SeviceListing">
-            <End Role="SeviceListing" EntitySet="SeviceListing" />
-            <End Role="OrderPlan" EntitySet="OrderPlan" />
+            <End Role="SeviceListings" EntitySet="SeviceListings" />
+            <End Role="OrderPlans" EntitySet="OrderPlans" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderPlanItem_OrderPlan" Association="Self.FK_OrderPlanItem_OrderPlan">
-            <End Role="OrderPlan" EntitySet="OrderPlan" />
-            <End Role="OrderPlanItem" EntitySet="OrderPlanItem" />
+            <End Role="OrderPlans" EntitySet="OrderPlans" />
+            <End Role="OrderPlanItems" EntitySet="OrderPlanItems" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderPlanItem_ServiceListingPlans" Association="Self.FK_OrderPlanItem_ServiceListingPlans">
             <End Role="ServiceListingPlans" EntitySet="ServiceListingPlans" />
-            <End Role="OrderPlanItem" EntitySet="OrderPlanItem" />
+            <End Role="OrderPlanItems" EntitySet="OrderPlanItems" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Members" Association="Self.FK_Orders_Members">
-            <End Role="Members" EntitySet="Members" />
+            <End Role="Members1" EntitySet="Members1" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_PageBox_Page" Association="Self.FK_PageBox_Page">
-            <End Role="Page" EntitySet="Page" />
-            <End Role="PageBox" EntitySet="PageBox" />
+            <End Role="Pages" EntitySet="Pages" />
+            <End Role="PageBoxes" EntitySet="PageBoxes" />
           </AssociationSet>
           <AssociationSet Name="FK_PageBox_ServiceBox" Association="Self.FK_PageBox_ServiceBox">
-            <End Role="ServiceBox" EntitySet="ServiceBox" />
-            <End Role="PageBox" EntitySet="PageBox" />
+            <End Role="ServiceBoxes" EntitySet="ServiceBoxes" />
+            <End Role="PageBoxes" EntitySet="PageBoxes" />
           </AssociationSet>
           <AssociationSet Name="FK_PageBox_UrduPage" Association="Self.FK_PageBox_UrduPage">
-            <End Role="UrduPage" EntitySet="UrduPage" />
-            <End Role="PageBox" EntitySet="PageBox" />
+            <End Role="UrduPages" EntitySet="UrduPages" />
+            <End Role="PageBoxes" EntitySet="PageBoxes" />
           </AssociationSet>
           <AssociationSet Name="FK_Partners_PartnerPlan" Association="Self.FK_Partners_PartnerPlan">
-            <End Role="PartnerPlan" EntitySet="PartnerPlan" />
+            <End Role="PartnerPlans" EntitySet="PartnerPlans" />
             <End Role="Partners" EntitySet="Partners" />
           </AssociationSet>
           <AssociationSet Name="FK_PaymentCard_BillingShipping" Association="Self.FK_PaymentCard_BillingShipping">
-            <End Role="BillingShipping" EntitySet="BillingShipping" />
-            <End Role="PaymentCard" EntitySet="PaymentCard" />
+            <End Role="BillingShippings" EntitySet="BillingShippings" />
+            <End Role="PaymentCards" EntitySet="PaymentCards" />
           </AssociationSet>
           <AssociationSet Name="FK_PaymentCard_Member" Association="Self.FK_PaymentCard_Member">
-            <End Role="Member" EntitySet="Member" />
-            <End Role="PaymentCard" EntitySet="PaymentCard" />
+            <End Role="Members" EntitySet="Members" />
+            <End Role="PaymentCards" EntitySet="PaymentCards" />
           </AssociationSet>
           <AssociationSet Name="FK_PostCodes_Counties" Association="Self.FK_PostCodes_Counties">
             <End Role="Counties" EntitySet="Counties" />
             <End Role="PostCodes" EntitySet="PostCodes" />
           </AssociationSet>
           <AssociationSet Name="FK_Reviews_Members" Association="Self.FK_Reviews_Members">
-            <End Role="Members" EntitySet="Members" />
+            <End Role="Members1" EntitySet="Members1" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
           <AssociationSet Name="FK_Reviews_SeviceListing1" Association="Self.FK_Reviews_SeviceListing1">
-            <End Role="SeviceListing" EntitySet="SeviceListing" />
+            <End Role="SeviceListings" EntitySet="SeviceListings" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
           <AssociationSet Name="FK_ServiceBox_Page" Association="Self.FK_ServiceBox_Page">
-            <End Role="Page" EntitySet="Page" />
-            <End Role="ServiceBox" EntitySet="ServiceBox" />
+            <End Role="Pages" EntitySet="Pages" />
+            <End Role="ServiceBoxes" EntitySet="ServiceBoxes" />
           </AssociationSet>
           <AssociationSet Name="FK_ServiceListingPlans_Counties" Association="Self.FK_ServiceListingPlans_Counties">
             <End Role="Counties" EntitySet="Counties" />
@@ -1471,48 +1471,48 @@
             <End Role="ServiceListingPlans" EntitySet="ServiceListingPlans" />
           </AssociationSet>
           <AssociationSet Name="FK_ServiceListingPlans_PartnerPlan" Association="Self.FK_ServiceListingPlans_PartnerPlan">
-            <End Role="PartnerPlan" EntitySet="PartnerPlan" />
+            <End Role="PartnerPlans" EntitySet="PartnerPlans" />
             <End Role="ServiceListingPlans" EntitySet="ServiceListingPlans" />
           </AssociationSet>
           <AssociationSet Name="FK_ServiceListingPlans_SeviceListing" Association="Self.FK_ServiceListingPlans_SeviceListing">
-            <End Role="SeviceListing" EntitySet="SeviceListing" />
+            <End Role="SeviceListings" EntitySet="SeviceListings" />
             <End Role="ServiceListingPlans" EntitySet="ServiceListingPlans" />
           </AssociationSet>
           <AssociationSet Name="FK_SeviceListing_FuneralServices1" Association="Self.FK_SeviceListing_FuneralServices1">
             <End Role="FuneralServices" EntitySet="FuneralServices" />
-            <End Role="SeviceListing" EntitySet="SeviceListing" />
+            <End Role="SeviceListings" EntitySet="SeviceListings" />
           </AssociationSet>
           <AssociationSet Name="FK_SeviceListing_Partners" Association="Self.FK_SeviceListing_Partners">
             <End Role="Partners" EntitySet="Partners" />
-            <End Role="SeviceListing" EntitySet="SeviceListing" />
+            <End Role="SeviceListings" EntitySet="SeviceListings" />
           </AssociationSet>
           <AssociationSet Name="FK_Slides_Slider" Association="Self.FK_Slides_Slider">
-            <End Role="Slider" EntitySet="Slider" />
+            <End Role="Sliders" EntitySet="Sliders" />
             <End Role="Slides" EntitySet="Slides" />
           </AssociationSet>
           <AssociationSet Name="FK_SubCate_Category" Association="Self.FK_SubCate_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="SubCate" EntitySet="SubCate" />
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCates" EntitySet="SubCates" />
           </AssociationSet>
           <AssociationSet Name="FK_SubChlidMenu_submenu" Association="Self.FK_SubChlidMenu_submenu">
-            <End Role="submenu" EntitySet="submenu" />
-            <End Role="SubChlidMenu" EntitySet="SubChlidMenu" />
+            <End Role="submenus" EntitySet="submenus" />
+            <End Role="SubChlidMenus" EntitySet="SubChlidMenus" />
           </AssociationSet>
           <AssociationSet Name="FK_submenu_submenu" Association="Self.FK_submenu_submenu">
-            <End Role="Menu" EntitySet="Menu" />
-            <End Role="submenu" EntitySet="submenu" />
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="submenus" EntitySet="submenus" />
           </AssociationSet>
           <AssociationSet Name="FK_SubRelgion_Relgion" Association="Self.FK_SubRelgion_Relgion">
-            <End Role="Relgion" EntitySet="Relgion" />
-            <End Role="SubRelgion" EntitySet="SubRelgion" />
+            <End Role="Relgions" EntitySet="Relgions" />
+            <End Role="SubRelgions" EntitySet="SubRelgions" />
           </AssociationSet>
           <AssociationSet Name="FK_Towns_Counties" Association="Self.FK_Towns_Counties">
             <End Role="Counties" EntitySet="Counties" />
             <End Role="Towns" EntitySet="Towns" />
           </AssociationSet>
           <AssociationSet Name="FK_UrduPage_UrduPage" Association="Self.FK_UrduPage_UrduPage">
-            <End Role="UrduPage" EntitySet="UrduPage" />
-            <End Role="UrduPage1" EntitySet="UrduPage" />
+            <End Role="UrduPages" EntitySet="UrduPages" />
+            <End Role="UrduPages1" EntitySet="UrduPages" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1864,7 +1864,7 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OriginalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddedDate" Type="DateTime" Precision="0" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="RegionId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="IsFeatured" Type="Boolean" />
@@ -1907,7 +1907,7 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddedDate" Type="DateTime" Precision="0" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
           <Property Name="CountryId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Country" Relationship="BurialPlotsModel.FK_Counties_Countries" FromRole="County" ToRole="Country" />
           <NavigationProperty Name="ServiceListingPlans" Relationship="BurialPlotsModel.FK_ServiceListingPlans_Counties" FromRole="County" ToRole="ServiceListingPlan" />
@@ -1921,7 +1921,7 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddedDate" Type="DateTime" Precision="0" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Counties" Relationship="BurialPlotsModel.FK_Counties_Countries" FromRole="Country" ToRole="County" />
         </EntityType>
         <EntityType Name="Footer">
@@ -1931,7 +1931,7 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CopyRight" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Branding" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PubDate" Type="DateTime" Precision="0" />
+          <Property Name="PubDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="FuneralProduct">
           <Key>
@@ -1952,7 +1952,7 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="FuneralProducts" Relationship="BurialPlotsModel.FK_FuneralProduct_FuneralServices" FromRole="FuneralService" ToRole="FuneralProduct" />
           <NavigationProperty Name="ServiceListingPlans" Relationship="BurialPlotsModel.FK_ServiceListingPlans_FuneralServices" FromRole="FuneralService" ToRole="ServiceListingPlan" />
@@ -2086,8 +2086,8 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PubDate" Type="DateTime" Precision="0" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="PubDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
           <Property Name="TitleUrdu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TitleArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TitleChinese" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -2176,7 +2176,7 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddedDate" Type="DateTime" Precision="0" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Cemeteries" Relationship="BurialPlotsModel.FK_Cemetery_Origins" FromRole="Origin" ToRole="Cemetery" />
         </EntityType>
         <EntityType Name="Page">
@@ -2259,8 +2259,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CardNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CardName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ExpMonth" Type="DateTime" Precision="0" />
-          <Property Name="ExpYear" Type="DateTime" Precision="0" />
+          <Property Name="ExpMonth" Type="DateTime" Precision="3" />
+          <Property Name="ExpYear" Type="DateTime" Precision="3" />
           <Property Name="CvcNo" Type="Int32" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="BillId" Type="Int32" />
@@ -2283,7 +2283,7 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddedDate" Type="DateTime" Precision="0" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
           <Property Name="CountyId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="County" Relationship="BurialPlotsModel.FK_PostCodes_Counties" FromRole="PostCode" ToRole="County" />
         </EntityType>
@@ -2341,7 +2341,7 @@
           <NavigationProperty Name="OrderPlanItems" Relationship="BurialPlotsModel.FK_OrderPlanItem_ServiceListingPlans" FromRole="ServiceListingPlan" ToRole="OrderPlanItem" />
           <NavigationProperty Name="PartnerPlan" Relationship="BurialPlotsModel.FK_ServiceListingPlans_PartnerPlan" FromRole="ServiceListingPlan" ToRole="PartnerPlan" />
           <NavigationProperty Name="SeviceListing" Relationship="BurialPlotsModel.FK_ServiceListingPlans_SeviceListing" FromRole="ServiceListingPlan" ToRole="SeviceListing" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ServicesListingApproval">
           <Key>
@@ -3128,721 +3128,720 @@
           <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddedDate" Type="DateTime" Precision="0" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BurialPlotsModelStoreContainer" CdmEntityContainer="BurialPlotsEntities">
-          <EntitySetMapping Name="AdministrativeEmails">
-            <EntityTypeMapping TypeName="BurialPlotsModel.AdministrativeEmail">
-              <MappingFragment StoreEntitySet="AdministrativeEmail">
-                <ScalarProperty Name="AddBy" ColumnName="AddBy" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AdminLogins">
-            <EntityTypeMapping TypeName="BurialPlotsModel.AdminLogin">
-              <MappingFragment StoreEntitySet="AdminLogin">
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BillingShippings">
-            <EntityTypeMapping TypeName="BurialPlotsModel.BillingShipping">
-              <MappingFragment StoreEntitySet="BillingShipping">
-                <ScalarProperty Name="Information" ColumnName="Information" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Addresstwo" ColumnName="Addresstwo" />
-                <ScalarProperty Name="Addressone" ColumnName="Addressone" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Blogs">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Blog">
-              <MappingFragment StoreEntitySet="Blog">
-                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
-                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="FeaturedImage" ColumnName="FeaturedImage" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BlogCategories">
-            <EntityTypeMapping TypeName="BurialPlotsModel.BlogCategory">
-              <MappingFragment StoreEntitySet="BlogCategory">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
-                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
-                <ScalarProperty Name="ItemPicture" ColumnName="ItemPicture" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="CatPic" ColumnName="CatPic" />
-                <ScalarProperty Name="CateName" ColumnName="CateName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cemeteries">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Cemetery">
-              <MappingFragment StoreEntitySet="Cemetery">
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="WhyChoose" ColumnName="WhyChoose" />
-                <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
-                <ScalarProperty Name="MapLocation" ColumnName="MapLocation" />
-                <ScalarProperty Name="KeyInformation" ColumnName="KeyInformation" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
-                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
-                <ScalarProperty Name="OriginalCode" ColumnName="OriginalCode" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CemeteryImages">
-            <EntityTypeMapping TypeName="BurialPlotsModel.CemeteryImage">
-              <MappingFragment StoreEntitySet="CemeteryImages">
-                <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
-                <ScalarProperty Name="OriginalImage" ColumnName="OriginalImage" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CemeteryLayers">
-            <EntityTypeMapping TypeName="BurialPlotsModel.CemeteryLayer">
-              <MappingFragment StoreEntitySet="CemeteryLayers">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsBooking" ColumnName="IsBooking" />
-                <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Counties">
-            <EntityTypeMapping TypeName="BurialPlotsModel.County">
-              <MappingFragment StoreEntitySet="Counties">
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Country">
-              <MappingFragment StoreEntitySet="Countries">
-                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Footers">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Footer">
-              <MappingFragment StoreEntitySet="Footer">
-                <ScalarProperty Name="PubDate" ColumnName="PubDate" />
-                <ScalarProperty Name="Branding" ColumnName="Branding" />
-                <ScalarProperty Name="CopyRight" ColumnName="CopyRight" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FuneralProducts">
-            <EntityTypeMapping TypeName="BurialPlotsModel.FuneralProduct">
-              <MappingFragment StoreEntitySet="FuneralProduct">
-                <ScalarProperty Name="FuneralServiceId" ColumnName="FuneralServiceId" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="PrdoctDescription" ColumnName="PrdoctDescription" />
-                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FuneralServices">
-            <EntityTypeMapping TypeName="BurialPlotsModel.FuneralService">
-              <MappingFragment StoreEntitySet="FuneralServices">
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Graves">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Grave">
-              <MappingFragment StoreEntitySet="Graves">
-                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
-                <ScalarProperty Name="SectId" ColumnName="SectId" />
-                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
-                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
-                <ScalarProperty Name="SpotId" ColumnName="SpotId" />
-                <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
-                <ScalarProperty Name="Lease" ColumnName="Lease" />
-                <ScalarProperty Name="InternementFee" ColumnName="InternementFee" />
-                <ScalarProperty Name="Internement" ColumnName="Internement" />
-                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
-                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
-                <ScalarProperty Name="TierId" ColumnName="TierId" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="PlotType" ColumnName="PlotType" />
-                <ScalarProperty Name="PlotNo" ColumnName="PlotNo" />
-                <ScalarProperty Name="PlotName" ColumnName="PlotName" />
-                <ScalarProperty Name="SKU" ColumnName="SKU" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ItalianPages">
-            <EntityTypeMapping TypeName="BurialPlotsModel.ItalianPage">
-              <MappingFragment StoreEntitySet="ItalianPage">
-                <ScalarProperty Name="ServiceTitle" ColumnName="ServiceTitle" />
-                <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
-                <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
-                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
-                <ScalarProperty Name="Body" ColumnName="Body" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
-                <ScalarProperty Name="CateId" ColumnName="CateId" />
-                <ScalarProperty Name="ItemImage" ColumnName="ItemImage" />
-                <ScalarProperty Name="ItemFeature" ColumnName="ItemFeature" />
-                <ScalarProperty Name="ItemActive" ColumnName="ItemActive" />
-                <ScalarProperty Name="ItemRprice" ColumnName="ItemRprice" />
-                <ScalarProperty Name="ItemCprice" ColumnName="ItemCprice" />
-                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MainSections">
-            <EntityTypeMapping TypeName="BurialPlotsModel.MainSection">
-              <MappingFragment StoreEntitySet="MainSections">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="SpotId" ColumnName="SpotId" />
-                <ScalarProperty Name="OriginalCode" ColumnName="OriginalCode" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Members">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Member">
-              <MappingFragment StoreEntitySet="Member">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Suspend" ColumnName="Suspend" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Members1">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Member1">
-              <MappingFragment StoreEntitySet="Members">
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="CellNo" ColumnName="CellNo" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Lname" ColumnName="Lname" />
-                <ScalarProperty Name="Fname" ColumnName="Fname" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Menus">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Menu">
-              <MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NewsManagements">
-            <EntityTypeMapping TypeName="BurialPlotsModel.NewsManagement">
-              <MappingFragment StoreEntitySet="NewsManagement">
-                <ScalarProperty Name="DescriptionTurkish" ColumnName="DescriptionTurkish" />
-                <ScalarProperty Name="TitleTurkish" ColumnName="TitleTurkish" />
-                <ScalarProperty Name="DescriptionHebrew" ColumnName="DescriptionHebrew" />
-                <ScalarProperty Name="DescriptionBengali" ColumnName="DescriptionBengali" />
-                <ScalarProperty Name="DescriptionItalian" ColumnName="DescriptionItalian" />
-                <ScalarProperty Name="DescriptionHindi" ColumnName="DescriptionHindi" />
-                <ScalarProperty Name="DescriptionChinese" ColumnName="DescriptionChinese" />
-                <ScalarProperty Name="DescriptionArabic" ColumnName="DescriptionArabic" />
-                <ScalarProperty Name="DescriptionUrdu" ColumnName="DescriptionUrdu" />
-                <ScalarProperty Name="TitleHebrew" ColumnName="TitleHebrew" />
-                <ScalarProperty Name="TitleBengali" ColumnName="TitleBengali" />
-                <ScalarProperty Name="TitleItalian" ColumnName="TitleItalian" />
-                <ScalarProperty Name="TitleHindi" ColumnName="TitleHindi" />
-                <ScalarProperty Name="TitleChinese" ColumnName="TitleChinese" />
-                <ScalarProperty Name="TitleArabic" ColumnName="TitleArabic" />
-                <ScalarProperty Name="TitleUrdu" ColumnName="TitleUrdu" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="PubDate" ColumnName="PubDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderCemeteries">
-            <EntityTypeMapping TypeName="BurialPlotsModel.OrderCemetery">
-              <MappingFragment StoreEntitySet="OrderCemetery">
-                <ScalarProperty Name="AtNeed" ColumnName="AtNeed" />
-                <ScalarProperty Name="PreNeed" ColumnName="PreNeed" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderPlans">
-            <EntityTypeMapping TypeName="BurialPlotsModel.OrderPlan">
-              <MappingFragment StoreEntitySet="OrderPlan">
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="ServiceListingId" ColumnName="ServiceListingId" />
-                <ScalarProperty Name="AmountStatus" ColumnName="AmountStatus" />
-                <ScalarProperty Name="CellNo" ColumnName="CellNo" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderPlanItems">
-            <EntityTypeMapping TypeName="BurialPlotsModel.OrderPlanItem">
-              <MappingFragment StoreEntitySet="OrderPlanItem">
-                <ScalarProperty Name="ServiceListingPlanId" ColumnName="ServiceListingPlanId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="OrderPlanId" ColumnName="OrderPlanId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Order">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="AmountStatus" ColumnName="AmountStatus" />
-                <ScalarProperty Name="CellNo" ColumnName="CellNo" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Origins">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Origin">
-              <MappingFragment StoreEntitySet="Origins">
-                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pages">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Page">
-              <MappingFragment StoreEntitySet="Page">
-                <ScalarProperty Name="TitleHebrew" ColumnName="TitleHebrew" />
-                <ScalarProperty Name="TitleBengali" ColumnName="TitleBengali" />
-                <ScalarProperty Name="TitleTurkish" ColumnName="TitleTurkish" />
-                <ScalarProperty Name="TitleItalian" ColumnName="TitleItalian" />
-                <ScalarProperty Name="TitleArabic" ColumnName="TitleArabic" />
-                <ScalarProperty Name="TitleChinese" ColumnName="TitleChinese" />
-                <ScalarProperty Name="TitleHindi" ColumnName="TitleHindi" />
-                <ScalarProperty Name="TitleUrdu" ColumnName="TitleUrdu" />
-                <ScalarProperty Name="BodyHebrew" ColumnName="BodyHebrew" />
-                <ScalarProperty Name="BodyBengali" ColumnName="BodyBengali" />
-                <ScalarProperty Name="BodyTurkish" ColumnName="BodyTurkish" />
-                <ScalarProperty Name="BodyItalian" ColumnName="BodyItalian" />
-                <ScalarProperty Name="BodyArabic" ColumnName="BodyArabic" />
-                <ScalarProperty Name="BodyChinese" ColumnName="BodyChinese" />
-                <ScalarProperty Name="BodyHindi" ColumnName="BodyHindi" />
-                <ScalarProperty Name="BodyUrdu" ColumnName="BodyUrdu" />
-                <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
-                <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
-                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
-                <ScalarProperty Name="Body" ColumnName="Body" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PageBoxes">
-            <EntityTypeMapping TypeName="BurialPlotsModel.PageBox">
-              <MappingFragment StoreEntitySet="PageBox">
-                <ScalarProperty Name="UrduPage" ColumnName="UrduPage" />
-                <ScalarProperty Name="Box" ColumnName="Box" />
-                <ScalarProperty Name="Page" ColumnName="Page" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PartnerPlans">
-            <EntityTypeMapping TypeName="BurialPlotsModel.PartnerPlan">
-              <MappingFragment StoreEntitySet="PartnerPlan">
-                <ScalarProperty Name="FreeListingPeriod" ColumnName="FreeListingPeriod" />
-                <ScalarProperty Name="PlanPeriods" ColumnName="PlanPeriods" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Partners">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Partner">
-              <MappingFragment StoreEntitySet="Partners">
-                <ScalarProperty Name="PartnerPlanId" ColumnName="PartnerPlanId" />
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="CellNo" ColumnName="CellNo" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Lname" ColumnName="Lname" />
-                <ScalarProperty Name="Fname" ColumnName="Fname" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PaymentCards">
-            <EntityTypeMapping TypeName="BurialPlotsModel.PaymentCard">
-              <MappingFragment StoreEntitySet="PaymentCard">
-                <ScalarProperty Name="BillId" ColumnName="BillId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CvcNo" ColumnName="CvcNo" />
-                <ScalarProperty Name="ExpYear" ColumnName="ExpYear" />
-                <ScalarProperty Name="ExpMonth" ColumnName="ExpMonth" />
-                <ScalarProperty Name="CardName" ColumnName="CardName" />
-                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PaymentMethods">
-            <EntityTypeMapping TypeName="BurialPlotsModel.PaymentMethod">
-              <MappingFragment StoreEntitySet="PaymentMethods">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="InstallationId" ColumnName="InstallationId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PostCodes">
-            <EntityTypeMapping TypeName="BurialPlotsModel.PostCode">
-              <MappingFragment StoreEntitySet="PostCodes">
-                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
-                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Relgions">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Relgion">
-              <MappingFragment StoreEntitySet="Relgion">
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="RelgionName" ColumnName="RelgionName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Reviews">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Review">
-              <MappingFragment StoreEntitySet="Reviews">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ServiceListingId" ColumnName="ServiceListingId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServiceBoxes">
-            <EntityTypeMapping TypeName="BurialPlotsModel.ServiceBox">
-              <MappingFragment StoreEntitySet="ServiceBox">
-                <ScalarProperty Name="BoxNameInItalian" ColumnName="BoxNameInItalian" />
-                <ScalarProperty Name="BoxNameInUrdu" ColumnName="BoxNameInUrdu" />
-                <ScalarProperty Name="UrlStatus" ColumnName="UrlStatus" />
-                <ScalarProperty Name="ServiceUrl" ColumnName="ServiceUrl" />
-                <ScalarProperty Name="BoxStatus" ColumnName="BoxStatus" />
-                <ScalarProperty Name="BoxDescription" ColumnName="BoxDescription" />
-                <ScalarProperty Name="BoxUrl" ColumnName="BoxUrl" />
-                <ScalarProperty Name="BoxPic" ColumnName="BoxPic" />
-                <ScalarProperty Name="BoxName" ColumnName="BoxName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServiceListingPlans">
-            <EntityTypeMapping TypeName="BurialPlotsModel.ServiceListingPlan">
-              <MappingFragment StoreEntitySet="ServiceListingPlans">
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="ServiceListId" ColumnName="ServiceListId" />
-                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
-                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServicesListingApprovals">
-            <EntityTypeMapping TypeName="BurialPlotsModel.ServicesListingApproval">
-              <MappingFragment StoreEntitySet="ServicesListingApproval">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SeviceListings">
-            <EntityTypeMapping TypeName="BurialPlotsModel.SeviceListing">
-              <MappingFragment StoreEntitySet="SeviceListing">
-                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
-                <ScalarProperty Name="NationWide" ColumnName="NationWide" />
-                <ScalarProperty Name="CountiesName" ColumnName="CountiesName" />
-                <ScalarProperty Name="CountiesId" ColumnName="CountiesId" />
-                <ScalarProperty Name="GooglePlusLink" ColumnName="GooglePlusLink" />
-                <ScalarProperty Name="TwitterLink" ColumnName="TwitterLink" />
-                <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
-                <ScalarProperty Name="SocialIcons" ColumnName="SocialIcons" />
-                <ScalarProperty Name="PaymentGateways" ColumnName="PaymentGateways" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="BusinessDescription" ColumnName="BusinessDescription" />
-                <ScalarProperty Name="ServicesAndProducts" ColumnName="ServicesAndProducts" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="County" ColumnName="County" />
-                <ScalarProperty Name="Town" ColumnName="Town" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
-                <ScalarProperty Name="FuneralServiceId" ColumnName="FuneralServiceId" />
-                <ScalarProperty Name="BusinessClassification" ColumnName="BusinessClassification" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sliders">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Slider">
-              <MappingFragment StoreEntitySet="Slider">
-                <ScalarProperty Name="SlideImages" ColumnName="SlideImages" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Slides">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Slide">
-              <MappingFragment StoreEntitySet="Slides">
-                <ScalarProperty Name="CaptionHebrew" ColumnName="CaptionHebrew" />
-                <ScalarProperty Name="CaptionBengali" ColumnName="CaptionBengali" />
-                <ScalarProperty Name="CaptionTurkish" ColumnName="CaptionTurkish" />
-                <ScalarProperty Name="CaptionItalian" ColumnName="CaptionItalian" />
-                <ScalarProperty Name="CaptionChinese" ColumnName="CaptionChinese" />
-                <ScalarProperty Name="CaptionHindi" ColumnName="CaptionHindi" />
-                <ScalarProperty Name="CaptionArabic" ColumnName="CaptionArabic" />
-                <ScalarProperty Name="CaptionUrdu" ColumnName="CaptionUrdu" />
-                <ScalarProperty Name="SliderId" ColumnName="SliderId" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Caption" ColumnName="Caption" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubCates">
-            <EntityTypeMapping TypeName="BurialPlotsModel.SubCate">
-              <MappingFragment StoreEntitySet="SubCate">
-                <ScalarProperty Name="SubName" ColumnName="SubName" />
-                <ScalarProperty Name="MainCate" ColumnName="MainCate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubChlidMenus">
-            <EntityTypeMapping TypeName="BurialPlotsModel.SubChlidMenu">
-              <MappingFragment StoreEntitySet="SubChlidMenu">
-                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
-                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="submenus">
-            <EntityTypeMapping TypeName="BurialPlotsModel.submenu">
-              <MappingFragment StoreEntitySet="submenu">
-                <ScalarProperty Name="pagetitle" ColumnName="pagetitle" />
-                <ScalarProperty Name="pageurl" ColumnName="pageurl" />
-                <ScalarProperty Name="menuId" ColumnName="menuId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubRelgions">
-            <EntityTypeMapping TypeName="BurialPlotsModel.SubRelgion">
-              <MappingFragment StoreEntitySet="SubRelgion">
-                <ScalarProperty Name="RelgioId" ColumnName="RelgioId" />
-                <ScalarProperty Name="SubRelgionName" ColumnName="SubRelgionName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tiers">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Tier">
-              <MappingFragment StoreEntitySet="Tiers">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Towns">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Town">
-              <MappingFragment StoreEntitySet="Towns">
-                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
-                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UrduPages">
-            <EntityTypeMapping TypeName="BurialPlotsModel.UrduPage">
-              <MappingFragment StoreEntitySet="UrduPage">
-                <ScalarProperty Name="ServiceTitle" ColumnName="ServiceTitle" />
-                <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
-                <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
-                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
-                <ScalarProperty Name="Body" ColumnName="Body" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseBoxImages">
-            <EntityTypeMapping TypeName="BurialPlotsModel.PurchaseBoxImage">
-              <MappingFragment StoreEntitySet="PurchaseBoxImage">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teams">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Team">
-              <MappingFragment StoreEntitySet="Teams">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Post" ColumnName="Post" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FAQs">
-            <EntityTypeMapping TypeName="BurialPlotsModel.FAQ">
-              <MappingFragment StoreEntitySet="FAQs">
-                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
-                <ScalarProperty Name="Question" ColumnName="Question" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BurialPlotsModelStoreContainer" CdmEntityContainer="BurialPlotsEntities">
+    <EntitySetMapping Name="AdministrativeEmails">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.AdministrativeEmail)">
+        <MappingFragment StoreEntitySet="AdministrativeEmails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminLogins">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.AdminLogin)">
+        <MappingFragment StoreEntitySet="AdminLogins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillingShippings">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.BillingShipping)">
+        <MappingFragment StoreEntitySet="BillingShippings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Addressone" ColumnName="Addressone" />
+          <ScalarProperty Name="Addresstwo" ColumnName="Addresstwo" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Information" ColumnName="Information" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Blog)">
+        <MappingFragment StoreEntitySet="Blogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FeaturedImage" ColumnName="FeaturedImage" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+          <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.BlogCategory)">
+        <MappingFragment StoreEntitySet="BlogCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Cart)">
+        <MappingFragment StoreEntitySet="Carts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemPicture" ColumnName="ItemPicture" />
+          <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CateName" ColumnName="CateName" />
+          <ScalarProperty Name="CatPic" ColumnName="CatPic" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cemeteries">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Cemetery)">
+        <MappingFragment StoreEntitySet="Cemeteries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="OriginalCode" ColumnName="OriginalCode" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="KeyInformation" ColumnName="KeyInformation" />
+          <ScalarProperty Name="MapLocation" ColumnName="MapLocation" />
+          <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+          <ScalarProperty Name="WhyChoose" ColumnName="WhyChoose" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CemeteryImages">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.CemeteryImage)">
+        <MappingFragment StoreEntitySet="CemeteryImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="OriginalImage" ColumnName="OriginalImage" />
+          <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CemeteryLayers">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.CemeteryLayer)">
+        <MappingFragment StoreEntitySet="CemeteryLayers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
+          <ScalarProperty Name="IsBooking" ColumnName="IsBooking" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Counties">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.County)">
+        <MappingFragment StoreEntitySet="Counties">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Country)">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Footers">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Footer)">
+        <MappingFragment StoreEntitySet="Footers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CopyRight" ColumnName="CopyRight" />
+          <ScalarProperty Name="Branding" ColumnName="Branding" />
+          <ScalarProperty Name="PubDate" ColumnName="PubDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FuneralProducts">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.FuneralProduct)">
+        <MappingFragment StoreEntitySet="FuneralProducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="PrdoctDescription" ColumnName="PrdoctDescription" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="FuneralServiceId" ColumnName="FuneralServiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FuneralServices">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.FuneralService)">
+        <MappingFragment StoreEntitySet="FuneralServices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Graves">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Grave)">
+        <MappingFragment StoreEntitySet="Graves">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="PlotName" ColumnName="PlotName" />
+          <ScalarProperty Name="PlotNo" ColumnName="PlotNo" />
+          <ScalarProperty Name="PlotType" ColumnName="PlotType" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="TierId" ColumnName="TierId" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+          <ScalarProperty Name="Internement" ColumnName="Internement" />
+          <ScalarProperty Name="InternementFee" ColumnName="InternementFee" />
+          <ScalarProperty Name="Lease" ColumnName="Lease" />
+          <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+          <ScalarProperty Name="SpotId" ColumnName="SpotId" />
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+          <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+          <ScalarProperty Name="SectId" ColumnName="SectId" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItalianPages">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.ItalianPage)">
+        <MappingFragment StoreEntitySet="ItalianPages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
+          <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
+          <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
+          <ScalarProperty Name="ServiceTitle" ColumnName="ServiceTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Item)">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+          <ScalarProperty Name="ItemCprice" ColumnName="ItemCprice" />
+          <ScalarProperty Name="ItemRprice" ColumnName="ItemRprice" />
+          <ScalarProperty Name="ItemActive" ColumnName="ItemActive" />
+          <ScalarProperty Name="ItemFeature" ColumnName="ItemFeature" />
+          <ScalarProperty Name="ItemImage" ColumnName="ItemImage" />
+          <ScalarProperty Name="CateId" ColumnName="CateId" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MainSections">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.MainSection)">
+        <MappingFragment StoreEntitySet="MainSections">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="OriginalCode" ColumnName="OriginalCode" />
+          <ScalarProperty Name="SpotId" ColumnName="SpotId" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Member)">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Suspend" ColumnName="Suspend" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members1">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Member1)">
+        <MappingFragment StoreEntitySet="Members1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Menu)">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsManagements">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.NewsManagement)">
+        <MappingFragment StoreEntitySet="NewsManagements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PubDate" ColumnName="PubDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="TitleUrdu" ColumnName="TitleUrdu" />
+          <ScalarProperty Name="TitleArabic" ColumnName="TitleArabic" />
+          <ScalarProperty Name="TitleChinese" ColumnName="TitleChinese" />
+          <ScalarProperty Name="TitleHindi" ColumnName="TitleHindi" />
+          <ScalarProperty Name="TitleItalian" ColumnName="TitleItalian" />
+          <ScalarProperty Name="TitleBengali" ColumnName="TitleBengali" />
+          <ScalarProperty Name="TitleHebrew" ColumnName="TitleHebrew" />
+          <ScalarProperty Name="DescriptionUrdu" ColumnName="DescriptionUrdu" />
+          <ScalarProperty Name="DescriptionArabic" ColumnName="DescriptionArabic" />
+          <ScalarProperty Name="DescriptionChinese" ColumnName="DescriptionChinese" />
+          <ScalarProperty Name="DescriptionHindi" ColumnName="DescriptionHindi" />
+          <ScalarProperty Name="DescriptionItalian" ColumnName="DescriptionItalian" />
+          <ScalarProperty Name="DescriptionBengali" ColumnName="DescriptionBengali" />
+          <ScalarProperty Name="DescriptionHebrew" ColumnName="DescriptionHebrew" />
+          <ScalarProperty Name="TitleTurkish" ColumnName="TitleTurkish" />
+          <ScalarProperty Name="DescriptionTurkish" ColumnName="DescriptionTurkish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderCemeteries">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.OrderCemetery)">
+        <MappingFragment StoreEntitySet="OrderCemeteries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CemeteryId" ColumnName="CemeteryId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PreNeed" ColumnName="PreNeed" />
+          <ScalarProperty Name="AtNeed" ColumnName="AtNeed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderPlans">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.OrderPlan)">
+        <MappingFragment StoreEntitySet="OrderPlans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="AmountStatus" ColumnName="AmountStatus" />
+          <ScalarProperty Name="ServiceListingId" ColumnName="ServiceListingId" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderPlanItems">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.OrderPlanItem)">
+        <MappingFragment StoreEntitySet="OrderPlanItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderPlanId" ColumnName="OrderPlanId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ServiceListingPlanId" ColumnName="ServiceListingPlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="AmountStatus" ColumnName="AmountStatus" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Origins">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Origin)">
+        <MappingFragment StoreEntitySet="Origins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Page)">
+        <MappingFragment StoreEntitySet="Pages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
+          <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
+          <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
+          <ScalarProperty Name="BodyUrdu" ColumnName="BodyUrdu" />
+          <ScalarProperty Name="BodyHindi" ColumnName="BodyHindi" />
+          <ScalarProperty Name="BodyChinese" ColumnName="BodyChinese" />
+          <ScalarProperty Name="BodyArabic" ColumnName="BodyArabic" />
+          <ScalarProperty Name="BodyItalian" ColumnName="BodyItalian" />
+          <ScalarProperty Name="BodyTurkish" ColumnName="BodyTurkish" />
+          <ScalarProperty Name="BodyBengali" ColumnName="BodyBengali" />
+          <ScalarProperty Name="BodyHebrew" ColumnName="BodyHebrew" />
+          <ScalarProperty Name="TitleUrdu" ColumnName="TitleUrdu" />
+          <ScalarProperty Name="TitleHindi" ColumnName="TitleHindi" />
+          <ScalarProperty Name="TitleChinese" ColumnName="TitleChinese" />
+          <ScalarProperty Name="TitleArabic" ColumnName="TitleArabic" />
+          <ScalarProperty Name="TitleItalian" ColumnName="TitleItalian" />
+          <ScalarProperty Name="TitleTurkish" ColumnName="TitleTurkish" />
+          <ScalarProperty Name="TitleBengali" ColumnName="TitleBengali" />
+          <ScalarProperty Name="TitleHebrew" ColumnName="TitleHebrew" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageBoxes">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.PageBox)">
+        <MappingFragment StoreEntitySet="PageBoxes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Box" ColumnName="Box" />
+          <ScalarProperty Name="UrduPage" ColumnName="UrduPage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnerPlans">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.PartnerPlan)">
+        <MappingFragment StoreEntitySet="PartnerPlans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="PlanPeriods" ColumnName="PlanPeriods" />
+          <ScalarProperty Name="FreeListingPeriod" ColumnName="FreeListingPeriod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partners">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Partner)">
+        <MappingFragment StoreEntitySet="Partners">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="PartnerPlanId" ColumnName="PartnerPlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentCards">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.PaymentCard)">
+        <MappingFragment StoreEntitySet="PaymentCards">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="ExpMonth" ColumnName="ExpMonth" />
+          <ScalarProperty Name="ExpYear" ColumnName="ExpYear" />
+          <ScalarProperty Name="CvcNo" ColumnName="CvcNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BillId" ColumnName="BillId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethods">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.PaymentMethod)">
+        <MappingFragment StoreEntitySet="PaymentMethods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="InstallationId" ColumnName="InstallationId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostCodes">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.PostCode)">
+        <MappingFragment StoreEntitySet="PostCodes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Relgions">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Relgion)">
+        <MappingFragment StoreEntitySet="Relgions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RelgionName" ColumnName="RelgionName" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Review)">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ServiceListingId" ColumnName="ServiceListingId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceBoxes">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.ServiceBox)">
+        <MappingFragment StoreEntitySet="ServiceBoxes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BoxName" ColumnName="BoxName" />
+          <ScalarProperty Name="BoxPic" ColumnName="BoxPic" />
+          <ScalarProperty Name="BoxUrl" ColumnName="BoxUrl" />
+          <ScalarProperty Name="BoxDescription" ColumnName="BoxDescription" />
+          <ScalarProperty Name="BoxStatus" ColumnName="BoxStatus" />
+          <ScalarProperty Name="ServiceUrl" ColumnName="ServiceUrl" />
+          <ScalarProperty Name="UrlStatus" ColumnName="UrlStatus" />
+          <ScalarProperty Name="BoxNameInUrdu" ColumnName="BoxNameInUrdu" />
+          <ScalarProperty Name="BoxNameInItalian" ColumnName="BoxNameInItalian" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceListingPlans">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.ServiceListingPlan)">
+        <MappingFragment StoreEntitySet="ServiceListingPlans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="ServiceListId" ColumnName="ServiceListId" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicesListingApprovals">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.ServicesListingApproval)">
+        <MappingFragment StoreEntitySet="ServicesListingApprovals">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeviceListings">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.SeviceListing)">
+        <MappingFragment StoreEntitySet="SeviceListings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="BusinessClassification" ColumnName="BusinessClassification" />
+          <ScalarProperty Name="FuneralServiceId" ColumnName="FuneralServiceId" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="ServicesAndProducts" ColumnName="ServicesAndProducts" />
+          <ScalarProperty Name="BusinessDescription" ColumnName="BusinessDescription" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="PaymentGateways" ColumnName="PaymentGateways" />
+          <ScalarProperty Name="SocialIcons" ColumnName="SocialIcons" />
+          <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+          <ScalarProperty Name="TwitterLink" ColumnName="TwitterLink" />
+          <ScalarProperty Name="GooglePlusLink" ColumnName="GooglePlusLink" />
+          <ScalarProperty Name="CountiesId" ColumnName="CountiesId" />
+          <ScalarProperty Name="CountiesName" ColumnName="CountiesName" />
+          <ScalarProperty Name="NationWide" ColumnName="NationWide" />
+          <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sliders">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Slider)">
+        <MappingFragment StoreEntitySet="Sliders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SlideImages" ColumnName="SlideImages" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slides">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Slide)">
+        <MappingFragment StoreEntitySet="Slides">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="SliderId" ColumnName="SliderId" />
+          <ScalarProperty Name="CaptionUrdu" ColumnName="CaptionUrdu" />
+          <ScalarProperty Name="CaptionArabic" ColumnName="CaptionArabic" />
+          <ScalarProperty Name="CaptionHindi" ColumnName="CaptionHindi" />
+          <ScalarProperty Name="CaptionChinese" ColumnName="CaptionChinese" />
+          <ScalarProperty Name="CaptionItalian" ColumnName="CaptionItalian" />
+          <ScalarProperty Name="CaptionTurkish" ColumnName="CaptionTurkish" />
+          <ScalarProperty Name="CaptionBengali" ColumnName="CaptionBengali" />
+          <ScalarProperty Name="CaptionHebrew" ColumnName="CaptionHebrew" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCates">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.SubCate)">
+        <MappingFragment StoreEntitySet="SubCates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MainCate" ColumnName="MainCate" />
+          <ScalarProperty Name="SubName" ColumnName="SubName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubChlidMenus">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.SubChlidMenu)">
+        <MappingFragment StoreEntitySet="SubChlidMenus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="submenus">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.submenu)">
+        <MappingFragment StoreEntitySet="submenus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="menuId" ColumnName="menuId" />
+          <ScalarProperty Name="pageurl" ColumnName="pageurl" />
+          <ScalarProperty Name="pagetitle" ColumnName="pagetitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubRelgions">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.SubRelgion)">
+        <MappingFragment StoreEntitySet="SubRelgions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubRelgionName" ColumnName="SubRelgionName" />
+          <ScalarProperty Name="RelgioId" ColumnName="RelgioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tiers">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Tier)">
+        <MappingFragment StoreEntitySet="Tiers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Towns">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Town)">
+        <MappingFragment StoreEntitySet="Towns">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrduPages">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.UrduPage)">
+        <MappingFragment StoreEntitySet="UrduPages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
+          <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
+          <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
+          <ScalarProperty Name="ServiceTitle" ColumnName="ServiceTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseBoxImages">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.PurchaseBoxImage)">
+        <MappingFragment StoreEntitySet="PurchaseBoxImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.Team)">
+        <MappingFragment StoreEntitySet="Teams">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQs">
+      <EntityTypeMapping TypeName="IsTypeOf(BurialPlotsModel.FAQ)">
+        <MappingFragment StoreEntitySet="FAQs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -3854,9 +3853,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
