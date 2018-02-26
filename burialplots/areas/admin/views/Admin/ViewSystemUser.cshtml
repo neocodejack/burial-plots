@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "System Users";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Scripts{
+
+
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/JS/Admin/systemedit.js"></script>
+
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+@*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-primary" href="@Url.Action("SystemUser", "Admin")">Add System User</a>
+    </div>
+</div>
+@if (ViewBag.Type == "cemetery")
+{
+    <h2>Cemetery Managers</h2>
+}
+else
+{
+    <h2>System Users</h2>
+}
+<br />
+
+<div id="Loaduser">
+
+</div>
+
+<input type="hidden" value="@ViewBag.Type" id="hidType" />
+<input type="hidden" id="laoduser" value="@Url.Action("LoadSysytemUser","Admin")" />
+<input type="hidden" id="Memid" value="" />
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BurialPlots.DAL.Footer>
+
+<table class="table table-bordered table-hover table-responsive table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CopyRight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Branding)
+        </th>
+        <th>
+            Publish Date
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <div>
+                @Html.Raw(item.CopyRight)
+            </div>
+        </td>
+        <td>
+           <div>
+               @Html.Raw(item.Branding)
+           </div>
+        </td>
+        <td>
+            @item.PubDate.Value.ToShortDateString()
+        </td>
+        <td>
+           @*<span style="color: green; cursor: pointer" class="fa fa-edit" onclick="editFooter('@item.Id', '@item.CopyRight', '@item.Branding')"></span>*@
+        </td>
+    </tr>
+}
+
+</table>

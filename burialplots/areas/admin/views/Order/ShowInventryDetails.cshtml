@@ -1,0 +1,275 @@
+﻿@model BurialPlots.DAL.Grave
+
+@{
+    ViewBag.Title = "Show Inventry Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $("#li-sale").addClass("start active open");
+            $("#li-Dashboard").removeClass("start active");
+            $("#li-inventory").addClass("start active");
+            $("#tblLoadInvent").DataTable();
+        });
+    </script>
+    }
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-primary" href="@Url.Action("GravesInventory", "Order")">Back</a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Details</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <span>Total Internements: </span><b>@Model.CemeteryLayers.Count()</b>  |
+        <span>Available: </span><b>@Model.CemeteryLayers.Where(c=>c.IsBooking != true).Count()</b>  |
+        <span>Sold: </span><b>@Model.CemeteryLayers.Where(c => c.IsBooking == true).Count()</b>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Plot Name:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.PlotName
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Plot No.:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.PlotNo
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Plot Type:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.PlotType
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Size:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.Size
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Location:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.Location
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Tier:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.Tier.Name
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Short Description:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.ShortDescription
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Full Description:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.FullDescription
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Internement</label>
+            </div>
+            <div class="col-md-8">
+                @Model.Internement
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Internement Fee:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.InternementFee
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Lease:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.Lease
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Maintenance:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.Maintenance
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Section:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.MainSection.Name
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Religion:</label>
+            </div>
+            <div class="col-md-8">
+                @Model.Relgion.RelgionName
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Sect:</label>
+            </div>
+            <div class="col-md-8">
+                @if (Model.SubRelgion != null)
+                {
+                    <span>
+                        @Model.SubRelgion.SubRelgionName
+                    </span>
+                }
+                else
+                {
+                    <span>N/A</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-11">
+        <a class="btn btn-primary pull-right" href="@Url.Action("ExportInternmentDetails", "Order", new { id = Model.Id})">Export to CSV</a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-2">
+        <label>Internements:</label>
+    </div>
+    <div class="col-md-9">
+        <table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadInvent">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CemeteryLayers)
+            {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@Math.Round(Convert.ToDecimal(item.Price), 2)</td>
+                        <td>
+                            @if (item.IsBooking != true)
+                            {
+                                <span>Available</span>
+                            }
+                            else
+                            {
+                                if (item.Grave.OrderCemeteries.FirstOrDefault() != null)
+                                {
+                                    if (item.Grave.OrderCemeteries.FirstOrDefault().Order.Status != null && item.Grave.OrderCemeteries.FirstOrDefault().Order.Status.ToLower() == "confirmed")
+                                    {
+                                        <span>Sold</span>
+                                    }
+                                    else if (item.Grave.OrderCemeteries.FirstOrDefault().Order.Status != null && item.Grave.OrderCemeteries.FirstOrDefault().Order.Status.ToLower() == "pending")
+                                    {
+                                        <span>Pending</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Refunded</span>
+                                    }
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<br />

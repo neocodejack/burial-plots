@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eabbe0966724470b96ca4a5229f1ff61" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="BurialPlotsModel.AdministrativeEmail" Width="1.5" PointX="7.75" PointY="18.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.AdminLogin" Width="1.5" PointX="19.75" PointY="16.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.BillingShipping" Width="1.5" PointX="17" PointY="18.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Blog" Width="1.5" PointX="21" PointY="8.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.BlogCategory" Width="1.5" PointX="18.75" PointY="8.875" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Cart" Width="1.5" PointX="20" PointY="18.875" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Category" Width="1.5" PointX="12.5" PointY="24" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Cemetery" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="BurialPlotsModel.CemeteryImage" Width="1.5" PointX="3" PointY="32" />
+        <EntityTypeShape EntityType="BurialPlotsModel.CemeteryLayer" Width="1.5" PointX="7.5" PointY="8.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.County" Width="1.5" PointX="12" PointY="14.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Country" Width="1.5" PointX="9.75" PointY="14.375" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Footer" Width="1.5" PointX="7.75" PointY="21.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.FuneralProduct" Width="1.5" PointX="12" PointY="19.875" />
+        <EntityTypeShape EntityType="BurialPlotsModel.FuneralService" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Grave" Width="1.5" PointX="5.25" PointY="3" />
+        <EntityTypeShape EntityType="BurialPlotsModel.ItalianPage" Width="1.5" PointX="0.75" PointY="22.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Item" Width="1.5" PointX="14.75" PointY="23.375" />
+        <EntityTypeShape EntityType="BurialPlotsModel.MainSection" Width="1.5" PointX="2.625" PointY="0.5" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Member" Width="1.5" PointX="14.75" PointY="18.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Member1" Width="1.5" PointX="3" PointY="17.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Menu" Width="1.5" PointX="16.75" PointY="12.5" />
+        <EntityTypeShape EntityType="BurialPlotsModel.NewsManagement" Width="1.5" PointX="9.75" PointY="23.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.OrderCemetery" Width="1.5" PointX="7.5" PointY="5" />
+        <EntityTypeShape EntityType="BurialPlotsModel.OrderPlan" Width="1.5" PointX="17.25" PointY="3.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.OrderPlanItem" Width="1.5" PointX="16.5" PointY="7.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Order" Width="1.5" PointX="5.25" PointY="17.625" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Origin" Width="1.5" PointX="1.5" PointY="14" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Page" Width="1.5" PointX="3.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.PageBox" Width="1.5" PointX="6" PointY="12.5" />
+        <EntityTypeShape EntityType="BurialPlotsModel.PartnerPlan" Width="1.5" PointX="12" PointY="2" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Partner" Width="1.5" PointX="9.75" PointY="3.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.PaymentCard" Width="1.5" PointX="22.25" PointY="18.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.PaymentMethod" Width="1.5" PointX="21.75" PointY="16.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.PostCode" Width="1.5" PointX="16.75" PointY="23.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Relgion" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Review" Width="1.5" PointX="14.25" PointY="11.875" />
+        <EntityTypeShape EntityType="BurialPlotsModel.ServiceBox" Width="1.5" PointX="3.75" PointY="22.625" />
+        <EntityTypeShape EntityType="BurialPlotsModel.ServiceListingPlan" Width="1.5" PointX="14.25" PointY="7.625" />
+        <EntityTypeShape EntityType="BurialPlotsModel.ServicesListingApproval" Width="1.5" PointX="8.75" PointY="12.125" />
+        <EntityTypeShape EntityType="BurialPlotsModel.SeviceListing" Width="1.5" PointX="12" PointY="5.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Slider" Width="1.5" PointX="19.75" PointY="2.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Slide" Width="1.5" PointX="22" PointY="1.375" />
+        <EntityTypeShape EntityType="BurialPlotsModel.SubCate" Width="1.5" PointX="14.75" PointY="28.375" />
+        <EntityTypeShape EntityType="BurialPlotsModel.SubChlidMenu" Width="1.5" PointX="21.25" PointY="12.375" />
+        <EntityTypeShape EntityType="BurialPlotsModel.submenu" Width="1.5" PointX="19" PointY="12.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.SubRelgion" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Tier" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Town" Width="1.5" PointX="14.25" PointY="15.25" />
+        <EntityTypeShape EntityType="BurialPlotsModel.UrduPage" Width="1.5" PointX="3.75" PointY="12.25" />
+        <AssociationConnector Association="BurialPlotsModel.FK_BillingShipping_Item" />
+        <AssociationConnector Association="BurialPlotsModel.FK_BillingShipping_Member" />
+        <AssociationConnector Association="BurialPlotsModel.FK_PaymentCard_BillingShipping" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Blog_BlogCategory1" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Cart_Item" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Cart_Member" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Item_Category" />
+        <AssociationConnector Association="BurialPlotsModel.FK_SubCate_Category" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Cemetery_Origins" />
+        <AssociationConnector Association="BurialPlotsModel.FK_CemeteryImages_Cemetery" />
+        <AssociationConnector Association="BurialPlotsModel.FK_MainSections_Cemetery" />
+        <AssociationConnector Association="BurialPlotsModel.FK_CemeteryLayers_Graves" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Counties_Countries" />
+        <AssociationConnector Association="BurialPlotsModel.FK_ServiceListingPlans_Counties" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Towns_Counties" />
+        <AssociationConnector Association="BurialPlotsModel.FK_FuneralProduct_FuneralServices" />
+        <AssociationConnector Association="BurialPlotsModel.FK_ServiceListingPlans_FuneralServices" />
+        <AssociationConnector Association="BurialPlotsModel.FK_SeviceListing_FuneralServices1" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Graves_Cemetery" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Graves_Graves" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Graves_Graves1" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Graves_Relgion" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Graves_SubRelgion" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Graves_Tiers" />
+        <AssociationConnector Association="BurialPlotsModel.FK_OrderCemetery_Graves" />
+        <AssociationConnector Association="BurialPlotsModel.FK_PaymentCard_Member" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Orders_Members" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Reviews_Members" />
+        <AssociationConnector Association="BurialPlotsModel.FK_submenu_submenu" />
+        <AssociationConnector Association="BurialPlotsModel.FK_OrderCemetery_Orders" />
+        <AssociationConnector Association="BurialPlotsModel.FK_OrderPlan_Partners" />
+        <AssociationConnector Association="BurialPlotsModel.FK_OrderPlan_SeviceListing" />
+        <AssociationConnector Association="BurialPlotsModel.FK_OrderPlanItem_OrderPlan" />
+        <AssociationConnector Association="BurialPlotsModel.FK_OrderPlanItem_ServiceListingPlans" />
+        <AssociationConnector Association="BurialPlotsModel.FK_PageBox_Page" />
+        <AssociationConnector Association="BurialPlotsModel.FK_ServiceBox_Page" />
+        <AssociationConnector Association="BurialPlotsModel.FK_PageBox_ServiceBox" />
+        <AssociationConnector Association="BurialPlotsModel.FK_PageBox_UrduPage" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Partners_PartnerPlan" />
+        <AssociationConnector Association="BurialPlotsModel.FK_ServiceListingPlans_PartnerPlan" />
+        <AssociationConnector Association="BurialPlotsModel.FK_SeviceListing_Partners" />
+        <AssociationConnector Association="BurialPlotsModel.FK_SubRelgion_Relgion" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Reviews_SeviceListing1" />
+        <AssociationConnector Association="BurialPlotsModel.FK_ServiceListingPlans_SeviceListing" />
+        <AssociationConnector Association="BurialPlotsModel.FK_Slides_Slider" />
+        <AssociationConnector Association="BurialPlotsModel.FK_SubChlidMenu_submenu" />
+        <AssociationConnector Association="BurialPlotsModel.FK_UrduPage_UrduPage" />
+        <EntityTypeShape EntityType="BurialPlotsModel.PurchaseBoxImage" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.Team" Width="1.5" PointX="14.375" PointY="0.75" />
+        <AssociationConnector Association="BurialPlotsModel.FK_PostCodes_Counties" />
+        <EntityTypeShape EntityType="BurialPlotsModel.FAQ" Width="1.5" PointX="14.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

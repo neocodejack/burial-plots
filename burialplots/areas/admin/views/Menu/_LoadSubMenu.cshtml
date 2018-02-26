@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BurialPlots.DAL.submenu>
+
+
+<table id="tblload" class="table table-bordered table-hover table-responsive table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>
+            Menu
+            </th>
+           <th>Sub Menu</th>
+            <th>
+                Page Url
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pagetitle)
+                </td>
+                <td>
+                    @if (item.SubChlidMenus.Count() > 0)
+                    {
+                        <a href="@Url.Action("LoadSubChildMenus", "Menu", new { id=item.Id, subId = item.menuId })">View (@item.SubChlidMenus.ToList().Count())</a>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pageurl)
+                </td>
+                <td>
+                    <a><i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" title="Click here to delete menu" id="Delete" onclick="Delete(@item.Id)"></i></a>
+                    <a><i class="fa fa-pencil-square-o" aria-hidden="true"  title="Click here to edit" id="edit" onclick="edit('@item.Id','@item.Menu','@item.menuId','@item.pagetitle','@item.pageurl')"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

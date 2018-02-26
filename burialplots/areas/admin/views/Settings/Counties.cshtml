@@ -1,0 +1,64 @@
+﻿@using BurialPlots.DAL
+@{
+    ViewBag.Title = "Counties";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var countriesList = new CountryRepository().GetAll();
+}
+@section Scripts{
+    <script src="~/Areas/Admin/JS/Setting/county.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Counties</h2>
+    </div>
+</div>
+<br />
+<div class="row">
+
+    <div class="col-md-2">
+        <label>County Name:</label>
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="txtName" class="form-control" />
+    </div>
+    <div class="col-md-2">
+        <label>Select Country:</label>
+    </div>
+    <div class="col-md-4">
+        <select id="drpCountries">
+            <option>-- Select Country --</option>
+            @foreach (var item in countriesList)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-2">
+        <label>Description:</label>
+    </div>
+    <div class="col-md-8">
+        <textarea type="text" id="txtDescription" rows="6" class="form-control"></textarea>
+    </div>
+</div>
+
+<br />
+<div class="row text-center">
+    <input type="button" value="Save" onclick="saveCounty()" class="btn btn-success" />
+    <input type="button" value="Reset" onclick="resetAllFields()" class="btn btn-default" />
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadCounties"></div>
+</div>
+
+<input type="hidden" id="hidId" />
+<input type="hidden" id="hidLoadCountiesUrl" value="@Url.Action("LoadCounties", "Settings")" />
+<input type="hidden" id="hidSaveCountyUrl" value="@Url.Action("SaveCounty", "Settings")" />
+<input type="hidden" id="hidDeleteCountyUrl" value="@Url.Action("DeleteCounty", "Settings")" />
+

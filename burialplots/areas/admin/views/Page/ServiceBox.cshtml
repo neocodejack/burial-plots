@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Create Service Box";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+<script src="~/Areas/Admin/JS/ServiceBox/ServiceBox.js"></script>
+
+}
+
+<h2>Create Service Box</h2>
+
+
+<table class="table table-responsive table-hover">
+    <tr>
+        <td>Service Name</td>
+        <td>
+            <input type="text" id="txt_name" class="form-control" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+           Service Description  <input id="chk" onclick="showDescrition()" type="checkbox" />
+        </td>
+    </tr>
+  
+        <tr id="boxdescription" style="display:none">
+            <td>Enter Service Description</td>
+            <td>
+                <textarea id="txt_descirption" class="form-control"></textarea>
+            </td>
+        </tr>
+   
+    
+    @*<tr>
+        <td>Select Page Url To Show Service Box</td>
+        <td>
+            
+            <select class="form-control" id="drdpageurl">
+             @foreach (var item in ViewBag.page)
+             {
+                <option value="@item.Id">@item.PageTittle</option>
+             }
+            </select>
+        </td>
+    </tr>*@
+    <tr id="serviceuurl" style="">
+        <td>Select Service Url</td>
+        <td>
+
+            <select class="form-control" id="drdpagelinkurl">
+                @foreach (var item in ViewBag.page)
+                {
+                    <option value="@item.Pageurl">@item.PageTittle</option>
+                }
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+              Custom Url  <input id="urlchk" onclick="customurl()" type="checkbox" />
+        </td>
+    </tr>
+
+    <tr id="customeurl" style="display:none">
+        <td>Custom Url</td>
+        <td>
+           <input type="text" id="customeurldata" class="form-control" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Featured Image
+        </td>
+        <td>
+            <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" />
+        </td>
+
+
+    </tr>
+    <tr>
+        <td>
+            Image Preview
+        </td>
+        <td>
+            <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="" alt="Dimesnsions (220 X 220) pixels" />
+<pre style="width:220px;">220 X 220 Pixels</pre>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" class="btn btn-success pull-right" onclick="servicebox()" value="Add Service Box" />
+        </td>
+    </tr>
+</table>
+<input type="hidden" id="Imghiden" value="@Url.Action("Upload","Page")" />
+<input type="hidden" id="serviceurl" value="@Url.Action("ServiceBoxAdded","Page")" />

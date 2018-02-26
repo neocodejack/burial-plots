@@ -1,0 +1,41 @@
+﻿
+.topMargin{
+    margin-top:200px;
+   
+}
+.clr{
+    color:red;
+}
+.border{
+    border:1px solid lightgray;
+}
+.border1{
+    border:1px solid lightgray;
+}
+.align{
+    float:left;
+}
+.backClr{
+    color:blue;
+    font-size:18px;
+}
+.alignment{
+    text-align:justify;
+}
+.customTitle{
+    margin-left:10px;
+}
+.customMarginTop{
+    margin-top:15px;
+}
+.bottomMar{
+    margin-bottom:70px;
+}
+
+.colBack{
+    color:#7c8aa5;
+}
+.Pipeline{
+    color: red;
+    padding-left: 38px;
+}

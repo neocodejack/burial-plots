@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "AddSection";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/submodulesMap/squares/js/squares-renderer.js"></script>
+    <script src="~/submodulesMap/squares/js/squares.js"></script>
+    <script src="~/submodulesMap/squares/js/squares-elements-jquery.js"></script>
+    <script src="~/submodulesMap/squares/js/squares-controls.js"></script>
+    <script src="~/submodulesMap/wcp-editor/js/wcp-editor.js"></script>
+    <script src="~/submodulesMap/wcp-editor/js/wcp-editor-controls.js"></script>
+    <script src="~/submodulesMap/wcp-tour/js/wcp-tour.js"></script>
+    <script src="~/submodulesMap/wcp-compress/js/wcp-compress.js"></script>
+    <script src="~/submodulesMap/wcp-icons/js/wcp-icons.js"></script>
+    <!-- Image Map Pro Editor -->
+    <script src="~/jsMap/image-map-pro-defaults.js"></script>
+    <script src="~/jsMap/image-map-pro-editor.js"></script>
+    <script src="~/jsMap/image-map-pro-editor-content.js"></script>
+    <script src="~/jsMap/image-map-pro-editor-local-storage.js"></script>
+    <script src="~/jsMap/image-map-pro-editor-init-jquery.js"></script>
+    <!-- Image Map Pro Plugin -->
+    <script src="~/jsMap/image-map-pro.js"></script>
+    
+<script src="~/Areas/Admin/JS/Plot/drawSectionMap.js"></script>
+}
+<div class="row">
+    <div class="col-md-12">
+        <h3>Add Section 
+        @if (!string.IsNullOrEmpty(ViewBag.CemeteryName))
+        {
+            <span>to @ViewBag.CemeteryName</span>
+        }
+        </h3>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <label>Section Name</label>
+        <input type="text" id="txtName" class="form-control" placeholder="Section Name" />
+    </div>
+</div>
+@*<br />
+<div class="row">
+    <div class="col-md-6">
+        <label>Icon URL</label>
+        <input type="text" id="txtIconUrl" class="form-control" />
+    </div>
+</div>*@
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <input type="file" style="width:100%" id="imageFile" class="btn btn-primary" value="upload Image" onchange="uploadCemteryImage()" />
+    </div>
+    <div class="col-md-6">
+        <input type="text" placeholder="Upload Image then copy image url from here" class="form-control" id="txtImg" />
+    </div>
+    <div class="col-md-2">
+        <input type="button" class="btn btn-success" value="Copy Url" onclick="copyImageUrl()" />
+    </div>
+</div>
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-12" id="wcp-editor" style="height:700px">
+
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <input type="button" class="btn btn-success" style="width:100%" onclick="saveCemetery()" value="Save" />
+    </div>
+</div>
+
+
+
+
+<input type="hidden" id="hidImage" />
+<input type="hidden" id="hidRequestUrl" value="@ViewBag.RequestUrl" />
+<input type="hidden" id="hidCemeteryId" value="@ViewBag.cemeteryId" />
+<input type="hidden" id="hidSpotId" value="@ViewBag.spotId" />
+<input type="hidden" value="@Url.Action("UploadCemeteryImage", "Cemeteries")" id="hidUploadCemeteryImageUrl" />
+<input type="hidden" id="hidSaveSectionUrl" value="@Url.Action("SaveSection", "Cemeteries")" />
+<input type="hidden" id="hidLoadSectUrl" value="@Url.Action("LoadSect", "Cemeteries")" />

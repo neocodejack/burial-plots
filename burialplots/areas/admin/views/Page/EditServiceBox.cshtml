@@ -1,0 +1,121 @@
+﻿@model BurialPlots.DAL.ServiceBox
+
+@{
+    ViewBag.Title = "Create Service Box";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Areas/Admin/JS/ServiceBox/ServiceBox.js"></script>
+
+}
+
+<h2>Edit Service Box</h2>
+<br />
+<input type="hidden" id="hidId" value="@Model.Id" />
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="row">
+            <div class="col-md-12">
+                <label>Service Name</label>
+                @if (!string.IsNullOrEmpty(Model.BoxName))
+                {
+                    <input type="text" id="txt_name" value="@Model.BoxName" class="form-control" />
+                }
+                else
+                {
+                    <input type="text" id="txt_name" class="form-control" />
+                }
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label>Service Description  <input id="chk" checked="checked" onclick="showDescrition()" type="checkbox" /></label>
+            </div>
+        </div>
+        <br />
+        <div id="boxdescription" class="row">
+            <div class="col-md-12">
+                <label>Enter Service Description</label>
+                @if (!string.IsNullOrEmpty(Model.BoxDescription))
+                {
+                    <textarea id="txt_descirption" class="form-control">@Model.BoxDescription</textarea>
+                }
+                else
+                {
+                    <textarea id="txt_descirption" class="form-control"></textarea>
+                }
+            </div>
+        </div>
+        <br />
+        <div id="serviceuurl" class="row">
+            <div class="col-md-12">
+                <label>Select Service Url</label>
+                <select class="form-control" id="drdpagelinkurl">
+                    @foreach (var item in ViewBag.page)
+                    {
+                        if (item.PageTittle != null && item.PageTittle.ToLower() == Model.ServiceUrl.ToLower())
+                        {
+                            <option selected="selected">@item.PageTittle</option>
+                        }
+                        else
+                        {
+                            <option>@item.PageTittle</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label> Custom Url  <input id="urlchk" checked="checked" onclick="customurl()" type="checkbox" /></label>
+            </div>
+        </div>
+        <br />
+        <div id="customeurl" class="row">
+            <div class="col-md-12">
+                <label>Custom Url</label>
+                @if (!string.IsNullOrEmpty(Model.ServiceUrl))
+                {
+                    <input type="text" id="customeurldata" value="@Model.ServiceUrl" class="form-control" />
+                }
+                else
+                {
+                    <input type="text" id="customeurldata" class="form-control" />
+                }
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label>Featured Image</label>
+                <input style="width:100%" type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label>Image Preview</label>
+                @if (!string.IsNullOrEmpty(Model.BoxPic))
+                {
+                    <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="~/Areas/Admin/Image/@Model.BoxPic" alt="Dimesnsions (220 X 220) pixels" />
+<pre style="width:220px;">220 X 220 Pixels</pre>
+                }
+                else
+                {
+                    <img id="thumbnil" class="img-thumbnail clear form-control" style="width:220px; height:220px; margin-top:10px;" src="" alt="Dimesnsions (220 X 220) pixels" />
+<pre style="width:220px;">220 X 220 Pixels</pre>
+                }
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="button" class="btn btn-success" onclick="servicebox()" value="Add Service Box" />
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="Imghiden" value="@Url.Action("Upload","Page")" />
+<input type="hidden" id="serviceurl" value="@Url.Action("ServiceBoxAdded","Page")" />

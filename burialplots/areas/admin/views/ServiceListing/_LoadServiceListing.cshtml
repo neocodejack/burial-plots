@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BurialPlots.DAL.SeviceListing>
+
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadServiceListing">
+    <thead>
+        <tr>
+            <th>
+                Business Name
+            </th>
+            <th>
+                Post Code
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Website
+            </th>
+            <th>
+                Business Classification
+            </th>
+            <th>Manage Members</th>
+            <th>Status</th>
+            <th>Change Status</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.BusinessName
+                </td>
+                <td>
+                    @item.PostCode
+                </td>
+                <td>
+                    @item.Address
+                </td>
+                <td>
+                    @item.PhoneNo
+                </td>
+                <td>
+                    @item.Website
+                </td>
+                <td>
+                    @item.BusinessClassification
+                </td>
+                <td>
+                    <a href="@Url.Action("ShowDetails", "ServiceListing", new { id = item.Id })"><i class="fa fa-eye"></i></a>
+                    <span class="fa fa-trash-o" style="color:red; cursor: pointer" onclick="deleteServiceListing('@item.Id')"></span>
+                  
+                </td>
+                <td>
+                    @if (item.IsApproved == true)
+                    {
+                        <sapn style="color:red;">Approved</sapn>
+                        
+                    }
+                    
+                    else{
+                    <sapn>Disapproved</sapn>
+                    
+                    }
+                    
+                </td>
+                <td>
+
+                    @if (item.IsApproved == true)
+                    {
+                        <button onclick="Approved('@item.Id')" class="btn btn-primary" style="width:110px;">Disapproved</button>
+                    }
+                    else
+                    {
+                        <button onclick="Approved('@item.Id')" class="btn btn-danger" style="width:110px;">Approved</button>
+                    }
+
+                </td>
+            </tr>
+            
+
+        }
+    </tbody>
+</table>

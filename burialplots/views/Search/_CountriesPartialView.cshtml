@@ -1,0 +1,10 @@
+﻿@model IEnumerable<BurialPlots.DAL.Country>
+<div class="row">
+    @foreach (var item in Model)
+            {
+        <div class="col-md-3">
+            <a href="@Url.Action("ServiceListing", "Home")">@item.Name</a>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BurialPlots.DAL.Review>
+<table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadReviewsListing">
+    <thead>
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                Posted by
+            </th>
+            <th>
+                Posted Date
+            </th>
+            <th>
+                Actions
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+            Change Status
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Member.Fname
+                </td>
+                <td>
+                    @item.Date.Value.ToShortDateString()
+                </td>
+                <td style="text-align:center;">
+                    <a href="@Url.Action("ShowDetails", "Reviews", new { id = item.Id })" class="text-center"><i class="fa fa-eye"></i></a>
+                    @*<span class="fa fa-trash-o" style="color:red; cursor: pointer" onclick="deleteServiceListing('@item.Id')"></span>*@
+                </td>
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <sapn style="color:red;">Approved</sapn>
+
+                    }
+
+                    else
+                    {
+                        <sapn>Deleted</sapn>
+
+                    }
+
+                </td>
+                <td>
+
+                    @if (item.Status == true)
+                    {
+                        <button onclick="DeltedReview('@item.Id')" class="btn btn-primary" style="width:110px;">Deleted</button>
+                    }
+                    else
+                    {
+                        <button onclick="Approved('@item.Id')" class="btn btn-danger" style="width:110px;">Approved</button>
+                    }
+
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>

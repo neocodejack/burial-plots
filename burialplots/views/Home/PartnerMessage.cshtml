@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Verification";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+
+<div class="site-info padding-by-header">
+    <div class="row" style="margin-top: 70px">
+        <div class="col-md-12 text-center">
+            <h3>Congratulations! Your account has been verified successfully.</h3>
+            <br />
+            <h4><a href="@Url.Action("Index", "Login",new {Area="Admin" })">Click here</a> to login your account</h4>
+        </div>
+    </div>
+</div>

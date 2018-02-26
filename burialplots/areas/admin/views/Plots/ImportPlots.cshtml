@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BurialPlots.DAL.Cemetery>
+@{
+    ViewBag.Title = "Import Plots";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+<script src="~/Areas/Admin/JS/Plot/importGrave.js"></script>
+    }
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Import Plots</h2>
+    </div>
+</div>
+<br />
+<form action="@Url.Action("ImportExcelData", "Plots")" method="post" onsubmit="return false">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Cemetery</label>
+            <select name="drpCemetery" onchange="changeCemetery()" class="form-control" id="drpCemetery">
+                <option value="">-- Select Cemetery --</option>
+                @foreach (var item in Model)
+            {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Section</label>
+            <select required name="sectionId" onchange="loadUnMappedGraves()" class="form-control" id="drpSection">
+                <option value="">-- Select Section --</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Select CSV File</label>
+            <input type="file" required class="btn btn-primary" style="width:100%" id="file" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <input type="button" class="btn btn-success" value="Import" onclick="uploadFile()" />
+        </div>
+    </div>
+</form>
+<br />
+@*<div class="row">
+    <div class="col-md-12" id="divLoadPlots"></div>
+</div>*@
+
+<input type="hidden" id="hidFilePath" />
+<input type="hidden" id="hidLoadSectionUrl" value="@Url.Action("LoadSections", "Plots")" />
+<input type="hidden" id="hidUploadImageUrl" value="@Url.Action("UploadCSVFile", "Plots")" />
+<input type="hidden" id="hidLoadUnMappedGravesUrl" value="@Url.Action("LoadUnMappingGraves", "Plots")" />

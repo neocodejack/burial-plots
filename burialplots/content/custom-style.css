@@ -1,0 +1,262 @@
+﻿.info_ {
+    background-color: #6AF;
+    border-color: #48D;
+}
+
+.warning_ {
+    background-color: #FA4;
+    border-color: #D82;
+}
+
+.success_ {
+    background-color: #8D5;
+    border-color: #6B3;
+}
+
+.error_ {
+    background-color: #F31;
+    border-color: #D10;
+}
+
+.static-loader {
+    position: fixed;
+    top: 0px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-family: Arial;
+    color: #000;
+    font-weight: normal;
+    margin-top: 0px;
+    z-index: 9999;
+    display: none;
+    color: #FFF;
+    text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5) inset;
+    border: 1px solid;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255, 255, 255, 0.1) 20px, rgba(255, 255, 255, 0.1) 40px);
+    padding: 9px;
+    font-size: 15px;
+}
+
+.static-loader p {
+    color: #FFF;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.successBox{
+    margin-top:5px;
+    background-color:#5da84b;
+    padding:5px;
+    text-align:left;
+    color:#fff;
+    font-size:24px;
+    border-radius:6px 6px 6px 6px;
+}
+.errorBox{
+    margin-top:5px;
+    background-color:#ca2a2a;
+    text-align:left;
+    padding:5px;
+    color:#fff;
+    font-size:24px;
+    border-radius:6px 6px 6px 6px;
+}
+
+.squareSuccessBox{
+    margin:5px;
+    background-color:#5da84b;
+    color:#fff;
+    font-size:14px;
+    min-height:50px;
+    padding:10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+.squarErrorBox{
+    margin:5px;
+    background-color:#ca2a2a;
+    color:#fff;
+    font-size:14px;
+    min-height:50px;
+    padding:10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.cmntBX
+{
+   align-items:initial;
+   padding:10px;
+       /*/*border-bottom:5px solid #0094ff;*/*/ 
+       max-height:10em;
+   min-height:7em;
+
+}
+ .imgBx{
+      max-height:6em;
+      min-height:6em;
+     
+}
+.cmnttext
+{
+    text-align:justify;
+       
+        box-sizing:border-box;
+        max-height:6em;
+        min-height:6em;
+        border:1px solid #0094ff;
+        font-family:Arial;
+        font-size:16px;
+        align-content:center;
+        overflow:hidden;
+}
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top:15%;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+
+}
+@media (min-width: 768px) {
+    .col-sm- {
+        width: 20%;
+        float: left;
+    }
+}
+
+    @media (min-width: 992px) {
+        .col-md-15 {
+            width: 20%;
+            float: left;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .col-lg-15 {
+            width: 20%;
+            float: left;
+        }
+    }
+
+    .heading1 {
+        display: block;
+        font-size: 28px;
+        margin-bottom: -5px;
+    }
+
+    .headingCount {
+        font-size: 48px;
+        font-weight: 100;
+    }
+
+    .btn-yellow {
+        color: #fff;
+        background-color: #ff8127;
+    }
+
+        .btn-yellow:hover,
+        .btn-yellow:focus,
+        .btn-yellow:active,
+        .btn-yellow.active {
+            color: #ffffff;
+            background-color: #222222;
+        }
+
+    .textCntrl {
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+
+    .minheight {
+        min-height: 140px;
+        max-height: 140px;
+    }
+
+    .heightAuto {
+        max-height: 5000px;
+    }
+
+    .bgPic {
+        background: url("~/images/testimonialBG.jpg") no-repeat center center fixed;
+    }
+
+    .classgreen {
+        color: green;
+            }
+
+    .classred {
+        color: red;
+    }
+
+    .classnormal {
+       color:#3faad9;
+    }
+
+    .classspan12 {
+        text-align: left;
+        margin-bottom: 40px;
+        font-size: 14px;
+    }
+
+    .classwidthfordiv {
+        float: left;
+    }
+
+
+    /*My Analysis*/
+    .heading{
+        font-weight:400;
+        text-align :center;
+        position:relative;
+        font-size: 36px;
+        line-height:38px;
+    }
+    .comparison{
+        font-size:20px;
+        line-height:28px;
+        position:relative;
+        font-weight:400;
+
+    }
+    table {
+        border-collapse:collapse;
+        border:1px solid #CCC;
+        font-size:9pt;
+        padding:2px;
+        
+    }
+    td , th{
+        display:table-cell;
+    }
+    #secondtable{
+        margin-right:17px;
+    }
+    #firsttable {
+       width: 58%;
+    }
+    .highcharts-credits{
+        display:none;
+    }
+    #chart2{
+        width:70%;
+    }
+    #thirdtable{
+        margin-right:17px;
+    }
+
+    .hide_{
+        display:none;
+    }

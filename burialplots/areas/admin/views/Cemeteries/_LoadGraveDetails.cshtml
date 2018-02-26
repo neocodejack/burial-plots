@@ -1,0 +1,331 @@
+﻿@model BurialPlots.DAL.Grave
+
+    <div class="form-horizontal">
+        <h4>Plot Details</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.SectionId)
+        @Html.HiddenFor(model => model.SpotId)
+        @Html.HiddenFor(model => model.SectId)
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Header Image</label>
+                    <div class="col-md-9">
+                        <input type="file" id="ImgUpload" onchange="showMyImage(this)" class="btn btn-warning" style="width:100%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.Image))
+                    {
+                        <img src="~/images/CemeteryPlots/@Model.Image" alt="" id="thumbnil"  style="width:100%;height:200px" />
+                    }
+                    else
+                    {
+                        <img src="" alt="" id="thumbnil" style="width:100%;height:200px" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Religion</label>
+                    <div class="col-md-9">
+                        <select id="drpReligion" onchange="loadSect()" class="form-control require-field">
+                            <option value="">--Select Religion--</option>
+                            @foreach (var item in ViewBag.Religions)
+                            {
+                                if (Model != null && Model.ReligionId != null)
+                                {
+                                    if (item.Id == Model.ReligionId)
+                                    {
+                                        <option selected="selected" value="@item.Id">@item.RelgionName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.RelgionName</option>
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.RelgionName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Sect</label>
+                    <div class="col-md-9">
+                        <select id="drpSect" class="form-control">
+                            <option value="">--Select Sect--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SKU, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.SKU, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SKU, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Plot Name</label>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.PlotName, new { htmlAttributes = new { @class = "form-control require-field" } })
+                        @Html.ValidationMessageFor(model => model.PlotName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Plot No.</label>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.PlotNo, new { htmlAttributes = new { @class = "form-control require-field" } })
+                        @Html.ValidationMessageFor(model => model.PlotNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Plot Type</label>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.PlotType, new { htmlAttributes = new { @class = "form-control require-field" } })
+                        @Html.ValidationMessageFor(model => model.PlotType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @if (Model != null)
+                    {
+                        <label class="control-label col-md-3">@Model.Size (m <sup>2</sup>)</label>
+                    }
+                    else
+                    {
+                        <label class="control-label col-md-3">Size (m <sup>2</sup>)</label>
+                    }
+                    
+                    @*@Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-3" })*@ 
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control require-field" } })
+                        @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Tiers*</label>
+                    <div class="col-md-9">
+                        <select id="drpTier" class="form-control require-field">
+                            <option value="">--Select Tier--</option>
+                            @foreach (var item in ViewBag.Tiers)
+                            {
+                                if (Model != null && Model.TierId != null)
+                                {
+                                    if (Model.TierId == item.Id)
+                                    {
+                                        <option selected="selected" value="@item.Id">@item.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Short Description</label>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control require-field" } })
+                        @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Full Description</label>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.FullDescription, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FullDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Write of Internment</label>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Internement, new { htmlAttributes = new { @class = "form-control require-field" } })
+                        @Html.ValidationMessageFor(model => model.Internement, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Internment Fee</label>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.InternementFee, new { htmlAttributes = new { @class = "form-control require-field" } })
+                        @Html.ValidationMessageFor(model => model.InternementFee, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lease, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Lease, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Lease, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Maintenance, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Maintenance, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Maintenance, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            
+        </div>*@
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Internement* <span class="fa fa-plus" onclick="addLayerRow()" style="cursor:pointer;"></span></label>
+                    <div class="col-md-9" id="divLoadLayers">
+                        @{ 
+                            var count = 0;
+                        }
+                        @if (Model != null && Model.CemeteryLayers.Count() > 0)
+                        {
+                            foreach (var item in Model.CemeteryLayers)
+                            {
+                                <div class="row divLayers" id="divLayers_@count">
+                                    <div class="col-md-5">
+                                        <input type="hidden" class="txtLayerId" value="@item.Id" />
+                                        <input type="text" placeholder="Name" value="@item.Name" class="form-control txtLayer" />
+                                    </div>
+                                    <div class="col-md-5" style="display:flex">
+                                        @{ 
+                                            var price = String.Format("{0:0.00}", item.Price);
+                                        }
+                                        <span style="font-weight:bold">£</span>&nbsp;
+                                        <input type="text" placeholder="Price" onkeypress="return IsNumeric(event)" value="@price" class="form-control txtPrice" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span class="fa fa-trash-o" style="cursor:pointer; color:red" onclick="removeLayerRow('@count')"></span>
+                                    </div>
+                                </div>
+                                count++;
+                            }
+                            
+                        }
+                        else
+                        {
+                            <div class="row divLayers">
+                                <div class="col-md-5">
+                                    <input type="hidden" class="txtLayerId" />
+                                    <input type="text" placeholder="Name" class="form-control txtLayer require-field" />
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" placeholder="Price" class="form-control txtPrice require-field" />
+                                </div>
+                            </div>
+                        }
+                        <input type="hidden" id="hidRowId" value="@count" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit"  value="Save" onclick="saveGraveDetails()" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Publish</label>
+                    <div class="col-md-9" id="divLoadLayers">
+                        <select class="form-control" id="drpEnableDisable">
+                            @if (Model != null)
+                            {
+                                if (Model.IsEnabled == true)
+                                {
+                                    <option selected="selected" value="true">Publish</option>
+                                    <option value="false">Draft</option>
+                                }
+                                else
+                                {
+                                    <option value="true">Publish</option>
+                                    <option selected="selected" value="false">Draft</option>
+                                }
+                            }
+                            else
+                            {
+                                <option selected="selected" value="true">Publish</option>
+                                <option value="false">Draft</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

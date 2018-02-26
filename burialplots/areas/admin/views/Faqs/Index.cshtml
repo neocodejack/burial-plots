@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "FAQs";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+<script src="~/Areas/Admin/JS/Faqs/faqs.js"></script>
+    }
+<div class="row">
+    <div class="col-md-12">
+        <h2>FAQs</h2>
+    </div>
+</div>
+<br />
+<input type="hidden" id="hidId" />
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Question</label>
+                <input type="text" class="form-control" id="txtQuestion" />
+            </div>
+            <div class="col-md-6">
+                <label>Answer</label>
+                <textarea class="form-control" id="txtAnswer"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <input type="button" class="btn btn-success" value="Save" onclick="saveFaqs()" />
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" id="divLoadFaqs"></div>
+</div>

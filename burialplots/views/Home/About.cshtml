@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('img').click(function (e) {
+
+                var offset = $(this).offset();
+
+                var X = (e.pageX - offset.left);
+                var Y = (e.pageY - offset.top);
+
+                $('#coord').text('X: ' + X + ', Y: ' + Y);
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div style="width:300px;font:15px Arial;">
+
+        <div><img src="~/Areas/Admin/Image/block-pic1.jpg" alt="" /></div>
+
+        <div style="padding-top:20px;">
+            <div id="coord"></div>
+        </div>
+
+    </div>
+</div>

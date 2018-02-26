@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BurialPlots.DAL.CemeteryLayer>
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="#" onclick="GravesLayerInventoryExport()" class="pull-right" title="Export to Excel"><i style="font-size:25px" class="fa fa-file-excel-o"></i></a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-3 pull-right">
+        <select class="form-control" onchange="toggleGravesDiv()" id="drpViewType">
+            <option selected="selected" value="internement">Show Internements</option>
+            <option value="grave">Show Plots</option>
+        </select>
+    </div>
+    <div class="col-md-2 pull-right">
+        <select class="form-control" onchange="loadCemeterLayers()" id="drpFilter">
+            <option value="">All</option>
+            <option value="Sold">Sold</option>
+            <option value="Available">Available</option>
+            <option value="Pending">Pending</option>
+            <option value="Refunded">Refunded</option>
+        </select>
+    </div>
+    <div class="col-md-1 pull-right">
+        <label>Filter By:</label>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-responsive table-striped" id="tblLoadGraves">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        Plot Name
+                    </th>
+                    <th>
+                        Size
+                    </th>
+                    <th>
+                        Tier
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @item.Grave.PlotName
+                        </td>
+                        <td>
+                            @item.Grave.Size
+                        </td>
+                        <td>
+                            @item.Grave.Tier.Name
+                        </td>
+                        <td>
+                            @Math.Round(Convert.ToDecimal(item.Price), 2)
+                        </td>
+                        <td>
+                            @if (item.IsBooking != true)
+                            {
+                                <span>Available</span>
+                            }
+                            else
+                            {
+                                if (item.Grave.OrderCemeteries.FirstOrDefault() != null)
+                                {
+                                    if (item.Grave.OrderCemeteries.FirstOrDefault(b => b.Quantity == item.Id).Order.Status != null && item.Grave.OrderCemeteries.FirstOrDefault(b=>b.Quantity == item.Id).Order.Status.ToLower() == "confirmed")
+                                    {
+                                        <span>Sold</span>
+                                    }
+                                    else if (item.Grave.OrderCemeteries.FirstOrDefault(b => b.Quantity == item.Id).Order.Status != null && item.Grave.OrderCemeteries.FirstOrDefault(b => b.Quantity == item.Id).Order.Status.ToLower() == "pending")
+                                    {
+                                        <span>Pending</span>
+                                    }
+                                    else if (item.Grave.OrderCemeteries.FirstOrDefault(b => b.Quantity == item.Id).Order.Status != null && item.Grave.OrderCemeteries.FirstOrDefault(b => b.Quantity == item.Id).Order.Status.ToLower() == "cancelled")
+                                    {
+                                        <span>Refunded</span>
+                                    }
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<input type="hidden" id="hidFilterType" value="@ViewBag.Filter" />
