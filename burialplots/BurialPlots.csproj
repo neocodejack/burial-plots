@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -531,17 +532,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CaptionModel.cs" />
-    <Compile Include="Models\Encryption.cs" />
-    <Compile Include="Models\FAQsModel.cs" />
-    <Compile Include="Models\GraveModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\NewsManagementModel.cs" />
-    <Compile Include="Models\PlanModel.cs" />
-    <Compile Include="Models\ServiceListingModel.cs" />
-    <Compile Include="Models\TeamModel.cs" />
+    <Compile Include="distMap\Models\AccountViewModels.cs" />
+    <Compile Include="distMap\Models\CaptionModel.cs" />
+    <Compile Include="distMap\Models\Encryption.cs" />
+    <Compile Include="distMap\Models\FAQsModel.cs" />
+    <Compile Include="distMap\Models\GraveModel.cs" />
+    <Compile Include="distMap\Models\IdentityModels.cs" />
+    <Compile Include="distMap\Models\ManageViewModels.cs" />
+    <Compile Include="distMap\Models\NewsManagementModel.cs" />
+    <Compile Include="distMap\Models\PlanModel.cs" />
+    <Compile Include="distMap\Models\ServiceListingModel.cs" />
+    <Compile Include="distMap\Models\TeamModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\HomeTexts.ar.Designer.cs" />
     <Compile Include="Resources\HomeTexts.Designer.cs" />
@@ -2325,7 +2326,7 @@
     </Content>
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
-    <Content Include="fonts\ionicons.woff" />
+    <Content Include="ionicons.woff" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Page\Index.cshtml" />
