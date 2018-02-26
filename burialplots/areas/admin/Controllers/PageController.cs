@@ -142,6 +142,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             ViewBag.FeaturedCemetries = new CemeteryRepository().GetAll(x=>x.IsFeatured==true).OrderByDescending(x=>x.Id).ToList();
             try
             {
+                ViewBag.NewsList = 
                 ViewBag.NewsFeeds = new NewsManagementRepository().GetAll();
                 ViewBag.Teams = new TeamsRepository().GetAll();
                 ViewBag.Faqs = new FAQsRepository().GetAll();
@@ -153,163 +154,11 @@ namespace BurialPlots.Areas.Admin.Controllers
                 var servicebx = new PageBoxRepository().GetAll().Where(x => x.Page == pageload.Id);
                 ViewBag.box = servicebx;
                 ViewBag.ServiceBoxesCount = servicebx.Count();
-                if (language == "ur")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyUrdu))
-                    {
-                        ViewBag.Body = pageload.BodyUrdu;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleUrdu))
-                    {
-                        ViewBag.tittle = pageload.TitleUrdu;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else if (language == "hi")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyHindi))
-                    {
-                        ViewBag.Body = pageload.BodyHindi;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleHindi))
-                    {
-                        ViewBag.tittle = pageload.TitleHindi;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else if (language == "ar")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyArabic))
-                    {
-                        ViewBag.Body = pageload.BodyArabic;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleArabic))
-                    {
-                        ViewBag.tittle = pageload.TitleArabic;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else if (language == "bn")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyBengali))
-                    {
-                        ViewBag.Body = pageload.BodyBengali;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleBengali))
-                    {
-                        ViewBag.tittle = pageload.TitleBengali;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else if (language == "he")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyHebrew))
-                    {
-                        ViewBag.Body = pageload.BodyHebrew;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleHebrew))
-                    {
-                        ViewBag.tittle = pageload.TitleHebrew;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else if (language == "it")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyItalian))
-                    {
-                        ViewBag.Body = pageload.BodyItalian;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleItalian))
-                    {
-                        ViewBag.tittle = pageload.TitleItalian;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else if (language == "zh")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyChinese))
-                    {
-                        ViewBag.Body = pageload.BodyChinese;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleChinese))
-                    {
-                        ViewBag.tittle = pageload.TitleChinese;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else if (language == "tr")
-                {
-                    if (!string.IsNullOrEmpty(pageload.BodyTurkish))
-                    {
-                        ViewBag.Body = pageload.BodyTurkish;
-                    }
-                    else
-                    {
-                        ViewBag.Body = pageload.Body;
-                    }
-                    if (!string.IsNullOrEmpty(pageload.TitleTurkish))
-                    {
-                        ViewBag.tittle = pageload.TitleTurkish;
-                    }
-                    else
-                    {
-                        ViewBag.tittle = pageload.PageTittle;
-                    }
-                }
-                else
-                {
-                    ViewBag.Body = pageload.Body;
-                    ViewBag.tittle = pageload.PageTittle;
-                }
+                
+                ViewBag.Body = pageload.Body;
+                ViewBag.tittle = pageload.PageTittle;
+                ViewBag.ReligionList = new RelgionRepostiory().GetAll();
+                ViewBag.Slides = new AddSlidesRepository().GetAll();
                 ViewBag.image = pageload.FeatureImage;
                 ViewBag.Language = language;
                 return View();

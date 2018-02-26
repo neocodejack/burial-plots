@@ -18,9 +18,12 @@ else
 @if (ViewBag.tittle.ToLower() == "index")
 {
     var date = DateTime.Now.Date;
-    var newsList1 = new NewsManagementRepository().GetAll().ToList();
-    var religious = new RelgionRepostiory().GetAll();
-    var slides = new AddSlidesRepository().GetAll();
+    var newsList1 = ViewBag.NewsFeeds;
+    //var newsList1 = new NewsManagementRepository().GetAll().ToList();
+    //var religious = new RelgionRepostiory().GetAll();
+    var religious = ViewBag.ReligionList;
+    //var slides = new AddSlidesRepository().GetAll();
+    var slides = ViewBag.Slides;
 }
 
 @section Scripts{
