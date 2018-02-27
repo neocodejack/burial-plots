@@ -18,20 +18,23 @@ else
 @if (ViewBag.tittle.ToLower() == "index")
 {
     var date = DateTime.Now.Date;
-    var newsList1 = new NewsManagementRepository().GetAll().ToList();
-    var religious = new RelgionRepostiory().GetAll();
-    var slides = new AddSlidesRepository().GetAll();
+    var newsList1 = ViewBag.NewsFeeds;
+    //var newsList1 = new NewsManagementRepository().GetAll().ToList();
+    //var religious = new RelgionRepostiory().GetAll();
+    var religious = ViewBag.ReligionList;
+    //var slides = new AddSlidesRepository().GetAll();
+    var slides = ViewBag.Slides;
 }
 
 @section Scripts{
-    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
     <script src="~/Areas/Admin/JS/Page/SearchForServices.js"></script>
     <script src="~/Areas/Admin/JS/Page/LoadBlogSection.js"></script>
     <script src="~/js/Home/PreNeed.js"></script>
     <script src="~/js/Home/index.js"></script>
     @if (ViewBag.tittle.ToLower() == "faqs")
     {
-        <script src="~/js/jquery-ui.js"></script>
+        <script src="~/js/jquery-ui.min.js"></script>
         <script>
             jQuery(function ($) {
                 $("#accordion").accordion({
@@ -775,7 +778,7 @@ else
 
 
     <div id="mask"></div>
-    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
 
     <script>
         jQuery(document).ready(function ($) {

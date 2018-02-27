@@ -1,5 +1,5 @@
 ﻿
-<script src="~/js/megamenu.js"></script>
+<script src="~/js/megamenu.min.js"></script>
 @using System.Web.Script.Serialization
 @using BurialPlots.Controllers
 @using BurialPlots.DAL
@@ -17,14 +17,14 @@
         <a href="#">Choose Language</a>
         <ul>
             <li class="byDefault"><a href="#" onclick="ChangeLanguage('en')">English</a></li>
-            <li class="clickChange"><a href="#" onclick="ChangeLanguage('ur')">@BurialPlots.Resources.HomeTexts.Urdu</a></li>
+            @*<li class="clickChange"><a href="#" onclick="ChangeLanguage('ur')">@BurialPlots.Resources.HomeTexts.Urdu</a></li>
             <li class="clickChange"><a href="#" onclick="ChangeLanguage('hi')">@BurialPlots.Resources.HomeTexts.Hindi</a></li>
             <li class="clickChange"><a href="#" onclick="ChangeLanguage('ar')">@BurialPlots.Resources.HomeTexts.Arabic</a></li>
             <li class="clickChange"><a href="#" onclick="ChangeLanguage('zh')">@BurialPlots.Resources.HomeTexts.Chinese</a></li>
             <li class="clickChange"><a href="#" onclick="ChangeLanguage('it')">@BurialPlots.Resources.HomeTexts.Italian</a></li>
             <li class="clickChange"><a href="#" onclick="ChangeLanguage('tr')">@BurialPlots.Resources.HomeTexts.Turkish</a></li>
             <li class="clickChange"><a href="#" onclick="ChangeLanguage('bn')">@BurialPlots.Resources.HomeTexts.Bengali</a></li>
-            <li class="clickChange"><a href="#" onclick="ChangeLanguage('he')">@BurialPlots.Resources.HomeTexts.Hebrew</a></li>
+            <li class="clickChange"><a href="#" onclick="ChangeLanguage('he')">@BurialPlots.Resources.HomeTexts.Hebrew</a></li>*@
         </ul>
     </li>
     @foreach (var menu in ViewBag.menu as List<Menu>)
@@ -84,199 +84,35 @@
                         {
                             <li><a href="@Url.Action("Index", "Market")">@sub.pagetitle</a></li>
                         }
-                        @*if (sub.pagetitle == "REGIONS")
-                            {
-                                <li style="text-align: left;"><a href="@Url.Action("PageView", "Page",new {id=("Future-Burial-Plot-Purchase").ToLower(),Area="Admin" })">Purchase for Future</a></li>
-                                <li style="text-align: left;"><a href="@Url.Action("PageView", "Page",new {id=("Purchase-a-Burial-Plot-Now").ToLower(),Area="Admin"})">Purchase for Now</a></li>
-                                <li style="text-align: left;"><a href="@Url.Action(("Sell_Your_Plot").ToLower(), "Market")">Sell Your Plot</a></li>
-                            }*@
-                else
-                {
-                    <li>
-                        @*@if (sub.pagetitle == "WHERE TO START")
-                            {
-                                <a href="@Url.Action("PageView", "Page",new {id=("WHERE-TO-START").ToLower(), Area="Admin" })">@BurialPlots.Resources.HomeTexts.WhereToStart</a>
-                            }
-                            else if (sub.pagetitle == "FUNERALS")
-                            {
-                                <a href="@Url.Action("PageView", "Page",new {id=("FUNERALS").ToLower(), Area="Admin" })">@BurialPlots.Resources.HomeTexts.FUNERALS</a>
-                            }
-                            else if (sub.pagetitle == "FUNERAL DIRECTORS")
-                            {
-                                <a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-DIRECTORS").ToLower(), Area="Admin" })">@BurialPlots.Resources.HomeTexts.FUNERALDIRECTORS</a>
-                            }
-                            else if (sub.pagetitle == "HELPFUL ADVICE")
-                            {
-                                <a href="@Url.Action("PageView", "Page",new {id=("HELPFUL-ADVICE").ToLower(),Area="Admin" })">@BurialPlots.Resources.HomeTexts.HELPFULADVICE</a>
-                            }
-                            else if (sub.pagetitle == "WRITING EULAGIES")
-                            {
-                                <a href="@Url.Action("PageView", "Page",new {id=("WRITING-EULAGIES").ToLower(),Area="Admin" })">@BurialPlots.Resources.HomeTexts.WRITINGEULAGIES</a>
-                            }
-                            else if (sub.pagetitle == "PROBATE")
-                            {
-                                <a href="@Url.Action("PageView", "Page",new {id=("PROBATE").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.PROBATE</a>
-                            }
-
-                            else*@ @if (sub.pagetitle == "PRESS & NEWS")
-                            {
-                                <a href="@Url.Action("Index", "NewsArticals")">@BurialPlots.Resources.HomeTexts.PRESSNEWS</a>
-                            }
-
-                            @*else if (sub.pagetitle == "ABOUT US")
+                        
+                        else
+                        {
+                            <li>
+                                @if (sub.pagetitle == "PRESS & NEWS")
                                 {
-                                    <a href="@Url.Action("PageView", "Page",new {id=("ABOUT-US").ToLower(),Area="Admin" })">@BurialPlots.Resources.HomeTexts.ABOUTUS</a>
-                                }*@
-                            else
-                            {
-                                var subArr = sub.pageurl.Split('/');
-                                var subUrl = subArr[subArr.Length - 1];
-                                <a href="@Url.Action("PageView", "Page",new {id=subUrl.ToLower(),Area="Admin" })">@sub.pagetitle</a>
-                            }
+                                <a href="@Url.Action("Index", "NewsArticals")">@BurialPlots.Resources.HomeTexts.PRESSNEWS</a>
+                                }
+                                else
+                                {
+                                    var subArr = sub.pageurl.Split('/');
+                                    var subUrl = subArr[subArr.Length - 1];
+                                    <a href="@Url.Action("PageView", "Page",new {id=subUrl.ToLower(),Area="Admin" })">@sub.pagetitle</a>
+                                }
 
                             <ul>
                                 @foreach (var subchild in ViewBag.subchild as List<SubChlidMenu>)
                                 {
                                     if (subchild.MenuId == sub.Id)
                                     {
-                                        @*if (subchild.PageTitle == "BURIAL PLOTS")
-                                            {
-                                                <li><a href="@Url.Action("CemeteryPlots", "Market")">@subchild.PageTitle</a></li>
-                                            }
-                                            else
-                                            {*@
-
-                                        @*if (subchild.PageTitle == "AFTER FUNERAL")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("AFTER-FUNERAL").ToLower(),Area="Admin" })">@BurialPlots.Resources.HomeTexts.AFTERFUNERAL</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "MEMORIALS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.MEMORIALS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "STONEMASONS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("STONEMASONS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.STONEMASONS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "FUNERAL PLANS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-PLANS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.FUNERALPLANS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "BURIAL PLOTS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=subchild.PageUrl.ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.BURIALPLOTS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "BERAVEMENT")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=subchild.PageUrl.ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.BEREAVEMENT</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "ARRANGING")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("ARRANGING").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.ARRANGING</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "SERVICES")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("SERVICES").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.Services</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "COFFINS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("Coffins").ToLower(),Area="Admin"})">@BurialPlots.Resources.HomeTexts.COFFINS</a></li>
-                                            }
-
-                                            else if (subchild.PageTitle == "FLORISTS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("FLORISTS").ToLower(),Area="Admin"})">@BurialPlots.Resources.HomeTexts.FLORISTS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "CARS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("CARS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.CARS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "DEALING WITH CHILDREN")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("DEALING-WITH-LOSS-OF-A-CHILD").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.DEALINGWITHCHILDREN</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "PARENTAL GRIEF")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("PARENTAL-GRIEF").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.PARENTALGRIEF</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "SHOCK OF SUDDEN DEATH")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("SHOCK-OF-SUDDEN-DEATH").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.SHOCKOFSUDDENDEATH</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "SUICIDE")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("SUICIDE").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.SUICIDE</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "HELPFUL ORGS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("HELPFUL-ORGS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.HELPFULORGS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "HEALING PROCESS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("HEALING-PROCESS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.HEALINGPROCESS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "WRITING EULAGIES")
-                                            {
-                                               <li><a href="@Url.Action("PageView", "Page",new {id=("WRITING-EULAGIES").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.WRITINGEULAGIES</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "FAQS")
-                                            {
-                                                <li><a href="@Url.Action("FAQS","Home")">@BurialPlots.Resources.HomeTexts.FAQS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "WILLS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("WILLS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.WILLS</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "LIFE INSURANCE")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("LIFE-INSURANCE").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.LIFEINSURANCE</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "WILL WRITING")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("WILL-WRITING").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.WILLWRITING</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "SERVICES")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=subchild.PageUrl.ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.Services</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "PRESS COVERAGE")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("PRESS-COVERAGE").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.PRESSCOVERAGE</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "NEWSFEED")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("NEWSFEED").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.NEWSFEED</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "WHO AND WHY")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("WHO-AND-WHY").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.WHOANDWHY</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "TEAM")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("TEAM").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.TEAM</a></li>
-                                            }
-                                            else if (subchild.PageTitle == "TESTIMONIALS")
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=("TESTIMONIALS").ToLower(), Area="Admin"})">@BurialPlots.Resources.HomeTexts.TESTIMONIALS</a></li>
-                                            }
-                                            else
-                                            {
-                                                <li><a href="@Url.Action("PageView", "Page",new {id=subchild.PageUrl.ToLower(), Area="Admin"})">@subchild.PageTitle</a></li>
-                                            }*@
-                                if (subchild.PageTitle.ToLower() == "sell your plots")
-                                {
-                                    <li><a href="@Url.Action("sell_your_plot", "Market")">@subchild.PageTitle</a></li>
-                                }
-                                @*else if (subchild.PageTitle.ToLower() == "faqs")
-                                {
-                                    <li><a href="@Url.Action("faqs", "home")">@subchild.PageTitle</a></li>
-                                }*@
-                                else
-                                {
-                                    <li><a href="@Url.Action("PageView", "Page",new {id=subchild.PageUrl.ToLower(), Area="Admin"})">@subchild.PageTitle</a></li>
-                                }
-
-                                        //}
+                                        
+                                        if (subchild.PageTitle.ToLower() == "sell your plots")
+                                        {
+                                            <li><a href="@Url.Action("sell_your_plot", "Market")">@subchild.PageTitle</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=subchild.PageUrl.ToLower(), Area="Admin"})">@subchild.PageTitle</a></li>
+                                        }
                                     }
                                 }
 
