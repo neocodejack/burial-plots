@@ -2293,6 +2293,7 @@
     <Content Include="js\Home\PreNeed.js" />
     <Content Include="js\Home\serviceListing.js" />
     <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\Market\billingInfo.js" />
     <Content Include="js\Market\cemeteryDetails.js" />
