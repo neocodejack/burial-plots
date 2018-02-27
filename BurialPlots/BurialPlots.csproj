@@ -2281,6 +2281,7 @@
     <Content Include="js\Cart\cart.js" />
     <Content Include="js\Checkout\index.js" />
     <Content Include="js\common.js" />
+    <Content Include="js\common.min.js" />
     <Content Include="js\fancyfields-1.2.min.js" />
     <Content Include="js\Home\atNeed.js" />
     <Content Include="js\Home\BlogArticles.js" />
@@ -2303,10 +2304,12 @@
     <Content Include="js\Market\index.js" />
     <Content Include="js\Market\sell_your_plot.js" />
     <Content Include="js\megamenu.js" />
+    <Content Include="js\megamenu.min.js" />
     <Content Include="js\Menu\dynmicmenu.js" />
     <Content Include="js\NewsArtical\NewsArticals.js" />
     <Content Include="js\Order\orderf.js" />
     <Content Include="js\owl.carousel.js" />
+    <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\OwlCarousel2Thumbs.min.js" />
     <Content Include="js\Plots\AddMember.js" />
     <Content Include="js\Search\SearchForServices.js" />
