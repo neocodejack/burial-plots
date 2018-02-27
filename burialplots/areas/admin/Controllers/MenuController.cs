@@ -1,4 +1,5 @@
 ﻿using BurialPlots.DAL;
+using BurialPlots.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace BurialPlots.Areas.Admin.Controllers
     public class MenuController : Controller
     {
         // GET: Admin/Menu
+        [GZipOrDeflate]
         public ActionResult Index()
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -24,6 +26,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
+
         public string MenuAdded(string name, string url)
         {
             var m = new Menu();
@@ -32,6 +35,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             var add = new MenuRepository().Add(m);
             return "true";
         }
+
         public string SubmenuAdd(string name, string url, string mainmenu)
         {
 
@@ -42,6 +46,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             var add = new Submenurepo().Add(m);
             return "true";
         }
+
         public string SubmenuChildAdd(string name, string url, string submenu)
         {
             var chlid = new SubChlidMenu();
@@ -52,7 +57,10 @@ namespace BurialPlots.Areas.Admin.Controllers
 
             return "true";
         }
+
         [HttpPost]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
+        [GZipOrDeflate]
         public ActionResult LoadMenu()
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -63,7 +71,8 @@ namespace BurialPlots.Areas.Admin.Controllers
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
 
-        
+        [GZipOrDeflate]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
         public ActionResult LoadMenus()
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -93,6 +102,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
 
         }
+
         [HttpPost]
         public string Edit(string id, string a, string b)
         {
@@ -116,6 +126,8 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
         }
         [HttpPost]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
+        [GZipOrDeflate]
         public ActionResult LoadSubMenu(string id)
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -127,7 +139,10 @@ namespace BurialPlots.Areas.Admin.Controllers
             
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
+
         [HttpPost]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
+        [GZipOrDeflate]
         public ActionResult LoadSubChildMenu(string id)
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -139,6 +154,8 @@ namespace BurialPlots.Areas.Admin.Controllers
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
 
+        [GZipOrDeflate]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
         public ActionResult LoadSubMenus(string id)
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -160,6 +177,9 @@ namespace BurialPlots.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
+
+        [GZipOrDeflate]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
         public ActionResult LoadSubChildMenus(string id, string subId)
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -181,6 +201,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
+
         [HttpPost]
         public string DeleteSubMenu(string id)
         {
@@ -196,6 +217,7 @@ namespace BurialPlots.Areas.Admin.Controllers
                 return "false";
             }
         }
+
         public string DeleteSubChildMenu(string id)
         {
             var Id = Convert.ToInt32(id);
@@ -210,6 +232,7 @@ namespace BurialPlots.Areas.Admin.Controllers
                 return "false";
             }
         }
+
         public string EditSubMenu(string id, string b, string c)
         {
 
@@ -227,6 +250,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
 
         }
+
         public string Subchildedit(string id, string b, string c)
         {
 

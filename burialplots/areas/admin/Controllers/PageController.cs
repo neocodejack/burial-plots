@@ -1,4 +1,5 @@
 ﻿using BurialPlots.DAL;
+using BurialPlots.Filters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -112,6 +113,8 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
 
         }
+
+        [GZipOrDeflate]
         public ActionResult PageView(string id)
         {
             string language = "";
