@@ -1712,6 +1712,9 @@
     <Content Include="css\select2.min.css" />
     <Content Include="css\ServiceListing.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="css\TermsAndCondtions.css" />
     <Content Include="DAL\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -2514,6 +2517,7 @@
     <Content Include="Areas\Admin\Views\Settings\Team.cshtml" />
     <Content Include="Areas\Admin\Views\Settings\_LoadTeam.cshtml" />
     <Content Include="Areas\Admin\Views\Users\ExtendListings.cshtml" />
+    <None Include="bundleconfig.json" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
@@ -2540,7 +2544,9 @@
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="style.css" />
-    <Content Include="style.min.css" />
+    <Content Include="style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="submodulesMap\squares\css\font-awesome.min.css" />
     <Content Include="submodulesMap\squares\css\squares-controls.css" />
     <Content Include="submodulesMap\squares\css\squares-editor.css" />
