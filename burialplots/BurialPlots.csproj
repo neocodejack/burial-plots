@@ -529,6 +529,7 @@
     <Compile Include="DAL\UrduPage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Filters\GZipOrDeflateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2539,6 +2540,7 @@
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="style.css" />
+    <Content Include="style.min.css" />
     <Content Include="submodulesMap\squares\css\font-awesome.min.css" />
     <Content Include="submodulesMap\squares\css\squares-controls.css" />
     <Content Include="submodulesMap\squares\css\squares-editor.css" />
