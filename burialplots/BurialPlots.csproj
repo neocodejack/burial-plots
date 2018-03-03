@@ -302,6 +302,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="DAL\AddAdministrativeEmailRepository.cs" />
+    <Compile Include="DAL\AddEnquiryRepository.cs" />
     <Compile Include="DAL\AddMemberRepository.cs" />
     <Compile Include="DAL\AddSliderRepository.cs" />
     <Compile Include="DAL\AddSlidesRepository.cs" />
@@ -352,6 +353,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CountyRepository.cs" />
+    <Compile Include="DAL\Enquiry.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\FAQ.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -459,6 +463,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\PaymentMethodsRepository.cs" />
+    <Compile Include="DAL\PopularLocationContent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\PostCode.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2324,6 +2331,13 @@
     <Content Include="js\Slider\js\boxesFx.js" />
     <Content Include="js\Slider\js\classie.js" />
     <Content Include="js\Slider\js\modernizr.custom.js" />
+    <Content Include="landingpageImages\footer-form-bg.jpg" />
+    <Content Include="landingpageImages\footer-logo.png" />
+    <Content Include="landingpageImages\landing-pic1.jpg" />
+    <Content Include="landingpageImages\landing-pic2.jpg" />
+    <Content Include="landingpageImages\landing-pic3.jpg" />
+    <Content Include="landingpageImages\landingpage-banner.jpg" />
+    <Content Include="landingpageImages\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
