@@ -631,6 +631,7 @@ namespace BurialPlots.Controllers
             {
                 ViewBag.Name = TownName;
             }
+            ViewBag.IsComingFromPopularLocation = 1;
             return View(locations);
         }
         [HttpPost]
