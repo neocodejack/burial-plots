@@ -1,9 +1,12 @@
-﻿using System;
+﻿using BurialPlots.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace BurialPlots.Controllers
@@ -26,6 +29,36 @@ namespace BurialPlots.Controllers
             smtp.Port = Convert.ToInt32(Port);
             smtp.EnableSsl = Convert.ToBoolean(ssl);
             smtp.Send(message);
+        }
+
+        [HttpPost]
+        public async Task<IHttpActionResult> Enquiry(Enquiry enquiry)
+        {
+            var responseStatus = false;
+            //Code to collct data and 
+            if (!IsAnyNullOrEmpty(enquiry))
+            {
+                responseStatus = new AddEnquiryRepository().Add(enquiry);
+                //Semd email
+            }
+
+            return Ok(responseStatus);
+        }
+
+        private bool IsAnyNullOrEmpty(object myObject)
+        {
+            foreach (PropertyInfo pi in myObject.GetType().GetProperties())
+            {
+                if (pi.PropertyType == typeof(string))
+                {
+                    string value = (string)pi.GetValue(myObject);
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

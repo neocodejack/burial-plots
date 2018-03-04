@@ -21,6 +21,12 @@ namespace BurialPlots
                 url: "{controller}/{action}",
                 defaults: new { controller = "Home", action = "Route" }
             );
+
+            routes.MapRoute(
+                name: "AdminDefault",
+                url: "{controller}/{action}/{countryId}",
+                defaults: new { controller = "Page", action = "GetCountyByCountry", countryId = "1" }
+            );
         }
 
         public static void RegisterApi(HttpConfiguration config)

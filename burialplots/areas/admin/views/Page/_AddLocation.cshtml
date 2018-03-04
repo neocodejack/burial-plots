@@ -1,0 +1,246 @@
+﻿
+@{
+    ViewBag.Title = "Add Location";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://cdn.quilljs.com/1.2.3/quill.snow.css" rel="stylesheet">
+@section Scripts{
+    @*<script src="~/Areas/Admin/JS/EditDeletePage.js"></script>*@
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Add Location</h2>
+    </div>
+</div>
+<br />
+<div class="row dropdown col-md-12">
+    <select id="country"></select>
+</div>
+<br />
+<br />
+<br />
+<div class="row dropdown col-md-12">
+    <select id="county">
+        <option value=0>Select County</option>
+    </select>
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-2"> Background Image</div>
+    <div class="col-md-4" style="text-align:left;">
+        <input type="file" accept="image/*" class="clear" id="ImgUpload" />
+        <input type="hidden" id="headerFileName" value="" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        Hedaer Text
+
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="headerText" style="height:200px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        First Col Header
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="firstColHeader" style="height:200px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <input type="submit" id="btnUpload" value="Add" style="margin-top:20px;" />
+    </div>
+</div>
+<script>
+    
+    $(document).ready(function () {
+        $("#country").change(function () {
+            var id = $("#country").find("option:selected").val();
+            
+            $.ajax({
+                url: "GetCountyByCountry/" + id,
+                type: "GET",
+                contentType: "application/json",
+                success: function (result) {
+                    $("#county").html('');
+                    $("#county").html("<option value=0>Select County</option>");
+                    $.each(result, function () {
+                        $("#county").append("<option value='" + this.CountyId + "'>" + this.CountyName + "</option>");
+                    });
+                }
+            });
+        });
+
+        loadHeaderTextEditor();
+        loadFirstColHeaderEditor();
+        loadCountries();
+        $("#btnUpload").click(function () {
+            var data = {
+                "HeaderText": headerText.container.firstChild.innerHTML
+            };
+
+            $.ajax({
+                url: "AddLocation",
+                type: "POST",
+                contentType: "application/json",
+                dataType: "application/json",
+                data: JSON.stringify(data),
+                success: function (data) {
+
+                }
+            });
+        });
+
+        $('#ImgUpload').change(function () {
+            uploadImages($("#ImgUpload").get(0));
+        });
+        
+    });
+
+        
+    var loadCountries = function () {
+        $.ajax({
+            url: "GetCountries",
+            type: "GET",
+            contentType: "application/json",
+            success: function (result) {
+                $("#country").html("<option value=0>Select Country</option>");
+                $.each(result, function () {
+                    $("#country").append("<option value='" + this.CountryId + "'>" + this.CountryName + "</option>");
+                });
+            }
+        });
+    }
+
+    var headerText;
+    var firstColHeader;
+    var loadHeaderTextEditor = function () {
+        headerText = new Quill('#headerText', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        headerText.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadFirstColHeaderEditor = function () {
+        firstColHeader = new Quill('#firstColHeader', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        firstColHeader.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+
+    function uploadImages(uploadFile) {
+        // Checking whether FormData is available in browser
+        if (window.FormData !== undefined) {
+
+            var fileUpload = uploadFile;
+            var files = fileUpload.files;
+
+            // Create FormData object
+            var fileData = new FormData();
+
+            // Looping over all files and add it to FormData object
+            for (var i = 0; i < files.length; i++) {
+                fileData.append(files[i].name, files[i]);
+            }
+            var data = { "HeaderText": "Header Value" };
+            fileData.append("data", data);
+            // Adding one more key to FormData object
+            fileData.append('username', "Manas");
+
+            $.ajax({
+                url: 'UploadFile',
+                type: "POST",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    $("#headerFileName").val(result);
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                }
+            });
+        } else {
+            alert("FormData is not supported.");
+        }
+    }
+</script>
+<script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>
