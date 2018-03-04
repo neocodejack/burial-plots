@@ -8,55 +8,212 @@
 @section Scripts{
     <script src="~/js/Home/PopularLocations.js"></script>
 }
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+
+<!-- fixed header -->
+
 <body id="top">
-    <div class="banner" style="background-image: url('/images/PopularLocations/service-listing-banner.jpg'); padding-top:203px;">
-        <div class="caption-inner">
-            <div class="container">
-                <div class="search-form" style="margin-top:110px;">
-                    <h2>Search for Services...</h2>
-                    @using (Html.BeginForm("SearchService", "Search", new { serviceId = "" }))
-                    {
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <input placeholder="Services" class="full-length" id="txtServiceName" name="txtServiceName" type="text" style="color:black;">
-                            </div>
-                            <div class="col-xs-12 col-sm-1 col-md-1">
-                                <span class="align-middle">in</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-5 col-md-6">
-                                <input placeholder="Country, County, Town or Postcode" id="txtPostCodeTown" name="txtPostCodeTown" class="full-length" type="text" style="color:black;">
-                            </div>
-                            <div class="col-xs-12 col-sm-2 col-md-2 txt-enquire-field">
-                                <input value="Search" type="submit">
-                            </div>
+    <div id="page" class="site">
+        <div class="site-inner">
+            <header id="masthead" class="site-header" role="banner">
+                
+                        <div class="site-header-main">
+
+                            <!-- header-menu -->
+                            <div class="banner search-banner" style="background-image: url('../../landingpageImages/landingpage-banner.jpg'); height:680px">
+                                <div class="caption-inner">
+                                    <div class="container">
+                                        <h2 class="no-bg">Pre Paid Burial PLots From As Little as <br /> £ 20 pw Save Money, Achieve the peace <br /> of Mind you deserve in later life</h2>
+                                        <a href="javascript:void();" class="btn apply-btn">Apply Now</a>
+                                    </div>
+                                </div>
+                            </div><!-- banner -->
+                            <!-- .site-header-menu -->
                         </div>
-                    }
-                </div><!-- search-form -->
-            </div>
-        </div>
-    </div><!-- banner -->
-    <div class="site-info">
-        <div class="container"  style="margin-top:40px;">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Search our recommended services in @ViewBag.Name</h3>
+                    
+
+                <!-- .site-header-main -->
+            </header>
+            <!-- .site-header -->
+            <div id="content" class="site-content">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <div class="section">
+                            <div class="container">
+                                <div class="landing-block">
+                                    <div class="landing-left">
+                                        <h2 class="text-color-orange text-left-align">Reason to pre pay ...</h2>
+                                        <ul class="landing-text">
+                                            <li><span class="text-color-orange"><strong>SAVE MONEY</strong></span> - Prices across the funeral industry typically increase by 5-10% per year, by  pre purchasing a burial plot, consumers pay todays price.</li>
+                                            <li><span class="text-color-orange"><strong>EASE THE FAMILY BURDON</strong></span> - Plan so that your funeral is exactly how you wish, meaning your family will not have to make difficult decisions.</li>
+                                            <li><span class="text-color-orange"><strong>ASSUME FINANCIAL RESPONSIBILITY</strong></span> - Some families may not be able to access money you have saved, purchasing now means the plot is already paid for, so your family doesn’t have to.</li>
+                                            <li><span class="text-color-orange"><strong>CHOOSE THE PERFECT PLOT</strong></span> - Rather than been told where you will be buried, purchasing early gives you far more choice to be buried where an with whom you wish.</li>
+                                            <li><span class="text-color-orange"><strong>SPREAD THE COST</strong></span> - Purchasing from us means you can spread the cost over asily managed payments. With our trusted finance facilities you can now pay between 12-36 months.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="landing-left" style="background-image: url('../landingpageImages/landing-pic1.jpg');">
+                                        <div class="enqiury-form-land">
+                                            <h4 class="text-center-align">Pre planning a burial plot in Harlow will give you the financial freedom and release the burdon on your loved ones. Request a callback today........</h4>
+                                            <ul class="enqiury-form-land-form">
+                                                <li>
+                                                    <label>Full Name</label>
+                                                    <input name="" placeholder="" type="text">
+                                                </li>
+                                                <li>
+                                                    <label>Email</label>
+                                                    <input name="" placeholder="" type="email">
+                                                </li>
+                                                <li>
+                                                    <label>Telephone</label>
+                                                    <input name="" placeholder="" type="text">
+                                                </li>
+                                                <li>
+                                                    <input value="Request a Call" type="submit">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- landing-block -->
+                                <div class="landing-block">
+                                    <div class="landing-left">
+                                        <h2 class="text-color-orange text-left-align">Why NOw ...</h2>
+                                        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+                                        <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, </p>
+                                    </div>
+                                    <div class="landing-left" style="background-image: url('../landingpageImages/landing-pic2.jpg');">
+                                    </div>
+                                </div><!-- landing-block -->
+                                <div class="landing-block">
+                                    <div class="landing-left">
+                                        <h2 class="text-color-orange text-left-align">Our Commitments...</h2>
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                                        <br /> <br />
+                                        <ul>
+                                            <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</li>
+                                            <li>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</li>
+                                            <li>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. </li>
+                                            <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</li>
+                                        </ul>
+                                    </div>
+                                    <div class="landing-left" style="background-image: url('../landingpageImages/landing-pic3.jpg');">
+                                    </div>
+                                </div><!-- landing-block -->
+                            </div>
+                        </div><!-- section -->
+
+                        <div class="section purple-bg">
+                            <div class="container">
+                                <h2 class="underline">How it works</h2>
+                                <ul class="how-block">
+                                    <li>
+                                        <div class="step-title"><h3><span class="text-color-orange">Step 1 </span>: Enquire</h3></div>
+                                        <div class="how-block--content">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum.</p>
+                                            <br />
+                                            <a href="javascript:void();">[Click for more]</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="step-title"><h3><span class="text-color-orange">Step 2 </span>: Agree Price</h3></div>
+                                        <div class="how-block--content">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum.</p>
+                                            <br />
+                                            <a href="javascript:void();">[Click for more]</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="step-title"><h3><span class="text-color-orange">Step 3 </span>: Sell</h3></div>
+                                        <div class="how-block--content">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum.</p>
+                                            <br />
+                                            <a href="javascript:void();">[Click for more]</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- section -->
+
+                    </main>
+                    <!-- .site-main -->
                 </div>
-            </div><!-- row -->
-
-            <div class="service-list-row">
-                @if (Model != null)
-                {
-                    foreach (var item in Model)
-                    {
-                        <div class="col-xs-6 col-sm-6 col-md-3" style="min-height: 400px;">
-                            <a href="@Url.Action("ServiceListing", "Home", new { id = item.Id, TownName = ViewBag.Name })"><img src="/images/PopularLocations/@item.Picture" alt="" class="service-images"></a>
-                            <br />
-                            <h3 style="padding-top:10px;">@item.Name <i class="fa fa-angle-right"></i></h3>
+                <!-- .content-area -->
+            </div>
+            <!-- .site-content -->
+            <footer id="colophon" class="site-footer" role="contentinfo">
+                <div class="site-info">
+                    <div class="section overlay-purple overlay-purple--dark" style="background-image:url('../landingpageImages/footer-form-bg.jpg');">
+                        <div class="container">
+                            <h2 class="underline text-center-align">We’d love to hear from you.</h2>
+                            <div class="enqiury-form-land">
+                                <h4 class="text-center-align">Pre planning a burial plot in Harlow will give you the financial freedom and release the burdon on your loved ones. Request a callback today........</h4>
+                                <ul class="enqiury-form-land-form">
+                                    <li class="half-width">
+                                        <label>Full Name</label>
+                                        <input name="" placeholder="" type="text" style="background-color:transparent;">
+                                    </li>
+                                    <li class="half-width">
+                                        <label>Email</label>
+                                        <input name="" placeholder="" type="email" style="background-color:transparent;">
+                                    </li>
+                                    <li>
+                                        <label>Telephone</label>
+                                        <input name="" placeholder="" type="text" style="background-color:transparent;">
+                                    </li>
+                                    <li>
+                                        <input value="Request a Call" type="submit">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    }
-                }
-            </div><!-- row -->
-
+                    </div>
+                    <div class="section light-purple-bg" style="display:none">
+                        <div class="container">
+                            <div class="footer-menu">
+                                <div class="footer-block">
+                                    <a href="#"><img src="images/footer-logo.png" alt=""></a>
+                                    <p>Keep up to date with BurialPlots.co.uk</p>
+                                    <ul class="social-icons">
+                                        <li><a href="#">Facebook</a></li>
+                                        <li><a href="#">Yelp</a></li>
+                                        <li><a href="#">Twitter</a></li>
+                                        <li><a href="#">Youtube</a></li>
+                                        <li><a href="#">Instagram</a></li>
+                                        <li><a href="#">Vimeo</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                                <div class="footer-block">
+                                    <h3>Helpful Advice</h3>
+                                    <ul>
+                                        <li><a href="#">Healing Process</a></li>
+                                        <li><a href="#">Parental Grief</a></li>
+                                        <li><a href="#">Suicide</a></li>
+                                        <li><a href="#">Helpful Orgs</a></li>
+                                        <li><a href="#">Dealing with Children</a></li>
+                                        <li><a href="#">Shock of Sudden Death</a></li>
+                                        <li><a href="#">Writing Eulagles</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                                <div class="footer-block">
+                                    <h3>Main Menu</h3>
+                                    <ul>
+                                        <li><a href="#">Burial Plots</a></li>
+                                        <li><a href="#">Bereavement</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">Helpful Advice</a></li>
+                                        <li><a href="#">Legal</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div><!-- footer-block -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .site-info -->
+            </footer>
+            <!-- .site-footer -->
         </div>
+        <!-- .site-inner -->
     </div>
 </body>

@@ -245,6 +245,30 @@
                                         <span class="arrow"></span>
                                     </a>
                                     <ul class="sub-menu">
+                                        <li id="li-MenuManage" class="nav-item start">
+                                            <a href="#" class="nav-link nav-toggle">
+                                                <i class="fa fa-desktop"></i>
+                                                <span class="title">Popular Location</span>
+                                                <span class="selected"></span>
+                                                <span class="arrow"></span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li id="lis-createMenu" class="nav-item start">
+                                                    <a href="@Url.Action("AddLocation", "Page")" class="nav-link ">
+                                                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                        <span class="title">Create Location</span>
+                                                        <span class="selected"></span>
+                                                    </a>
+                                                </li>
+                                                <li id="lis-viewMenu" class="nav-item start">
+                                                    <a href="@Url.Action("ViewLocation", "Page")" class="nav-link ">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        <span class="title">View Location</span>
+                                                        <span class="selected"></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                         <li id="li-NewsManage" class="nav-item">
                                             <a href="@Url.Action("Index", "NewsManagement")" class="nav-link nav-toggle">
                                                 <i class="fa fa-map-marker"></i>
@@ -591,6 +615,7 @@
                                         </li>
                                     </ul>
                                 </li>
+
                             }
                         }
 
@@ -679,46 +704,8 @@
         </div>
         <!-- END FOOTER -->
     </div>
-    <!-- BEGIN QUICK NAV -->
-    @*<nav class="quick-nav">
-            <a class="quick-nav-trigger" href="#0">
-                <span aria-hidden="true"></span>
-            </a>
-            <ul>
-                <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
-                        <span>Purchase Metronic</span>
-                        <i class="icon-basket"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
-                        <span>Customer Reviews</span>
-                        <i class="icon-users"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://keenthemes.com/showcast/" target="_blank">
-                        <span>Showcase</span>
-                        <i class="icon-user"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
-                        <span>Changelog</span>
-                        <i class="icon-graph"></i>
-                    </a>
-                </li>
-            </ul>
-            <span aria-hidden="true" class="quick-nav-bg"></span>
-        </nav>*@
     <div class="quick-nav-overlay"></div>
     <!-- END QUICK NAV -->
-    <!--[if lt IE 9]>
-    <script src="../assets/global/plugins/respond.min.js"></script>
-    <script src="../assets/global/plugins/excanvas.min.js"></script>
-    <script src="../assets/global/plugins/ie8.fix.min.js"></script>
-    <![endif]-->
     <!-- BEGIN CORE PLUGINS -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

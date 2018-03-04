@@ -3574,7 +3574,7 @@ h2.underline:before {
 }
 
 .search-banner .caption-inner {
-    top: 60%
+    top: 60%;
 }
 
 .search-form {
@@ -5160,4 +5160,201 @@ input[type=button].checkout-next {
     .banner-video, .banner-enquriy-form{width: 100%;}
     .banner-outer{margin-top: 40px;}
     .banner-video{margin-top: 0;border:0;box-shadow: none;-webkit-box-shadow: none;-moz-box-shadow: none;margin-bottom: 10px;}
+}
+
+/*Landing-page*/
+h2.no-bg {
+    background-color: transparent;
+    display: block;
+}
+
+.apply-btn {
+    padding: 26px 48px;
+    box-shadow: 0 7px 0 #505869;
+    border-radius: 4px;
+    font-size: 25px;
+    font-weight: 400;
+    font-style: italic;
+    text-transform: capitalize;
+    margin-top: 40px;
+}
+
+.landing-block {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+}
+
+    .landing-block:nth-child(even) {
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+    }
+
+.landing-left {
+    width: 50%;
+    background-color: #8795b0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 34px;
+    margin-bottom: 40px;
+}
+
+    .landing-left p, .landing-left li {
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+.text-color-orange {
+    color: #f2b62a;
+}
+
+.enqiury-form-land {
+    background-color: rgba(38, 42, 56, .79);
+    padding: 24px;
+}
+
+.landing-text li {
+    margin-bottom: 15px;
+    color: #fff;
+    list-style-position: inside;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.enqiury-form-land h4 {
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 800;
+    text-transform: none;
+}
+
+.enqiury-form-land-form {
+    list-style-type: none;
+}
+
+    .enqiury-form-land-form li {
+        margin-bottom: 15px;
+    }
+
+    .enqiury-form-land-form label {
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    .enqiury-form-land-form input[type="submit"] {
+        display: block;
+        width: 100%;
+        background-color: #f2b62a;
+        color: #fff;
+        padding: 14px;
+        -webkit-transition: all .25s ease-in;
+        -moz-transition: all .25s ease-in;
+        -ms-transition: all .25s ease-in;
+        -o-transition: all .25s ease-in;
+        transition: all .25s ease-in;
+        max-width: 432px;
+    }
+
+        .enqiury-form-land-form input[type="submit"]:hover {
+            background: rgba(242, 182, 42, 0.8);
+        }
+
+
+.how-block {
+    list-style-type: none;
+    text-align: center;
+}
+
+    .how-block li {
+        width: calc((100% - 160px) / 3);
+        margin-right: 72px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+        .how-block li:nth-child(3n + 3) {
+            margin-right: 0;
+        }
+
+.step-title {
+    background-color: #293957;
+    padding: 23px;
+}
+
+    .step-title h3 {
+        margin-bottom: 0;
+        color: #fff;
+        text-transform:uppercase;
+    }
+
+.how-block--content {
+    background-color: #fff;
+    padding: 25px;
+    color: #3a3a3a;
+}
+
+    .how-block--content p {
+        color: #3a3a3a;
+    }
+
+.overlay-purple--dark:before {
+    background-color: rgba(38, 42, 56, .79);
+}
+
+.overlay-purple--dark .enqiury-form-land {
+    background-color: transparent;
+}
+
+.overlay-purple--dark .enqiury-form-land-form {
+    text-align: center;
+}
+
+    .overlay-purple--dark .enqiury-form-land-form li.half-width {
+        width: 48%;
+        float: left;
+    }
+
+        .overlay-purple--dark .enqiury-form-land-form li.half-width + li.half-width {
+            float: right;
+        }
+
+    .overlay-purple--dark .enqiury-form-land-form input[type="submit"] {
+        display: inline-block;
+    }
+
+    .overlay-purple--dark .enqiury-form-land-form label {
+        float: left;
+    }
+
+@media only screen and (max-width: 767px) {
+    .landing-block, .landing-left {
+        display: block;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .landing-left {
+        min-height: 400px;
+    }
+
+    .how-block li {
+        width: 100%;
+        margin: 0 0 20px;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    .search-banner {
+        height: 450px;
+    }
 }
