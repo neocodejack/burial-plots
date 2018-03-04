@@ -230,6 +230,75 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
+
+        [HttpGet]
+        public JsonResult GetCountries()
+        {
+            var country = new CountryRepository();
+            var list = country.GetAll().Select(_ => new CountryModel { CountryId = _.Id, CountryName = _.Name }).ToList();
+            
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetCountyByCountry(decimal Id)
+        {
+            var county = new CountyRepository().GetAll().Where(_=>_.CountryId.Equals(Id))
+                                        .Select(_=>new CountyModel { CountyId=_.Id, CountyName=_.Name }).ToList();
+            return Json(county, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult AddLocation()
+        {
+            return PartialView("_AddLocation");
+        }
+
+        [HttpPost]
+        public ActionResult UploadFile()
+        {
+            string fname = string.Empty;
+            if (Request.Files.Count > 0)
+            {
+                try
+                {
+                    //  Get all files from Request object  
+                    HttpFileCollectionBase files = Request.Files;
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        
+                        HttpPostedFileBase file = files[i];
+                        fname = Guid.NewGuid().ToString()+"."+file.FileName.Split('.')[1];
+                        
+                        // Get the complete folder path and store the file inside it.  
+                        string finalName = Path.Combine(Server.MapPath("~/landingpageImages/"), fname);
+                        file.SaveAs(finalName);
+                    }
+                    // Returns message that successfully uploaded  
+                    return Content(fname);
+                }
+                catch (Exception ex)
+                {
+                    return Json("Error occurred. Error details: " + ex.Message);
+                }
+            }
+            else
+            {
+                return Json("No files selected.");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddLocation(PopularLocationContent data)
+        {
+            var d = data;
+            for(int i = 0; i < 10; i++)
+            {
+                List<string> ll = new List<string>();
+            }
+            return Json(d);
+        }
+
         [HttpPost]
         [ValidateInput(false)]
         public string Edit(string id, string html, string tittle, string[] servicebox, string image, string bodyUrdu, string bodyArabic,
@@ -521,5 +590,17 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
+    }
+
+    public class CountryModel
+    {
+        public decimal CountryId { get; set; }
+        public string CountryName { get; set; }
+    }
+
+    public class CountyModel
+    {
+        public decimal CountyId { get; set; }
+        public string CountyName { get; set; }
     }
 }

@@ -2528,6 +2528,7 @@
     <Content Include="Areas\Admin\Views\Settings\Team.cshtml" />
     <Content Include="Areas\Admin\Views\Settings\_LoadTeam.cshtml" />
     <Content Include="Areas\Admin\Views\Users\ExtendListings.cshtml" />
+    <Content Include="Areas\Admin\Views\Page\_AddLocation.cshtml" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
