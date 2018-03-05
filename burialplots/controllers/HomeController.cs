@@ -625,14 +625,16 @@ namespace BurialPlots.Controllers
         [HttpGet]
         public ActionResult PopularLocations()
         {
-            var locations = new FuneralServicesRepository().GetAll();
-            string TownName = Request.QueryString["TownName"];
-            if (TownName != null)
-            {
-                ViewBag.Name = TownName;
-            }
+            var locationId = new CountyRepository().GetAll().Where(_ => _.Name.Equals(Request.QueryString["TownName"])).Select(_ => _.Id).FirstOrDefault().ToString();
+            var locationContent = new GenericRepository<PopularLocationContent>().GetAll().Where(_ => _.PopularLocationName.Equals(locationId)).FirstOrDefault();
+            //var locations = new FuneralServicesRepository().GetAll();
+            //string TownName = Request.QueryString["TownName"];
+            //if (TownName != null)
+            //{
+            //    ViewBag.Name = TownName;
+            //}
             ViewBag.IsComingFromPopularLocation = 1;
-            return View(locations);
+            return View();
         }
         [HttpPost]
         public PartialViewResult LoadServiceListing()
