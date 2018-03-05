@@ -291,12 +291,22 @@ namespace BurialPlots.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddLocation(PopularLocationContent data)
         {
-            var d = data;
-            for(int i = 0; i < 10; i++)
+            if (!string.IsNullOrEmpty(data.PopularLocationName))
             {
-                List<string> ll = new List<string>();
+                var isAdded = new GenericRepository<PopularLocationContent>().Add(data);
+                if (isAdded)
+                {
+                    return Content("Sucessfully Added");
+                }
+                else
+                {
+                    return Content("Something went wrong, Please try again");
+                }
             }
-            return Json(d);
+            else
+            {
+                return Content("Location Cannot Be Blank");
+            }
         }
 
         [HttpPost]
