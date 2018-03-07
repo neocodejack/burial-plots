@@ -29,10 +29,9 @@
 </div>
 <br />
 <br />
-<br />
 <div class="row">
-    <div class="col-md-2"> Background Image</div>
-    <div class="col-md-4" style="text-align:left;">
+    <div class="col-md-4">
+        <h2> Background Image</h2>
         <input type="file" accept="image/*" class="clear" id="ImgUpload" />
         <input type="hidden" id="headerFileName" value="" />
     </div>
@@ -40,7 +39,7 @@
 <br />
 <div class="row">
     <div class="col-md-12">
-        Hedaer Text
+        <h2> Header Text</h2>
 
         <div class="tab-content">
             <div id="divEnglish" class="tab-pane fade in active">
@@ -54,7 +53,7 @@
 <br />
 <div class="row">
     <div class="col-md-12">
-        First Col Header
+        <h2> First Col Header</h2>
         <div class="tab-content">
             <div id="divEnglish" class="tab-pane fade in active">
                 <div id="firstColHeader" style="height:200px;">
@@ -64,18 +63,168 @@
         </div>
     </div>
 </div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>First Col Text</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="firstColText" style="height:200px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4" style="text-align:left;">
+        <h2> First Col Image</h2>
+        <input type="file" accept="image/*" class="clear" id="firstColImgUpload" />
+        <input type="hidden" id="headerFirstColFileName" value="" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2> Second Col Header</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="secondColHeader" style="height:200px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Second Col Text</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="secondColText" style="height:200px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4" style="text-align:left;">
+        <h2> Second Col Image</h2>
+        <input type="file" accept="image/*" class="clear" id="secondColImgUpload" />
+        <input type="hidden" id="headerSecondColFileName" value="" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2> Third Col Header</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="thirdColHeader" style="height:200px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Third Col Text</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="thirdColText" style="height:200px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4" style="text-align:left;">
+        <h2>Third Col Image</h2>
+        <input type="file" accept="image/*" class="clear" id="thirdColImgUpload" />
+        <input type="hidden" id="headerThirdColFileName" value="" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Step1 Header Text</h2>
+        <input type="text" class="clear" id="step1HeaderText" size="50px" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Step1 Message</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="step1Message" style="height:110px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Step2 Header Text</h2>
+        <input type="text" class="clear" id="step2HeaderText" size="50px" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Step2 Message</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="step2Message" style="height:110px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Step3 Header Text</h2>
+        <input type="text" class="clear" id="step1HeaderText" size="50px" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>Step3 Message</h2>
+        <div class="tab-content">
+            <div id="divEnglish" class="tab-pane fade in active">
+                <div id="step3Message" style="height:110px;">
+                    @Html.Raw(ViewBag.body)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
 <div class="row">
     <div class="col-md-12">
 
-        <input type="submit" id="btnUpload" value="Add" style="margin-top:20px;" />
+        <input type="submit" id="btnAdd" value="Add" style="margin-top:20px;" />
     </div>
 </div>
 <script>
-    
+
     $(document).ready(function () {
         $("#country").change(function () {
             var id = $("#country").find("option:selected").val();
-            
+
             $.ajax({
                 url: "GetCountyByCountry/" + id,
                 type: "GET",
@@ -92,10 +241,40 @@
 
         loadHeaderTextEditor();
         loadFirstColHeaderEditor();
+        loadFirstColTextEditor();
+        loadSecondColHeaderEditor();
+        loadSecondColTextEditor();
+        loadThirdColHeaderEditor();
+        loadThirdColTextEditor();
+        loadStep1MessageEditor();
+        loadStep2MessageEditor();
+        loadStep3MessageEditor();
         loadCountries();
-        $("#btnUpload").click(function () {
+        $("#btnAdd").click(function () {
+            var countyId = $("#county option:selected").val();
+            if (countyId == 0) {
+                alert("Please select County");
+                return false;
+            }
             var data = {
-                "HeaderText": headerText.container.firstChild.innerHTML
+                "PopularLocationName": countyId,
+                "HeaderImage": $("#headerFileName").val(),
+                "HeaderText": headerText.container.firstChild.innerHTML,
+                "FirstColHeader": firstColHeader.container.firstChild.innerHTML,
+                "FirstColText": firstColText.container.firstChild.innerHTML,
+                "FirstColImage": $("#headerFirstColFileName").val(),
+                "SecondColHeader":secondColHeader.container.firstChild.innerHTML,
+                "SecondColText": secondColText.container.firstChild.innerHTML,
+                "SecondColImage": $("#headerSecondColFileName").val(),
+                "ThirdColHeader": thirdColHeader.container.firstChild.innerHTML,
+                "ThirdColText": thirdColText.container.firstChild.innerHTML,
+                "ThirdColImage": $("#headerThirdColFileName").val(),
+                "Step1Header": $("#step1HeaderText").val(),
+                "Step1Message": step1Message.container.firstChild.innerHTML,
+                "Step2Header": $("#step2HeaderText").val(),
+                "Ste21Message": step2Message.container.firstChild.innerHTML,
+                "Step3Header": $("#step3HeaderText").val(),
+                "Ste31Message": step3Message.container.firstChild.innerHTML
             };
 
             $.ajax({
@@ -104,19 +283,29 @@
                 contentType: "application/json",
                 dataType: "application/json",
                 data: JSON.stringify(data),
-                success: function (data) {
-
+                success: function (result) {
+                    alert(result);
                 }
             });
         });
 
         $('#ImgUpload').change(function () {
-            uploadImages($("#ImgUpload").get(0));
+            uploadImages($("#ImgUpload").get(0), "headerFileName");
         });
-        
+
+        $("#firstColImgUpload").change(function () {
+            uploadImage($("#firstColImgUpload").get(0), "headerFirstColFileName");
+        });
+        $("#secondColImgUpload").change(function () {
+            uploadImage($("#secondColImgUpload").get(0), "headerSecondColFileName");
+        });
+        $("#thirdColImgUpload").change(function () {
+            uploadImage($("#thirdColImgUpload").get(0), "headerThirdColFileName");
+        });
+
     });
 
-        
+
     var loadCountries = function () {
         $.ajax({
             url: "GetCountries",
@@ -133,6 +322,14 @@
 
     var headerText;
     var firstColHeader;
+    var firstColText;
+    var secondColHeader;
+    var secondColText;
+    var thirdColHeader;
+    var thirdColText;
+    var step1Message;
+    var step2Message;
+    var step3Message;
     var loadHeaderTextEditor = function () {
         headerText = new Quill('#headerText', {
             modules: {
@@ -205,8 +402,296 @@
             //show.value = html; // make this a <textarea>
         });
     }
+    var loadFirstColTextEditor = function () {
+        firstColText = new Quill('#firstColText', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
 
-    function uploadImages(uploadFile) {
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        firstColText.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadSecondColHeaderEditor = function () {
+        secondColHeader = new Quill('#secondColHeader', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        secondColHeader.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadSecondColTextEditor = function () {
+        secondColText = new Quill('#secondColText', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        secondColText.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadThirdColHeaderEditor = function () {
+        thirdColHeader = new Quill('#thirdColHeader', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        thirdColHeader.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadThirdColTextEditor = function () {
+        thirdColText = new Quill('#thirdColText', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        thirdColText.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadStep1MessageEditor = function () {
+        step1Message = new Quill('#step1Message', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        step1Message.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadStep2MessageEditor = function () {
+        step2Message = new Quill('#step2Message', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        step2Message.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+    var loadStep3MessageEditor = function () {
+        step3Message = new Quill('#step3Message', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    ['blockquote', 'code-block'],
+
+                    // custom button values
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
+                ]
+            },
+            placeholder: 'Description...',
+            theme: 'snow'  // or 'bubble'
+        });
+        step3Message.on('text-change', function () {
+
+            var html = quill.container.firstChild.innerHTML;
+            //show.value = html; // make this a <textarea>
+        });
+    }
+
+    function uploadImages(uploadFile, hiddenField) {
         // Checking whether FormData is available in browser
         if (window.FormData !== undefined) {
 
@@ -232,7 +717,7 @@
                 processData: false, // Not to process data
                 data: fileData,
                 success: function (result) {
-                    $("#headerFileName").val(result);
+                    $("#" + hiddenField).val(result);
                 },
                 error: function (err) {
                     alert(err.statusText);
