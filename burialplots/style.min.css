@@ -5121,7 +5121,7 @@ input[type=button].checkout-next {
 }
 
 /* homepage banner */
-.banner-outer{margin-top: 170px;position: relative;}
+.banner-outer{margin-top: 160px;position: relative;}
 .banner-video{box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);border:8px solid #fff;width: 549px;float: left;margin-top: 80px;}
 .banner-video iframe{position: relative;vertical-align: top;}
 .banner-enquriy-form {
@@ -5358,3 +5358,8 @@ h2.no-bg {
         height: 450px;
     }
 }
+
+/* 7-3-18 */
+html, body.home, .home .site, .home .site-inner, .home .site-header, .home .site-header-main{height: auto;}
+.banner{height: 573px;}
+.banner-enquriy-form h2{margin-bottom: 5px;}
