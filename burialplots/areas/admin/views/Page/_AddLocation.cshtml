@@ -1,6 +1,5 @@
 ﻿
 @{
-    ViewBag.Title = "Add Location";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,7 +11,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2>Add Location</h2>
+        <h2>@ViewBag.PageName</h2>
     </div>
 </div>
 <br />
@@ -30,10 +29,38 @@
 <br />
 <br />
 <div class="row">
+    <div class="col-md-12">
+        <h2>Page URL</h2>
+        <input type="text" class="clear" id="PageUrl" size="50px" />
+    </div>
+</div>
+<br />
+<div class="row">
     <div class="col-md-4">
         <h2> Background Image</h2>
         <input type="file" accept="image/*" class="clear" id="ImgUpload" />
-        <input type="hidden" id="headerFileName" value="" />
+        <input type="hidden" id="headerFileName" value="" /><br />
+    </div>
+    <div class="col-md-12">
+        <a href="#" id="headerImage" class="pop" style="text-decoration:underline;display:none">
+            Click here to see the image
+        </a>
+        <img id="imageresource" src="~/landingpageImages/" style="width: 400px; height: 264px; display:none">
+        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="top: 13%;left: 10%;width: 455px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" id="imagepreview" style="width: 400px; height: 264px;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <br />
@@ -83,6 +110,12 @@
         <input type="file" accept="image/*" class="clear" id="firstColImgUpload" />
         <input type="hidden" id="headerFirstColFileName" value="" />
     </div>
+    <br />
+    <div class="col-md-12" style="margin-top:20px">
+        <a href="#" id="firstColHeader" class="pop" style="text-decoration:underline;display:none">
+            Click here to see the image
+        </a>
+    </div>
 </div>
 <br />
 <div class="row">
@@ -117,6 +150,12 @@
         <input type="file" accept="image/*" class="clear" id="secondColImgUpload" />
         <input type="hidden" id="headerSecondColFileName" value="" />
     </div>
+    <br />
+    <div class="col-md-12" style="margin-top:20px">
+        <a href="#" id="secondColHeader" class="pop" style="text-decoration:underline;display:none">
+            Click here to see the image
+        </a>
+    </div>
 </div>
 <br />
 <div class="row">
@@ -150,6 +189,12 @@
         <h2>Third Col Image</h2>
         <input type="file" accept="image/*" class="clear" id="thirdColImgUpload" />
         <input type="hidden" id="headerThirdColFileName" value="" />
+    </div>
+    <br />
+    <div class="col-md-12" style="margin-top:20px">
+        <a href="#" id="thirdColHeader" class="pop" style="text-decoration:underline;display:none">
+            Click here to see the image
+        </a>
     </div>
 </div>
 <br />
@@ -196,7 +241,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Step3 Header Text</h2>
-        <input type="text" class="clear" id="step1HeaderText" size="50px" />
+        <input type="text" class="clear" id="step3HeaderText" size="50px" />
     </div>
 </div>
 <br />
@@ -220,8 +265,11 @@
     </div>
 </div>
 <script>
-
     $(document).ready(function () {
+        if (@ViewBag.IsEditMode=="1") {
+            $("#btnAdd").val("Edit");
+        }
+
         $("#country").change(function () {
             var id = $("#country").find("option:selected").val();
 
@@ -239,6 +287,58 @@
             });
         });
 
+        $("#county").change(function () {
+            var selectedId = $("#county").find("option:selected").val();
+
+            $.ajax({
+                url: "GetLocationContent?locationId=" + selectedId,
+                type: "GET",
+                contentType: "application/json",
+                success: function (result) {
+                    $("#headerFileName").val(result.HeaderImage);
+                    headerText.container.firstChild.innerHTML = result.HeaderText;
+                    firstColHeader.container.firstChild.innerHTML = result.FirstColHeader;
+                    firstColText.container.firstChild.innerHTML = result.FirstColText;
+                    $("#headerFirstColFileName").val(result.FirstColImage);
+                    secondColHeader.container.firstChild.innerHTML = result.SecondColHeader;
+                    secondColText.container.firstChild.innerHTML = result.SecondColText;
+                    $("#headerSecondColFileName").val(result.SecondColImage);
+                    thirdColHeader.container.firstChild.innerHTML = result.ThirdColHeader;
+                    thirdColText.container.firstChild.innerHTML = result.ThirdColText;
+                    $("#headerThirdColFileName").val(result.ThirdColImage);
+                    $("#step1HeaderText").val(result.Step1Header);
+                    step1Message.container.firstChild.innerHTML = result.Step1Message;
+                    $("#step2HeaderText").val(result.Step2Header);
+                    step2Message.container.firstChild.innerHTML = result.Step2Message;
+                    $("#step3HeaderText").val(result.Step3Header);
+                    step3Message.container.firstChild.innerHTML = result.Step3Message;
+                    if (result.PopularLocationName != null)
+                        $(".pop").show();
+                },
+                error: function () {
+                    $("#headerFileName").val('');
+                    headerText.container.firstChild.innerHTML = '';
+                    firstColHeader.container.firstChild.innerHTML = '';
+                    firstColText.container.firstChild.innerHTML = '';
+                    $("#headerFirstColFileName").val('');
+                    secondColHeader.container.firstChild.innerHTML = '';
+                    secondColText.container.firstChild.innerHTML = '';
+                    $("#headerSecondColFileName").val('');
+                    thirdColHeader.container.firstChild.innerHTML = '';
+                    thirdColText.container.firstChild.innerHTML = '';
+                    $("#headerThirdColFileName").val('');
+                    $("#step1HeaderText").val('');
+                    step1Message.container.firstChild.innerHTML = '';
+                    $("#step2HeaderText").val('');
+                    step2Message.container.firstChild.innerHTML = '';
+                    $("#step3HeaderText").val('');
+                    step3Message.container.firstChild.innerHTML = '';
+                    $(".pop").hide();
+                }
+            });
+        });
+
+
         loadHeaderTextEditor();
         loadFirstColHeaderEditor();
         loadFirstColTextEditor();
@@ -250,6 +350,7 @@
         loadStep2MessageEditor();
         loadStep3MessageEditor();
         loadCountries();
+
         $("#btnAdd").click(function () {
             var countyId = $("#county option:selected").val();
             if (countyId == 0) {
@@ -272,35 +373,78 @@
                 "Step1Header": $("#step1HeaderText").val(),
                 "Step1Message": step1Message.container.firstChild.innerHTML,
                 "Step2Header": $("#step2HeaderText").val(),
-                "Ste21Message": step2Message.container.firstChild.innerHTML,
+                "Step2Message": step2Message.container.firstChild.innerHTML,
                 "Step3Header": $("#step3HeaderText").val(),
-                "Ste31Message": step3Message.container.firstChild.innerHTML
+                "Step3Message": step3Message.container.firstChild.innerHTML
             };
 
-            $.ajax({
-                url: "AddLocation",
-                type: "POST",
-                contentType: "application/json",
-                dataType: "application/json",
-                data: JSON.stringify(data),
-                success: function (result) {
-                    alert(result);
-                }
-            });
+            if (@ViewBag.IsEditMode=="0") {
+                $.ajax({
+                    url: "AddLocation",
+                    type: "POST",
+                    aysnc:false,
+                    contentType: "application/json",
+                    dataType: "application/json",
+                    data: JSON.stringify(data),
+                    success: function (result) {
+                        alert(result);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: "EditLocation",
+                    type: "POST",
+                    async:false,
+                    contentType: "application/json",
+                    dataType: "application/json",
+                    data: JSON.stringify(data),
+                    success: function (result) {
+                        alert(result);
+                    }
+                });
+            }
+
+            alert("Successfully Updated.");
         });
 
         $('#ImgUpload').change(function () {
             uploadImages($("#ImgUpload").get(0), "headerFileName");
         });
+        $(".pop").on("click", function () {
+            if ($("#county option:selected").val() == 0) {
+                alert("Please select a county");
+                return false;
+            }
+            var classId = $(this).attr("id");
+            if (classId == "headerImage") {
+                var img = $('#imageresource').attr('src') + $("#headerFileName").val();
+            }
+            else if (classId == "firstColHeader") {
+                var img = $("#imageresource").attr("src") + $("#headerFirstColFileName").val();
+            }
+            else if (classId == "secondColHeader") {
+                var img = $("#imageresource").attr("src") + $("#headerSecondColFileName").val();
+            }
+            else if (classId == "thirdColHeader") {
+                var img = $("#imageresource").attr("src") + $("#headerThirdColFileName").val();
+            }
+
+            $('#imagepreview').attr('src', img); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#showImg").click(function () {
+            $("#headerFileName").show();
+        })
 
         $("#firstColImgUpload").change(function () {
-            uploadImage($("#firstColImgUpload").get(0), "headerFirstColFileName");
+            uploadImages($("#firstColImgUpload").get(0), "headerFirstColFileName");
         });
         $("#secondColImgUpload").change(function () {
-            uploadImage($("#secondColImgUpload").get(0), "headerSecondColFileName");
+            uploadImages($("#secondColImgUpload").get(0), "headerSecondColFileName");
         });
         $("#thirdColImgUpload").change(function () {
-            uploadImage($("#thirdColImgUpload").get(0), "headerThirdColFileName");
+            uploadImages($("#thirdColImgUpload").get(0), "headerThirdColFileName");
         });
 
     });

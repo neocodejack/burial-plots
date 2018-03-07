@@ -294,6 +294,7 @@
     <Compile Include="Controllers\CountyImportsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarketController.cs" />
     <Compile Include="Controllers\NewsArticalsController.cs" />
@@ -383,6 +384,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\ItemRepository.cs" />
+    <Compile Include="DAL\LocationUrl.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\MainSection.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2529,6 +2533,7 @@
     <Content Include="Areas\Admin\Views\Settings\_LoadTeam.cshtml" />
     <Content Include="Areas\Admin\Views\Users\ExtendListings.cshtml" />
     <Content Include="Areas\Admin\Views\Page\_AddLocation.cshtml" />
+    <Content Include="Areas\Admin\Views\Page\_PopularLocations.cshtml" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
@@ -2756,7 +2761,6 @@
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="fonts1\" />
     <Folder Include="images\CemeteryPlots\CemeteryImages\" />
-    <Folder Include="Views\Page\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

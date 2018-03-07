@@ -243,6 +243,14 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <Property Name="CateId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="ItemDescription" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="LocationUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PageId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PageName" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="MainSections">
           <Key>
             <PropertyRef Name="Id" />
@@ -1323,6 +1331,7 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <EntitySet Name="Graves" EntityType="Self.Graves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItalianPage" EntityType="Self.ItalianPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationUrl" EntityType="Self.LocationUrl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainSections" EntityType="Self.MainSections" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
@@ -1817,6 +1826,7 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <EntitySet Name="FAQs" EntityType="BurialPlotsModel.FAQ" />
           <EntitySet Name="Enquiries" EntityType="BurialPlotsModel.Enquiry" />
           <EntitySet Name="PopularLocationContents" EntityType="BurialPlotsModel.PopularLocationContent" />
+          <EntitySet Name="LocationUrls" EntityType="BurialPlotsModel.LocationUrl" />
           </EntityContainer>
         <EntityType Name="AdministrativeEmail">
           <Key>
@@ -3210,6 +3220,14 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <Property Name="Step3Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Step3Message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="LocationUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PageId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3952,6 +3970,15 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
                 <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
                 <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
                 <ScalarProperty Name="PopularLocationName" ColumnName="PopularLocationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationUrls">
+            <EntityTypeMapping TypeName="BurialPlotsModel.LocationUrl">
+              <MappingFragment StoreEntitySet="LocationUrl">
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
