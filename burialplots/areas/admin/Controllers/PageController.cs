@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -161,7 +162,11 @@ namespace BurialPlots.Areas.Admin.Controllers
                     }
                     else
                     {
-                        return Content(pageId.ToString());
+                        var locationContent = new GenericRepository<PopularLocationContent>().GetAll().ToList();
+                        var location = locationContent.Where(x => x.PopularLocationName.Equals(pageId.ToString())).FirstOrDefault();
+                        ViewBag.HeaderImage = location.HeaderImage;
+                        ViewBag.HeaderText = Regex.Replace(location.HeaderText, "<.*?>|&.*?;", string.Empty); 
+                        return View("_PopularLocations");
                     }
                 }
                 var servicebx = new PageBoxRepository().GetAll().Where(x => x.Page == pageload.Id);
