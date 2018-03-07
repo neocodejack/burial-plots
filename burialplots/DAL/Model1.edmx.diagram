@@ -108,6 +108,7 @@
         <EntityTypeShape EntityType="BurialPlotsModel.FAQ" Width="1.5" PointX="14.375" PointY="3.75" />
         <EntityTypeShape EntityType="BurialPlotsModel.Enquiry" Width="1.5" PointX="19.375" PointY="22.75" />
         <EntityTypeShape EntityType="BurialPlotsModel.PopularLocationContent" Width="1.5" PointX="21.375" PointY="22.75" />
+        <EntityTypeShape EntityType="BurialPlotsModel.LocationUrl" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

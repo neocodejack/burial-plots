@@ -32,7 +32,7 @@ namespace BurialPlots.Controllers
                 return serviceCount;
             }
         }
-
+        
         public ActionResult ErrorPage()
         {
             return View();
