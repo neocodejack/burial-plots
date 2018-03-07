@@ -93,6 +93,26 @@ namespace BurialPlots.DAL
             Db.SaveChanges();
             return true;
         }
+        public virtual bool UpdateLocation(PopularLocationContent entity)
+        {
+            try
+            {
+                var content = Db.PopularLocationContents.Where(x => x.PopularLocationName.Equals(entity.PopularLocationName)).FirstOrDefault();
+                //content.HeaderText = "<p>Welcome</p>";
+                
+                //string id = ((dynamic)entity).PopularLocationName;
+                //var dbObject = ObjectSet.Where("it.PopularLocationName=" + id).FirstOrDefault();
+                var entry = Db.Entry(content);
+                entry.CurrentValues.SetValues(entity);
+                entry.State = EntityState.Modified;
+                Db.SaveChanges();
+                return true;
+            }catch(Exception ex)
+            {
+                throw ex;
+                return false;
+            }
+        }
         public virtual void Update(T entity, bool IDMODE)
         {
             Decimal id = ((dynamic)entity).Id;

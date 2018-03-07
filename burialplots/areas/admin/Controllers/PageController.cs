@@ -152,7 +152,17 @@ namespace BurialPlots.Areas.Admin.Controllers
                 var pageload = new PageRepository().FirstOrDefault(x => x.Pageurl == id);
                 if (pageload == null)
                 {
-                    return RedirectToAction("ErrorPage", "Home", new { Area="" });
+                    //Check if this url is providing the popular location's infor
+                    var pageId = new GenericRepository<LocationUrl>().GetAll().Where(_ => _.PageName.Equals(id)).Select(_ => _.PageId).FirstOrDefault();
+
+                    if (pageId == null)
+                    {
+                        return RedirectToAction("ErrorPage", "Home", new { Area = "" });
+                    }
+                    else
+                    {
+                        return Content(pageId.ToString());
+                    }
                 }
                 var servicebx = new PageBoxRepository().GetAll().Where(x => x.Page == pageload.Id);
                 ViewBag.box = servicebx;
@@ -251,6 +261,9 @@ namespace BurialPlots.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult AddLocation()
         {
+            ViewBag.IsEditMode = "0";
+            ViewBag.Title = "Add Location";
+            ViewBag.PageName = "Add Location";
             return PartialView("_AddLocation");
         }
 
@@ -306,6 +319,42 @@ namespace BurialPlots.Areas.Admin.Controllers
             else
             {
                 return Content("Location Cannot Be Blank");
+            }
+        }
+
+        [HttpGet]
+        public JsonResult GetLocationContent(string locationId)
+        {
+            PopularLocationContent content = new PopularLocationContent();
+            if (!string.IsNullOrEmpty(locationId))
+            {
+                content = new GenericRepository<PopularLocationContent>().GetAll().Where(_ => _.PopularLocationName.Equals(locationId)).FirstOrDefault();
+                
+            }
+            
+            return Json(content, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult EditLocation()
+        {
+            ViewBag.IsEditMode = "1";
+            ViewBag.Title = "Edit Location";
+            ViewBag.PageName = "Edit Location";
+            return PartialView("_AddLocation");
+        }
+
+        [HttpPost]
+        public ActionResult EditLocation(PopularLocationContent content)
+        {
+            var isEdited = new GenericRepository<PopularLocationContent>().UpdateLocation(content);
+            if (isEdited)
+            {
+                return Content("Successfully Edited");
+            }
+            else
+            {
+                return Content("Unable to edit, please try later");
             }
         }
 
