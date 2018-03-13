@@ -177,7 +177,7 @@ else
             <div class="site-inner">
                 <header id="masthead" class="site-header" role="banner">
                     <div class="site-header-main">
-                        <div class="banner SetcustomBanner" style="background-image: url('/images/Slider/@fisrtImage');">
+                        <div class="banner SetcustomBanner" style="background-image: url('/images/Slider/@fisrtImage'); height:637px;">
 
                             <div class="container">
                                 <div class="banner-outer">
@@ -189,19 +189,19 @@ else
                                         <form>
                                             <ul class="enquiry-form-header">
                                                 <li>
-                                                    <input type="text" placeholder="Name">
+                                                    <input type="text" placeholder="Name" id="enName">
                                                 </li>
                                                 <li>
-                                                    <input type="text" placeholder="Email">
+                                                    <input type="text" placeholder="Email" id="enEmail">
                                                 </li>
                                                 <li>
-                                                    <input type="text" placeholder="Telephone">
+                                                    <input type="text" placeholder="Telephone" id="enPhone">
                                                 </li>
                                                 <li>
-                                                    <textarea name="" placeholder="Message"></textarea>
+                                                    <textarea name="" placeholder="Message" id="enMessage"></textarea>
                                                 </li>
                                                 <li>
-                                                    <input type="submit" value="SUBMIT">
+                                                    <input type="button" value="SUBMIT" id="btnEnquiry">
                                                 </li>
                                             </ul>
 
@@ -308,9 +308,9 @@ else
                 </div>
             </div>
         }
-        <div class="container" style="text-align:center">
-            @Html.Raw(ViewBag.Body)
-        </div>
+            <div class="container" style="text-align:center">
+                @Html.Raw(ViewBag.Body)
+            </div>
 
         <div class="section text-center-align purple-bg" style="margin-top:-32px;">
             <div class="container">
@@ -742,8 +742,9 @@ else
                 margin: 10,
                 dots: true,
                 items: 1,
-            })
-        })
+            });
+        });
+
     </script>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {

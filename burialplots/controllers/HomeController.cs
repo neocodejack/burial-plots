@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mail;
+using System.Reflection;
 using System.Threading;
 using System.Web;
 using System.Web.Helpers;
@@ -1065,6 +1066,49 @@ namespace BurialPlots.Controllers
             }
             ViewBag.Language = language;
             return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult Enquiry(Enquiry enquiry)
+        {
+            var responseStatus = false;
+            //Code to collct data and 
+            if (!IsAnyNullOrEmpty(enquiry))
+            {
+                responseStatus = new AddEnquiryRepository().Add(enquiry);
+                //Send email
+                var message = new MailMessage();
+                message.To.Add(ConfigurationManager.AppSettings["AdminMail"].ToString());
+                message.From = new MailAddress(enquiry.Email);  
+                message.Subject = "New Enquiry";
+                message.IsBodyHtml = true;
+                message.Body = enquiry.Message;
+                message.Priority = MailPriority.Normal;
+                var smtp = new SmtpClient();
+                smtp.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SmtpMail"].ToString(), ConfigurationManager.AppSettings["SmtpPassword"].ToString());
+                smtp.Host = ConfigurationManager.AppSettings["SmtpHost"].ToString();
+                smtp.Port = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"].ToString());
+                smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpEnableSsl"].ToString());
+                smtp.Send(message);
+            }
+
+            return Json(responseStatus);
+        }
+
+        private bool IsAnyNullOrEmpty(object myObject)
+        {
+            foreach (PropertyInfo pi in myObject.GetType().GetProperties())
+            {
+                if (pi.PropertyType == typeof(string))
+                {
+                    string value = (string)pi.GetValue(myObject);
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 

@@ -291,6 +291,15 @@
             var selectedId = $("#county").find("option:selected").val();
 
             $.ajax({
+                url: "GetLocationName?locationId=" + selectedId,
+                type: "GET",
+                contentType: "application/json",
+                success: function (result) {
+                    $("#PageUrl").val(result);
+                }
+            });
+
+            $.ajax({
                 url: "GetLocationContent?locationId=" + selectedId,
                 type: "GET",
                 contentType: "application/json",
@@ -357,6 +366,8 @@
                 alert("Please select County");
                 return false;
             }
+
+            //Code to add Location for SEO Friendly URL
             var data = {
                 "PopularLocationName": countyId,
                 "HeaderImage": $("#headerFileName").val(),
