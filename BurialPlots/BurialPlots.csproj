@@ -55,6 +55,9 @@
       <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
@@ -1702,6 +1705,7 @@
     <Content Include="Content\css\owl.theme.default.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\custom-style.css" />
+    <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\sweetalert.css" />
     <Content Include="Content\sweetalert.min.js" />
@@ -2534,6 +2538,8 @@
     <Content Include="Areas\Admin\Views\Users\ExtendListings.cshtml" />
     <Content Include="Areas\Admin\Views\Page\_AddLocation.cshtml" />
     <Content Include="Areas\Admin\Views\Page\_PopularLocations.cshtml" />
+    <Content Include="Areas\Admin\Views\Page\_EnquiryList.cshtml" />
+    <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
@@ -2544,6 +2550,9 @@
     <Content Include="Scripts\dropzone\dropzone.js" />
     <Content Include="Scripts\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -2753,6 +2762,8 @@
     <Content Include="Views\Market\CemeteryDetails.cshtml" />
     <Content Include="Views\Market\Sell_Your_Plot.cshtml" />
     <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

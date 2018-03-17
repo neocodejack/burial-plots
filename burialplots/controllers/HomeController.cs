@@ -1076,20 +1076,12 @@ namespace BurialPlots.Controllers
             if (!IsAnyNullOrEmpty(enquiry))
             {
                 responseStatus = new AddEnquiryRepository().Add(enquiry);
-                //Send email
-                var message = new MailMessage();
-                message.To.Add(ConfigurationManager.AppSettings["AdminMail"].ToString());
-                message.From = new MailAddress(enquiry.Email);  
-                message.Subject = "New Enquiry";
-                message.IsBodyHtml = true;
-                message.Body = enquiry.Message;
-                message.Priority = MailPriority.Normal;
-                var smtp = new SmtpClient();
-                smtp.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SmtpMail"].ToString(), ConfigurationManager.AppSettings["SmtpPassword"].ToString());
-                smtp.Host = ConfigurationManager.AppSettings["SmtpHost"].ToString();
-                smtp.Port = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"].ToString());
-                smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpEnableSsl"].ToString());
-                smtp.Send(message);
+                var client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("avishekpatra.1986@gmail.com", "Babai@243111"),
+                    EnableSsl = true
+                };
+                client.Send("avishekpatra.1986@gmail.com", "avishekpatra.1986@gmail.com", "test", "testbody");
             }
 
             return Json(responseStatus);
@@ -1097,7 +1089,7 @@ namespace BurialPlots.Controllers
 
         private bool IsAnyNullOrEmpty(object myObject)
         {
-            foreach (PropertyInfo pi in myObject.GetType().GetProperties())
+            foreach (PropertyInfo pi in myObject.GetType().GetProperties()) 
             {
                 if (pi.PropertyType == typeof(string))
                 {

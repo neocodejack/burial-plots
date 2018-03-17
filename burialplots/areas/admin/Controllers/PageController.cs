@@ -165,7 +165,22 @@ namespace BurialPlots.Areas.Admin.Controllers
                         var locationContent = new GenericRepository<PopularLocationContent>().GetAll().ToList();
                         var location = locationContent.Where(x => x.PopularLocationName.Equals(pageId.ToString())).FirstOrDefault();
                         ViewBag.HeaderImage = location.HeaderImage;
-                        ViewBag.HeaderText = Regex.Replace(location.HeaderText, "<.*?>|&.*?;", string.Empty); 
+                        ViewBag.HeaderText = Regex.Replace(location.HeaderText, "<.*?>|&.*?;", string.Empty);
+                        ViewBag.FirstColHeader = Regex.Replace(location.FirstColHeader, "<.*?>|&.*?;", string.Empty);
+                        ViewBag.FirstColText = Server.HtmlDecode(location.FirstColText);
+                        ViewBag.FirstColImage = location.FirstColImage;
+                        ViewBag.SecondColHeader = Regex.Replace(location.SecondColHeader, "<.*?>|&.*?;", string.Empty);
+                        ViewBag.SecondColText = Server.HtmlDecode(location.SecondColText);
+                        ViewBag.SecondColeImage = location.SecondColImage;
+                        ViewBag.ThirdColHeader = Regex.Replace(location.SecondColHeader, "<.*?>|&.*?;", string.Empty);
+                        ViewBag.ThirdColText = Server.HtmlDecode(location.ThirdColText);
+                        ViewBag.ThirdColImage = location.ThirdColImage;
+                        ViewBag.Step1Header = location.Step1Header;
+                        ViewBag.Step1Message = location.Step1Message;
+                        ViewBag.Step2Header = location.Step2Header;
+                        ViewBag.Step2Message = location.Step2Message;
+                        ViewBag.Step3Header = location.Step3Header;
+                        ViewBag.Step3Message = location.Step3Message;
                         return View("_PopularLocations");
                     }
                 }
@@ -187,6 +202,14 @@ namespace BurialPlots.Areas.Admin.Controllers
             }
 
         }
+
+        [HttpGet]
+        public ActionResult EnquiryList()
+        {
+            var result = new GenericRepository<Enquiry>().GetAll().AsEnumerable();
+            return PartialView("_EnquiryList", result);
+        }
+
         public ActionResult PageSelect()
         {
             if (Session["adminUser"] != null && Session["adminRole"].ToString() == "SuperAdmin")
@@ -349,6 +372,16 @@ namespace BurialPlots.Areas.Admin.Controllers
             return PartialView("_AddLocation");
         }
 
+        [HttpGet]
+        public ActionResult GetLocationName(string locationId)
+        {
+            var locationName = new GenericRepository<LocationUrl>().GetAll()
+                                        .Where(_ => _.PageId.Equals(Convert.ToDecimal(locationId)))
+                                        .Select(_ => _.PageName)
+                                        .FirstOrDefault();
+            return Json(locationName, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult EditLocation(PopularLocationContent content)
         {
@@ -361,6 +394,28 @@ namespace BurialPlots.Areas.Admin.Controllers
             {
                 return Content("Unable to edit, please try later");
             }
+        }
+
+        [HttpPost]
+        public ActionResult SaveLocation(int locationId, string locationName)
+        {
+            var responseStatus = false;
+            var locationObject = new LocationUrl { Id = locationId, PageId = locationId, PageName = locationName };
+
+            var previousLocationName = new GenericRepository<LocationUrl>().GetAll()
+                                        .Where(_ => _.PageId.Equals(Convert.ToDecimal(locationId)))
+                                        .Select(_ => _.PageName)
+                                        .FirstOrDefault();
+            if (previousLocationName == string.Empty)
+            {
+                responseStatus = new GenericRepository<LocationUrl>().Add(locationObject);
+            }
+            else if(previousLocationName != locationName)
+            {
+                responseStatus = new GenericRepository<LocationUrl>().Update(locationObject);
+            }
+
+            return Json(responseStatus, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

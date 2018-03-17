@@ -479,20 +479,20 @@
           <Property Name="HeaderImage" Type="varchar" MaxLength="100" />
           <Property Name="HeaderText" Type="varchar" MaxLength="150" />
           <Property Name="FirstColHeader" Type="varchar" MaxLength="150" />
-          <Property Name="FirstColText" Type="varchar" MaxLength="200" />
+          <Property Name="FirstColText" Type="varchar(max)" />
           <Property Name="FirstColImage" Type="varchar" MaxLength="200" />
           <Property Name="SecondColHeader" Type="varchar" MaxLength="200" />
-          <Property Name="SecondColText" Type="varchar" MaxLength="200" />
+          <Property Name="SecondColText" Type="varchar(max)" />
           <Property Name="SecondColImage" Type="varchar" MaxLength="200" />
           <Property Name="ThirdColHeader" Type="varchar" MaxLength="200" />
-          <Property Name="ThirdColText" Type="varchar" MaxLength="200" />
+          <Property Name="ThirdColText" Type="varchar(max)" />
           <Property Name="ThirdColImage" Type="varchar" MaxLength="200" />
           <Property Name="Step1Header" Type="varchar" MaxLength="200" />
-          <Property Name="Step1Message" Type="varchar" MaxLength="200" />
+          <Property Name="Step1Message" Type="varchar(max)" />
           <Property Name="Step2Header" Type="varchar" MaxLength="200" />
-          <Property Name="Step2Message" Type="varchar" MaxLength="200" />
+          <Property Name="Step2Message" Type="varchar(max)" />
           <Property Name="Step3Header" Type="varchar" MaxLength="200" />
-          <Property Name="Step3Message" Type="varchar" MaxLength="200" />
+          <Property Name="Step3Message" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="PostCodes">
           <Key>
@@ -1814,9 +1814,9 @@
             <End Role="PostCode" EntitySet="PostCodes" />
           </AssociationSet>
           <EntitySet Name="FAQs" EntityType="BurialPlotsModel.FAQ" />
-          <EntitySet Name="PopularLocationContents" EntityType="BurialPlotsModel.PopularLocationContent" />
           <EntitySet Name="LocationUrls" EntityType="BurialPlotsModel.LocationUrl" />
           <EntitySet Name="Enquiries" EntityType="BurialPlotsModel.Enquiry" />
+          <EntitySet Name="PopularLocationContents" EntityType="BurialPlotsModel.PopularLocationContent" />
           </EntityContainer>
         <EntityType Name="AdministrativeEmail">
           <Key>
@@ -3177,29 +3177,6 @@
           <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AddedDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityType Name="PopularLocationContent">
-          <Key>
-            <PropertyRef Name="PopularLocationName" />
-          </Key>
-          <Property Name="PopularLocationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HeaderImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="HeaderText" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="FirstColHeader" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="FirstColText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FirstColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="SecondColHeader" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="SecondColText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="SecondColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ThirdColHeader" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ThirdColText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ThirdColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step1Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step1Message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step2Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step2Message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step3Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step3Message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="LocationUrl">
           <Key>
             <PropertyRef Name="Id" />
@@ -3217,6 +3194,29 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PopularLocationContent">
+          <Key>
+            <PropertyRef Name="PopularLocationName" />
+          </Key>
+          <Property Name="PopularLocationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderText" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FirstColHeader" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FirstColText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FirstColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SecondColHeader" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SecondColText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecondColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ThirdColHeader" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ThirdColText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ThirdColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Step1Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Step1Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Step2Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Step2Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Step3Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Step3Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3928,6 +3928,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LocationUrls">
+            <EntityTypeMapping TypeName="BurialPlotsModel.LocationUrl">
+              <MappingFragment StoreEntitySet="LocationUrl">
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enquiries">
+            <EntityTypeMapping TypeName="BurialPlotsModel.Enquiry">
+              <MappingFragment StoreEntitySet="Enquiry">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PopularLocationContents">
             <EntityTypeMapping TypeName="BurialPlotsModel.PopularLocationContent">
               <MappingFragment StoreEntitySet="PopularLocationContent">
@@ -3949,26 +3969,6 @@
                 <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
                 <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
                 <ScalarProperty Name="PopularLocationName" ColumnName="PopularLocationName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LocationUrls">
-            <EntityTypeMapping TypeName="BurialPlotsModel.LocationUrl">
-              <MappingFragment StoreEntitySet="LocationUrl">
-                <ScalarProperty Name="PageName" ColumnName="PageName" />
-                <ScalarProperty Name="PageId" ColumnName="PageId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Enquiries">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Enquiry">
-              <MappingFragment StoreEntitySet="Enquiry">
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
