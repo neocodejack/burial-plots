@@ -30,35 +30,5 @@ namespace BurialPlots.Controllers
             smtp.EnableSsl = Convert.ToBoolean(ssl);
             smtp.Send(message);
         }
-
-        [HttpPost]
-        public async Task<IHttpActionResult> Enquiry(Enquiry enquiry)
-        {
-            var responseStatus = false;
-            //Code to collct data and 
-            if (!IsAnyNullOrEmpty(enquiry))
-            {
-                responseStatus = new AddEnquiryRepository().Add(enquiry);
-                //Semd email
-            }
-
-            return Ok(responseStatus);
-        }
-
-        private bool IsAnyNullOrEmpty(object myObject)
-        {
-            foreach (PropertyInfo pi in myObject.GetType().GetProperties())
-            {
-                if (pi.PropertyType == typeof(string))
-                {
-                    string value = (string)pi.GetValue(myObject);
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
     }
 }
