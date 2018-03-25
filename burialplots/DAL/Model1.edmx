@@ -139,13 +139,11 @@
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="AddedDate" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Enquiry">
           <Key>
-            <PropertyRef Name="EnquiryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="EnquiryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
@@ -481,20 +479,20 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <Property Name="HeaderImage" Type="varchar" MaxLength="100" />
           <Property Name="HeaderText" Type="varchar" MaxLength="150" />
           <Property Name="FirstColHeader" Type="varchar" MaxLength="150" />
-          <Property Name="FirstColText" Type="varchar" MaxLength="200" />
+          <Property Name="FirstColText" Type="varchar(max)" />
           <Property Name="FirstColImage" Type="varchar" MaxLength="200" />
           <Property Name="SecondColHeader" Type="varchar" MaxLength="200" />
-          <Property Name="SecondColText" Type="varchar" MaxLength="200" />
+          <Property Name="SecondColText" Type="varchar(max)" />
           <Property Name="SecondColImage" Type="varchar" MaxLength="200" />
           <Property Name="ThirdColHeader" Type="varchar" MaxLength="200" />
-          <Property Name="ThirdColText" Type="varchar" MaxLength="200" />
+          <Property Name="ThirdColText" Type="varchar(max)" />
           <Property Name="ThirdColImage" Type="varchar" MaxLength="200" />
           <Property Name="Step1Header" Type="varchar" MaxLength="200" />
-          <Property Name="Step1Message" Type="varchar" MaxLength="200" />
+          <Property Name="Step1Message" Type="varchar(max)" />
           <Property Name="Step2Header" Type="varchar" MaxLength="200" />
-          <Property Name="Step2Message" Type="varchar" MaxLength="200" />
+          <Property Name="Step2Message" Type="varchar(max)" />
           <Property Name="Step3Header" Type="varchar" MaxLength="200" />
-          <Property Name="Step3Message" Type="varchar" MaxLength="200" />
+          <Property Name="Step3Message" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="PostCodes">
           <Key>
@@ -1324,6 +1322,7 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <EntitySet Name="CemeteryLayers" EntityType="Self.CemeteryLayers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Counties" EntityType="Self.Counties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQs" EntityType="Self.FAQs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FuneralProduct" EntityType="Self.FuneralProduct" Schema="dbo" store:Type="Tables" />
@@ -1367,15 +1366,6 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <EntitySet Name="Tiers" EntityType="Self.Tiers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Towns" EntityType="Self.Towns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UrduPage" EntityType="Self.UrduPage" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Enquiry" EntityType="Self.Enquiry" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Enquiry].[EnquiryId] AS [EnquiryId], 
-    [Enquiry].[Name] AS [Name], 
-    [Enquiry].[Email] AS [Email], 
-    [Enquiry].[Phone] AS [Phone], 
-    [Enquiry].[Message] AS [Message]
-    FROM [dbo].[Enquiry] AS [Enquiry]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_BillingShipping_Item" Association="Self.FK_BillingShipping_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="BillingShipping" EntitySet="BillingShipping" />
@@ -1824,9 +1814,9 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
             <End Role="PostCode" EntitySet="PostCodes" />
           </AssociationSet>
           <EntitySet Name="FAQs" EntityType="BurialPlotsModel.FAQ" />
+          <EntitySet Name="LocationUrls" EntityType="BurialPlotsModel.LocationUrl" />
           <EntitySet Name="Enquiries" EntityType="BurialPlotsModel.Enquiry" />
           <EntitySet Name="PopularLocationContents" EntityType="BurialPlotsModel.PopularLocationContent" />
-          <EntitySet Name="LocationUrls" EntityType="BurialPlotsModel.LocationUrl" />
           </EntityContainer>
         <EntityType Name="AdministrativeEmail">
           <Key>
@@ -3187,11 +3177,19 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AddedDate" Type="DateTime" Precision="0" />
         </EntityType>
+        <EntityType Name="LocationUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PageId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Enquiry">
           <Key>
-            <PropertyRef Name="EnquiryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="EnquiryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -3205,28 +3203,20 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
           <Property Name="HeaderImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="HeaderText" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="FirstColHeader" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="FirstColText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FirstColText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FirstColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="SecondColHeader" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="SecondColText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SecondColText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SecondColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ThirdColHeader" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ThirdColText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ThirdColText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ThirdColImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Step1Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step1Message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Step1Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Step2Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step2Message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Step2Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Step3Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Step3Message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="LocationUrl">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="PageId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Step3Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3938,6 +3928,15 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LocationUrls">
+            <EntityTypeMapping TypeName="BurialPlotsModel.LocationUrl">
+              <MappingFragment StoreEntitySet="LocationUrl">
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Enquiries">
             <EntityTypeMapping TypeName="BurialPlotsModel.Enquiry">
               <MappingFragment StoreEntitySet="Enquiry">
@@ -3945,7 +3944,7 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="EnquiryId" ColumnName="EnquiryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3970,15 +3969,6 @@ warning 6002: The table/view 'BurialPlots.dbo.Enquiry' does not have a primary k
                 <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
                 <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
                 <ScalarProperty Name="PopularLocationName" ColumnName="PopularLocationName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LocationUrls">
-            <EntityTypeMapping TypeName="BurialPlotsModel.LocationUrl">
-              <MappingFragment StoreEntitySet="LocationUrl">
-                <ScalarProperty Name="PageName" ColumnName="PageName" />
-                <ScalarProperty Name="PageId" ColumnName="PageId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

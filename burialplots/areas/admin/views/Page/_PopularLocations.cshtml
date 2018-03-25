@@ -24,7 +24,7 @@
                         <div class="caption-inner">
                             <div class="container">
                                 <h2 class="no-bg">@Html.Raw(ViewBag.HeaderText)</h2>
-                    <a href="javascript:void();" class="btn apply-btn">Apply Now</a>
+                    <a id="enquiryPopup" class="btn apply-btn">Apply Now</a>
                 </div>
             </div>
             </div><!-- banner -->
@@ -42,17 +42,11 @@
                             <div class="container">
                                 <div class="landing-block">
                                     <div class="landing-left">
-                                        <h2 class="text-color-orange text-left-align"><!--ViewBag Replacement-->Reason to pre pay ...</h2>
+                                        <h2 class="text-color-orange text-left-align"><!--ViewBag Replacement-->@Html.Raw(ViewBag.FirstColHeader)...</h2>
                                         <!--Entire UL will be Replaced By ViewBag-->
-                                        <ul class="landing-text">
-                                            <li><span class="text-color-orange"><strong>SAVE MONEY</strong></span> - Prices across the funeral industry typically increase by 5-10% per year, by  pre purchasing a burial plot, consumers pay todays price.</li>
-                                            <li><span class="text-color-orange"><strong>EASE THE FAMILY BURDON</strong></span> - Plan so that your funeral is exactly how you wish, meaning your family will not have to make difficult decisions.</li>
-                                            <li><span class="text-color-orange"><strong>ASSUME FINANCIAL RESPONSIBILITY</strong></span> - Some families may not be able to access money you have saved, purchasing now means the plot is already paid for, so your family doesn’t have to.</li>
-                                            <li><span class="text-color-orange"><strong>CHOOSE THE PERFECT PLOT</strong></span> - Rather than been told where you will be buried, purchasing early gives you far more choice to be buried where an with whom you wish.</li>
-                                            <li><span class="text-color-orange"><strong>SPREAD THE COST</strong></span> - Purchasing from us means you can spread the cost over asily managed payments. With our trusted finance facilities you can now pay between 12-36 months.</li>
-                                        </ul>
+                                        @Html.Raw(ViewBag.FirstColText)
                                     </div>
-                                    <div class="landing-left" style="background-image: url('../landingpageImages/landing-pic1.jpg');">
+                                    <div class="landing-left" style="background-image: url('../../../../landingpageImages/@ViewBag.FirstColImage');">
                                         <!--Image will be replaced by ViewBag-->
                                         <div class="enqiury-form-land">
                                             <h4 class="text-center-align">Pre planning a burial plot in Harlow will give you the financial freedom and release the burdon on your loved ones. Request a callback today........</h4>
@@ -78,26 +72,26 @@
                                 </div><!-- landing-block -->
                                 <div class="landing-block">
                                     <div class="landing-left">
-                                        <h2 class="text-color-orange text-left-align">Why NOw ...</h2>
-                                        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
-                                        <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, </p>
+                                        <h2 class="text-color-orange text-left-align">@ViewBag.SecondColHeader ...</h2>
+                                        @Html.Raw(ViewBag.SecondColText)
                                     </div>
-                                    <div class="landing-left" style="background-image: url('../landingpageImages/landing-pic2.jpg');">
+                                    <div class="landing-left" style="background-image: url('../../../../landingpageImages/@ViewBag.SecondColeImage');">
                                     </div>
                                 </div><!-- landing-block -->
                                 <div class="landing-block">
                                     <div class="landing-left">
-                                        <h2 class="text-color-orange text-left-align">Our Commitments...</h2>
-                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                                        <h2 class="text-color-orange text-left-align">@ViewBag.ThirdColHeader...</h2>
+                                        @Html.Raw(ViewBag.ThirdColText)
+                                        @*<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
                                         <br /> <br />
                                         <ul>
                                             <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</li>
                                             <li>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</li>
                                             <li>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. </li>
                                             <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</li>
-                                        </ul>
+                                        </ul>*@
                                     </div>
-                                    <div class="landing-left" style="background-image: url('../landingpageImages/landing-pic3.jpg');">
+                                    <div class="landing-left" style="background-image: url('../../../../landingpageImages/@ViewBag.ThirdColImage');">
                                     </div>
                                 </div><!-- landing-block -->
                             </div>
@@ -108,25 +102,26 @@
                                 <h2 class="underline">How it works</h2>
                                 <ul class="how-block">
                                     <li>
-                                        <div class="step-title"><h3><span class="text-color-orange">Step 1 </span>: Enquire</h3></div>
+                                        <div class="step-title"><h3>@Html.Raw(ViewBag.Step1Header)</h3></div>
                                         <div class="how-block--content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum.</p>
+                                            @Html.Raw(ViewBag.Step1Message)
+                                            @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum.</p>*@
                                             <br />
                                             <a href="javascript:void();">[Click for more]</a>
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="step-title"><h3><span class="text-color-orange">Step 2 </span>: Agree Price</h3></div>
+                                        <div class="step-title"><h3>@Html.Raw(ViewBag.Step2Header)</h3></div>
                                         <div class="how-block--content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum.</p>
+                                            @Html.Raw(ViewBag.Step2Message)
                                             <br />
                                             <a href="javascript:void();">[Click for more]</a>
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="step-title"><h3><span class="text-color-orange">Step 3 </span>: Sell</h3></div>
+                                        <div class="step-title"><h3>@Html.Raw(ViewBag.Step3Header)</h3></div>
                                         <div class="how-block--content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac risus lobortis, vehicula arcu hendrerit, semper turpis. Proin efficitur id massa at maximus. Maecenas et augue convallis, feugiat orci id, ullamcorper lectus. Proin ut purus eget nibh maximus bibendum.</p>
+                                            @Html.Raw(ViewBag.Step3Message)
                                             <br />
                                             <a href="javascript:void();">[Click for more]</a>
                                         </div>
