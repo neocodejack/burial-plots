@@ -276,28 +276,7 @@ else
                         </h2>
                     }
                 </div>
-                @*@if (ViewBag.tittle == "Search for Services")
-                {
-                    using (Html.BeginForm("SearchService", "Search", new { area = "", serviceId = "" }))
-                    {
-                        <div class="container" id="customSearch">
-                            @using (Html.BeginForm("SearchService", "Search", new { serviceId = "", Area = "" }))
-                            {
-                                <div class="row">
-                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 col-md-offset-2" style="padding-bottom:10px;">
-                                        <input type="text" style="background:white;height:41px" placeholder="Services" class="form-control" id="txtServiceName" name="txtServiceName" />
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="padding-bottom:10px;">
-                                        <input type="text" style="background:white;height:41px" placeholder="Country, County, Town or Postcode" class="form-control" id="txtPostCodeTown" name="txtPostCodeTown" />
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                                        <button class="btn" style="width:100%" type="submit"><span class="fa fa-search"></span> Search</button>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    }
-                }*@
+               
             </div>
 
         </div>
