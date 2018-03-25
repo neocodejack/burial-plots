@@ -5121,7 +5121,7 @@ input[type=button].checkout-next {
 }
 
 /* homepage banner */
-.banner-outer{margin-top: 160px;position: relative;}
+.banner-outer{margin-top: 155px;position: relative;}
 .banner-video{box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);border:8px solid #fff;width: 549px;float: left;margin-top: 80px;}
 .banner-video iframe{position: relative;vertical-align: top;}
 .banner-enquriy-form {
