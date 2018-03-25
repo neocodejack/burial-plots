@@ -506,6 +506,7 @@ namespace BurialPlots.Areas.Admin.Controllers
             return View();
         }
         //Picture Upload Action Method
+        [HttpPost]
         public ActionResult Upload()
         {
             string path = string.Empty;

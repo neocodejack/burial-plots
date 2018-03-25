@@ -9,7 +9,7 @@
 
 var GetDataRich = function (id) {
 
-    var imagename = saveImage();
+    var imagename = $("#Imghiden").val();
     var value = quill.container.firstChild.innerHTML;
     var bodyUrdu = quillUrdu.container.firstChild.innerHTML;
     var bodyArabic = quillArabic.container.firstChild.innerHTML;

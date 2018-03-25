@@ -158,7 +158,7 @@
 
     @RenderBody()
 
-    
+
     <div id="cotactfoter" class="section overlay-purple" style="background-image:url('/images/footer-form-bg.jpg');">
         <div id="cotactfoter" class="container">
             <h2 class="underline text-left-align">@BurialPlots.Resources.HomeTexts.Wedidhear</h2>
@@ -211,80 +211,80 @@
                             <div class="col-md-6 footer-block">
                                 <ul>
                                     @{
-                                    var count1 = 0;
-                                    if (services.Count() > 5)
-                                    {
-                                        count1 = services.Count() / 2;
-                                    }
-                                    else
-                                    {
-                                        count1 = services.Count();
-                                    }
-                                    int i = 0;
+                                        var count1 = 0;
+                                        if (services.Count() > 5)
+                                        {
+                                            count1 = services.Count() / 2;
+                                        }
+                                        else
+                                        {
+                                            count1 = services.Count();
+                                        }
+                                        int i = 0;
                                     }
                                     @for (i = 0; i < count1; i++)
-                                {
-                                    if (services[i].Name == "Solicitors")
                                     {
-                                        <li><a href="@Url.Action("PageView", "Page",new {id=("Solicitors").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                                }
-                                else if (services[i].Name == "Will Writers")
-                                {
-                                    <li><a href="@Url.Action("PageView", "Page",new {id=("WILL-WRITING").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                            }
-                            else if (services[i].Name == "Funeral Directors")
-                            {
-                                <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-DIRECTORS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                        }
-                        else if (services[i].Name == "Funeral Cars")
-                        {
-                            <li><a href="@Url.Action("PageView", "Page",new {id=("CARS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                    }
-                    else if (services[i].Name == "Florists")
-                    {
-                        <li><a href="@Url.Action("PageView", "Page",new {id=("FLORISTS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                }
-                else if (services[i].Name == "Insurance")
-                {
-                    <li><a href="@Url.Action("PageView", "Page",new {id=("LIFE-INSURANCE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-            }
-        }
+                                        if (services[i].Name == "Solicitors")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("Solicitors").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Will Writers")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("WILL-WRITING").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Funeral Directors")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-DIRECTORS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Funeral Cars")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("CARS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Florists")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("FLORISTS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Insurance")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("LIFE-INSURANCE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="col-md-6 footer-block">
                                 <ul>
                                     @while (i < services.Count())
-                                {
-                                    if (services[i].Name == "Funeral Plans")
                                     {
-                                        <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-PLANS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                                }
-                                else if (services[i].Name == "Memorials")
-                                {
-                                    <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                            }
-                            else if (services[i].Name == "Headstones")
-                            {
-                                <li><a href="@Url.Action("PageView", "Page",new {id=("Headstones").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                        }
-                        else if (services[i].Name == "Stonemasons")
-                        {
-                            <li><a href="@Url.Action("PageView", "Page",new {id=("STONEMASONS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                    }
-                    else if (services[i].Name == "Coffins")
-                    {
-                        <li><a href="@Url.Action("PageView", "Page",new {id=("Coffins").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                }
-                else if (services[i].Name == "Probate")
-                {
-                    <li><a href="@Url.Action("PageView", "Page",new {id=("PROBATE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-            }
-            else
-            {
-                <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-        }
-        i++;
-    }
+                                        if (services[i].Name == "Funeral Plans")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-PLANS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Memorials")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Headstones")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("Headstones").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Stonemasons")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("STONEMASONS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Coffins")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("Coffins").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Probate")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("PROBATE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        i++;
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -325,72 +325,72 @@
                         <br />
                         <div class="row">
                             @{
-                            List<string> popularlocList = new List<string>();
-                            popularlocList.Add("Newcastle Upon Tyne");
-                            popularlocList.Add("Sheffield");
-                            popularlocList.Add("Nottingham");
-                            popularlocList.Add("Aberdeen");
-                            popularlocList.Add("Norwich");
-                            popularlocList.Add("Peterborough");
-                            popularlocList.Add("London");
-                            popularlocList.Add("Birmingham");
-                            popularlocList.Add("Liverpool");
-                            popularlocList.Add("Belfast");
-                            popularlocList.Add("Cardiff");
-                            popularlocList.Add("Coventry");
-                            popularlocList.Add("Swansea");
-                            popularlocList.Add("Reading");
-                            popularlocList.Add("Manchester");
-                            popularlocList.Add("Glasgow");
-                            popularlocList.Add("Bristol");
-                            popularlocList.Add("Edinburgh");
-                            popularlocList.Add("Leicester");
-                            popularlocList.Add("Southampton");
-                            popularlocList.Add("Northampton");
-                            popularlocList.Add("Leeds");
+                                List<string> popularlocList = new List<string>();
+                                popularlocList.Add("Newcastle Upon Tyne");
+                                popularlocList.Add("Sheffield");
+                                popularlocList.Add("Nottingham");
+                                popularlocList.Add("Aberdeen");
+                                popularlocList.Add("Norwich");
+                                popularlocList.Add("Peterborough");
+                                popularlocList.Add("London");
+                                popularlocList.Add("Birmingham");
+                                popularlocList.Add("Liverpool");
+                                popularlocList.Add("Belfast");
+                                popularlocList.Add("Cardiff");
+                                popularlocList.Add("Coventry");
+                                popularlocList.Add("Swansea");
+                                popularlocList.Add("Reading");
+                                popularlocList.Add("Manchester");
+                                popularlocList.Add("Glasgow");
+                                popularlocList.Add("Bristol");
+                                popularlocList.Add("Edinburgh");
+                                popularlocList.Add("Leicester");
+                                popularlocList.Add("Southampton");
+                                popularlocList.Add("Northampton");
+                                popularlocList.Add("Leeds");
 
-                            var m = 0;
+                                var m = 0;
                             }
                             <div class="col-md-4 footer-block">
                                 <h3>Popular Locations</h3>
                                 <ul>
                                     @while (m < popularlocList.Count())
-                                {
+                                    {
 
-                                    <li><a href="@Url.Action("PopularLocations", "Home",new {TownName= popularlocList[m],Area="" })" class="black-color">@popularlocList[m]</a></li>
-                                m++;
-                                if (m == 6)
-                                {
-                                    break;
-                                }
-                            }
+                                        <li><a href="@popularlocList[m].ToLower().Split(' ')[0]" class="black-color">@popularlocList[m]</a></li>
+                                        m++;
+                                        if (m == 6)
+                                        {
+                                            break;
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="col-md-4 footer-block">
                                 <ul>
                                     @while (m < popularlocList.Count())
-                                {
-                                    <li><a href="@Url.Action("PopularLocations", "Home", new { TownName=popularlocList[m],Area=""   })" class="black-color">@popularlocList[m]</a></li>
-                                m++;
-                                if (m == 14)
-                                {
-                                    break;
-                                }
-                            }
+                                    {
+                                        <li><a href="@popularlocList[m].ToLower().Split(' ')[0]" class="black-color">@popularlocList[m]</a></li>
+                                        m++;
+                                        if (m == 14)
+                                        {
+                                            break;
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="col-md-4 footer-block">
                                 <ul>
                                     @while (m < locations.Count())
-                                {
-                                    <li><a href="@Url.Action("PopularLocations", "Home", new { TownName=popularlocList[m],Area=""   })" class="black-color">@popularlocList[m]</a></li>
-                                m++;
-                                if (m == 22)
-                                {
-                                    break;
-                                }
-                            }
-                                    
+                                    {
+                                        <li><a href="@popularlocList[m].ToLower().Split(' ')[0]" class="black-color">@popularlocList[m]</a></li>
+                                        m++;
+                                        if (m == 22)
+                                        {
+                                            break;
+                                        }
+                                    }
+
                                 </ul>
                             </div>
                         </div>
@@ -428,13 +428,13 @@
                         <div class="row">
                             <span class="white-color pull-right">
                                 @if (objFooter != null)
-                            {
-                                <span>@Html.Raw(objFooter.CopyRight)</span>
-                        }
-                        else
-                        {
-                            <span>&copy; @DateTime.Now.Year, Burial Plots</span>
-                    }
+                                {
+                                    <span>@Html.Raw(objFooter.CopyRight)</span>
+                                }
+                                else
+                                {
+                                    <span>&copy; @DateTime.Now.Year, Burial Plots</span>
+                                }
                             </span>
                         </div>
                     </div>
@@ -478,13 +478,15 @@
         function gtag() { dataLayer.push(arguments) };
         gtag('js', new Date());
 
-        gtag('config', 'UA-39178878-24'); 
+        gtag('config', 'UA-39178878-24');
+
         $(document).ready(function () {
             var isPopularLocation = @ViewBag.IsComingFromPopularLocation;
             if (isPopularLocation === 1) {
                 $("#cotactfoter").hide();
                 //$("#colophon").hide();
             }
+
         });
     </script>
     <script src="~/js/common.min.js">
@@ -508,6 +510,10 @@
     </script>
     <script>
         $(function () {
+            $("#enquiryPopup").click(function () {
+                $('#imagemodal').modal('show');
+            });
+
             $("#btnEnquiry").click(function () {
                 var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
 
@@ -528,7 +534,7 @@
                     return false;
                 }
 
-                
+
                 var enquiry = { "Name": $("#enName").val(), "Email": $("#enEmail").val(), "Phone": $("#enPhone").val(), "Message": $("#enMessage").val() };
                 $.ajax({
                     url: "Home/Enquiry",
@@ -537,11 +543,17 @@
                     contentType: "application/json",
                     data: JSON.stringify(enquiry),
                     success: function (result) {
-                    
+
                     }
                 });
 
-                alert("Enquiry Sent Successfully");
+                var isPopup = $("#btnEnquiry").attr("class");
+                if (isPopup.indexOf("btn") > -1) {
+                    $('#imagemodal').modal('toggle');
+                    
+                } else {
+                    alert("Enquiry Sent Successfully");
+                }
             });
 
         });
@@ -564,5 +576,64 @@
             });
         }
     </script>
+    <script src="~/js/owl.carousel.min.js"></script>
+
+    <script>
+        $(document).ready(function ($) {
+            $('.owl-carousel.latest-news').owlCarousel({
+                loop: true,
+                margin: 10,
+                dots: true,
+                items: 1,
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('#menu-nav').hover(function () {
+                $(this).toggleClass('highlighted');
+            });
+
+            $('#menu-nav').hover(
+                function () { $('#mask').addClass('active') },
+                function () { $('#mask').removeClass('active') }
+            )
+
+        });
+    </script>
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="top: 13%;left: 10%;width: 455px;">
+            <div class="modal-content">
+                
+                <div class="modal-body">
+                    
+                        <h2>enquire now</h2>
+                        <form>
+                            <ul class="enquiry-form-header">
+                                <li>
+                                    <input type="text" placeholder="Name" id="enName">
+                                </li>
+                                <li>
+                                    <input type="text" placeholder="Email" id="enEmail">
+                                </li>
+                                <li>
+                                    <input type="text" placeholder="Telephone" id="enPhone">
+                                </li>
+                                <li>
+                                    <textarea name="" placeholder="Message" id="enMessage"></textarea>
+                                </li>
+                            </ul>
+
+                        </form>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnEnquiry">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
