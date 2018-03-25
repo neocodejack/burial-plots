@@ -80,9 +80,9 @@ namespace BurialPlots.DAL
         public virtual DbSet<PurchaseBoxImage> PurchaseBoxImages { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<FAQ> FAQs { get; set; }
+        public virtual DbSet<LocationUrl> LocationUrls { get; set; }
         public virtual DbSet<Enquiry> Enquiries { get; set; }
         public virtual DbSet<PopularLocationContent> PopularLocationContents { get; set; }
-        public virtual DbSet<LocationUrl> LocationUrls { get; set; }
     
         public virtual int Sp_DeleteAllGraves(Nullable<decimal> sectionId, Nullable<decimal> plotId, Nullable<decimal> subSectionId)
         {

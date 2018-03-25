@@ -31,7 +31,8 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Page URL</h2>
-        <input type="text" class="clear" id="PageUrl" size="50px" />
+        <label id="hostName"></label>
+        <input type="text" class="clear" id="PageUrl" />
     </div>
 </div>
 <br />
@@ -266,6 +267,7 @@
 </div>
 <script>
     $(document).ready(function () {
+        LoadHostName();
         if (@ViewBag.IsEditMode=="1") {
             $("#btnAdd").val("Edit");
         }
@@ -289,6 +291,15 @@
 
         $("#county").change(function () {
             var selectedId = $("#county").find("option:selected").val();
+
+            $.ajax({
+                url: "GetLocationName?locationId=" + selectedId,
+                type: "GET",
+                contentType: "application/json",
+                success: function (result) {
+                    $("#PageUrl").val(result);
+                }
+            });
 
             $.ajax({
                 url: "GetLocationContent?locationId=" + selectedId,
@@ -334,6 +345,7 @@
                     $("#step3HeaderText").val('');
                     step3Message.container.firstChild.innerHTML = '';
                     $(".pop").hide();
+                    $("#PageUrl").val('');
                 }
             });
         });
@@ -357,6 +369,8 @@
                 alert("Please select County");
                 return false;
             }
+            
+            //Code to add Location for SEO Friendly URL
             var data = {
                 "PopularLocationName": countyId,
                 "HeaderImage": $("#headerFileName").val(),
@@ -403,6 +417,17 @@
                     }
                 });
             }
+
+            var locationData = { "locationId": countyId, "locationName": $("#PageUrl").val() };
+            //Saving changes for LocationName
+            $.ajax({
+                url: "SaveLocation",
+                type: "POST",
+                async: false,
+                contentType: "application/json",
+                dataType: "application/json",
+                data: JSON.stringify(locationData)
+            });
 
             alert("Successfully Updated.");
         });
@@ -870,6 +895,11 @@
         } else {
             alert("FormData is not supported.");
         }
+    }
+
+    function LoadHostName() {
+        var hostName = window.location.hostname;
+        $("#hostName").html(hostName);
     }
 </script>
 <script src="https://cdn.quilljs.com/1.2.3/quill.js"></script>

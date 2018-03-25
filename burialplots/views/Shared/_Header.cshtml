@@ -33,18 +33,7 @@
     <link href="~/css/LoderStyle.css" rel="stylesheet" />
     <link href="~/Content/sweetalert.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
-    <!-- Latest compiled and minified CSS -->
-    @*@Styles.Render("~/Content/PageLevel")*@
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN THEME GLOBAL STYLES -->
-    @*@Styles.Render("~/Content/Global")*@
-    <!-- END THEME GLOBAL STYLES -->
-    <!-- BEGIN THEME LAYOUT STYLES -->
-    @*@Styles.Render("~/Content/Layout")*@
-
-    @*@Styles.Render("~/Content/css")*@
-    <!-- END GLOBAL MANDATORY STYLES -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
+   
     <style>
         .setdrop ul li {
             color: green;
@@ -135,81 +124,6 @@
                         {
                             <li><a data-toggle="tooltip" title="LOGIN SIGNUP!" href="@Url.Action("LoginSignup", "Home",new {Area="" })" style="font-weight:normal;">Sign in<i class="fa fa-user" aria-hidden="true"></i></a></li>
                         }
-
-                        @*<li><a href="#">Signin <i class="fa fa-user"></i></a></li>*@
-                        <li>
-                            <div id="customMobilemenu">
-                                <div class="dropdown" id="deropdown">
-                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-                                        @{
-                                            HttpCookie cookie = HttpContext.Current.Request.Cookies["Language"];
-                                            var language1 = "en";
-                                            if (cookie != null && cookie.Value != null)
-                                            {
-                                                language1 = cookie.Value;
-                                            }
-                                        }
-
-                                        @if (language1 != null)
-                                        {
-                                            if (language1.ToString() == "en")
-                                            {
-                                                <span style="font-weight:normal;">English <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "ur")
-                                            {
-                                                <span style="font-weight:normal;">Urdu <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "hi")
-                                            {
-                                                <span style="font-weight:normal;">Hindi <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "ar")
-                                            {
-                                                <span style="font-weight:normal;">Arabic <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "zh")
-                                            {
-                                                <span style="font-weight:normal;">Chinese <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "it")
-                                            {
-                                                <span style="font-weight:normal;">Italian <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "tr")
-                                            {
-                                                <span style="font-weight:normal;">Turkish <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "bn")
-                                            {
-                                                <span style="font-weight:normal;">Bengali <i class="fa fa-angle-down"></i></span>
-                                            }
-                                            else if (language1.ToString() == "he")
-                                            {
-                                                <span style="font-weight:normal;">Hebrew <i class="fa fa-angle-down"></i></span>
-                                            }
-                                        }
-                                        else
-                                        {
-                                            <span style="font-weight:normal;">English <i class="fa fa-angle-down"></i></span>
-                                        }
-
-                                    </button>
-
-                                    <ul class="dropdown-menu changeBackground customColorA changeWidth">
-                                        <li class="byDefault"><a href="#" onclick="ChangeLanguage('en')">English</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('ur')">Urdu</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('hi')">Hindi</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('ar')">Arabic</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('zh')">Chinese</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('it')">Italian</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('tr')">Turkish</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('bn')">Bengali</a></li>
-                                        <li class="clickChange"><a href="#" onclick="ChangeLanguage('he')">Hebrew</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                 </div><!-- container -->
             </div>
@@ -244,7 +158,7 @@
 
     @RenderBody()
 
-    
+
     <div id="cotactfoter" class="section overlay-purple" style="background-image:url('/images/footer-form-bg.jpg');">
         <div id="cotactfoter" class="container">
             <h2 class="underline text-left-align">@BurialPlots.Resources.HomeTexts.Wedidhear</h2>
@@ -277,48 +191,6 @@
     </div>
 
     <footer id="colophon" class="site-footer" role="contentinfo">
-        <!--<div class="footer-width">
-            <div class="row" style="color:white; background-color:#6e7888;">
-    <div class="col-md-12" style="padding: 20px">
-      <div class="row">
-            <div class="col-md-6 mob-border" style="border-right:1px solid black">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="img-responsive img-thumbnail" src="/Areas/Admin/Image/block-pic1.jpg" />
-                    </div>
-                    <div class="col-md-9">
-                        <div class="row">
-                            <h4 class="utils-uppercase" style="font-size: 150%; line-height: 110%;"> @*@BurialPlots.Resources.HomeTexts.ListYourCemeteryPlots*@</h4>
-                        </div>
-                        <div class="row" style="height: 53px">
-                           @* @BurialPlots.Resources.HomeTexts.SignupTodayandgetacallbackfromus*@
-                        </div>
-                        <div class="row">
-                            <a class="btn" style="background-color:black;padding:4px;color:white;font-size:small" href="~/Market/Sell_Your_Plot">List Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mob-list-plot" style="">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="img-responsive img-thumbnail" src="/Areas/Admin/Image/block-pic1.jpg" />
-                    </div>
-                    <div class="col-md-9">
-                        <div class="row">
-                            <h4 class="utils-uppercase" style="font-size: 150%; line-height: 110%;">@*@BurialPlots.Resources.HomeTexts.FuneralServicesListYoursNow*@</h4>
-                        </div>
-                        <div class="row" style="height: 53px">
-                            @* @BurialPlots.Resources.HomeTexts.Free1MonthListingPromoteYourBusiness*@
-                        </div>
-                        <div class="row">
-                            <a class="btn" style="background-color:black;padding:4px;color:white;font-size:small" href="@* @Url.Action("GetListed","Home",new {Area="" })">@BurialPlots.Resources.HomeTexts.SignUpNow*@</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
         </div>
 
         <div class="section light-purple-bg">
@@ -339,80 +211,80 @@
                             <div class="col-md-6 footer-block">
                                 <ul>
                                     @{
-                                    var count1 = 0;
-                                    if (services.Count() > 5)
-                                    {
-                                        count1 = services.Count() / 2;
-                                    }
-                                    else
-                                    {
-                                        count1 = services.Count();
-                                    }
-                                    int i = 0;
+                                        var count1 = 0;
+                                        if (services.Count() > 5)
+                                        {
+                                            count1 = services.Count() / 2;
+                                        }
+                                        else
+                                        {
+                                            count1 = services.Count();
+                                        }
+                                        int i = 0;
                                     }
                                     @for (i = 0; i < count1; i++)
-                                {
-                                    if (services[i].Name == "Solicitors")
                                     {
-                                        <li><a href="@Url.Action("PageView", "Page",new {id=("Solicitors").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                                }
-                                else if (services[i].Name == "Will Writers")
-                                {
-                                    <li><a href="@Url.Action("PageView", "Page",new {id=("WILL-WRITING").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                            }
-                            else if (services[i].Name == "Funeral Directors")
-                            {
-                                <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-DIRECTORS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                        }
-                        else if (services[i].Name == "Funeral Cars")
-                        {
-                            <li><a href="@Url.Action("PageView", "Page",new {id=("CARS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                    }
-                    else if (services[i].Name == "Florists")
-                    {
-                        <li><a href="@Url.Action("PageView", "Page",new {id=("FLORISTS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                }
-                else if (services[i].Name == "Insurance")
-                {
-                    <li><a href="@Url.Action("PageView", "Page",new {id=("LIFE-INSURANCE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-            }
-        }
+                                        if (services[i].Name == "Solicitors")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("Solicitors").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Will Writers")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("WILL-WRITING").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Funeral Directors")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-DIRECTORS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Funeral Cars")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("CARS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Florists")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("FLORISTS").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Insurance")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("LIFE-INSURANCE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="col-md-6 footer-block">
                                 <ul>
                                     @while (i < services.Count())
-                                {
-                                    if (services[i].Name == "Funeral Plans")
                                     {
-                                        <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-PLANS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                                }
-                                else if (services[i].Name == "Memorials")
-                                {
-                                    <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                            }
-                            else if (services[i].Name == "Headstones")
-                            {
-                                <li><a href="@Url.Action("PageView", "Page",new {id=("Headstones").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                        }
-                        else if (services[i].Name == "Stonemasons")
-                        {
-                            <li><a href="@Url.Action("PageView", "Page",new {id=("STONEMASONS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                    }
-                    else if (services[i].Name == "Coffins")
-                    {
-                        <li><a href="@Url.Action("PageView", "Page",new {id=("Coffins").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
-                }
-                else if (services[i].Name == "Probate")
-                {
-                    <li><a href="@Url.Action("PageView", "Page",new {id=("PROBATE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-            }
-            else
-            {
-                <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
-        }
-        i++;
-    }
+                                        if (services[i].Name == "Funeral Plans")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("FUNERAL-PLANS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Memorials")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Headstones")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("Headstones").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Stonemasons")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("STONEMASONS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Coffins")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("Coffins").ToLower(),Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else if (services[i].Name == "Probate")
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("PROBATE").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("PageView", "Page",new {id=("MEMORIALS").ToLower(), Area="Admin"})" class="black-color">@services[i].Name</a></li>
+                                        }
+                                        i++;
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -453,79 +325,72 @@
                         <br />
                         <div class="row">
                             @{
-                            List<string> popularlocList = new List<string>();
-                            popularlocList.Add("Newcastle Upon Tyne");
-                            popularlocList.Add("Sheffield");
-                            popularlocList.Add("Nottingham");
-                            popularlocList.Add("Aberdeen");
-                            popularlocList.Add("Norwich");
-                            popularlocList.Add("Peterborough");
-                            popularlocList.Add("London");
-                            popularlocList.Add("Birmingham");
-                            popularlocList.Add("Liverpool");
-                            popularlocList.Add("Belfast");
-                            popularlocList.Add("Cardiff");
-                            popularlocList.Add("Coventry");
-                            popularlocList.Add("Swansea");
-                            popularlocList.Add("Reading");
-                            popularlocList.Add("Manchester");
-                            popularlocList.Add("Glasgow");
-                            popularlocList.Add("Bristol");
-                            popularlocList.Add("Edinburgh");
-                            popularlocList.Add("Leicester");
-                            popularlocList.Add("Southampton");
-                            popularlocList.Add("Northampton");
-                            popularlocList.Add("Leeds");
+                                List<string> popularlocList = new List<string>();
+                                popularlocList.Add("Newcastle Upon Tyne");
+                                popularlocList.Add("Sheffield");
+                                popularlocList.Add("Nottingham");
+                                popularlocList.Add("Aberdeen");
+                                popularlocList.Add("Norwich");
+                                popularlocList.Add("Peterborough");
+                                popularlocList.Add("London");
+                                popularlocList.Add("Birmingham");
+                                popularlocList.Add("Liverpool");
+                                popularlocList.Add("Belfast");
+                                popularlocList.Add("Cardiff");
+                                popularlocList.Add("Coventry");
+                                popularlocList.Add("Swansea");
+                                popularlocList.Add("Reading");
+                                popularlocList.Add("Manchester");
+                                popularlocList.Add("Glasgow");
+                                popularlocList.Add("Bristol");
+                                popularlocList.Add("Edinburgh");
+                                popularlocList.Add("Leicester");
+                                popularlocList.Add("Southampton");
+                                popularlocList.Add("Northampton");
+                                popularlocList.Add("Leeds");
 
-                            var m = 0;
+                                var m = 0;
                             }
                             <div class="col-md-4 footer-block">
                                 <h3>Popular Locations</h3>
                                 <ul>
                                     @while (m < popularlocList.Count())
-                                {
+                                    {
 
-                                    <li><a href="@Url.Action("PopularLocations", "Home",new {TownName= popularlocList[m],Area="" })" class="black-color">@popularlocList[m]</a></li>
-                                m++;
-                                if (m == 6)
-                                {
-                                    break;
-                                }
-                            }
+                                        <li><a href="@popularlocList[m].ToLower().Split(' ')[0]" class="black-color">@popularlocList[m]</a></li>
+                                        m++;
+                                        if (m == 6)
+                                        {
+                                            break;
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="col-md-4 footer-block">
                                 <ul>
                                     @while (m < popularlocList.Count())
-                                {
-                                    <li><a href="@Url.Action("PopularLocations", "Home", new { TownName=popularlocList[m],Area=""   })" class="black-color">@popularlocList[m]</a></li>
-                                m++;
-                                if (m == 14)
-                                {
-                                    break;
-                                }
-                            }
+                                    {
+                                        <li><a href="@popularlocList[m].ToLower().Split(' ')[0]" class="black-color">@popularlocList[m]</a></li>
+                                        m++;
+                                        if (m == 14)
+                                        {
+                                            break;
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="col-md-4 footer-block">
                                 <ul>
                                     @while (m < locations.Count())
-                                {
-                                    <li><a href="@Url.Action("PopularLocations", "Home", new { TownName=popularlocList[m],Area=""   })" class="black-color">@popularlocList[m]</a></li>
-                                m++;
-                                if (m == 22)
-                                {
-                                    break;
-                                }
-                            }
-                                    @*<li><a href="#" class="black-color">Manchester</a></li>
-                                    <li><a href="#" class="black-color">Glasgow</a></li>
-                                    <li><a href="#" class="black-color">Bristol</a></li>
-                                    <li><a href="#" class="black-color">Edinburgh</a></li>
-                                    <li><a href="#" class="black-color">Leicester</a></li>
-                                    <li><a href="#" class="black-color">Southampton</a></li>
-                                    <li><a href="#" class="black-color">Northampton</a></li>
-                                    <li><a href="#" class="black-color">Leeds</a></li>*@
+                                    {
+                                        <li><a href="@popularlocList[m].ToLower().Split(' ')[0]" class="black-color">@popularlocList[m]</a></li>
+                                        m++;
+                                        if (m == 22)
+                                        {
+                                            break;
+                                        }
+                                    }
+
                                 </ul>
                             </div>
                         </div>
@@ -563,13 +428,13 @@
                         <div class="row">
                             <span class="white-color pull-right">
                                 @if (objFooter != null)
-                            {
-                                <span>@Html.Raw(objFooter.CopyRight)</span>
-                        }
-                        else
-                        {
-                            <span>&copy; @DateTime.Now.Year, Burial Plots</span>
-                    }
+                                {
+                                    <span>@Html.Raw(objFooter.CopyRight)</span>
+                                }
+                                else
+                                {
+                                    <span>&copy; @DateTime.Now.Year, Burial Plots</span>
+                                }
                             </span>
                         </div>
                     </div>
@@ -596,22 +461,7 @@
                 </div>
             </div>
         </div>
-        </div>
-
-        @*<script>
-            document.write('<table cellspacing="2" cellspacing="2" border="0" align="center">');
-            document.write('<tr>');
-            document.write('<td><a href="http://www.mastercard.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_ECMC.gif" border="0" alt="MasterCard" /></a></td>');
-            document.write('<td><a href="http://www.jcbusa.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_JCB.gif" border="0" alt="JCB" /></a></td>');
-            document.write('<td><a href="http://www.maestrocard.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_MAESTRO.gif" border="0" alt="Maestro" /></a></td>');
-            document.write('<td><a href="http://www.visa.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_VISA_DELTA.gif" border="0" alt="Visa Debit" /></a></td>');
-            document.write('</tr>');
-            document.write('<tr>');
-            document.write('<td colspan="4" align="center"><a href="http://www.worldpay.com/support/index.php?CMP=BA22713" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/../pictures/poweredByWorldPay.gif" border="0" alt="Powered by WorldPay" /></a></td>');
-            document.write('</tr>');
-            document.write('</table>');
-        </script>*@
-        <!-- .site-info -->
+        <!--</div>-->
     </footer>
 
     <input type="hidden" id="hidLoadCategories" value="@Url.Action("loadmenu","Home")" />
@@ -628,13 +478,15 @@
         function gtag() { dataLayer.push(arguments) };
         gtag('js', new Date());
 
-        gtag('config', 'UA-39178878-24'); 
+        gtag('config', 'UA-39178878-24');
+
         $(document).ready(function () {
             var isPopularLocation = @ViewBag.IsComingFromPopularLocation;
             if (isPopularLocation === 1) {
                 $("#cotactfoter").hide();
                 //$("#colophon").hide();
             }
+
         });
     </script>
     <script src="~/js/common.min.js">
@@ -658,6 +510,51 @@
     </script>
     <script>
         $(function () {
+            $("#enquiryPopup").click(function () {
+                $('#imagemodal').modal('show');
+            });
+
+            $("#btnEnquiry").click(function () {
+                var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+                if ($("#enName").val() == "") {
+                    alert("Name is required");
+                    return false;
+                } else if ($("#enEmail").val() == "") {
+                    alert("Email is required");
+                    return false;
+                } else if (!emailReg.test($("#enEmail").val())) {
+                    alert("Please enter a valid email address");
+                    return false;
+                } else if ($("#enPhone").val() == "") {
+                    alert("Phone is required");
+                    return false;
+                } else if ($("#enMessage").val() == "") {
+                    alert("Message is required");
+                    return false;
+                }
+
+
+                var enquiry = { "Name": $("#enName").val(), "Email": $("#enEmail").val(), "Phone": $("#enPhone").val(), "Message": $("#enMessage").val() };
+                $.ajax({
+                    url: "Home/Enquiry",
+                    type: "POST",
+                    data: "application/json",
+                    contentType: "application/json",
+                    data: JSON.stringify(enquiry),
+                    success: function (result) {
+
+                    }
+                });
+
+                var isPopup = $("#btnEnquiry").attr("class");
+                if (isPopup.indexOf("btn") > -1) {
+                    $('#imagemodal').modal('toggle');
+                    
+                } else {
+                    alert("Enquiry Sent Successfully");
+                }
+            });
 
         });
         var ChangeLanguage = function (lang) {
@@ -679,5 +576,64 @@
             });
         }
     </script>
+    <script src="~/js/owl.carousel.min.js"></script>
+
+    <script>
+        $(document).ready(function ($) {
+            $('.owl-carousel.latest-news').owlCarousel({
+                loop: true,
+                margin: 10,
+                dots: true,
+                items: 1,
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('#menu-nav').hover(function () {
+                $(this).toggleClass('highlighted');
+            });
+
+            $('#menu-nav').hover(
+                function () { $('#mask').addClass('active') },
+                function () { $('#mask').removeClass('active') }
+            )
+
+        });
+    </script>
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="top: 13%;left: 10%;width: 455px;">
+            <div class="modal-content">
+                
+                <div class="modal-body">
+                    
+                        <h2>enquire now</h2>
+                        <form>
+                            <ul class="enquiry-form-header">
+                                <li>
+                                    <input type="text" placeholder="Name" id="enName">
+                                </li>
+                                <li>
+                                    <input type="text" placeholder="Email" id="enEmail">
+                                </li>
+                                <li>
+                                    <input type="text" placeholder="Telephone" id="enPhone">
+                                </li>
+                                <li>
+                                    <textarea name="" placeholder="Message" id="enMessage"></textarea>
+                                </li>
+                            </ul>
+
+                        </form>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnEnquiry">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<BurialPlots.DAL.Enquiry>
+@using GridMvc.Html
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.Name).Titled("Name");
+    columns.Add(c => c.Email).Titled("Email").Filterable(true);
+    columns.Add(c => c.Phone).Titled("Phone");
+    columns.Add(c => c.Message).Titled("Message");
+}).WithPaging(30).Sortable(true)
