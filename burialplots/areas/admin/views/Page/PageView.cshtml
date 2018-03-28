@@ -254,26 +254,41 @@ else
                 <div class="container">
                     @if (ViewBag.tittle == "Search for Services")
                     {
-                        <h2 style="margin-bottom:39px;">
-                            @ViewBag.tittle
-                        </h2>
+                    <h2 style="margin-bottom:39px;background-color:#f2b62a;">
+                        @if (ViewBag.FeatureText == "")
+    {
+                    @ViewBag.tittle;
+                        }
+                        else
+                        {
+                            @ViewBag.FeatureText;
+                        }
+
+                    </h2>
                     }
                     else
                     {
-                        <h2>
-                             @if (ViewBag.title.ToLower() == "team")
+                    <h2 style="background-color:#f2b62a;">
+                        @if (ViewBag.title.ToLower() == "team")
     {
-                        //@ViewBag.tittle;
-}
-else if (ViewBag.title.ToLower() == "who and why")
-{
+        //@ViewBag.tittle;
+    }
+    else if (ViewBag.title.ToLower() == "who and why")
+    {
 
+    }
+    else
+    {
+                    if (ViewBag.FeatureText == "")
+{
+                    @ViewBag.tittle;
 }
 else
 {
-                        @ViewBag.tittle;
+                    @ViewBag.FeatureText;
 }
-                        </h2>
+}
+                    </h2>
                     }
                 </div>
                

@@ -68,6 +68,7 @@ namespace BurialPlots.Areas.Admin.Controllers
                 p.TitleItalian = tittleItalian;
                 p.TitleTurkish = tittleTurkish;
                 p.TitleUrdu = tittleUrdu;
+                
                 var add = new PageRepository().Add(p);
                 var getlastid = new PageRepository().LastOrDefaultRecord();
                 PageBox pb = new PageBox();
@@ -193,6 +194,7 @@ namespace BurialPlots.Areas.Admin.Controllers
                 ViewBag.ReligionList = new RelgionRepostiory().GetAll();
                 ViewBag.Slides = new AddSlidesRepository().GetAll();
                 ViewBag.image = pageload.FeatureImage;
+                ViewBag.FeatureText = pageload.FeatureText;
                 ViewBag.Language = language;
                 return View();
             }
@@ -261,6 +263,7 @@ namespace BurialPlots.Areas.Admin.Controllers
                 ViewBag.tittle = c.PageTittle;
                 ViewBag.Id = id;
                 ViewBag.pageurl = "Admin/Page/PageView/" + c.PageTittle;
+                ViewBag.FeatureText = c.FeatureText;
                 ViewBag.image = c.FeatureImage;
                 var getbox = new ServiceBoxRepository().GetAll();
                 ViewBag.box = getbox;
@@ -423,7 +426,7 @@ namespace BurialPlots.Areas.Admin.Controllers
         public string Edit(string id, string html, string tittle, string[] servicebox, string image, string bodyUrdu, string bodyArabic,
             string bodyChinese, string bodyHindi, string bodyItalian, string bodyTurkish, string bodyBengali, string bodyHebrew,
             string tittleUrdu, string tittleArabic, string tittleChinese, string tittleItalian,
-            string tittleHindi, string tittleTurkish, string tittleBengali, string tittleHebrew)
+            string tittleHindi, string tittleTurkish, string tittleBengali, string tittleHebrew, string featureText)
         {
             try
             {
@@ -449,7 +452,8 @@ namespace BurialPlots.Areas.Admin.Controllers
                 p.TitleItalian = tittleItalian;
                 p.TitleTurkish = tittleTurkish;
                 p.TitleUrdu = tittleUrdu;
-                if (image != null)
+                p.FeatureText = featureText;
+                if (!string.IsNullOrEmpty(image))
                 {
                     p.FeatureImage = image;
                 }
