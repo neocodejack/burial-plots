@@ -19,8 +19,8 @@ namespace BurialPlots.DAL
         public Nullable<int> Box { get; set; }
         public Nullable<int> UrduPage { get; set; }
     
-        public virtual Page Page1 { get; set; }
         public virtual ServiceBox ServiceBox { get; set; }
         public virtual UrduPage UrduPage1 { get; set; }
+        public virtual Page Page1 { get; set; }
     }
 }
