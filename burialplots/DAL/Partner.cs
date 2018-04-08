@@ -19,6 +19,7 @@ namespace BurialPlots.DAL
         {
             this.OrderPlans = new HashSet<OrderPlan>();
             this.SeviceListings = new HashSet<SeviceListing>();
+            this.Reviews = new HashSet<Review>();
         }
     
         public decimal Id { get; set; }
@@ -38,5 +39,7 @@ namespace BurialPlots.DAL
         public virtual PartnerPlan PartnerPlan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SeviceListing> SeviceListings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

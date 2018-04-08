@@ -368,9 +368,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\FooterRepository.cs" />
-    <Compile Include="DAL\FuneralProduct.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\FuneralService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -470,7 +467,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\PaymentMethodsRepository.cs" />
-    
     <Compile Include="DAL\PopularLocationContent.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

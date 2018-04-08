@@ -31,8 +31,8 @@ namespace BurialPlots.DAL
         public string BoxNameInUrdu { get; set; }
         public string BoxNameInItalian { get; set; }
     
-        public virtual Page Page { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PageBox> PageBoxes { get; set; }
+        public virtual Page Page { get; set; }
     }
 }

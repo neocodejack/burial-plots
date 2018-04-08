@@ -167,17 +167,6 @@
           <Property Name="Branding" Type="varchar(max)" />
           <Property Name="PubDate" Type="date" />
         </EntityType>
-        <EntityType Name="FuneralProduct">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductName" Type="varchar" MaxLength="50" />
-          <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="PrdoctDescription" Type="varchar(max)" />
-          <Property Name="Image" Type="varchar(max)" />
-          <Property Name="FuneralServiceId" Type="decimal" Precision="18" Scale="0" />
-        </EntityType>
         <EntityType Name="FuneralServices">
           <Key>
             <PropertyRef Name="Id" />
@@ -347,8 +336,8 @@
           <Property Name="Country" Type="varchar(max)" />
           <Property Name="CellNo" Type="varchar(max)" />
           <Property Name="AmountStatus" Type="bit" />
-          <Property Name="ServiceListingId" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CartId" Type="varchar(max)" />
+          <Property Name="ServiceListingId" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="OrderPlanItem">
           <Key>
@@ -411,6 +400,7 @@
           <Property Name="TitleTurkish" Type="nvarchar(max)" />
           <Property Name="TitleBengali" Type="nvarchar(max)" />
           <Property Name="TitleHebrew" Type="nvarchar(max)" />
+          <Property Name="FeatureText" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="PageBox">
           <Key>
@@ -811,18 +801,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FuneralProduct_FuneralServices">
-          <End Role="FuneralServices" Type="Self.FuneralServices" Multiplicity="0..1" />
-          <End Role="FuneralProduct" Type="Self.FuneralProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FuneralServices">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="FuneralProduct">
-              <PropertyRef Name="FuneralServiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Graves_Cemetery">
           <End Role="MainSections" Type="Self.MainSections" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -834,30 +812,6 @@
             </Principal>
             <Dependent Role="Graves">
               <PropertyRef Name="SectionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Graves_Graves">
-          <End Role="Graves" Type="Self.Graves" Multiplicity="1" />
-          <End Role="Graves1" Type="Self.Graves" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Graves">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graves1">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Graves_Graves1">
-          <End Role="Graves" Type="Self.Graves" Multiplicity="1" />
-          <End Role="Graves1" Type="Self.Graves" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Graves">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graves1">
-              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1107,11 +1061,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reviews_Members">
-          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+        <Association Name="FK_Reviews_Partners">
+          <End Role="Partners" Type="Self.Partners" Multiplicity="0..1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Members">
+            <Principal Role="Partners">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Reviews">
@@ -1325,7 +1279,6 @@
           <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQs" EntityType="Self.FAQs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FuneralProduct" EntityType="Self.FuneralProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FuneralServices" EntityType="Self.FuneralServices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Graves" EntityType="Self.Graves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItalianPage" EntityType="Self.ItalianPage" Schema="dbo" store:Type="Tables" />
@@ -1402,21 +1355,9 @@
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Counties" EntitySet="Counties" />
           </AssociationSet>
-          <AssociationSet Name="FK_FuneralProduct_FuneralServices" Association="Self.FK_FuneralProduct_FuneralServices">
-            <End Role="FuneralServices" EntitySet="FuneralServices" />
-            <End Role="FuneralProduct" EntitySet="FuneralProduct" />
-          </AssociationSet>
           <AssociationSet Name="FK_Graves_Cemetery" Association="Self.FK_Graves_Cemetery">
             <End Role="MainSections" EntitySet="MainSections" />
             <End Role="Graves" EntitySet="Graves" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Graves_Graves" Association="Self.FK_Graves_Graves">
-            <End Role="Graves" EntitySet="Graves" />
-            <End Role="Graves1" EntitySet="Graves" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Graves_Graves1" Association="Self.FK_Graves_Graves1">
-            <End Role="Graves" EntitySet="Graves" />
-            <End Role="Graves1" EntitySet="Graves" />
           </AssociationSet>
           <AssociationSet Name="FK_Graves_Relgion" Association="Self.FK_Graves_Relgion">
             <End Role="Relgion" EntitySet="Relgion" />
@@ -1494,8 +1435,8 @@
             <End Role="Counties" EntitySet="Counties" />
             <End Role="PostCodes" EntitySet="PostCodes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reviews_Members" Association="Self.FK_Reviews_Members">
-            <End Role="Members" EntitySet="Members" />
+          <AssociationSet Name="FK_Reviews_Partners" Association="Self.FK_Reviews_Partners">
+            <End Role="Partners" EntitySet="Partners" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
           <AssociationSet Name="FK_Reviews_SeviceListing1" Association="Self.FK_Reviews_SeviceListing1">
@@ -1582,7 +1523,6 @@
           <EntitySet Name="Counties" EntityType="BurialPlotsModel.County" />
           <EntitySet Name="Countries" EntityType="BurialPlotsModel.Country" />
           <EntitySet Name="Footers" EntityType="BurialPlotsModel.Footer" />
-          <EntitySet Name="FuneralProducts" EntityType="BurialPlotsModel.FuneralProduct" />
           <EntitySet Name="FuneralServices" EntityType="BurialPlotsModel.FuneralService" />
           <EntitySet Name="Graves" EntityType="BurialPlotsModel.Grave" />
           <EntitySet Name="ItalianPages" EntityType="BurialPlotsModel.ItalianPage" />
@@ -1597,7 +1537,6 @@
           <EntitySet Name="OrderPlanItems" EntityType="BurialPlotsModel.OrderPlanItem" />
           <EntitySet Name="Orders" EntityType="BurialPlotsModel.Order" />
           <EntitySet Name="Origins" EntityType="BurialPlotsModel.Origin" />
-          <EntitySet Name="Pages" EntityType="BurialPlotsModel.Page" />
           <EntitySet Name="PageBoxes" EntityType="BurialPlotsModel.PageBox" />
           <EntitySet Name="PartnerPlans" EntityType="BurialPlotsModel.PartnerPlan" />
           <EntitySet Name="Partners" EntityType="BurialPlotsModel.Partner" />
@@ -1679,10 +1618,6 @@
             <End Role="County" EntitySet="Counties" />
             <End Role="Town" EntitySet="Towns" />
           </AssociationSet>
-          <AssociationSet Name="FK_FuneralProduct_FuneralServices" Association="BurialPlotsModel.FK_FuneralProduct_FuneralServices">
-            <End Role="FuneralService" EntitySet="FuneralServices" />
-            <End Role="FuneralProduct" EntitySet="FuneralProducts" />
-          </AssociationSet>
           <AssociationSet Name="FK_ServiceListingPlans_FuneralServices" Association="BurialPlotsModel.FK_ServiceListingPlans_FuneralServices">
             <End Role="FuneralService" EntitySet="FuneralServices" />
             <End Role="ServiceListingPlan" EntitySet="ServiceListingPlans" />
@@ -1755,14 +1690,6 @@
             <End Role="ServiceListingPlan" EntitySet="ServiceListingPlans" />
             <End Role="OrderPlanItem" EntitySet="OrderPlanItems" />
           </AssociationSet>
-          <AssociationSet Name="FK_PageBox_Page" Association="BurialPlotsModel.FK_PageBox_Page">
-            <End Role="Page" EntitySet="Pages" />
-            <End Role="PageBox" EntitySet="PageBoxes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ServiceBox_Page" Association="BurialPlotsModel.FK_ServiceBox_Page">
-            <End Role="Page" EntitySet="Pages" />
-            <End Role="ServiceBox" EntitySet="ServiceBoxes" />
-          </AssociationSet>
           <AssociationSet Name="FK_PageBox_ServiceBox" Association="BurialPlotsModel.FK_PageBox_ServiceBox">
             <End Role="ServiceBox" EntitySet="ServiceBoxes" />
             <End Role="PageBox" EntitySet="PageBoxes" />
@@ -1817,6 +1744,19 @@
           <EntitySet Name="LocationUrls" EntityType="BurialPlotsModel.LocationUrl" />
           <EntitySet Name="Enquiries" EntityType="BurialPlotsModel.Enquiry" />
           <EntitySet Name="PopularLocationContents" EntityType="BurialPlotsModel.PopularLocationContent" />
+          <AssociationSet Name="FK_Reviews_Partners" Association="BurialPlotsModel.FK_Reviews_Partners">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <EntitySet Name="Pages" EntityType="BurialPlotsModel.Page" />
+          <AssociationSet Name="FK_PageBox_Page" Association="BurialPlotsModel.FK_PageBox_Page">
+            <End Role="Page" EntitySet="Pages" />
+            <End Role="PageBox" EntitySet="PageBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceBox_Page" Association="BurialPlotsModel.FK_ServiceBox_Page">
+            <End Role="Page" EntitySet="Pages" />
+            <End Role="ServiceBox" EntitySet="ServiceBoxes" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="AdministrativeEmail">
           <Key>
@@ -1980,18 +1920,6 @@
           <Property Name="Branding" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PubDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityType Name="FuneralProduct">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="PrdoctDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FuneralServiceId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="FuneralService" Relationship="BurialPlotsModel.FK_FuneralProduct_FuneralServices" FromRole="FuneralProduct" ToRole="FuneralService" />
-        </EntityType>
         <EntityType Name="FuneralService">
           <Key>
             <PropertyRef Name="Id" />
@@ -2001,7 +1929,6 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="FuneralProducts" Relationship="BurialPlotsModel.FK_FuneralProduct_FuneralServices" FromRole="FuneralService" ToRole="FuneralProduct" />
           <NavigationProperty Name="ServiceListingPlans" Relationship="BurialPlotsModel.FK_ServiceListingPlans_FuneralServices" FromRole="FuneralService" ToRole="ServiceListingPlan" />
           <NavigationProperty Name="SeviceListings" Relationship="BurialPlotsModel.FK_SeviceListing_FuneralServices1" FromRole="FuneralService" ToRole="SeviceListing" />
         </EntityType>
@@ -2226,34 +2153,6 @@
           <Property Name="AddedDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Cemeteries" Relationship="BurialPlotsModel.FK_Cemetery_Origins" FromRole="Origin" ToRole="Cemetery" />
         </EntityType>
-        <EntityType Name="Page">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PageTittle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Pageurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FeatureImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BodyUrdu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BodyHindi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BodyChinese" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BodyArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BodyItalian" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BodyTurkish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BodyBengali" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BodyHebrew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PageBoxes" Relationship="BurialPlotsModel.FK_PageBox_Page" FromRole="Page" ToRole="PageBox" />
-          <NavigationProperty Name="ServiceBoxes" Relationship="BurialPlotsModel.FK_ServiceBox_Page" FromRole="Page" ToRole="ServiceBox" />
-          <Property Name="TitleUrdu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleHindi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleChinese" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleItalian" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleTurkish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleBengali" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleHebrew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="PageBox">
           <Key>
             <PropertyRef Name="Id" />
@@ -2262,9 +2161,9 @@
           <Property Name="Page" Type="Int32" />
           <Property Name="Box" Type="Int32" />
           <Property Name="UrduPage" Type="Int32" />
-          <NavigationProperty Name="Page1" Relationship="BurialPlotsModel.FK_PageBox_Page" FromRole="PageBox" ToRole="Page" />
           <NavigationProperty Name="ServiceBox" Relationship="BurialPlotsModel.FK_PageBox_ServiceBox" FromRole="PageBox" ToRole="ServiceBox" />
           <NavigationProperty Name="UrduPage1" Relationship="BurialPlotsModel.FK_PageBox_UrduPage" FromRole="PageBox" ToRole="UrduPage" />
+          <NavigationProperty Name="Page1" Relationship="BurialPlotsModel.FK_PageBox_Page" FromRole="PageBox" ToRole="Page" />
         </EntityType>
         <EntityType Name="PartnerPlan">
           <Key>
@@ -2298,6 +2197,7 @@
           <NavigationProperty Name="OrderPlans" Relationship="BurialPlotsModel.FK_OrderPlan_Partners" FromRole="Partner" ToRole="OrderPlan" />
           <NavigationProperty Name="PartnerPlan" Relationship="BurialPlotsModel.FK_Partners_PartnerPlan" FromRole="Partner" ToRole="PartnerPlan" />
           <NavigationProperty Name="SeviceListings" Relationship="BurialPlotsModel.FK_SeviceListing_Partners" FromRole="Partner" ToRole="SeviceListing" />
+          <NavigationProperty Name="Reviews" Relationship="BurialPlotsModel.FK_Reviews_Partners" FromRole="Partner" ToRole="Review" />
         </EntityType>
         <EntityType Name="PaymentCard">
           <Key>
@@ -2356,6 +2256,7 @@
           <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="Member" Relationship="BurialPlotsModel.FK_Reviews_Members" FromRole="Review" ToRole="Member1" />
           <NavigationProperty Name="SeviceListing" Relationship="BurialPlotsModel.FK_Reviews_SeviceListing1" FromRole="Review" ToRole="SeviceListing" />
+          <NavigationProperty Name="Partner" Relationship="BurialPlotsModel.FK_Reviews_Partners" FromRole="Review" ToRole="Partner" />
         </EntityType>
         <EntityType Name="ServiceBox">
           <Key>
@@ -2371,8 +2272,8 @@
           <Property Name="UrlStatus" Type="Boolean" />
           <Property Name="BoxNameInUrdu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BoxNameInItalian" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Page" Relationship="BurialPlotsModel.FK_ServiceBox_Page" FromRole="ServiceBox" ToRole="Page" />
           <NavigationProperty Name="PageBoxes" Relationship="BurialPlotsModel.FK_PageBox_ServiceBox" FromRole="ServiceBox" ToRole="PageBox" />
+          <NavigationProperty Name="Page" Relationship="BurialPlotsModel.FK_ServiceBox_Page" FromRole="ServiceBox" ToRole="Page" />
         </EntityType>
         <EntityType Name="ServiceListingPlan">
           <Key>
@@ -2731,18 +2632,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FuneralProduct_FuneralServices">
-          <End Type="BurialPlotsModel.FuneralService" Role="FuneralService" Multiplicity="0..1" />
-          <End Type="BurialPlotsModel.FuneralProduct" Role="FuneralProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FuneralService">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="FuneralProduct">
-              <PropertyRef Name="FuneralServiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ServiceListingPlans_FuneralServices">
           <End Type="BurialPlotsModel.FuneralService" Role="FuneralService" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2977,30 +2866,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PageBox_Page">
-          <End Type="BurialPlotsModel.Page" Role="Page" Multiplicity="0..1" />
-          <End Type="BurialPlotsModel.PageBox" Role="PageBox" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Page">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PageBox">
-              <PropertyRef Name="Page" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ServiceBox_Page">
-          <End Type="BurialPlotsModel.Page" Role="Page" Multiplicity="0..1" />
-          <End Type="BurialPlotsModel.ServiceBox" Role="ServiceBox" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Page">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ServiceBox">
-              <PropertyRef Name="BoxUrl" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PageBox_ServiceBox">
           <End Type="BurialPlotsModel.ServiceBox" Role="ServiceBox" Multiplicity="0..1" />
           <End Type="BurialPlotsModel.PageBox" Role="PageBox" Multiplicity="*" />
@@ -3218,6 +3083,71 @@
           <Property Name="Step3Header" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Step3Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <Association Name="FK_Reviews_Partners">
+          <End Type="BurialPlotsModel.Partner" Role="Partner" Multiplicity="0..1" />
+          <End Type="BurialPlotsModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PageTittle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Pageurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FeatureImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BodyUrdu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BodyHindi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BodyChinese" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BodyArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BodyItalian" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BodyTurkish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BodyBengali" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BodyHebrew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleUrdu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleHindi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleChinese" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleItalian" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleTurkish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleBengali" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleHebrew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FeatureText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PageBoxes" Relationship="BurialPlotsModel.FK_PageBox_Page" FromRole="Page" ToRole="PageBox" />
+          <NavigationProperty Name="ServiceBoxes" Relationship="BurialPlotsModel.FK_ServiceBox_Page" FromRole="Page" ToRole="ServiceBox" />
+        </EntityType>
+        <Association Name="FK_PageBox_Page">
+          <End Type="BurialPlotsModel.Page" Role="Page" Multiplicity="0..1" />
+          <End Type="BurialPlotsModel.PageBox" Role="PageBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Page">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PageBox">
+              <PropertyRef Name="Page" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceBox_Page">
+          <End Type="BurialPlotsModel.Page" Role="Page" Multiplicity="0..1" />
+          <End Type="BurialPlotsModel.ServiceBox" Role="ServiceBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Page">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceBox">
+              <PropertyRef Name="BoxUrl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3376,18 +3306,6 @@
                 <ScalarProperty Name="PubDate" ColumnName="PubDate" />
                 <ScalarProperty Name="Branding" ColumnName="Branding" />
                 <ScalarProperty Name="CopyRight" ColumnName="CopyRight" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FuneralProducts">
-            <EntityTypeMapping TypeName="BurialPlotsModel.FuneralProduct">
-              <MappingFragment StoreEntitySet="FuneralProduct">
-                <ScalarProperty Name="FuneralServiceId" ColumnName="FuneralServiceId" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="PrdoctDescription" ColumnName="PrdoctDescription" />
-                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3602,33 +3520,6 @@
                 <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pages">
-            <EntityTypeMapping TypeName="BurialPlotsModel.Page">
-              <MappingFragment StoreEntitySet="Page">
-                <ScalarProperty Name="TitleHebrew" ColumnName="TitleHebrew" />
-                <ScalarProperty Name="TitleBengali" ColumnName="TitleBengali" />
-                <ScalarProperty Name="TitleTurkish" ColumnName="TitleTurkish" />
-                <ScalarProperty Name="TitleItalian" ColumnName="TitleItalian" />
-                <ScalarProperty Name="TitleArabic" ColumnName="TitleArabic" />
-                <ScalarProperty Name="TitleChinese" ColumnName="TitleChinese" />
-                <ScalarProperty Name="TitleHindi" ColumnName="TitleHindi" />
-                <ScalarProperty Name="TitleUrdu" ColumnName="TitleUrdu" />
-                <ScalarProperty Name="BodyHebrew" ColumnName="BodyHebrew" />
-                <ScalarProperty Name="BodyBengali" ColumnName="BodyBengali" />
-                <ScalarProperty Name="BodyTurkish" ColumnName="BodyTurkish" />
-                <ScalarProperty Name="BodyItalian" ColumnName="BodyItalian" />
-                <ScalarProperty Name="BodyArabic" ColumnName="BodyArabic" />
-                <ScalarProperty Name="BodyChinese" ColumnName="BodyChinese" />
-                <ScalarProperty Name="BodyHindi" ColumnName="BodyHindi" />
-                <ScalarProperty Name="BodyUrdu" ColumnName="BodyUrdu" />
-                <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
-                <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
-                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
-                <ScalarProperty Name="Body" ColumnName="Body" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3969,6 +3860,34 @@
                 <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
                 <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
                 <ScalarProperty Name="PopularLocationName" ColumnName="PopularLocationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="BurialPlotsModel.Page">
+              <MappingFragment StoreEntitySet="Page">
+                <ScalarProperty Name="FeatureText" ColumnName="FeatureText" />
+                <ScalarProperty Name="TitleHebrew" ColumnName="TitleHebrew" />
+                <ScalarProperty Name="TitleBengali" ColumnName="TitleBengali" />
+                <ScalarProperty Name="TitleTurkish" ColumnName="TitleTurkish" />
+                <ScalarProperty Name="TitleItalian" ColumnName="TitleItalian" />
+                <ScalarProperty Name="TitleArabic" ColumnName="TitleArabic" />
+                <ScalarProperty Name="TitleChinese" ColumnName="TitleChinese" />
+                <ScalarProperty Name="TitleHindi" ColumnName="TitleHindi" />
+                <ScalarProperty Name="TitleUrdu" ColumnName="TitleUrdu" />
+                <ScalarProperty Name="BodyHebrew" ColumnName="BodyHebrew" />
+                <ScalarProperty Name="BodyBengali" ColumnName="BodyBengali" />
+                <ScalarProperty Name="BodyTurkish" ColumnName="BodyTurkish" />
+                <ScalarProperty Name="BodyItalian" ColumnName="BodyItalian" />
+                <ScalarProperty Name="BodyArabic" ColumnName="BodyArabic" />
+                <ScalarProperty Name="BodyChinese" ColumnName="BodyChinese" />
+                <ScalarProperty Name="BodyHindi" ColumnName="BodyHindi" />
+                <ScalarProperty Name="BodyUrdu" ColumnName="BodyUrdu" />
+                <ScalarProperty Name="FeatureImage" ColumnName="FeatureImage" />
+                <ScalarProperty Name="Pageurl" ColumnName="Pageurl" />
+                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

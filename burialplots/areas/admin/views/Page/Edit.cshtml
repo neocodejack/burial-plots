@@ -235,13 +235,13 @@
 <div class="row">
     <div class="col-md-12">
         <label>Featured Text</label>
-        @if (ViewBag.featuredText != null)
+        @if (ViewBag.FeatureText != null)
         {
-            <input type="text" readonly="readonly" id="featuredText" value="@ViewBag.featuredText" class="form-control" />
+            <input type="text" id="featuredText" value="@ViewBag.FeatureText" class="form-control" />
         }
         else
         {
-            <input type="text" readonly="readonly" id="featuredText" class="form-control" />
+            <input type="text" id="featuredText" class="form-control" />
         }
     </div>
 </div>

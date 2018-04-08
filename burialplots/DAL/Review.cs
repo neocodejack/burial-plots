@@ -23,5 +23,6 @@ namespace BurialPlots.DAL
     
         public virtual Member1 Member { get; set; }
         public virtual SeviceListing SeviceListing { get; set; }
+        public virtual Partner Partner { get; set; }
     }
 }

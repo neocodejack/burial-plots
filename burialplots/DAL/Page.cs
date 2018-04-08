@@ -42,6 +42,7 @@ namespace BurialPlots.DAL
         public string TitleTurkish { get; set; }
         public string TitleBengali { get; set; }
         public string TitleHebrew { get; set; }
+        public string FeatureText { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PageBox> PageBoxes { get; set; }
