@@ -104,9 +104,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Ali\Desktop\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
       <HintPath>..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
@@ -121,7 +120,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RichTextEditor">
-      <HintPath>C:\Users\Ali\Desktop\RichTextEditor.dll</HintPath>
+      <HintPath>RichTextEditor\RichTextEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -2769,6 +2768,7 @@
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="fonts1\" />
     <Folder Include="images\CemeteryPlots\CemeteryImages\" />
+    <Folder Include="RichTextEditor\" />
     <Folder Include="WorldPay\" />
   </ItemGroup>
   <ItemGroup>
