@@ -206,7 +206,7 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Worldpay.Sdk">
-      <HintPath>C:\Users\Ali\Desktop\Worldpay.Sdk.dll</HintPath>
+      <HintPath>WorldPay\Worldpay.Sdk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -2769,6 +2769,7 @@
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="fonts1\" />
     <Folder Include="images\CemeteryPlots\CemeteryImages\" />
+    <Folder Include="WorldPay\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -2806,7 +2807,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5248</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
