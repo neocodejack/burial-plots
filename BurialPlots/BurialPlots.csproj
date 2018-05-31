@@ -45,6 +45,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <PublishDatabases>false</PublishDatabases>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
@@ -2335,12 +2338,6 @@
     <Content Include="js\Slider\js\boxesFx.js" />
     <Content Include="js\Slider\js\classie.js" />
     <Content Include="js\Slider\js\modernizr.custom.js" />
-    <Content Include="landingpageImages\footer-form-bg.jpg" />
-    <Content Include="landingpageImages\footer-logo.png" />
-    <Content Include="landingpageImages\landing-pic1.jpg" />
-    <Content Include="landingpageImages\landing-pic2.jpg" />
-    <Content Include="landingpageImages\landing-pic3.jpg" />
-    <Content Include="landingpageImages\landingpage-banner.jpg" />
     <Content Include="landingpageImages\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2537,6 +2534,7 @@
     <Content Include="Areas\Admin\Views\Page\_EnquiryList.cshtml" />
     <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
