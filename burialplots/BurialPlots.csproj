@@ -16,6 +16,7 @@
     <RootNamespace>BurialPlots</RootNamespace>
     <AssemblyName>BurialPlots</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <IgnoreDeployManagedRuntimeVersion>True</IgnoreDeployManagedRuntimeVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -45,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <PublishDatabases>false</PublishDatabases>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
@@ -104,9 +108,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Ali\Desktop\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
       <HintPath>..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
@@ -121,7 +124,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RichTextEditor">
-      <HintPath>C:\Users\Ali\Desktop\RichTextEditor.dll</HintPath>
+      <HintPath>RichTextEditor\RichTextEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -206,7 +209,7 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Worldpay.Sdk">
-      <HintPath>C:\Users\Ali\Desktop\Worldpay.Sdk.dll</HintPath>
+      <HintPath>WorldPay\Worldpay.Sdk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1739,6 +1742,9 @@
     <Content Include="distMap\fonts\fontawesome-webfont.svg" />
     <Content Include="distMap\js\image-map-pro.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="files\UserSheet\641264461img170918.jpg" />
+    <Content Include="files\UserSheet\931093301img170918.jpg" />
+    <Content Include="files\UserSheet\969054050img170918.jpg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2118,6 +2124,8 @@
     <Content Include="images\service-block8.jpg" />
     <Content Include="images\service-listing-banner.jpg" />
     <Content Include="images\Services_Illustration_art_work.png" />
+    <Content Include="images\Slider\banner-17884433988.jpg" />
+    <Content Include="images\Slider\banner-1788446659.jpg" />
     <Content Include="images\small-image.jpg" />
     <Content Include="images\small-image1.jpg" />
     <Content Include="images\solicitors-pic.jpg" />
@@ -2336,12 +2344,6 @@
     <Content Include="js\Slider\js\boxesFx.js" />
     <Content Include="js\Slider\js\classie.js" />
     <Content Include="js\Slider\js\modernizr.custom.js" />
-    <Content Include="landingpageImages\footer-form-bg.jpg" />
-    <Content Include="landingpageImages\footer-logo.png" />
-    <Content Include="landingpageImages\landing-pic1.jpg" />
-    <Content Include="landingpageImages\landing-pic2.jpg" />
-    <Content Include="landingpageImages\landing-pic3.jpg" />
-    <Content Include="landingpageImages\landingpage-banner.jpg" />
     <Content Include="landingpageImages\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2535,9 +2537,25 @@
     <Content Include="Areas\Admin\Views\Users\ExtendListings.cshtml" />
     <Content Include="Areas\Admin\Views\Page\_AddLocation.cshtml" />
     <Content Include="Areas\Admin\Views\Page\_PopularLocations.cshtml" />
+    <Content Include="files\UserSheet\burialplot_test124343887.csv" />
+    <Content Include="files\UserSheet\burialplot_test156503642.csv" />
+    <Content Include="files\UserSheet\burialplot_test158695804.csv" />
+    <Content Include="files\UserSheet\burialplot_test193665217.csv" />
+    <Content Include="files\UserSheet\burialplot_test217678665.csv" />
+    <Content Include="files\UserSheet\burialplot_test348422528.csv" />
+    <Content Include="files\UserSheet\burialplot_test464265518.csv" />
+    <Content Include="files\UserSheet\burialplot_test497020410.csv" />
+    <Content Include="files\UserSheet\burialplot_test50605942.csv" />
+    <Content Include="files\UserSheet\burialplot_test559925901.csv" />
+    <Content Include="files\UserSheet\burialplot_test701745335.csv" />
+    <Content Include="files\UserSheet\burialplot_test758582234.csv" />
+    <Content Include="files\UserSheet\burialplot_test806061828.csv" />
+    <Content Include="files\UserSheet\burialplot_test977183629.csv" />
+    <Content Include="ImportSheets\county.xlsx" />
     <Content Include="Areas\Admin\Views\Page\_EnquiryList.cshtml" />
     <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -2587,6 +2605,8 @@
     <Content Include="submodulesMap\wcp-icons\js\wcp-icons.js" />
     <Content Include="submodulesMap\wcp-tour\css\wcp-tour.css" />
     <Content Include="submodulesMap\wcp-tour\js\wcp-tour.js" />
+    <Content Include="uploads\happy.jpg" />
+    <Content Include="uploads\_cache\thumb_happy.jpg.png" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -2620,6 +2640,7 @@
     <Content Include="submodulesMap\wcp-editor\fonts\FontAwesome.otf" />
     <Content Include="Views\Home\AllNewsFeeds.cshtml" />
     <Content Include="Views\CountyImports\Index.cshtml" />
+    <Content Include="uploads\ali162110.pdf" />
     <None Include="Views\Home\TestPage.cshtml" />
     <Content Include="Views\Home\ServiceListing.cshtml" />
     <Content Include="Views\Home\_loadmenu.cshtml" />
@@ -2769,6 +2790,8 @@
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="fonts1\" />
     <Folder Include="images\CemeteryPlots\CemeteryImages\" />
+    <Folder Include="RichTextEditor\" />
+    <Folder Include="WorldPay\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -2806,7 +2829,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5248</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
@@ -2815,7 +2838,7 @@
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
           </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>         
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
@@ -2827,6 +2850,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
