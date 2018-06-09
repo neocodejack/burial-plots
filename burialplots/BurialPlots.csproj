@@ -1738,6 +1738,9 @@
     <Content Include="distMap\fonts\fontawesome-webfont.svg" />
     <Content Include="distMap\js\image-map-pro.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="files\UserSheet\641264461img170918.jpg" />
+    <Content Include="files\UserSheet\931093301img170918.jpg" />
+    <Content Include="files\UserSheet\969054050img170918.jpg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2117,6 +2120,8 @@
     <Content Include="images\service-block8.jpg" />
     <Content Include="images\service-listing-banner.jpg" />
     <Content Include="images\Services_Illustration_art_work.png" />
+    <Content Include="images\Slider\banner-17884433988.jpg" />
+    <Content Include="images\Slider\banner-1788446659.jpg" />
     <Content Include="images\small-image.jpg" />
     <Content Include="images\small-image1.jpg" />
     <Content Include="images\solicitors-pic.jpg" />
@@ -2534,6 +2539,21 @@
     <Content Include="Areas\Admin\Views\Users\ExtendListings.cshtml" />
     <Content Include="Areas\Admin\Views\Page\_AddLocation.cshtml" />
     <Content Include="Areas\Admin\Views\Page\_PopularLocations.cshtml" />
+    <Content Include="files\UserSheet\burialplot_test124343887.csv" />
+    <Content Include="files\UserSheet\burialplot_test156503642.csv" />
+    <Content Include="files\UserSheet\burialplot_test158695804.csv" />
+    <Content Include="files\UserSheet\burialplot_test193665217.csv" />
+    <Content Include="files\UserSheet\burialplot_test217678665.csv" />
+    <Content Include="files\UserSheet\burialplot_test348422528.csv" />
+    <Content Include="files\UserSheet\burialplot_test464265518.csv" />
+    <Content Include="files\UserSheet\burialplot_test497020410.csv" />
+    <Content Include="files\UserSheet\burialplot_test50605942.csv" />
+    <Content Include="files\UserSheet\burialplot_test559925901.csv" />
+    <Content Include="files\UserSheet\burialplot_test701745335.csv" />
+    <Content Include="files\UserSheet\burialplot_test758582234.csv" />
+    <Content Include="files\UserSheet\burialplot_test806061828.csv" />
+    <Content Include="files\UserSheet\burialplot_test977183629.csv" />
+    <Content Include="ImportSheets\county.xlsx" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
@@ -2581,6 +2601,8 @@
     <Content Include="submodulesMap\wcp-icons\js\wcp-icons.js" />
     <Content Include="submodulesMap\wcp-tour\css\wcp-tour.css" />
     <Content Include="submodulesMap\wcp-tour\js\wcp-tour.js" />
+    <Content Include="uploads\happy.jpg" />
+    <Content Include="uploads\_cache\thumb_happy.jpg.png" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -2614,6 +2636,7 @@
     <Content Include="submodulesMap\wcp-editor\fonts\FontAwesome.otf" />
     <Content Include="Views\Home\AllNewsFeeds.cshtml" />
     <Content Include="Views\CountyImports\Index.cshtml" />
+    <Content Include="uploads\ali162110.pdf" />
     <None Include="Views\Home\TestPage.cshtml" />
     <Content Include="Views\Home\ServiceListing.cshtml" />
     <Content Include="Views\Home\_loadmenu.cshtml" />
