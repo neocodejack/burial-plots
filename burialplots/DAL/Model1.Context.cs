@@ -40,7 +40,6 @@ namespace BurialPlots.DAL
         public virtual DbSet<County> Counties { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
-        public virtual DbSet<FuneralProduct> FuneralProducts { get; set; }
         public virtual DbSet<FuneralService> FuneralServices { get; set; }
         public virtual DbSet<Grave> Graves { get; set; }
         public virtual DbSet<ItalianPage> ItalianPages { get; set; }
@@ -55,7 +54,6 @@ namespace BurialPlots.DAL
         public virtual DbSet<OrderPlanItem> OrderPlanItems { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Origin> Origins { get; set; }
-        public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<PageBox> PageBoxes { get; set; }
         public virtual DbSet<PartnerPlan> PartnerPlans { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
@@ -80,9 +78,10 @@ namespace BurialPlots.DAL
         public virtual DbSet<PurchaseBoxImage> PurchaseBoxImages { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<FAQ> FAQs { get; set; }
+        public virtual DbSet<LocationUrl> LocationUrls { get; set; }
         public virtual DbSet<Enquiry> Enquiries { get; set; }
         public virtual DbSet<PopularLocationContent> PopularLocationContents { get; set; }
-        public virtual DbSet<LocationUrl> LocationUrls { get; set; }
+        public virtual DbSet<Page> Pages { get; set; }
     
         public virtual int Sp_DeleteAllGraves(Nullable<decimal> sectionId, Nullable<decimal> plotId, Nullable<decimal> subSectionId)
         {

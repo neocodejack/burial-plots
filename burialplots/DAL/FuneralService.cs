@@ -17,7 +17,6 @@ namespace BurialPlots.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FuneralService()
         {
-            this.FuneralProducts = new HashSet<FuneralProduct>();
             this.ServiceListingPlans = new HashSet<ServiceListingPlan>();
             this.SeviceListings = new HashSet<SeviceListing>();
         }
@@ -28,8 +27,6 @@ namespace BurialPlots.DAL
         public Nullable<System.DateTime> Date { get; set; }
         public string Picture { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FuneralProduct> FuneralProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceListingPlan> ServiceListingPlans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

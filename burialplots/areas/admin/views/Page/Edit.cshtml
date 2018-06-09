@@ -234,8 +234,49 @@
 <br />
 <div class="row">
     <div class="col-md-12">
+        <label>Featured Text</label>
+        @if (ViewBag.FeatureText != null)
+        {
+            <input type="text" id="featuredText" value="@ViewBag.FeatureText" class="form-control" />
+        }
+        else
+        {
+            <input type="text" id="featuredText" class="form-control" />
+        }
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
         <label>Featured Image</label>
-        <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" style="margin-top:20px;" />
+        <input type="file" accept="image/*" class="clear" id="ImgUpload" style="margin-top:20px;" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <label>
+            Preview Image
+        </label>
+        <a href="#" id="thirdColHeader" class="pop" style="text-decoration:underline;display:none">
+            Click here to see the image
+        </a>
+        <img id="imageresource" src="~/Areas/Admin/Image/" style="width: 400px; height: 264px; display:none">
+        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="top: 13%;left: 10%;width: 455px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" id="imagepreview" style="width: 400px; height: 264px;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <br />
@@ -260,20 +301,61 @@
 </div>
 <br />
 <div class="row">
-    <div class="col-md-12">
-        <label>
-            Preview Image
-        </label>
-        <img id="thumbnil" class="img-thumbnail" style="width:220px; height:220px; margin-top:10px;" src="~/Areas/Admin/Image/@ViewBag.image" />
-        <pre style="width:220px;">220 X 220 Pixels</pre>
-        <input type="file" accept="image/*" class="clear" onchange="showMyImage(this)" id="ImgUpload" style="margin-top:20px;" />
-    </div>
-</div>
-<br />
-<div class="row">
     <div class="col-md-12 text-center">
         <input type="button" class="btn btn-default" value="Submit" onclick="GetDataRich('@ViewBag.Id')" />
     </div>
 </div>
-<input type="hidden" id="Imghiden" value="@Url.Action(" Upload","Page")" />
+<input type="hidden" id="Imghiden" value="" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ImgUpload').change(function () {
+            uploadImages($("#ImgUpload").get(0), "Imghiden");
+            $(".pop").show();
+        });
+    });
+
+    $(".pop").on("click", function () {
+        var img = $("#imageresource").attr("src") + $("#Imghiden").val();
+        $('#imagepreview').attr('src', img); // here asign the image to the modal when the user click the enlarge link
+        $('#imagemodal').modal('show');
+    });
+
+    function uploadImages(uploadFile, hiddenField) {
+        // Checking whether FormData is available in browser
+        if (window.FormData !== undefined) {
+
+            var fileUpload = uploadFile;
+            var files = fileUpload.files;
+
+            // Create FormData object
+            var fileData = new FormData();
+
+            // Looping over all files and add it to FormData object
+            for (var i = 0; i < files.length; i++) {
+                fileData.append(files[i].name, files[i]);
+            }
+            var data = { "HeaderText": "Header Value" };
+            fileData.append("data", data);
+            // Adding one more key to FormData object
+            fileData.append('username', "Manas");
+
+            $.ajax({
+                url: '/Admin/Page/Upload',
+                type: "POST",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    $("#" + hiddenField).val(result);
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                }
+            });
+        } else {
+            alert("FormData is not supported.");
+        }
+    }
+</script>
 

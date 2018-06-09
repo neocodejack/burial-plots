@@ -16,6 +16,7 @@
     <RootNamespace>BurialPlots</RootNamespace>
     <AssemblyName>BurialPlots</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <IgnoreDeployManagedRuntimeVersion>True</IgnoreDeployManagedRuntimeVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -45,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <PublishDatabases>false</PublishDatabases>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
@@ -54,6 +58,9 @@
     <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -101,9 +108,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Ali\Desktop\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
       <HintPath>..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
@@ -118,7 +124,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RichTextEditor">
-      <HintPath>C:\Users\Ali\Desktop\RichTextEditor.dll</HintPath>
+      <HintPath>RichTextEditor\RichTextEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -203,7 +209,7 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Worldpay.Sdk">
-      <HintPath>C:\Users\Ali\Desktop\Worldpay.Sdk.dll</HintPath>
+      <HintPath>WorldPay\Worldpay.Sdk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -365,9 +371,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\FooterRepository.cs" />
-    <Compile Include="DAL\FuneralProduct.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\FuneralService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1702,6 +1705,7 @@
     <Content Include="Content\css\owl.theme.default.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\custom-style.css" />
+    <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\sweetalert.css" />
     <Content Include="Content\sweetalert.min.js" />
@@ -2340,12 +2344,6 @@
     <Content Include="js\Slider\js\boxesFx.js" />
     <Content Include="js\Slider\js\classie.js" />
     <Content Include="js\Slider\js\modernizr.custom.js" />
-    <Content Include="landingpageImages\footer-form-bg.jpg" />
-    <Content Include="landingpageImages\footer-logo.png" />
-    <Content Include="landingpageImages\landing-pic1.jpg" />
-    <Content Include="landingpageImages\landing-pic2.jpg" />
-    <Content Include="landingpageImages\landing-pic3.jpg" />
-    <Content Include="landingpageImages\landingpage-banner.jpg" />
     <Content Include="landingpageImages\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2554,7 +2552,10 @@
     <Content Include="files\UserSheet\burialplot_test806061828.csv" />
     <Content Include="files\UserSheet\burialplot_test977183629.csv" />
     <Content Include="ImportSheets\county.xlsx" />
+    <Content Include="Areas\Admin\Views\Page\_EnquiryList.cshtml" />
+    <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -2564,6 +2565,9 @@
     <Content Include="Scripts\dropzone\dropzone.js" />
     <Content Include="Scripts\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -2776,6 +2780,8 @@
     <Content Include="Views\Market\CemeteryDetails.cshtml" />
     <Content Include="Views\Market\Sell_Your_Plot.cshtml" />
     <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2784,6 +2790,8 @@
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="fonts1\" />
     <Folder Include="images\CemeteryPlots\CemeteryImages\" />
+    <Folder Include="RichTextEditor\" />
+    <Folder Include="WorldPay\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -2821,7 +2829,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5248</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
@@ -2830,7 +2838,7 @@
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
           </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>         
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
@@ -2842,6 +2850,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

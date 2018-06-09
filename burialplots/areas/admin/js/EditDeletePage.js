@@ -9,7 +9,7 @@
 
 var GetDataRich = function (id) {
 
-    var imagename = saveImage();
+    var imagename = $("#Imghiden").val();
     var value = quill.container.firstChild.innerHTML;
     var bodyUrdu = quillUrdu.container.firstChild.innerHTML;
     var bodyArabic = quillArabic.container.firstChild.innerHTML;
@@ -30,6 +30,7 @@ var GetDataRich = function (id) {
     var tittleBengali = $("#txtBengalitittle").val();
     var tittleHebrew = $("#txtHebrewtittle").val();
     var multivlaue = $("#multivalue").val();
+    var featureText = $("#featuredText").val();
     $.ajax({
         url: "/Admin/Page/edit",
         type: "Post",
@@ -37,7 +38,7 @@ var GetDataRich = function (id) {
             bodyChinese: bodyChinese, bodyHindi: bodyHindi, bodyItalian: bodyItalian, bodyTurkish: bodyTurkish, bodyBengali: bodyBengali,
             bodyHebrew: bodyHebrew,
             tittleUrdu: tittleUrdu, tittleArabic: tittleArabic, tittleChinese: tittleChinese, tittleItalian: tittleItalian,
-            tittleHindi: tittleHindi, tittleTurkish: tittleTurkish, tittleBengali: tittleBengali, tittleHebrew: tittleHebrew
+            tittleHindi: tittleHindi, tittleTurkish: tittleTurkish, tittleBengali: tittleBengali, tittleHebrew: tittleHebrew, featureText: featureText
             },
         success: function (res) {
             if (res == "true") {

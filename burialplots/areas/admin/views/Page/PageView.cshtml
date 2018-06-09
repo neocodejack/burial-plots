@@ -40,6 +40,7 @@ else
                 $("#accordion").accordion({
                     collapsible: true
                 });
+
             });
         </script>
     }
@@ -177,7 +178,7 @@ else
             <div class="site-inner">
                 <header id="masthead" class="site-header" role="banner">
                     <div class="site-header-main">
-                        <div class="banner SetcustomBanner" style="background-image: url('/images/Slider/@fisrtImage');">
+                        <div class="banner SetcustomBanner" style="background-image: url('/images/Slider/@fisrtImage'); height:637px;">
 
                             <div class="container">
                                 <div class="banner-outer">
@@ -189,19 +190,19 @@ else
                                         <form>
                                             <ul class="enquiry-form-header">
                                                 <li>
-                                                    <input type="text" placeholder="Name">
+                                                    <input type="text" placeholder="Name" id="enName">
                                                 </li>
                                                 <li>
-                                                    <input type="text" placeholder="Email">
+                                                    <input type="text" placeholder="Email" id="enEmail">
                                                 </li>
                                                 <li>
-                                                    <input type="text" placeholder="Telephone">
+                                                    <input type="text" placeholder="Telephone" id="enPhone">
                                                 </li>
                                                 <li>
-                                                    <textarea name="" placeholder="Message"></textarea>
+                                                    <textarea name="" placeholder="Message" id="enMessage"></textarea>
                                                 </li>
                                                 <li>
-                                                    <input type="submit" value="SUBMIT">
+                                                    <input type="button" value="SUBMIT" id="btnEnquiry">
                                                 </li>
                                             </ul>
 
@@ -228,48 +229,61 @@ else
 <body id="top" class="@HomeValue">
 
 
+@{
+        var cssValue = "";
+        if (ViewBag.title.ToLower() == "team")
+        {
+            cssValue = "height:120px";
+            ViewBag.image = "";
+        }
+        else
+        {
+            cssValue = "height:573px";
+        }
 
+    }
 
     @if (ViewBag.tittle.ToLower() != "index")
     {
-        <div class="banner" style="background-image: url('/Areas/Admin/Image/@ViewBag.image')">
+        <div class="banner" style="background-image: url('/Areas/Admin/Image/@ViewBag.image');@cssValue">
             <div class="caption-inner">
                 <div class="container">
                     @if (ViewBag.tittle == "Search for Services")
                     {
-                        <h2 style="margin-bottom:39px;">
-                            @ViewBag.tittle
-                        </h2>
+                    <h2 style="margin-bottom:39px;background-color:#f2b62a;">
+                        @if (ViewBag.FeatureText == "")
+    {
+                    @ViewBag.tittle;
+                        }
+                        else
+                        {
+                            @ViewBag.FeatureText;
+                        }
+
+                    </h2>
                     }
                     else
                     {
-                        <h2>
-                            @ViewBag.tittle
-                        </h2>
+                    <h2 style="background-color:#f2b62a;">
+                        @if (ViewBag.title.ToLower() == "team")
+    {
+        //@ViewBag.tittle;
+    }
+    else
+    {
+                    if (ViewBag.FeatureText == "")
+{
+                    @ViewBag.tittle;
+}
+else
+{
+                    @ViewBag.FeatureText;
+}
+}
+                    </h2>
                     }
                 </div>
-                @if (ViewBag.tittle == "Search for Services")
-                {
-                    using (Html.BeginForm("SearchService", "Search", new { area = "", serviceId = "" }))
-                    {
-                        <div class="container" id="customSearch">
-                            @using (Html.BeginForm("SearchService", "Search", new { serviceId = "", Area = "" }))
-                            {
-                                <div class="row">
-                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 col-md-offset-2" style="padding-bottom:10px;">
-                                        <input type="text" style="background:white;height:41px" placeholder="Services" class="form-control" id="txtServiceName" name="txtServiceName" />
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="padding-bottom:10px;">
-                                        <input type="text" style="background:white;height:41px" placeholder="Country, County, Town or Postcode" class="form-control" id="txtPostCodeTown" name="txtPostCodeTown" />
-                                    </div>
-                                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                                        <button class="btn" style="width:100%" type="submit"><span class="fa fa-search"></span> Search</button>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    }
-                }
+               
             </div>
 
         </div>
@@ -308,9 +322,9 @@ else
                 </div>
             </div>
         }
-        <div class="container" style="text-align:center">
-            @Html.Raw(ViewBag.Body)
-        </div>
+            <div class="container" style="text-align:center">
+                @Html.Raw(ViewBag.Body)
+            </div>
 
         <div class="section text-center-align purple-bg" style="margin-top:-32px;">
             <div class="container">
@@ -372,7 +386,7 @@ else
         <div id="content" class="site-content">
             <div id="primary" class="content-area">
                 <main id="main" class="site-main" role="main">
-                    <div class="section text-center-align">
+                    <div class="section">
                         <div class="container">
 
                             <!-- Services Page banners  -->
@@ -382,7 +396,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Funeral Directors".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/burial-banner-funeral-director.jpg" />
                                     </a>
                                 </p>
@@ -396,7 +410,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Coffins".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/casketcoffin.jpg" />
                                     </a>
                                 </p>
@@ -409,7 +423,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Florists".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/florist.jpg" />
                                     </a>
                                 </p>
@@ -422,7 +436,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Funeral Cars".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/funeralcars.jpg" />
                                     </a>
                                 </p>
@@ -435,7 +449,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Funeral Plans".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/burial-banner-funeral-plan.jpg" />
                                     </a>
                                 </p>
@@ -448,7 +462,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Memorials".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/burial-banner1.jpg" />
                                     </a>
                                 </p>
@@ -461,7 +475,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "StoneMasons".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/stonemason.jpg" />
                                     </a>
                                 </p>
@@ -474,7 +488,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Insurance".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/lifeinsurance.jpg" />
                                     </a>
                                 </p>
@@ -487,7 +501,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Will Writers".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopUp">
                                         <img src="~/images/Banners/willWriters.jpg" />
                                     </a>
                                 </p>
@@ -500,7 +514,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Will Writers".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/willWriters.jpg" />
                                     </a>
                                 </p>
@@ -513,7 +527,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Probate".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/burial-banners- probatechange.jpg" />
                                     </a>
                                 </p>
@@ -526,7 +540,7 @@ else
                                 var FId = new FuneralServicesRepository().FirstOrDefault(x => x.Name.ToLower() == "Headstones".ToLower()).Id;
 
                                 <p class="col-md-10 col-md-offset-1" style="margin-top:-43px; margin-bottom:45px;">
-                                    <a href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })">
+                                    <a @*href="@Url.Action("Index", "Search" , new { id=FId,Area ="" })"*@ id="enquiryPopup">
                                         <img src="~/images/Banners/burial-banner-Headstones.jpg" />
                                     </a>
                                 </p>
@@ -733,31 +747,7 @@ else
 
 
     <div id="mask"></div>
-    <script src="~/js/owl.carousel.min.js"></script>
-
-    <script>
-        jQuery(document).ready(function ($) {
-            $('.owl-carousel.latest-news').owlCarousel({
-                loop: true,
-                margin: 10,
-                dots: true,
-                items: 1,
-            })
-        })
-    </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $('#menu-nav').hover(function () {
-                $(this).toggleClass('highlighted');
-            });
-
-            $('#menu-nav').hover(
-                function () { $('#mask').addClass('active') },
-                function () { $('#mask').removeClass('active') }
-            )
-        });
-    </script>
-
+    
 
 
     <input type="hidden" id="hIdLoadBlogSection" value="@Url.Action("LoadBlogSection","Page")" />

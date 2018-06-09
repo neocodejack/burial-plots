@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mail;
+using System.Reflection;
 using System.Threading;
 using System.Web;
 using System.Web.Helpers;
@@ -1065,6 +1066,41 @@ namespace BurialPlots.Controllers
             }
             ViewBag.Language = language;
             return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult Enquiry(Enquiry enquiry)
+        {
+            var responseStatus = false;
+            //Code to collct data and 
+            if (!IsAnyNullOrEmpty(enquiry))
+            {
+                responseStatus = new AddEnquiryRepository().Add(enquiry);
+                var client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("avishekpatra.1986@gmail.com", "Babai@243111"),
+                    EnableSsl = true
+                };
+                client.Send("avishekpatra.1986@gmail.com", "avishekpatra.1986@gmail.com", "test", "testbody");
+            }
+
+            return Json(responseStatus);
+        }
+
+        private bool IsAnyNullOrEmpty(object myObject)
+        {
+            foreach (PropertyInfo pi in myObject.GetType().GetProperties()) 
+            {
+                if (pi.PropertyType == typeof(string))
+                {
+                    string value = (string)pi.GetValue(myObject);
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 
