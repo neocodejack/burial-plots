@@ -1,6 +1,7 @@
 ﻿@using BurialPlots.DAL
-@using BurialPlots.Models
+@*@using BurialPlots.Models*@
 @using System.Configuration
+
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Header.cshtml";
@@ -132,24 +133,24 @@
                         <div class="col-md-6">
                             <label>First Name</label>
                             @if (Session["cmemFirstName"] != null)
-            {
-                <input type="text" class="form-control" value="@Session["cmemFirstName"].ToString()" id="txtFname" />
-}
-else
-{
-                <input type="text" class="form-control" id="txtFname" />
-}
+                            {
+                                    <input type="text" class="form-control" value="@Session["cmemFirstName"].ToString()" id="txtFname" />
+                            }
+                            else
+                            {
+                                    <input type="text" class="form-control" id="txtFname" />
+                            }
                         </div>
                         <div class="col-md-6">
                             <label>Last Name</label>
                             @if (Session["cmemLastName"] != null)
-            {
-                <input type="text" class="form-control" value="@Session["cmemLastName"].ToString()" id="txtLname" />
-}
-else
-{
-                <input type="text" class="form-control" id="txtLname" />
-}
+                            {
+                                <input type="text" class="form-control" value="@Session["cmemLastName"].ToString()" id="txtLname" />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control" id="txtLname" />
+                            }
                         </div>
                     </div>
                     <br />
@@ -170,9 +171,9 @@ else
                             <select class="select-class form-control" id="txtRegion">
                                 <option value="">-- Select Region --</option>
                                 @foreach (var item in regions)
-                {
-                    <option value="@item.Name">@item.Name</option>
-}
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+                                }
                             </select>
                         </div>
                         <div class="col-md-3">
