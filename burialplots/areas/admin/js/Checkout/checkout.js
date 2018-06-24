@@ -135,6 +135,8 @@ var nextPreviousBtns = function (type) {
             var regEmail = $("#txtEmail").val();
             var regPassword = $("#txtRegPassword").val();
             var regCellNo = $("#txtRegCellNo").val();
+            var agentCode = $("#txtAgentCode").val();
+
             ////////Login
             var isLogin = "false";
             if ($("#chkLogin").is(":checked")) {
@@ -164,7 +166,7 @@ var nextPreviousBtns = function (type) {
                     type: "post",
                     data: {
                         fname: fname, lname: lname, address: address, country: country, cellno: cellno, regFname: regFname, regLname: regLname, regEmail: regEmail, regPassword: regPassword, regCellNo: regCellNo,
-                        loginEmail: loginEmail, loginPassword: loginPassword, isLogin: isLogin
+                        loginEmail: loginEmail, loginPassword: loginPassword, isLogin: isLogin, agentCode: agentCode
                     },
                     success: function (responce) {
                         if (responce == "exists") {
@@ -201,7 +203,7 @@ var nextPreviousBtns = function (type) {
                                 $("#cartId").val(res.Data.CartId);
                                 $("#amount").val(res.Data.Amount);
                                 $("#currency").val(res.Data.Currency);
-
+                                
                                 $("#postcode").val($("#txtPostCode").val());
                                 $("#tel").val($("#txtCellNo").val());
                                 $("#country").val($("#txtCountry").val());
@@ -275,6 +277,7 @@ var nextPreviousBtns = function (type) {
                         $("#divThank").show();
                         $("#ThankuBar").addClass("current");
                         $("#PaymentBar").removeClass("current");
+                        
                         //$("#divPayment").slideUp();
                         //$("#divBillingInfo").slideUp();
                         //$("#divCheckout").slideUp();

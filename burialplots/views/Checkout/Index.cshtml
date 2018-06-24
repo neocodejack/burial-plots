@@ -1,5 +1,6 @@
 ﻿@using BurialPlots.DAL
-@using BurialPlots.Models;
+@using BurialPlots.Models
+@using System.Configuration
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Header.cshtml";
@@ -976,8 +977,8 @@ else
                 </div>
             </div>
             <br />
-            <form id="paymentForm" action="https://secure-test.worldpay.com/wcc/purchase" method=POST>
-                <input type="text" name="testMode" value="100">
+            <form id="paymentForm" action="@ConfigurationManager.AppSettings["paymentUrl"].ToString()" method=POST>
+                <input type="text" name="testMode" value="@ConfigurationManager.AppSettings["testValue"].ToString()">
                 <input type="text" id="instId" name="instId" value="">
                 <input type="text" id="cartId" name="cartId" value="">
                 <input type="text" id="amount" name="amount" value="">
