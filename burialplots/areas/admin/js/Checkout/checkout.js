@@ -160,6 +160,7 @@ var nextPreviousBtns = function (type) {
 
                     }
                 }
+                
                 showLoader("Please wait..", "info");
                 $.ajax({
                     url: "/Admin/Checkouts/BillingInfo",
