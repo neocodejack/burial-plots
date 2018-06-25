@@ -129,22 +129,30 @@ namespace BurialPlots.Controllers
             ////////////////////////////////////////////
         }
 
-        private void NotifySalesAgent(string agentCode, string orderId, string price)
+        private bool NotifySalesAgent(string agentCode, string orderId, string price)
         {
-            //Code to update the sales admin commission
-            using (var client = new HttpClient())
+            if (!string.IsNullOrEmpty(agentCode))
             {
-                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiBaseUrl"].ToString());
-                dynamic jsonObject = new ExpandoObject();
-                //jsonObject.AgentCode = Session["AgentCode"].ToString();
-                //jsonObject.SellingPrice = cemeteryOrder.Price.ToString();
-                //jsonObject.OrderId = cemeteryOrder.OrderId;
-                jsonObject.AgentCode = agentCode;
-                jsonObject.SellingPrice = price;
-                jsonObject.OrderId = orderId;
-                var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
-                var response = client.PostAsync("salesadmin/api/sales", content).Result;
-                //response.IsSuccessStatusCode
+                //Code to update the sales admin commission
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiBaseUrl"].ToString());
+                    dynamic jsonObject = new ExpandoObject();
+
+                    jsonObject.AgentCode = agentCode;
+                    jsonObject.SellingPrice = price;
+                    jsonObject.OrderId = orderId;
+                    var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+                    var response = client.PostAsync("salesadmin/api/sales", content).Result;
+                    if (response.IsSuccessStatusCode)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
 
