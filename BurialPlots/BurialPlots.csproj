@@ -1926,6 +1926,7 @@
     <Content Include="js\Slider\js\boxesFx.js" />
     <Content Include="js\Slider\js\classie.js" />
     <Content Include="js\Slider\js\modernizr.custom.js" />
+    <Content Include="paymentresponse.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
