@@ -1,1 +1,2 @@
-﻿<meta http-equiv="refresh" content="0;URL='http://localhost:5248/checkout/successpayment'" />
+﻿@using System.Configuration
+<meta http-equiv="refresh" content="0;URL='@ConfigurationManager.AppSettings["redirectUrl"].ToString()'" />

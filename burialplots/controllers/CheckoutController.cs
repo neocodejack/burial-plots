@@ -131,24 +131,30 @@ namespace BurialPlots.Controllers
 
         private bool NotifySalesAgent(string agentCode, string orderId, string price)
         {
-            if (!string.IsNullOrEmpty(agentCode))
+            try
             {
-                //Code to update the sales admin commission
-                using (var client = new HttpClient())
+                if (!string.IsNullOrEmpty(agentCode))
                 {
-                    client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiBaseUrl"].ToString());
-                    string payload = "{\"AgentCode\":\"" + agentCode + "\",\"SellingPrice\":\"" + price + "\",\"OrderId\":\""+ orderId +"\"}";                
-                    var content = new StringContent(payload.ToString(), Encoding.UTF8, "application/json");
-                    var response = client.PostAsync("salesadmin/api/sales", content).Result;
-                    if (response.IsSuccessStatusCode)
-                        return true;
-                    else
-                        return false;
+                    //Code to update the sales admin commission
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiBaseUrl"].ToString());
+                        string payload = "{\"AgentCode\":\"" + agentCode + "\",\"SellingPrice\":\"" + price + "\",\"OrderId\":\"" + orderId + "\"}";
+                        var content = new StringContent(payload.ToString(), Encoding.UTF8, "application/json");
+                        var response = client.PostAsync("salesadmin/api/sales", content).Result;
+                        if (response.IsSuccessStatusCode)
+                            return true;
+                        else
+                            return false;
+                    }
                 }
-            }
-            else
+                else
+                {
+                    return false;
+                }
+            }catch(Exception ex)
             {
-                return false;
+                throw ex;
             }
         }
 
