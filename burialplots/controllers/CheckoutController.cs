@@ -161,6 +161,11 @@ namespace BurialPlots.Controllers
             return View();
         }
 
+        public ActionResult PaymentResponse()
+        {
+            return View();
+        }
+
         [HttpPost]
         public string ConfirmBillingOrder()
         {
