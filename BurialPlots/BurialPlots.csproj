@@ -2224,6 +2224,7 @@
     <Content Include="Views\Home\AllNewsFeeds.cshtml" />
     <Content Include="Views\CountyImports\Index.cshtml" />
     <Content Include="uploads\ali162110.pdf" />
+    <Content Include="Views\Checkout\PaymentResponse.cshtml" />
     <None Include="Views\Home\TestPage.cshtml" />
     <Content Include="Views\Home\ServiceListing.cshtml" />
     <Content Include="Views\Home\_loadmenu.cshtml" />
