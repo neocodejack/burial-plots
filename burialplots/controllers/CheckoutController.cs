@@ -137,12 +137,8 @@ namespace BurialPlots.Controllers
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiBaseUrl"].ToString());
-                    dynamic jsonObject = new ExpandoObject();
-
-                    jsonObject.AgentCode = agentCode;
-                    jsonObject.SellingPrice = price;
-                    jsonObject.OrderId = orderId;
-                    var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+                    string payload = "{\"AgentCode\":\"" + agentCode + "\",\"SellingPrice\":\"" + price + "\",\"OrderId\":\""+ orderId +"\"}";                
+                    var content = new StringContent(payload.ToString(), Encoding.UTF8, "application/json");
                     var response = client.PostAsync("salesadmin/api/sales", content).Result;
                     if (response.IsSuccessStatusCode)
                         return true;
