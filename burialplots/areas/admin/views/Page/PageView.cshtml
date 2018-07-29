@@ -234,16 +234,24 @@ else
 
 
 @{
-        var cssValue = "";
-        if (ViewBag.title.ToLower() == "team")
+    var cssValue = "";
+    if (ViewBag.title.ToLower() == "team")
+    {
+        cssValue = "height:120px";
+        ViewBag.image = "";
+    }
+    else
+    {
+        if(ViewBag.image == null)
         {
             cssValue = "height:120px";
-            ViewBag.image = "";
         }
         else
         {
             cssValue = "height:573px";
         }
+
+    }
 
     }
 
