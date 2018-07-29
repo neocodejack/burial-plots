@@ -235,6 +235,7 @@ else
 
 @{
     var cssValue = "";
+    var displayType = "display:block;";
     if (ViewBag.title.ToLower() == "team")
     {
         cssValue = "height:120px";
@@ -245,6 +246,7 @@ else
         if(ViewBag.image == null)
         {
             cssValue = "height:120px";
+            displayType = "display:none;";
         }
         else
         {
@@ -276,7 +278,7 @@ else
                     }
                     else
                     {
-                    <h2 style="background-color:#f2b62a;">
+                    <h2 style="background-color:#f2b62a;@displayType">
                         @if (ViewBag.title.ToLower() == "team")
     {
         //@ViewBag.tittle;
