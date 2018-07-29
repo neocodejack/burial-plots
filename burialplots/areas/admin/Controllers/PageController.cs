@@ -182,6 +182,7 @@ namespace BurialPlots.Areas.Admin.Controllers
                         ViewBag.Step2Message = location.Step2Message;
                         ViewBag.Step3Header = location.Step3Header;
                         ViewBag.Step3Message = location.Step3Message;
+                        ViewBag.IsComingFromPopularLocation = 1;
                         return View("_PopularLocations");
                     }
                 }

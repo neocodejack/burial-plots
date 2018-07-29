@@ -191,18 +191,22 @@ else
                                             <ul class="enquiry-form-header">
                                                 <li>
                                                     <input type="text" placeholder="Name" id="enName">
+                                                    <i class="glyphicon glyphicon-info-sign white" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
                                                 </li>
                                                 <li>
                                                     <input type="text" placeholder="Email" id="enEmail">
+                                                    <i class="glyphicon glyphicon-info-sign white" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
                                                 </li>
                                                 <li>
                                                     <input type="text" placeholder="Telephone" id="enPhone">
+                                                    <i class="glyphicon glyphicon-info-sign white" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
                                                 </li>
                                                 <li>
                                                     <textarea name="" placeholder="Message" id="enMessage"></textarea>
                                                 </li>
                                                 <li>
                                                     <input type="button" value="SUBMIT" id="btnEnquiry">
+                                                    <span style="color:white; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our Terms & Conditions and Privacy Policy.</span>
                                                 </li>
                                             </ul>
 
@@ -252,8 +256,8 @@ else
                     {
                     <h2 style="margin-bottom:39px;background-color:#f2b62a;">
                         @if (ViewBag.FeatureText == "")
-    {
-                    @ViewBag.tittle;
+                        {
+                            @ViewBag.tittle;
                         }
                         else
                         {
