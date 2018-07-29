@@ -1744,6 +1744,7 @@
     <Content Include="files\UserSheet\641264461img170918.jpg" />
     <Content Include="files\UserSheet\931093301img170918.jpg" />
     <Content Include="files\UserSheet\969054050img170918.jpg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2137,6 +2138,10 @@
     <Content Include="Areas\Admin\Views\Page\_EnquiryList.cshtml" />
     <Content Include="Grid.mvc.readme" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\Burial.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
