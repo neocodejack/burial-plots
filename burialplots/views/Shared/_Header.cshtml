@@ -185,7 +185,7 @@
                     </div>
                     <div class="col-md-4">
                         <input type="button" onclick="ContactUs()" style="margin-top: 28px; width:100%; height:33px; border:2px solid;line-height: 0.44;" class="btn" value="@BurialPlots.Resources.HomeTexts.Submit" />
-                        <span style="color:white; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our Terms & Conditions and Privacy Policy.</span>
+                        <span style="color:white; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our <a href="Condition">Terms & Conditions</a> and <a href="Privacy-Ploicy">Privacy Policy</a>.</span>
                     </div>
                 </div>
             </div>
@@ -581,8 +581,13 @@
     </script>
     <script src="~/js/owl.carousel.min.js"></script>
     <style type="text/css">
-        .tooltip1-inner{
-            font-size:xx-small;
+        .testClass {
+            font-size: xx-small;
+            height:118px;
+            width:250px;
+           padding: 0px 1px 0px 1px;
+           text-align:left;
+         
         }
     </style>
     <script>
@@ -594,7 +599,7 @@
                 items: 1,
             });
 
-            $('[data-toggle="tooltip"]').tooltip({ html: "true" }); 
+            $('[data-toggle="tooltip"]').tooltip({ tooltipClass: "testClass" }); 
         });
 
     </script>
@@ -644,7 +649,7 @@
                     <button type="button" class="btn btn-default" id="btnEnquiry">Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <br/>
-                    <span style="color:black; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our Terms & Conditions and Privacy Policy.</span>
+                    <span style="color:black; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our <a href="Condition" style="color:cadetblue" target="_blank">Terms & Conditions</a> and <a href="Privacy-Ploicy" style="color:cadetblue" target="_blank">Privacy Policy</a>.</span>
                 </div>
             </div>
         </div>
