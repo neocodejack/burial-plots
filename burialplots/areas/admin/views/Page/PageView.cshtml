@@ -206,7 +206,7 @@ else
                                                 </li>
                                                 <li>
                                                     <input type="button" value="SUBMIT" id="btnEnquiry">
-                                                    <span style="color:white; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our Terms & Conditions and Privacy Policy.</span>
+                                                    <span style="color:white; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our <a href="Condition" style="color:darkcyan">Terms & Conditions</a> and <a href="Privacy-Ploicy"  style="color:darkcyan">Privacy Policy</a>.</span>
                                                 </li>
                                             </ul>
 
@@ -238,19 +238,19 @@ else
     var displayType = "display:block;";
     if (ViewBag.title.ToLower() == "team")
     {
-        cssValue = "height:120px";
+        cssValue = "height:120px;";
         ViewBag.image = "";
     }
     else
     {
         if(ViewBag.image == null)
         {
-            cssValue = "height:120px";
+            cssValue = "height:120px;";
             displayType = "display:none;";
         }
         else
         {
-            cssValue = "height:573px";
+            cssValue = "height:573px;";
         }
 
     }
