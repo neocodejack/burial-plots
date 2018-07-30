@@ -36,10 +36,10 @@ var GetDataRich = function () {
         $("#txttittle").css("border", "");
     }
 
-    if (imagename == "" || imagename == null) {
-        AutoLoader("Please choose the featured image.", "warning");
-        return;
-    }
+    //if (imagename == "" || imagename == null) {
+    //    AutoLoader("Please choose the featured image.", "warning");
+    //    return;
+    //}
     showLoader("Please wait..", "info");
     $.ajax({
         url: "/Admin/Page/PageAdded",

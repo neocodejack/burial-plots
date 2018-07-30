@@ -3,9 +3,12 @@ using BurialPlots.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -27,7 +30,7 @@ namespace BurialPlots.Areas.Admin.Controllers
 
         [HttpPost]
         public string BillingInfo(string fname, string lname, string address, string country, string cellno, string regFname, string regLname, string regEmail, string regPassword, string regCellNo,
-              string loginEmail, string loginPassword, string isLogin)
+              string loginEmail, string loginPassword, string isLogin, string agentCode)
         {
             try
             {
@@ -102,13 +105,17 @@ namespace BurialPlots.Areas.Admin.Controllers
                 var cartId = "plan-" + rn;
                 Session["cartId"] = cartId + "|plan";
                 var method = new PaymentMethodsRepository().FirstOrDefault(c => c.Active == true);
+
+                //Assigning Agent Code to the Session variable
+                Session["AgentCode"] = agentCode;
+
                 if (method != null)
                 {
                     return new JavaScriptSerializer().Serialize(Json(new
                     {
                         msg = "true",
                         CartId = cartId,
-                        InstallId = 1212518,
+                        InstallId = Convert.ToInt32(ConfigurationManager.AppSettings["InstallId"]),
                         Amount = PriceApi,
                         Currency = "GBP"
                     }));
@@ -312,9 +319,26 @@ namespace BurialPlots.Areas.Admin.Controllers
                         planOrder.Price = Convert.ToDecimal(obj.Price);
                         planOrder.Title = obj.Title;
                         planOrder.Description = obj.Description;
+
+                        //Code to update the sales admin commission
+                        using (var client = new HttpClient())
+                        {
+                            dynamic jsonObject = new ExpandoObject();
+                            jsonObject.AgentCode = Session["AgentCode"].ToString();
+                            jsonObject.SellingPrice = planOrder.Price.ToString();
+                            jsonObject.OrderId = planOrder.OrderPlanId;
+
+                            var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+                            var response = client.PostAsync("salesadmin/api/sales", content).Result;
+                            //response.IsSuccessStatusCode
+                        }
+
+
                         var k = new OrderPlanItemRepository().Add(planOrder);
 
                     }
+
+
                     Session.Remove("cartItems");
                     ////////////sent mail/////////////
                     string MailHostServer = ConfigurationManager.AppSettings["SmtpHost"].ToString();

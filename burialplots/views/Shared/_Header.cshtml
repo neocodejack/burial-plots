@@ -165,16 +165,17 @@
             <div id="cotactfoter" class="contact-info">
                 <div class="row">
                     <div class="col-md-4" style="padding-top:12px;">
-                        <label>@BurialPlots.Resources.HomeTexts.FullName</label>
-                        <input type="text" style="color:black" class="form-control" id="txtname" placeholder="John Jones" />
+                        <label>@BurialPlots.Resources.HomeTexts.FullName</label>&nbsp;<i class="glyphicon glyphicon-info-sign white" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
+                        <input type="text" style="color:black;width:95%" class="form-control" id="txtname" placeholder="John Jones" />
+                        
                     </div>
                     <div class="col-md-4" style="padding-top:12px;">
-                        <label>@BurialPlots.Resources.HomeTexts.Email</label>
-                        <input type="text" style="color:black" class="form-control" id="txtemail" placeholder="John@mail.com" />
+                        <label>@BurialPlots.Resources.HomeTexts.Email</label>&nbsp;<i class="glyphicon glyphicon-info-sign white" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
+                        <input type="text" style="color:black;width:95%" class="form-control" id="txtemail" placeholder="John@mail.com" />
                     </div>
                     <div class="col-md-4" style="padding-top:12px;">
-                        <label>@BurialPlots.Resources.HomeTexts.Telephone</label>
-                        <input type="text" class="form-control" style="color:black" id="txtphone" placeholder="123456" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+                        <label>@BurialPlots.Resources.HomeTexts.Telephone</label>&nbsp;&nbsp;<i class="glyphicon glyphicon-info-sign white" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
+                        <input type="text" class="form-control" style="color:black;width:95%" id="txtphone" placeholder="123456" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
                     </div>
                 </div>
                 <div class="row" style="padding-top:12px;">
@@ -184,6 +185,7 @@
                     </div>
                     <div class="col-md-4">
                         <input type="button" onclick="ContactUs()" style="margin-top: 28px; width:100%; height:33px; border:2px solid;line-height: 0.44;" class="btn" value="@BurialPlots.Resources.HomeTexts.Submit" />
+                        <span style="color:white; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our <a href="Condition">Terms & Conditions</a> and <a href="Privacy-Ploicy">Privacy Policy</a>.</span>
                     </div>
                 </div>
             </div>
@@ -422,7 +424,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-9 disclaimer">
-                        Disclaimer: The opinions expressed within Reviews are those of the author and not the views or opinions of Burial Plots Limited. Registered Office: Suite 5 Curdworth House, Kingsbury Road, Sutton Coldfield B76 9EE. Registered in England and Wales No. 10523557 © Burial PLots Limited 2017. All rights reserved. Burial Plots™ are trademarks of Burial Plots Limited. Privacy policy, Cookie policy & Conditions of use.
+                        Disclaimer: The opinions expressed within Reviews are those of the author and not the views or opinions of Burial Plots Limited. Registered Office: Suite 5 Curdworth House, Kingsbury Road, Sutton Coldfield B76 9EE. Registered in England and Wales No. 10523557 © Burial Plots Limited 2017. All rights reserved. Burial Plots™ are trademarks of Burial Plots Limited. <a href="Privacy-Ploicy">Privacy policy</a>, <a href="Cookie-Policy">Cookie policy</a> & <a href="Condition">Conditions of use</a>.
                     </div>
                     <div class="col-md-3">
                         <div class="row">
@@ -456,7 +458,7 @@
                         </span>&nbsp;&nbsp;
                         <span style="margin-left:-7px;">
                             <a href="http://www.worldpay.com/support/index.php?CMP=BA22713" target="_blank"><img class="img-worldpay" src="https://secure.worldpay.com/jsp/shopper/icons/../pictures/poweredByWorldPay.gif" border="0" alt="Powered by WorldPay" style="height:25px;" /></a>
-                        </span>&nbsp;&nbsp;
+                        </span>&nbsp;&nbsp;&nbsp;<span style="color:white">We Accept GBP</span>
                     </div>
                 </div>
             </div>
@@ -482,6 +484,7 @@
 
         $(document).ready(function () {
             var isPopularLocation = @ViewBag.IsComingFromPopularLocation;
+            
             if (isPopularLocation === 1) {
                 $("#cotactfoter").hide();
                 //$("#colophon").hide();
@@ -577,7 +580,16 @@
         }
     </script>
     <script src="~/js/owl.carousel.min.js"></script>
-
+    <style type="text/css">
+        .testClass {
+            font-size: xx-small;
+            height:118px;
+            width:250px;
+           padding: 0px 1px 0px 1px;
+           text-align:left;
+         
+        }
+    </style>
     <script>
         $(document).ready(function ($) {
             $('.owl-carousel.latest-news').owlCarousel({
@@ -586,6 +598,8 @@
                 dots: true,
                 items: 1,
             });
+
+            $('[data-toggle="tooltip"]').tooltip({ tooltipClass: "testClass" }); 
         });
 
     </script>
@@ -612,25 +626,30 @@
                         <form>
                             <ul class="enquiry-form-header">
                                 <li>
-                                    <input type="text" placeholder="Name" id="enName">
+                                    <input type="text" class="width" placeholder="Name" id="enName">
+                                    <i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Email" id="enEmail">
+                                    <input type="text" class="width" placeholder="Email" id="enEmail">
+                                    <i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Telephone" id="enPhone">
+                                    <input type="text" class="width" placeholder="Telephone" id="enPhone">
+                                    <i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="left" title="We may from time to time contact you using the information supplied to keep you informed about our business and latest offers via newsletters or phone call, further information can be found in our Terms & Conditions and Privacy Policy."></i>
                                 </li>
                                 <li>
-                                    <textarea name="" placeholder="Message" id="enMessage"></textarea>
+                                    <textarea name="" class="width" rows="4" cols="10" placeholder="Message" id="enMessage"></textarea>
                                 </li>
                             </ul>
 
                         </form>
                     
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="text-align:left">
                     <button type="button" class="btn btn-default" id="btnEnquiry">Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <br/>
+                    <span style="color:black; width:100%;font-size: xx-small;letter-spacing: 1px;">By clicking "Submit" you confirm that you have read and agreed to our <a href="Condition" style="color:cadetblue" target="_blank">Terms & Conditions</a> and <a href="Privacy-Ploicy" style="color:cadetblue" target="_blank">Privacy Policy</a>.</span>
                 </div>
             </div>
         </div>

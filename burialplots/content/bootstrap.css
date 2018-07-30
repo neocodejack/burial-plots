@@ -5758,7 +5758,7 @@ body.modal-open,
   position: absolute;
   z-index: 1030;
   display: block;
-  font-size: 12px;
+  font-size: 4px;
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=0);

@@ -3,9 +3,12 @@ using BurialPlots.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -22,9 +25,11 @@ namespace BurialPlots.Controllers
 
         [HttpPost]
         public string BillingInfo(string fname, string lname, string address, string country, string cellno, string regFname, string regLname, string regEmail, string regPassword, string regCellNo,
-            string loginEmail, string loginPassword, string isLogin)
+            string loginEmail, string loginPassword, string isLogin, string agentCode)
         {
             var res = "true";
+            //Assigning the AgentCode to Session
+            Session["AgentCode"] = agentCode;
             try
             {
                 if (Session["cmemId"] == null)
@@ -106,7 +111,7 @@ namespace BurialPlots.Controllers
                     {
                         msg = res,
                         CartId = cartId,
-                        InstallId = 1212518,
+                        InstallId = ConfigurationManager.AppSettings["InstallId"].ToString(),
                         Amount = PriceApi,
                         Currency = "GBP"
                     }));
@@ -124,7 +129,41 @@ namespace BurialPlots.Controllers
             ////////////////////////////////////////////
         }
 
+        private bool NotifySalesAgent(string agentCode, string orderId, string price)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(agentCode))
+                {
+                    //Code to update the sales admin commission
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiBaseUrl"].ToString());
+                        string payload = "{\"AgentCode\":\"" + agentCode + "\",\"SellingPrice\":\"" + price + "\",\"OrderId\":\"" + orderId + "\"}";
+                        var content = new StringContent(payload.ToString(), Encoding.UTF8, "application/json");
+                        var response = client.PostAsync("salesadmin/api/sales", content).Result;
+                        if (response.IsSuccessStatusCode)
+                            return true;
+                        else
+                            return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public ActionResult SuccessPayment()
+        {
+            return View();
+        }
+
+        public ActionResult PaymentResponse()
         {
             return View();
         }
@@ -173,6 +212,7 @@ namespace BurialPlots.Controllers
                                 cemeteryOrder.PreNeed = item.PreNeed;
                                 cemeteryOrder.AtNeed = item.AtNeed;
                                 cemeteryOrder.Quantity = Convert.ToInt32(item.LayerId);
+                                res = NotifySalesAgent(Session["AgentCode"].ToString(), cemeteryOrder.OrderId.ToString(), cemeteryOrder.Price.ToString()).ToString();
                                 var k = new OrderCemeteryRepository().Add(cemeteryOrder);
                                 if (k)
                                 {
@@ -255,7 +295,7 @@ namespace BurialPlots.Controllers
                             SendEmail(adminBody, adminSubject, adminEmail, fromEmail, password, ssl, MailHostServer, port);
                             
                         }
-                        return "true";
+                        return res;
                     }
                     else if (arr[1] == "extendPlan")
                     {
@@ -287,6 +327,7 @@ namespace BurialPlots.Controllers
                                     planOrder.OrderPlanId = orderObj.Id;
                                     planOrder.Price = Convert.ToDecimal(planObj.PartnerPlan.Price);
                                     planOrder.ServiceListingPlanId = planObj.Id;
+                                    res = NotifySalesAgent(Session["AgentCode"].ToString(), planOrder.OrderPlanId.ToString(), planOrder.Price.ToString()).ToString();
                                     var n = new OrderPlanItemRepository().Add(planOrder);
                                 }
                             }
@@ -300,6 +341,7 @@ namespace BurialPlots.Controllers
                                     planOrder.OrderPlanId = orderObj.Id;
                                     planOrder.Price = Convert.ToDecimal(planObj.PartnerPlan.Price);
                                     planOrder.ServiceListingPlanId = planObj.Id;
+                                    res = NotifySalesAgent(Session["AgentCode"].ToString(), planOrder.OrderPlanId.ToString(), planOrder.Price.ToString()).ToString();
                                     var n = new OrderPlanItemRepository().Add(planOrder);
                                 }
                             }
@@ -307,7 +349,7 @@ namespace BurialPlots.Controllers
                         Session.Remove("ServiceList");
                         Session.Remove("cartId");
                         Session.Remove("cartBilling");
-                        return "true";
+                        return res;
                     }
                     else
                     {
@@ -373,6 +415,7 @@ namespace BurialPlots.Controllers
                                             planOrder.OrderPlanId = orderObj.Id;
                                             planOrder.Price = Convert.ToDecimal(item.PlanPrice);
                                             planOrder.ServiceListingPlanId = bPlan.Id;
+                                            res = NotifySalesAgent(Session["AgentCode"].ToString(), planOrder.OrderPlanId.ToString(), planOrder.Price.ToString()).ToString();
                                             var n = new OrderPlanItemRepository().Add(planOrder);
                                         }
                                     }
@@ -437,11 +480,11 @@ namespace BurialPlots.Controllers
                                 //var urlString2 = baseUrl + "api/BurialPlotsEmails/SendEmail?Body=" + adminBody + "&Subject=" + adminSubject + "&toEmail=" + adminToEmail + "&fromEmail=" + fromEmail + "&Password=" + password +
                                 //    "&ssl=" + ssl + "&MailHost=" + MailHostServer + "&Port=" + port;
                                 //client2.GetAsync(urlString2);
-                                return "true";
+                                return res;
                             }
                             else
                             {
-                                return "false";
+                                return res;
                             }
                         }
                         else
@@ -476,6 +519,7 @@ namespace BurialPlots.Controllers
                                         planOrder.OrderPlanId = orderObj.Id;
                                         planOrder.Price = Convert.ToDecimal(item.PlanPrice);
                                         planOrder.ServiceListingPlanId = bPlan.Id;
+                                        res = NotifySalesAgent(Session["AgentCode"].ToString(), planOrder.OrderPlanId.ToString(), planOrder.Price.ToString()).ToString();
                                         var n = new OrderPlanItemRepository().Add(planOrder);
                                     }
                                 }
@@ -529,18 +573,18 @@ namespace BurialPlots.Controllers
                             adminBody += "<br/><br/>You may review this order from admin panel.<br/><br/>Regards,<br/>Burial Plots";
                             SendEmail(adminBody, adminSubject, adminEmail, fromEmail, password,
                                 ssl, MailHostServer, port);
-                            return "true";
+                            return res;
                         }
                     }
                 }
                 else
                 {
-                    return "false";
+                    return res;
                 }
             }
             catch (Exception)
             {
-                return "true";
+                return res;
             }
 
             //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//  //**//

@@ -236,6 +236,7 @@ namespace BurialPlots.Controllers
 
         public ActionResult LoginSignup()
         {
+            ViewBag.RecapthaKey = ConfigurationManager.AppSettings["captchKey"].ToString();
             return View();
         }
 

@@ -1,5 +1,7 @@
 ﻿@using BurialPlots.DAL
-@using BurialPlots.Models;
+@*@using BurialPlots.Models*@
+@using System.Configuration
+
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Header.cshtml";
@@ -132,11 +134,11 @@
                             <label>First Name</label>
                             @if (Session["cmemFirstName"] != null)
                             {
-                                <input type="text" class="form-control" value="@Session["cmemFirstName"].ToString()" id="txtFname" />
+                                    <input type="text" class="form-control" value="@Session["cmemFirstName"].ToString()" id="txtFname" />
                             }
                             else
                             {
-                                <input type="text" class="form-control" id="txtFname" />
+                                    <input type="text" class="form-control" id="txtFname" />
                             }
                         </div>
                         <div class="col-md-6">
@@ -945,6 +947,20 @@
                             <input type="text" class="form-control" id="txtCellNo" />
                         </div>
                     </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Agent Code</label>
+                            <input type="text" class="form-control" id="txtAgentCode" />
+                        </div>
+                        <div class="col-md-4">
+                            
+                            
+                        </div>
+                        <div class="col-md-4">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
             <br />
@@ -962,8 +978,8 @@
                 </div>
             </div>
             <br />
-            <form id="paymentForm" action="https://secure-test.worldpay.com/wcc/purchase" method=POST>
-                <input type="text" name="testMode" value="100">
+            <form id="paymentForm" action="@ConfigurationManager.AppSettings["paymentUrl"].ToString()" method=POST>
+                <input type="text" name="testMode" value="@ConfigurationManager.AppSettings["testValue"].ToString()">
                 <input type="text" id="instId" name="instId" value="">
                 <input type="text" id="cartId" name="cartId" value="">
                 <input type="text" id="amount" name="amount" value="">

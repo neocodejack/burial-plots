@@ -210,6 +210,7 @@ var nextPreviousBtns = function (type) {
             }
           
             var regCellNo = $("#txtRegCellNo").val();
+            var agentCode = $("#txtAgentCode").val();
             ////////Login
             var isLogin = "false";
             if ($("#chkLogin").is(":checked")) {
@@ -233,13 +234,14 @@ var nextPreviousBtns = function (type) {
                         return;
                     }
                 }
+                //alert(agentCode);
                 showLoader("Please wait..", "info");
                 $.ajax({
                     url: "/Checkout/BillingInfo",
                     type: "post",
                     data: {
                         fname: fname, lname: lname, address: address, country: country, cellno: cellno, regFname: regFname, regLname: regLname, regEmail: regEmail, regPassword: regPassword, regCellNo: regCellNo,
-                        loginEmail: loginEmail, loginPassword: loginPassword, isLogin: isLogin,
+                        loginEmail: loginEmail, loginPassword: loginPassword, isLogin: isLogin, agentCode: agentCode
                     },
                     success: function (responce) {
                         
